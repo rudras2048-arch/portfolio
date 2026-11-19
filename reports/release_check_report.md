@@ -1,7 +1,7 @@
 # Portfolio v2 Automated Release-Check Audit Report
 
-**Generated:** Thu, 19 Nov 2026 03:03:37 GMT  
-**Pipeline Duration:** 67.83s  
+**Generated:** Thu, 19 Nov 2026 03:44:14 GMT  
+**Pipeline Duration:** 72.78s  
 **Overall Release Status:** ✅ **RELEASE APPROVED (PASS)**
 
 ---
@@ -10,10 +10,10 @@
 
 | Gate | Domain | Target | Measured Result | Status |
 | :---: | :--- | :--- | :--- | :---: |
-| **G-01** | **Static Build Engine** | Clean `npm run build` generation into `dist/` | 335.2 KB HTML, 32 assets | **PASS** |
+| **G-01** | **Static Build Engine** | Clean `npm run build` generation into `dist/` | 338.7 KB HTML, 32 assets | **PASS** |
 | **G-02** | **Leak Prevention** | 0 visible TBD, YOUR-DOMAIN, broken asset paths | 0 leaks found (TBD: 0, Domain: 0, Missing Assets: 0) | **PASS** |
 | **G-03** | **Lighthouse & axe-core** | Perf ≥ 90, A11y = 100, SEO = 100 (0 axe bugs) | Perf: 95 | A11y: 100 | SEO: 100 (0 axe violations) | **PASS** |
-| **G-04** | **Link & Asset Integrity** | 100% local assets & external URLs valid | Local: 10/10 | Anchors: 5/5 | Ext: 6/7 | **PASS** |
+| **G-04** | **Link & Asset Integrity** | 100% local assets & external URLs valid | Local: 10/10 | Anchors: 6/6 | Ext: 7/7 | **PASS** |
 | **G-05** | **Content Grounding Diff** | 100% fidelity with `content/content.json` | 0 discrepancy/discrepancies (Critical: 0, High: 0) | **PASS** |
 | **G-06** | **Interactive & Visual** | Flawless keyboard pass, zero 320/768/1440px overflow | Viewports: PASS | Keyboard: PASS | **PASS** |
 
@@ -22,9 +22,9 @@
 ## 2. Gate 01: Static Build Engine (`npm run build`)
 
 - **Execution Status:** SUCCESS (Exit Code 0)
-- **Build Duration:** 9059ms
+- **Build Duration:** 11342ms
 - **Generated Artifacts:**
-  - `dist/index.html` (335.2 KB)
+  - `dist/index.html` (338.7 KB)
   - `dist/assets/` (32 static files copied)
 
 ```
@@ -56,9 +56,9 @@ Rendering components strictly from content/content.json:
 [32m✔ [GATE 4 PASSED][0m Recruiter Mode toggle and executive drawer verified.
 
 --- Synchronizing Distribution and Root Artifacts ---
-  ✔ Written: dist/index.html (341,808 bytes)
-  ✔ Synced:  index.html (341,808 bytes)
-  ✔ Synced:  index.v2.html (341,808 bytes)
+  ✔ Written: dist/index.html (345,374 bytes)
+  ✔ Synced:  index.html (345,374 bytes)
+  ✔ Synced:  index.v2.html (345,374 bytes)
   ✔ Synced:  content.json (root)
   ✔ Copied:  assets/ -> dist/assets/ (32 files)
   ✔ Copied:  data/ -> dist/data/ (1 files)
@@ -103,7 +103,7 @@ Rendering components strictly from content/content.json:
 - **Serious Impact:** 0
 - **Moderate Impact:** 0
 - **Minor Impact:** 0
-- **Passed Rules Count:** 42
+- **Passed Rules Count:** 41
 
 ✔ Flawless zero-violation WCAG 2.1 AA/AAA compliance.
 
@@ -116,8 +116,8 @@ Rendering components strictly from content/content.json:
 ## 5. Gate 04: Link & Asset Integrity Audit
 
 - **Local Assets:** 10 of 10 passed (0 failed)
-- **Internal Section Anchors:** 5 of 5 passed (0 failed)
-- **External URLs:** 6 of 7 passed (0 failed, 1 bot-challenged/auth)
+- **Internal Section Anchors:** 6 of 6 passed (0 failed)
+- **External URLs:** 7 of 7 passed (0 failed, 0 bot-challenged/auth)
 
 ### External URL Verification Table
 
@@ -128,7 +128,7 @@ Rendering components strictly from content/content.json:
 | **PASS** | 200 | `https://fonts.googleapis.com` |
 | **PASS** | 200 | `https://fonts.gstatic.com` |
 | **PASS** | 200 | `https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800&display=swap` |
-| **BLOCKED/AUTH** | 999 | `https://www.linkedin.com/in/rudra-sharma-7bb78b410/` |
+| **PASS** | 301 | `https://www.linkedin.com/in/rudra-sharma-7bb78b410/` |
 | **PASS** | 200 | `https://rudrasharma.dev/assets/og/og-hero.png` |
 
 ---

@@ -4792,7 +4792,14 @@ body.cs-modal-open {
    ========================================================================== */
 /* BRK-01: Prevent venture terminal pre from expanding grid column beyond 320px */
 .ventures-grid {
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)) !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 22px !important;
+}
+@media (max-width: 860px) {
+  .ventures-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
 .venture-card {
   min-width: 0 !important;
@@ -4803,6 +4810,113 @@ body.cs-modal-open {
 }
 .cs-deepdive-grid, .cs-drawer {
   min-width: 0 !important;
+}
+
+/* ==========================================================================
+   DEDICATED RESEARCH WORKBENCH SHOWCASE (.vw-)
+   ========================================================================== */
+.ventures-workbench-showcase {
+  margin-top: 32px;
+  background: var(--bg-card);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  padding: 30px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  scroll-margin-top: 96px;
+}
+
+.ventures-workbench-showcase:hover {
+  border-color: var(--rule-hover);
+  box-shadow: 0 16px 44px rgba(0, 0, 0, 0.4);
+}
+
+.vw-header {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vw-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vw-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  text-transform: uppercase;
+}
+
+.vw-version {
+  font-size: 10px;
+  color: var(--text-dim);
+  letter-spacing: 0.08em;
+}
+
+.vw-title {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 800;
+  color: var(--text-bone);
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  line-height: 1.15;
+}
+
+.vw-lead {
+  font-size: 14.5px;
+  color: var(--text-muted);
+  max-width: 74ch;
+  line-height: 1.6;
+}
+
+.vw-body {
+  margin-top: 8px;
+}
+
+.venture-workbench-pill-wrap {
+  margin-top: 10px;
+}
+
+.venture-workbench-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px;
+  border-radius: 9999px;
+  background: var(--accent-soft);
+  border: 1px solid rgba(165, 186, 40, 0.35);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: all 0.25s ease;
+  text-decoration: none;
+}
+
+.venture-workbench-pill:hover {
+  background: rgba(165, 186, 40, 0.22);
+  border-color: var(--accent);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .ventures-workbench-showcase {
+    padding: 20px 16px;
+    margin-top: 24px;
+  }
 }
 
 /* BRK-02: Prevent email overflow on ultra-narrow mobile viewports */
@@ -6602,7 +6716,298 @@ body.cs-modal-open {
 <span class="kw">[STATUS]</span> Research phase · building Haryanvi / Punjabi / Bhojpuri eval set
 <span class="kw">[NEXT]</span> Publish LLM failure analysis</pre>
             </div>
-            <!-- TATHYA LLM FAILURE EXPLORER (templates/demo/) -->
+          </div>
+
+          <div class="venture-details">
+            <div class="venture-detail-row">
+              <span class="lbl">Problem</span>
+              <span class="val">LLMs perform poorly on regional dialects due to token fragmentation.</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Features</span>
+              <span class="val">Dialect token fragmentation analysis · Custom evaluation benchmark for Haryanvi, Punjabi, and Bhojpuri · Verification layer for government schemes and regional queries</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Status</span>
+              <span class="val mono">Early research · eval set in progress</span>
+            </div>
+          </div>
+
+          <div class="venture-actions">
+            <a href="#contact" class="btn-solid">Talk to me about Tathya <span class="btn-arrow">→</span></a>
+            <a href="#tathya-workbench" class="venture-explorer-link">🔬 Open Live Benchmark ↓</a>
+          </div>
+
+          <!-- Deep Dive Interactive Trigger Button -->
+          <button class="cs-trigger" data-drawer-target="cs-drawer-tathya" aria-expanded="false" aria-controls="cs-drawer-tathya">
+            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
+            <span class="cs-trigger__badge">AUDITED</span>
+          </button>
+
+          <!-- Expandable Deep Dive Drawer Host -->
+          <div id="cs-drawer-tathya" class="cs-drawer" hidden>
+            <div class="cs-drawer__inner">
+              <div class="cs-header-strip">
+                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // TATHYA (तथ्य)</span>
+                <span class="cs-badge">RESEARCH PHASE</span>
+              </div>
+
+              
+              <div class="cs-grid">
+                <div class="cs-panel">
+                  <h4><span class="cs-num">01</span> Research Hypothesis &amp; Failure Modes</h4>
+                  <p>State-of-the-art LLMs trained on standard web Hindi (Manak Hindi) experience catastrophic token fragmentation when parsing dialectal inputs from Haryana, Punjab, and Bihar. A 6-token colloquial query often blows up into 34+ byte fragments, degrading attention weights and yielding hallucinations on critical civic information.</p>
+                </div>
+                <div class="cs-panel">
+                  <h4><span class="cs-num">02</span> Verification Layer Architecture</h4>
+                  <p>Tathya implements a dual-pass evaluation pipeline: an acoustic/orthographic normalizer paired with an assertion boundary checker. Civic and health queries are grounded against audited municipal tables before generating user responses.</p>
+                </div>
+                <div class="cs-panel cs-panel-full">
+                  <h4><span class="cs-num">03</span> Architectural Retrospective &amp; Failure Analysis</h4>
+                  <p><strong>What Broke:</strong> Relying purely on synthetically generated dialect evaluations produced synthetic hallucinations. <strong>Correction:</strong> Transitioned to collecting authentic local voice notes and community radio transcripts to construct an uncorrupted benchmark dataset.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- VENTURE CARD: Stratum -->
+        <article class="venture-card reveal" data-venture-id="stratum">
+          <div class="venture-top">
+            <div class="venture-meta">
+              <span>SAAS PLATFORM // SIMULATION</span>
+              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>CONCEPT STAGE</span>
+            </div>
+            <h3 class="venture-name">Stratum</h3>
+            <p class="venture-thesis">A live market simulation engine evaluating candidate decision speed and capital efficiency instead of static case studies.</p>
+
+            
+            <!-- Integrated Terminal Output -->
+            <div class="term">
+              <div class="term-bar">
+                <i></i><i></i><i></i>
+                <span></span>
+              </div>
+              <pre class="term-body" tabindex="0" role="region" aria-label="Stratum terminal output"><span class="cm">$ stratum simulate --scenario &quot;cpm_volatility_shock&quot;</span>
+<span class="kw">[SCENARIO]</span> Ad CPMs spike 40% mid-quarter. Reallocate budget to protect margin.
+<span class="kw">[SCORED ON]</span> capital velocity · margin yield · decision speed</pre>
+            </div>
+          </div>
+
+          <div class="venture-details">
+            <div class="venture-detail-row">
+              <span class="lbl">Problem</span>
+              <span class="val">Hiring case studies are easily generated using LLMs without testing live judgment.</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Features</span>
+              <span class="val">Dynamic CPM volatility shock scenarios · Capital velocity and margin yield telemetry · Real-time decision latency scoring</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Status</span>
+              <span class="val mono">Concept and pitch stage · sandbox design in progress</span>
+            </div>
+          </div>
+
+          <div class="venture-actions">
+            <a href="#contact" class="btn-solid">Talk to me about Stratum <span class="btn-arrow">→</span></a>
+            
+          </div>
+
+          <!-- Deep Dive Interactive Trigger Button -->
+          <button class="cs-trigger" data-drawer-target="cs-drawer-stratum" aria-expanded="false" aria-controls="cs-drawer-stratum">
+            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
+            <span class="cs-trigger__badge">AUDITED</span>
+          </button>
+
+          <!-- Expandable Deep Dive Drawer Host -->
+          <div id="cs-drawer-stratum" class="cs-drawer" hidden>
+            <div class="cs-drawer__inner">
+              <div class="cs-header-strip">
+                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // STRATUM</span>
+                <span class="cs-badge">CONCEPT STAGE</span>
+              </div>
+
+              
+              <div class="cs-grid">
+                <div class="cs-panel">
+                  <h4><span class="cs-num">01</span> Simulation Engine Model</h4>
+                  <p>Stratum models marketing and venture aptitude by discarding static case interviews in favor of a live deterministic finite-state machine. Candidates allocate capital across volatile simulated bidding channels (simulated Meta/Google ad auctions) subject to exogenous algorithmic shocks.</p>
+                </div>
+                <div class="cs-panel">
+                  <h4><span class="cs-num">02</span> Latency &amp; Capital Efficiency Audits</h4>
+                  <p>Every keystroke, budget allocation, and pivot timestamp is logged into an immutable session ledger. Candidates are evaluated on mathematical resilience, capital drawdowns, and recovery calculus rather than articulate retrospective rationalizations.</p>
+                </div>
+                <div class="cs-panel cs-panel-full">
+                  <h4><span class="cs-num">03</span> Retrospective: Headless vs Full UI</h4>
+                  <p><strong>Initial Pitfall:</strong> Attempted to build high-polish canvas dashboards prematurely. <strong>Pivot:</strong> Stripped the UI to engineer a headless, deterministic state machine with verifiable seeds first, ensuring identical scenario playback across interview cohorts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- VENTURE CARD: Flow State -->
+        <article class="venture-card reveal" data-venture-id="flow-state">
+          <div class="venture-top">
+            <div class="venture-meta">
+              <span>DESKTOP OS // FOCUS</span>
+              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>LOCAL BUILD</span>
+            </div>
+            <h3 class="venture-name">Flow State</h3>
+            <p class="venture-thesis">A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.</p>
+
+            
+            <!-- Integrated Terminal Output -->
+            <div class="term">
+              <div class="term-bar">
+                <i></i><i></i><i></i>
+                <span></span>
+              </div>
+              <pre class="term-body" tabindex="0" role="region" aria-label="Flow State terminal output"><span class="cm">$ flowstate run --zero-oauth --audio procedural_sine</span>
+<span class="kw">[AUDIO]</span> 16-bit 44.1kHz synthesized via math.sin (0 MP3 files)
+<span class="kw">[SYNC]</span> Cloud telemetry bypassed · 100% on-device</pre>
+            </div>
+          </div>
+
+          <div class="venture-details">
+            <div class="venture-detail-row">
+              <span class="lbl">Problem</span>
+              <span class="val">Cloud telemetry leaks and context switching fragment developer focus.</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Features</span>
+              <span class="val">Zero-OAuth RFC 5545 calendar synchronization · 16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files) · Weekly focus receipts with 30-day productivity telemetry · 100% on-device local execution</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Status</span>
+              <span class="val mono">Local build · Zero-OAuth sync &amp; 16-bit procedural audio synthesis</span>
+            </div>
+          </div>
+
+          <div class="venture-actions">
+            <a href="#contact" class="btn-solid">Connect With Builder <span class="btn-arrow">→</span></a>
+            
+          </div>
+
+          <!-- Deep Dive Interactive Trigger Button -->
+          <button class="cs-trigger" data-drawer-target="cs-drawer-flow-state" aria-expanded="false" aria-controls="cs-drawer-flow-state">
+            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
+            <span class="cs-trigger__badge">AUDITED</span>
+          </button>
+
+          <!-- Expandable Deep Dive Drawer Host -->
+          <div id="cs-drawer-flow-state" class="cs-drawer" hidden>
+            <div class="cs-drawer__inner">
+              <div class="cs-header-strip">
+                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // FLOW STATE</span>
+                <span class="cs-badge">LOCAL BUILD</span>
+              </div>
+
+              
+              <div class="cs-grid">
+                <div class="cs-panel">
+                  <h4><span class="cs-num">01</span> Local-First Philosophy &amp; Zero-OAuth Sync</h4>
+                  <p>Modern developer productivity tools are saturated with telemetry beacons, remote websocket heartbeats, and invasive analytics. Flow State enforces total air-gap capability: calendar events synchronize via direct RFC 5545 <code>.ics</code> parsing with zero external network handshakes.</p>
+                </div>
+                <div class="cs-panel">
+                  <h4><span class="cs-num">02</span> 16-Bit Procedural Sound Engine</h4>
+                  <p>Replaced bloated streaming audio players and compressed MP3 loops with a native 44.1kHz Web Audio procedural sine synthesizer. Generates custom brown and pink noise with mathematical purity at microscopic CPU usage (&lt;0.5%).</p>
+                </div>
+                <div class="cs-panel cs-panel-full">
+                  <h4><span class="cs-num">03</span> Retrospective: Discarding Electron</h4>
+                  <p><strong>Critical Lesson:</strong> Bundling Chromium for a productivity tool consumed 450MB of RAM—the antithesis of lightweight flow. Rebuilt the desktop shell around native OS webviews to maintain sub-40MB memory footprints.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- VENTURE CARD: Krama (क्रम) -->
+        <article class="venture-card reveal" data-venture-id="krama">
+          <div class="venture-top">
+            <div class="venture-meta">
+              <span>SYSTEM UTILITY // ACADEMIC OS</span>
+              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>STUDENT UTILITY</span>
+            </div>
+            <h3 class="venture-name">Krama (क्रम)</h3>
+            <p class="venture-thesis">An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.</p>
+
+            
+            <!-- Integrated Terminal Output -->
+            <div class="term">
+              <div class="term-bar">
+                <i></i><i></i><i></i>
+                <span></span>
+              </div>
+              <pre class="term-body" tabindex="0" role="region" aria-label="Krama (क्रम) terminal output"><span class="cm">$ krama analyze --timetable schedule.json --threshold 75%</span>
+<span class="kw">[STATUS]</span> Current: 68.4% | Target threshold: 75.0%
+<span class="kw">[RECOVERY]</span> Attend next 4 consecutive sessions to recover margin</pre>
+            </div>
+          </div>
+
+          <div class="venture-details">
+            <div class="venture-detail-row">
+              <span class="lbl">Problem</span>
+              <span class="val">Mandatory attendance cutoffs (75%) trigger sudden academic disqualifications without proactive recovery visibility.</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Features</span>
+              <span class="val">Automated timetable JSON ingestion · Safe leave buffer calculation and recovery calculus · Encrypted local SQLite storage with zero account creation required</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Status</span>
+              <span class="val mono">Student utility · offline-first recovery calculus</span>
+            </div>
+          </div>
+
+          <div class="venture-actions">
+            <a href="#contact" class="btn-solid">Inquire About Krama <span class="btn-arrow">→</span></a>
+            
+          </div>
+
+          <!-- Deep Dive Interactive Trigger Button -->
+          <button class="cs-trigger" data-drawer-target="cs-drawer-krama" aria-expanded="false" aria-controls="cs-drawer-krama">
+            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
+            <span class="cs-trigger__badge">AUDITED</span>
+          </button>
+
+          <!-- Expandable Deep Dive Drawer Host -->
+          <div id="cs-drawer-krama" class="cs-drawer" hidden>
+            <div class="cs-drawer__inner">
+              <div class="cs-header-strip">
+                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // KRAMA (क्रम)</span>
+                <span class="cs-badge">STUDENT UTILITY</span>
+              </div>
+
+              
+              <div class="cs-grid">
+                <div class="cs-panel">
+                  <h4><span class="cs-num">01</span> The 75% Cutoff Recovery Calculus</h4>
+                  <p>Indian undergraduate regulations mandate strict 75% attendance for examination eligibility. Krama eliminates intuitive guesswork by modeling class attendance as a calculus curve, calculating the minimum mandatory presence required to recover from unexpected illness or collegiate competition travel.</p>
+                </div>
+                <div class="cs-panel">
+                  <h4><span class="cs-num">02</span> Offline Timetable Optimization</h4>
+                  <p>Operates 100% on-device using local indexed storage. Accommodates shifting lab slots, campus holiday calendars, and substitute sessions without requiring administrative portal credentials.</p>
+                </div>
+                <div class="cs-panel cs-panel-full">
+                  <h4><span class="cs-num">03</span> Retrospective: Handling Edge Schedules</h4>
+                  <p><strong>Edge Case Failure:</strong> Irregular university schedules with rotational odd/even week cycles broke simple modulo parsers. <strong>Fix:</strong> Implemented day-by-day deterministic state transitions keyed to official university academic calendars.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="ventures-workbench-showcase reveal" id="tathya-workbench">
+        <div class="vw-header">
+          <span class="section-eyebrow">Interactive AI Research Console</span>
+          <h3 class="vw-title">Tathya · Dialect Token Fragmentation Explorer</h3>
+          <p class="vw-lead">Live benchmark analyzing how Hindi LLMs fail on Punjabi, Haryanvi, and Bhojpuri colloquial syntax.</p>
+        </div>
+                    <!-- TATHYA LLM FAILURE EXPLORER (templates/demo/) -->
             <section class="tfe-explorer" role="region" aria-label="Tathya LLM Failure Explorer">
               <!-- Explorer Top Bar -->
               <div class="tfe-top-bar">
@@ -6692,285 +7097,6 @@ body.cs-modal-open {
               <!-- Live Region for Screen Readers -->
               <div id="tfe-live" class="tfe-sr-only" aria-live="polite" aria-atomic="true"></div>
             </section>
-          </div>
-
-          <div class="venture-details">
-            <div class="venture-detail-row">
-              <span class="lbl">Problem</span>
-              <span class="val">LLMs perform poorly on regional dialects due to token fragmentation.</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Features</span>
-              <span class="val">Dialect token fragmentation analysis · Custom evaluation benchmark for Haryanvi, Punjabi, and Bhojpuri · Verification layer for government schemes and regional queries</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Status</span>
-              <span class="val mono">Early research · eval set in progress</span>
-            </div>
-          </div>
-
-          <div class="venture-actions">
-            <a href="#contact" class="btn-solid">Talk to me about Tathya <span class="btn-arrow">→</span></a>
-          </div>
-
-          <!-- Deep Dive Interactive Trigger Button -->
-          <button class="cs-trigger" data-drawer-target="cs-drawer-tathya" aria-expanded="false" aria-controls="cs-drawer-tathya">
-            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
-            <span class="cs-trigger__badge">AUDITED</span>
-          </button>
-
-          <!-- Expandable Deep Dive Drawer Host -->
-          <div id="cs-drawer-tathya" class="cs-drawer" hidden>
-            <div class="cs-drawer__inner">
-              <div class="cs-header-strip">
-                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // TATHYA (तथ्य)</span>
-                <span class="cs-badge">RESEARCH PHASE</span>
-              </div>
-
-              
-              <div class="cs-grid">
-                <div class="cs-panel">
-                  <h4><span class="cs-num">01</span> Research Hypothesis &amp; Failure Modes</h4>
-                  <p>State-of-the-art LLMs trained on standard web Hindi (Manak Hindi) experience catastrophic token fragmentation when parsing dialectal inputs from Haryana, Punjab, and Bihar. A 6-token colloquial query often blows up into 34+ byte fragments, degrading attention weights and yielding hallucinations on critical civic information.</p>
-                </div>
-                <div class="cs-panel">
-                  <h4><span class="cs-num">02</span> Verification Layer Architecture</h4>
-                  <p>Tathya implements a dual-pass evaluation pipeline: an acoustic/orthographic normalizer paired with an assertion boundary checker. Civic and health queries are grounded against audited municipal tables before generating user responses.</p>
-                </div>
-                <div class="cs-panel cs-panel-full">
-                  <h4><span class="cs-num">03</span> Architectural Retrospective &amp; Failure Analysis</h4>
-                  <p><strong>What Broke:</strong> Relying purely on synthetically generated dialect evaluations produced synthetic hallucinations. <strong>Correction:</strong> Transitioned to collecting authentic local voice notes and community radio transcripts to construct an uncorrupted benchmark dataset.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- VENTURE CARD: Stratum -->
-        <article class="venture-card reveal" data-venture-id="stratum">
-          <div class="venture-top">
-            <div class="venture-meta">
-              <span>SAAS PLATFORM // SIMULATION</span>
-              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>CONCEPT STAGE</span>
-            </div>
-            <h3 class="venture-name">Stratum</h3>
-            <p class="venture-thesis">A live market simulation engine evaluating candidate decision speed and capital efficiency instead of static case studies.</p>
-
-            
-            <!-- Integrated Terminal Output -->
-            <div class="term">
-              <div class="term-bar">
-                <i></i><i></i><i></i>
-                <span></span>
-              </div>
-              <pre class="term-body" tabindex="0" role="region" aria-label="Stratum terminal output"><span class="cm">$ stratum simulate --scenario &quot;cpm_volatility_shock&quot;</span>
-<span class="kw">[SCENARIO]</span> Ad CPMs spike 40% mid-quarter. Reallocate budget to protect margin.
-<span class="kw">[SCORED ON]</span> capital velocity · margin yield · decision speed</pre>
-            </div>
-          </div>
-
-          <div class="venture-details">
-            <div class="venture-detail-row">
-              <span class="lbl">Problem</span>
-              <span class="val">Hiring case studies are easily generated using LLMs without testing live judgment.</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Features</span>
-              <span class="val">Dynamic CPM volatility shock scenarios · Capital velocity and margin yield telemetry · Real-time decision latency scoring</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Status</span>
-              <span class="val mono">Concept and pitch stage · sandbox design in progress</span>
-            </div>
-          </div>
-
-          <div class="venture-actions">
-            <a href="#contact" class="btn-solid">Talk to me about Stratum <span class="btn-arrow">→</span></a>
-          </div>
-
-          <!-- Deep Dive Interactive Trigger Button -->
-          <button class="cs-trigger" data-drawer-target="cs-drawer-stratum" aria-expanded="false" aria-controls="cs-drawer-stratum">
-            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
-            <span class="cs-trigger__badge">AUDITED</span>
-          </button>
-
-          <!-- Expandable Deep Dive Drawer Host -->
-          <div id="cs-drawer-stratum" class="cs-drawer" hidden>
-            <div class="cs-drawer__inner">
-              <div class="cs-header-strip">
-                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // STRATUM</span>
-                <span class="cs-badge">CONCEPT STAGE</span>
-              </div>
-
-              
-              <div class="cs-grid">
-                <div class="cs-panel">
-                  <h4><span class="cs-num">01</span> Simulation Engine Model</h4>
-                  <p>Stratum models marketing and venture aptitude by discarding static case interviews in favor of a live deterministic finite-state machine. Candidates allocate capital across volatile simulated bidding channels (simulated Meta/Google ad auctions) subject to exogenous algorithmic shocks.</p>
-                </div>
-                <div class="cs-panel">
-                  <h4><span class="cs-num">02</span> Latency &amp; Capital Efficiency Audits</h4>
-                  <p>Every keystroke, budget allocation, and pivot timestamp is logged into an immutable session ledger. Candidates are evaluated on mathematical resilience, capital drawdowns, and recovery calculus rather than articulate retrospective rationalizations.</p>
-                </div>
-                <div class="cs-panel cs-panel-full">
-                  <h4><span class="cs-num">03</span> Retrospective: Headless vs Full UI</h4>
-                  <p><strong>Initial Pitfall:</strong> Attempted to build high-polish canvas dashboards prematurely. <strong>Pivot:</strong> Stripped the UI to engineer a headless, deterministic state machine with verifiable seeds first, ensuring identical scenario playback across interview cohorts.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- VENTURE CARD: Flow State -->
-        <article class="venture-card reveal" data-venture-id="flow-state">
-          <div class="venture-top">
-            <div class="venture-meta">
-              <span>DESKTOP OS // FOCUS</span>
-              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>LOCAL BUILD</span>
-            </div>
-            <h3 class="venture-name">Flow State</h3>
-            <p class="venture-thesis">A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.</p>
-
-            
-            <!-- Integrated Terminal Output -->
-            <div class="term">
-              <div class="term-bar">
-                <i></i><i></i><i></i>
-                <span></span>
-              </div>
-              <pre class="term-body" tabindex="0" role="region" aria-label="Flow State terminal output"><span class="cm">$ flowstate run --zero-oauth --audio procedural_sine</span>
-<span class="kw">[AUDIO]</span> 16-bit 44.1kHz synthesized via math.sin (0 MP3 files)
-<span class="kw">[SYNC]</span> Cloud telemetry bypassed · 100% on-device</pre>
-            </div>
-          </div>
-
-          <div class="venture-details">
-            <div class="venture-detail-row">
-              <span class="lbl">Problem</span>
-              <span class="val">Cloud telemetry leaks and context switching fragment developer focus.</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Features</span>
-              <span class="val">Zero-OAuth RFC 5545 calendar synchronization · 16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files) · Weekly focus receipts with 30-day productivity telemetry · 100% on-device local execution</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Status</span>
-              <span class="val mono">Local build · Zero-OAuth sync &amp; 16-bit procedural audio synthesis</span>
-            </div>
-          </div>
-
-          <div class="venture-actions">
-            <a href="#contact" class="btn-solid">Connect With Builder <span class="btn-arrow">→</span></a>
-          </div>
-
-          <!-- Deep Dive Interactive Trigger Button -->
-          <button class="cs-trigger" data-drawer-target="cs-drawer-flow-state" aria-expanded="false" aria-controls="cs-drawer-flow-state">
-            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
-            <span class="cs-trigger__badge">AUDITED</span>
-          </button>
-
-          <!-- Expandable Deep Dive Drawer Host -->
-          <div id="cs-drawer-flow-state" class="cs-drawer" hidden>
-            <div class="cs-drawer__inner">
-              <div class="cs-header-strip">
-                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // FLOW STATE</span>
-                <span class="cs-badge">LOCAL BUILD</span>
-              </div>
-
-              
-              <div class="cs-grid">
-                <div class="cs-panel">
-                  <h4><span class="cs-num">01</span> Local-First Philosophy &amp; Zero-OAuth Sync</h4>
-                  <p>Modern developer productivity tools are saturated with telemetry beacons, remote websocket heartbeats, and invasive analytics. Flow State enforces total air-gap capability: calendar events synchronize via direct RFC 5545 <code>.ics</code> parsing with zero external network handshakes.</p>
-                </div>
-                <div class="cs-panel">
-                  <h4><span class="cs-num">02</span> 16-Bit Procedural Sound Engine</h4>
-                  <p>Replaced bloated streaming audio players and compressed MP3 loops with a native 44.1kHz Web Audio procedural sine synthesizer. Generates custom brown and pink noise with mathematical purity at microscopic CPU usage (&lt;0.5%).</p>
-                </div>
-                <div class="cs-panel cs-panel-full">
-                  <h4><span class="cs-num">03</span> Retrospective: Discarding Electron</h4>
-                  <p><strong>Critical Lesson:</strong> Bundling Chromium for a productivity tool consumed 450MB of RAM—the antithesis of lightweight flow. Rebuilt the desktop shell around native OS webviews to maintain sub-40MB memory footprints.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- VENTURE CARD: Krama (क्रम) -->
-        <article class="venture-card reveal" data-venture-id="krama">
-          <div class="venture-top">
-            <div class="venture-meta">
-              <span>SYSTEM UTILITY // ACADEMIC OS</span>
-              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>STUDENT UTILITY</span>
-            </div>
-            <h3 class="venture-name">Krama (क्रम)</h3>
-            <p class="venture-thesis">An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.</p>
-
-            
-            <!-- Integrated Terminal Output -->
-            <div class="term">
-              <div class="term-bar">
-                <i></i><i></i><i></i>
-                <span></span>
-              </div>
-              <pre class="term-body" tabindex="0" role="region" aria-label="Krama (क्रम) terminal output"><span class="cm">$ krama analyze --timetable schedule.json --threshold 75%</span>
-<span class="kw">[STATUS]</span> Current: 68.4% | Target threshold: 75.0%
-<span class="kw">[RECOVERY]</span> Attend next 4 consecutive sessions to recover margin</pre>
-            </div>
-          </div>
-
-          <div class="venture-details">
-            <div class="venture-detail-row">
-              <span class="lbl">Problem</span>
-              <span class="val">Mandatory attendance cutoffs (75%) trigger sudden academic disqualifications without proactive recovery visibility.</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Features</span>
-              <span class="val">Automated timetable JSON ingestion · Safe leave buffer calculation and recovery calculus · Encrypted local SQLite storage with zero account creation required</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Status</span>
-              <span class="val mono">Student utility · offline-first recovery calculus</span>
-            </div>
-          </div>
-
-          <div class="venture-actions">
-            <a href="#contact" class="btn-solid">Inquire About Krama <span class="btn-arrow">→</span></a>
-          </div>
-
-          <!-- Deep Dive Interactive Trigger Button -->
-          <button class="cs-trigger" data-drawer-target="cs-drawer-krama" aria-expanded="false" aria-controls="cs-drawer-krama">
-            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
-            <span class="cs-trigger__badge">AUDITED</span>
-          </button>
-
-          <!-- Expandable Deep Dive Drawer Host -->
-          <div id="cs-drawer-krama" class="cs-drawer" hidden>
-            <div class="cs-drawer__inner">
-              <div class="cs-header-strip">
-                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // KRAMA (क्रम)</span>
-                <span class="cs-badge">STUDENT UTILITY</span>
-              </div>
-
-              
-              <div class="cs-grid">
-                <div class="cs-panel">
-                  <h4><span class="cs-num">01</span> The 75% Cutoff Recovery Calculus</h4>
-                  <p>Indian undergraduate regulations mandate strict 75% attendance for examination eligibility. Krama eliminates intuitive guesswork by modeling class attendance as a calculus curve, calculating the minimum mandatory presence required to recover from unexpected illness or collegiate competition travel.</p>
-                </div>
-                <div class="cs-panel">
-                  <h4><span class="cs-num">02</span> Offline Timetable Optimization</h4>
-                  <p>Operates 100% on-device using local indexed storage. Accommodates shifting lab slots, campus holiday calendars, and substitute sessions without requiring administrative portal credentials.</p>
-                </div>
-                <div class="cs-panel cs-panel-full">
-                  <h4><span class="cs-num">03</span> Retrospective: Handling Edge Schedules</h4>
-                  <p><strong>Edge Case Failure:</strong> Irregular university schedules with rotational odd/even week cycles broke simple modulo parsers. <strong>Fix:</strong> Implemented day-by-day deterministic state transitions keyed to official university academic calendars.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
       </div>
     </section>
 

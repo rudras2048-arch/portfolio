@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-11-19T03:03:37.792Z",
-  "durationSeconds": 67.83,
+  "timestamp": "2026-11-19T03:44:14.618Z",
+  "durationSeconds": 72.78,
   "allPassed": true,
   "gates": [
     {
       "gate": "G-01",
       "name": "Static Build Engine",
       "target": "Clean npm run build generation into dist/",
-      "measured": "335.2 KB HTML, 32 assets",
+      "measured": "338.7 KB HTML, 32 assets",
       "passed": true,
       "data": {
         "gate": "G-01",
         "name": "Static Build Engine",
         "passed": true,
-        "durationMs": 9059,
-        "htmlSize": 343259,
+        "durationMs": 11342,
+        "htmlSize": 346827,
         "assetsCount": 32,
-        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (341,808 bytes)\n  ✔ Synced:  index.html (341,808 bytes)\n  ✔ Synced:  index.v2.html (341,808 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Copied:  assets/ -> dist/assets/ (32 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudrasharma.dev/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (453 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
+        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (345,374 bytes)\n  ✔ Synced:  index.html (345,374 bytes)\n  ✔ Synced:  index.v2.html (345,374 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Copied:  assets/ -> dist/assets/ (32 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudrasharma.dev/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (453 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
         "error": null
       }
     },
@@ -66,14 +66,14 @@
             "minor": 0
           },
           "violations": [],
-          "passesCount": 42
+          "passesCount": 41
         },
         "perfMetrics": {
           "ttfb": 4,
-          "domContentLoaded": 228,
-          "loadEvent": 283,
-          "firstContentfulPaintMs": 72,
-          "domNodes": 1152,
+          "domContentLoaded": 359,
+          "loadEvent": 505,
+          "firstContentfulPaintMs": 100,
+          "domNodes": 1165,
           "totalTransferBytes": 299939,
           "largeResources": []
         },
@@ -101,7 +101,7 @@
       "gate": "G-04",
       "name": "Link & Asset Integrity",
       "target": "100% local assets & external URLs valid (0 broken)",
-      "measured": "Local: 10/10 | Anchors: 5/5 | Ext: 6/7",
+      "measured": "Local: 10/10 | Anchors: 6/6 | Ext: 7/7",
       "passed": true,
       "data": {
         "gate": "G-04",
@@ -185,8 +185,8 @@
           ]
         },
         "internalAnchors": {
-          "total": 5,
-          "passed": 5,
+          "total": 6,
+          "passed": 6,
           "failed": 0,
           "items": [
             {
@@ -218,14 +218,20 @@
               "targetId": "contact",
               "exists": true,
               "status": "PASS"
+            },
+            {
+              "anchor": "#tathya-workbench",
+              "targetId": "tathya-workbench",
+              "exists": true,
+              "status": "PASS"
             }
           ]
         },
         "externalUrls": {
           "total": 7,
-          "passed": 6,
+          "passed": 7,
           "failed": 0,
-          "blocked": 1,
+          "blocked": 0,
           "items": [
             {
               "url": "https://rudrasharma.dev/",
@@ -261,9 +267,9 @@
             },
             {
               "url": "https://www.linkedin.com/in/rudra-sharma-7bb78b410/",
-              "statusCode": 999,
-              "statusMessage": "<none>",
-              "status": "BLOCKED/AUTH"
+              "statusCode": 301,
+              "statusMessage": "Moved Permanently",
+              "status": "PASS"
             },
             {
               "url": "https://rudrasharma.dev/assets/og/og-hero.png",
@@ -377,27 +383,8 @@
               "bodyScrollWidth": 768,
               "hasOverflow": false,
               "overflowPx": 0,
-              "overflowingElementsCount": 2,
-              "topOverflowing": [
-                {
-                  "tag": "span",
-                  "id": null,
-                  "className": "cm",
-                  "width": 343.2,
-                  "right": 775.2,
-                  "overflowPx": 7.2,
-                  "snippet": "$ stratum simulate --scenario \"cpm_volat"
-                },
-                {
-                  "tag": "span",
-                  "id": null,
-                  "className": "cm",
-                  "width": 376.2,
-                  "right": 808.2,
-                  "overflowPx": 40.2,
-                  "snippet": "$ krama analyze --timetable schedule.jso"
-                }
-              ]
+              "overflowingElementsCount": 0,
+              "topOverflowing": []
             },
             "screenshot": "viewport-768px.png",
             "passed": true

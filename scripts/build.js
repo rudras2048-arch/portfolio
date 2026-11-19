@@ -774,6 +774,20 @@ ${comps.map(comp => {
 function renderVentures(content) {
   const vens = content.ventures || [];
 
+  // Generate Tathya Explorer for the dedicated full-width workbench
+  let tathyaExplorerHtml = '';
+  const { renderTathyaExplorer } = require('../templates/demo/render.js');
+  const tathyaJsonPath = path.join(DATA_DIR, 'tathya.json');
+  let tathyaData = null;
+  if (fs.existsSync(tathyaJsonPath)) {
+    try {
+      tathyaData = JSON.parse(fs.readFileSync(tathyaJsonPath, 'utf8'));
+    } catch (e) {
+      console.warn('[Build] Warning reading data/tathya.json:', e);
+    }
+  }
+  tathyaExplorerHtml = renderTathyaExplorer(tathyaData);
+
   return `    <section id="ventures">
       <div class="section-header">
         <span class="section-eyebrow reveal">02 // Ventures &amp; Systems</span>
@@ -890,21 +904,6 @@ ${vens.map(ven => {
               </div>`;
   }
 
-  let tathyaExplorerHtml = '';
-  if (ven.id === 'tathya') {
-    const { renderTathyaExplorer } = require('../templates/demo/render.js');
-    const tathyaJsonPath = path.join(DATA_DIR, 'tathya.json');
-    let tathyaData = null;
-    if (fs.existsSync(tathyaJsonPath)) {
-      try {
-        tathyaData = JSON.parse(fs.readFileSync(tathyaJsonPath, 'utf8'));
-      } catch (e) {
-        console.warn('[Build] Warning reading data/tathya.json:', e);
-      }
-    }
-    tathyaExplorerHtml = '\n' + renderTathyaExplorer(tathyaData);
-  }
-
   return `        <!-- VENTURE CARD: ${escapeHtml(ven.name)} -->
         <article class="venture-card reveal" data-venture-id="${ven.id}">
           <div class="venture-top">
@@ -915,7 +914,7 @@ ${vens.map(ven => {
             <h3 class="venture-name">${escapeHtml(ven.name)}</h3>
             <p class="venture-thesis">${escapeHtml(ven.thesis)}</p>
 
-            ${previewHtml}${tathyaExplorerHtml}
+            ${previewHtml}
           </div>
 
           <div class="venture-details">
@@ -935,6 +934,7 @@ ${vens.map(ven => {
 
           <div class="venture-actions">
             <a href="${escapeHtml(ven.action_cta.target)}" class="btn-solid">${escapeHtml(ven.action_cta.label)} <span class="btn-arrow">→</span></a>
+            ${ven.id === 'tathya' ? '<a href="#tathya-workbench" class="venture-explorer-link">🔬 Open Live Benchmark ↓</a>' : ''}
           </div>
 
           <!-- Deep Dive Interactive Trigger Button -->
@@ -957,6 +957,15 @@ ${vens.map(ven => {
         </article>`;
 }).join('\n\n')}
 
+      </div>
+
+      <div class="ventures-workbench-showcase reveal" id="tathya-workbench">
+        <div class="vw-header">
+          <span class="section-eyebrow">Interactive AI Research Console</span>
+          <h3 class="vw-title">Tathya · Dialect Token Fragmentation Explorer</h3>
+          <p class="vw-lead">Live benchmark analyzing how Hindi LLMs fail on Punjabi, Haryanvi, and Bhojpuri colloquial syntax.</p>
+        </div>
+        ${tathyaExplorerHtml}
       </div>
     </section>`;
 }

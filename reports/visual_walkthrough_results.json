@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T03:03:37.792Z",
+  "timestamp": "2026-11-19T03:44:14.616Z",
   "viewports": {
     "320px": {
       "name": "Ultra-Narrow Mobile (320x568)",
@@ -73,27 +73,8 @@
         "bodyScrollWidth": 768,
         "hasOverflow": false,
         "overflowPx": 0,
-        "overflowingElementsCount": 2,
-        "topOverflowing": [
-          {
-            "tag": "span",
-            "id": null,
-            "className": "cm",
-            "width": 343.2,
-            "right": 775.2,
-            "overflowPx": 7.2,
-            "snippet": "$ stratum simulate --scenario \"cpm_volat"
-          },
-          {
-            "tag": "span",
-            "id": null,
-            "className": "cm",
-            "width": 376.2,
-            "right": 808.2,
-            "overflowPx": 40.2,
-            "snippet": "$ krama analyze --timetable schedule.jso"
-          }
-        ]
+        "overflowingElementsCount": 0,
+        "topOverflowing": []
       },
       "screenshot": "viewport-768px.png",
       "passed": true
