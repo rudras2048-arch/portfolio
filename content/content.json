@@ -85,7 +85,7 @@
       "date": "October 2026",
       "category": "1st-place",
       "placement": "1st Place Champion",
-      "trophy_pill": "\ud83c\udfc6 1st Place Champion",
+      "trophy_pill": "<span aria-hidden=\"true\">\ud83c\udfc6</span> 1st Place Champion",
       "tags": [
         "#1 Position Leaderboard",
         "\u20b97,000 Cash Prize",
@@ -179,7 +179,7 @@
       "date": "October 2026",
       "category": "national",
       "placement": "Top 3 National Finalist",
-      "trophy_pill": "\u26a1 Top 3 National Finalist",
+      "trophy_pill": "<span aria-hidden=\"true\">\u26a1</span> Top 3 National Finalist",
       "tags": [
         "Top 3 Nationally",
         "~700 Team Registrations",
@@ -259,7 +259,7 @@
       "date": "June 2026",
       "category": "1st-place",
       "placement": "#1 Overall Top Team",
-      "trophy_pill": "\ud83e\udd47 #1 Overall Top Team",
+      "trophy_pill": "<span aria-hidden=\"true\">\ud83e\udd47</span> #1 Overall Top Team",
       "tags": [
         "#1 Overall Winning Team",
         "7-Day Venture Incubator",
@@ -336,7 +336,7 @@
       "date": "September 2026",
       "category": "pitch",
       "placement": "3rd Place Podium",
-      "trophy_pill": "\ud83e\udd49 3rd Place Podium",
+      "trophy_pill": "<span aria-hidden=\"true\">\ud83e\udd49</span> 3rd Place Podium",
       "tags": [
         "3rd Position Podium",
         "45-Minute Prep Sprint",

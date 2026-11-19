@@ -54,6 +54,12 @@ function getThumbPath(assetPath) {
   return assetPath;
 }
 
+// Helper: Wrap decorative badge emoji in aria-hidden
+function formatAriaEmoji(str) {
+  if (!str) return '';
+  return String(str).replace(/([🥇🥉🏆⚡⚙])/gu, '<span aria-hidden="true">$1</span>');
+}
+
 const ARTIFACT_ALT_MAP = {
   'assets/cash-rush-ashoka.jpg': 'Cash Rush Championship Team celebrating podium victory at Ashoka University',
   'assets/cinesell-iim-amritsar.jpg': 'CINE-SELL unit economics modeling and campaign strategy at IIM Amritsar',
@@ -175,7 +181,7 @@ function renderRecruiterDrawer(content) {
           <div class="rm-proof-item">
             <div class="rm-proof-top">
               <span class="rm-proof-name">Ashoka University · Cash Rush</span>
-              <span class="rm-proof-badge">🏆 1st Place Champion</span>
+              <span class="rm-proof-badge"><span aria-hidden="true">🏆</span> 1st Place Champion</span>
             </div>
             <div class="rm-proof-metrics">₹300 → ₹2,655 in 2 hrs · 8.85x Return · ₹7,000 Prize</div>
             <p class="rm-proof-desc">
@@ -186,7 +192,7 @@ function renderRecruiterDrawer(content) {
           <div class="rm-proof-item">
             <div class="rm-proof-top">
               <span class="rm-proof-name">IIM Amritsar · CINE-SELL</span>
-              <span class="rm-proof-badge">⚡ Top 3 National</span>
+              <span class="rm-proof-badge"><span aria-hidden="true">⚡</span> Top 3 National</span>
             </div>
             <div class="rm-proof-metrics">~700 National Teams · Lead of "Team Big 4"</div>
             <p class="rm-proof-desc">
@@ -197,7 +203,7 @@ function renderRecruiterDrawer(content) {
           <div class="rm-proof-item">
             <div class="rm-proof-top">
               <span class="rm-proof-name">Rishihood · Builders' Bootcamp</span>
-              <span class="rm-proof-badge">🥇 #1 Overall Top Team</span>
+              <span class="rm-proof-badge"><span aria-hidden="true">🥇</span> #1 Overall Top Team</span>
             </div>
             <div class="rm-proof-metrics">7-Day Venture Incubator · Shipped Working Web App</div>
             <p class="rm-proof-desc">
@@ -208,7 +214,7 @@ function renderRecruiterDrawer(content) {
           <div class="rm-proof-item">
             <div class="rm-proof-top">
               <span class="rm-proof-name">DCRUST Murthal · Brand Pitch</span>
-              <span class="rm-proof-badge">🥉 3rd Place Podium</span>
+              <span class="rm-proof-badge"><span aria-hidden="true">🥉</span> 3rd Place Podium</span>
             </div>
             <div class="rm-proof-metrics">45-Minute Prep Sprint · ₹1,100 Cash Prize</div>
             <p class="rm-proof-desc">
@@ -412,7 +418,7 @@ function renderAbout(content) {
             <article class="ab-milestone-card">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">JUN 2026 · 7-DAY SPRINT</span>
-                <span class="ab-milestone-badge ab-gold">🥇 #1 OVERALL TOP TEAM</span>
+                <span class="ab-milestone-badge ab-gold"><span aria-hidden="true">🥇</span> #1 OVERALL TOP TEAM</span>
               </div>
               <h3 class="ab-milestone-title">Builders' Bootcamp (8th Edition)</h3>
               <div class="ab-milestone-venue">Rishihood University · Demo Day '26</div>
@@ -435,7 +441,7 @@ function renderAbout(content) {
             <article class="ab-milestone-card">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">SEP 2026 · 45-MIN SPRINT</span>
-                <span class="ab-milestone-badge">🥉 3RD PLACE PODIUM</span>
+                <span class="ab-milestone-badge"><span aria-hidden="true">🥉</span> 3RD PLACE PODIUM</span>
               </div>
               <h3 class="ab-milestone-title">Advertising &amp; Brand Pitch</h3>
               <div class="ab-milestone-venue">DCRUST Murthal · E-Summit '26</div>
@@ -459,7 +465,7 @@ function renderAbout(content) {
             <article class="ab-milestone-card">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">OCT 2026 · 120-MIN SPRINT</span>
-                <span class="ab-milestone-badge ab-gold">🏆 1ST PLACE CHAMPION</span>
+                <span class="ab-milestone-badge ab-gold"><span aria-hidden="true">🏆</span> 1ST PLACE CHAMPION</span>
               </div>
               <h3 class="ab-milestone-title">Cash Rush Competition</h3>
               <div class="ab-milestone-venue">Ashoka University · Shatranj '26</div>
@@ -484,7 +490,7 @@ function renderAbout(content) {
             <article class="ab-milestone-card">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">OCT 2026 · NATIONAL ARENA</span>
-                <span class="ab-milestone-badge">⚡ TOP 3 NATIONAL FINALIST</span>
+                <span class="ab-milestone-badge"><span aria-hidden="true">⚡</span> TOP 3 NATIONAL FINALIST</span>
               </div>
               <h3 class="ab-milestone-title">CINE-SELL Brand Challenge</h3>
               <div class="ab-milestone-venue">IIM Amritsar · Marketing Fest '26</div>
@@ -508,7 +514,7 @@ function renderAbout(content) {
             <article class="ab-milestone-card ab-active">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">PRESENT · ACTIVE BUILDS</span>
-                <span class="ab-milestone-badge ab-active-badge">⚙ ACTIVE SYSTEMS</span>
+                <span class="ab-milestone-badge ab-active-badge"><span aria-hidden="true">⚙</span> ACTIVE SYSTEMS</span>
               </div>
               <h3 class="ab-milestone-title">Software Systems &amp; Dialect NLP</h3>
               <div class="ab-milestone-venue">Personal Lab &amp; Independent Engineering</div>
@@ -661,7 +667,7 @@ ${comps.map(comp => {
 
           <div class="case-title-row fr-title-row">
             <h3 class="case-title fr-title">${escapeHtml(comp.title)}</h3>
-            <span class="case-trophy-pill fr-trophy-pill">${escapeHtml(trophyPill)}</span>
+            <span class="case-trophy-pill fr-trophy-pill">${/<span/i.test(trophyPill) ? trophyPill : formatAriaEmoji(escapeHtml(trophyPill))}</span>
           </div>
 
           <div class="case-pills-row fr-pills-row">
