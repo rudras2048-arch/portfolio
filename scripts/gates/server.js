@@ -39,6 +39,13 @@ class LocalStaticServer {
 
         fs.stat(filePath, (err, stats) => {
           if (err || !stats.isFile()) {
+            const notFoundPath = path.join(this.rootDir, '404.html');
+            if (fs.existsSync(notFoundPath)) {
+              const html = fs.readFileSync(notFoundPath);
+              res.writeHead(404, { 'Content-Type': 'text/html; charset=utf-8' });
+              res.end(html);
+              return;
+            }
             res.writeHead(404, { 'Content-Type': 'text/plain' });
             res.end('404 Not Found');
             return;

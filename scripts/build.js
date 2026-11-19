@@ -1273,6 +1273,14 @@ function main() {
   fs.writeFileSync(ROOT_CONTENT, JSON.stringify(content, null, 2), 'utf-8');
   console.log(`  ✔ Synced:  content.json (root)`);
 
+  // Sync 404.html to dist/404.html
+  const ROOT_404 = path.join(ROOT_DIR, '404.html');
+  const DIST_404 = path.join(DIST_DIR, '404.html');
+  if (fs.existsSync(ROOT_404)) {
+    fs.copyFileSync(ROOT_404, DIST_404);
+    console.log(`  ✔ Synced:  404.html -> dist/404.html`);
+  }
+
   // Copy assets/ to dist/assets/
   if (fs.existsSync(ASSETS_DIR)) {
     copyDirSync(ASSETS_DIR, DIST_ASSETS);

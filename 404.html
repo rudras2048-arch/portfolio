@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 // Path Not Found — Rudra Sharma</title>
+  <meta name="description" content="404 // Path Not Found. The requested resource does not exist on this node.">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Tactical Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101012'/%3E%3Ctext x='14' y='44' font-family='monospace' font-size='30' fill='%23A5BA28'%3E%3E_%3C/text%3E%3C/svg%3E">
+
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0C0C0E;
+      --bg2: #131317;
+      --bg3: #1B1B22;
+      --text-bone: #F5EFE6;
+      --text-muted: #9C988D;
+      --text-dim: #5C5A53;
+      --accent: #A5BA28;
+      --accent-bright: #BEE024;
+      --accent-soft: rgba(165, 186, 40, 0.12);
+      --rule: rgba(255, 255, 255, 0.08);
+      --font-display: 'Syne', system-ui, sans-serif;
+      --font-body: 'DM Sans', system-ui, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text-bone);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 680px;
+      width: 100%;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(239, 68, 68, 0.1);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      color: #F87171;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: #EF4444;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #EF4444;
+      animation: pulseBlink 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    h1 {
+      font-family: var(--font-display);
+      font-size: clamp(48px, 10vw, 76px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      color: var(--text-bone);
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--text-bone);
+    }
+
+    /* Terminal Window */
+    .terminal-box {
+      background: var(--bg2);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      overflow: hidden;
+      margin-bottom: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    .terminal-header {
+      background: var(--bg3);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .terminal-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-left: 6px;
+    }
+
+    .terminal-body {
+      padding: 18px 20px;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.7;
+    }
+
+    .cmd-line {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .cmd-out {
+      color: var(--text-muted);
+    }
+
+    .cmd-err {
+      color: #F87171;
+    }
+
+    /* Navigation Directory */
+    .nav-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .nav-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .nav-link {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: var(--text-bone);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.25s ease;
+    }
+
+    .nav-link:hover {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      transform: translateY(-2px);
+    }
+
+    .nav-link .idx {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .back-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #0C0C0E;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 12px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .back-action:hover {
+      background: var(--accent-bright);
+      box-shadow: 0 0 20px rgba(165, 186, 40, 0.35);
+      transform: translateY(-1px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="status-badge">
+      <span class="pulse-dot" aria-hidden="true"></span>
+      HTTP 404 // PATH NOT FOUND
+    </div>
+
+    <h1>404 <span>// LOST</span></h1>
+
+    <div class="terminal-box">
+      <div class="terminal-header">
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-dot"></span>
+        <span class="terminal-title">rudra-sharma-portfolio // bash</span>
+      </div>
+      <div class="terminal-body">
+        <div class="cmd-line">$ cd <span id="route-path">/wrong-route</span></div>
+        <div class="cmd-err">bash: cd: /path-not-found: No such file or directory</div>
+        <div class="cmd-out">Node: rudras-portfolio.netlify.app</div>
+        <div class="cmd-out">Status: 404 Not Found — target node does not exist.</div>
+      </div>
+    </div>
+
+    <div class="nav-label">// AVAILABLE ROUTES</div>
+    <nav class="nav-links">
+      <a href="/" class="nav-link">
+        <span class="idx">00</span>
+        <span>Home</span>
+      </a>
+      <a href="/#about" class="nav-link">
+        <span class="idx">01</span>
+        <span>About</span>
+      </a>
+      <a href="/#competitions" class="nav-link">
+        <span class="idx">02</span>
+        <span>Record</span>
+      </a>
+      <a href="/#ventures" class="nav-link">
+        <span class="idx">03</span>
+        <span>Ventures</span>
+      </a>
+      <a href="/#contact" class="nav-link">
+        <span class="idx">04</span>
+        <span>Contact</span>
+      </a>
+    </nav>
+
+    <a href="/" class="back-action">← Return to Portfolio</a>
+  </div>
+
+  <script>
+    try {
+      const p = window.location.pathname;
+      if (p && p !== '/') {
+        const el = document.getElementById('route-path');
+        if (el) el.textContent = p;
+        const err = document.querySelector('.cmd-err');
+        if (err) err.textContent = 'bash: cd: ' + p + ': No such file or directory';
+      }
+    } catch (e) {}
+  </script>
+</body>
+</html>
