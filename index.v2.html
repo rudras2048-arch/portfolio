@@ -1763,6 +1763,19 @@
 }
 
     /* Responsive Queries */
+    @media (max-width: 1200px) {
+      nav {
+        gap: 16px;
+        padding: 8px 18px;
+      }
+      .nav-links {
+        gap: 14px;
+      }
+      .rm-toggle-btn .rm-toggle-shortcut {
+        display: none;
+      }
+    }
+
     @media (max-width: 960px) {
       section {
         padding: 44px 0 24px;
@@ -1807,6 +1820,9 @@
       }
       .nav-links {
         display: none;
+      }
+      .nav-action-pill {
+        display: none !important;
       }
       #burger {
         display: block;
@@ -5547,7 +5563,6 @@ body.cs-modal-open {
         <li><a href="#competitions"><span class="idx">01</span>Record</a></li>
         <li><a href="#ventures"><span class="idx">02</span>Ventures</a></li>
         <li><a href="#contact"><span class="idx">03</span>Contact</a></li>
-        <li><a href="https://github.com/RUDRA-GITHUB-USERNAME" target="_blank" rel="noopener"><span class="idx">↗</span>GitHub</a></li>
       </ul>
       <button id="rm-toggle" class="rm-toggle-btn" aria-pressed="false" aria-expanded="false" aria-controls="rm-summary-drawer" type="button">
         <span class="rm-toggle-beacon" aria-hidden="true"></span>
@@ -8806,6 +8821,10 @@ window.__PORTFOLIO_CONTENT__ = {
       personNode.sameAs.push(personal.linkedin);
     }
 
+    if (personal.github && personal.github !== 'TBD') {
+      personNode.sameAs.push(personal.github);
+    }
+
     if (personal.institution && personal.institution !== 'TBD') {
       personNode.alumniOf = {
         "@type": "CollegeOrUniversity",
@@ -9704,7 +9723,12 @@ window.__PORTFOLIO_CONTENT__ = {
       closeBtn.addEventListener('click', function(e) {
         e.preventDefault();
         setRecruiterState(false);
-        toggleBtn.focus();
+        if (toggleBtn && window.getComputedStyle(toggleBtn).display !== 'none') {
+          toggleBtn.focus();
+        } else {
+          const burger = document.getElementById('burger');
+          if (burger) burger.focus();
+        }
       });
     }
 
@@ -9715,7 +9739,12 @@ window.__PORTFOLIO_CONTENT__ = {
         if (e.key === 'Escape' || e.key === 'Esc') {
           if (window.__RECRUITER_MODE && window.__RECRUITER_MODE.active) {
             setRecruiterState(false);
-            if (toggleBtn) toggleBtn.focus();
+            if (toggleBtn && window.getComputedStyle(toggleBtn).display !== 'none') {
+              toggleBtn.focus();
+            } else {
+              const burger = document.getElementById('burger');
+              if (burger) burger.focus();
+            }
           }
         }
       });
