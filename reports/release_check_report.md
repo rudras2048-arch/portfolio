@@ -1,7 +1,7 @@
 # Portfolio v2 Automated Release-Check Audit Report
 
-**Generated:** Thu, 19 Nov 2026 05:57:02 GMT  
-**Pipeline Duration:** 68.54s  
+**Generated:** Thu, 19 Nov 2026 06:22:28 GMT  
+**Pipeline Duration:** 67.51s  
 **Overall Release Status:** ⛔ **MERGE BLOCKED (FAIL)**
 
 ---
@@ -10,7 +10,7 @@
 
 | Gate | Domain | Target | Measured Result | Status |
 | :---: | :--- | :--- | :--- | :---: |
-| **G-01** | **Static Build Engine** | Clean `npm run build` generation into `dist/` | 347.5 KB HTML, 48 assets | **PASS** |
+| **G-01** | **Static Build Engine** | Clean `npm run build` generation into `dist/` | 348.2 KB HTML, 48 assets | **PASS** |
 | **G-02** | **Leak Prevention** | 0 visible TBD, YOUR-DOMAIN, broken asset paths | 0 leaks found (TBD: 0, Domain: 0, Missing Assets: 0) | **PASS** |
 | **G-03** | **Lighthouse & axe-core** | Perf ≥ 90, A11y = 100, SEO = 100 (0 axe bugs) | Perf: 95 | A11y: 100 | SEO: 100 (0 axe violations) | **PASS** |
 | **G-04** | **Link & Asset Integrity** | 100% local assets & external URLs valid | Local: 18/18 | Anchors: 6/6 | Ext: 7/8 | **FAIL** |
@@ -22,9 +22,9 @@
 ## 2. Gate 01: Static Build Engine (`npm run build`)
 
 - **Execution Status:** SUCCESS (Exit Code 0)
-- **Build Duration:** 9337ms
+- **Build Duration:** 8946ms
 - **Generated Artifacts:**
-  - `dist/index.html` (347.5 KB)
+  - `dist/index.html` (348.2 KB)
   - `dist/assets/` (48 static files copied)
 
 ```
@@ -56,9 +56,9 @@ Rendering components strictly from content/content.json:
 [32m✔ [GATE 4 PASSED][0m Recruiter Mode toggle and executive drawer verified.
 
 --- Synchronizing Distribution and Root Artifacts ---
-  ✔ Written: dist/index.html (354,371 bytes)
-  ✔ Synced:  index.html (354,371 bytes)
-  ✔ Synced:  index.v2.html (354,371 bytes)
+  ✔ Written: dist/index.html (355,061 bytes)
+  ✔ Synced:  index.html (355,061 bytes)
+  ✔ Synced:  index.v2.html (355,061 bytes)
   ✔ Synced:  content.json (root)
   ✔ Synced:  404.html -> dist/404.html
   ✔ Copied:  assets/ -> dist/assets/ (48 files)

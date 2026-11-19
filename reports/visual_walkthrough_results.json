@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-19T05:57:02.736Z",
+  "timestamp": "2026-11-19T06:22:28.731Z",
   "viewports": {
     "320px": {
       "name": "Ultra-Narrow Mobile (320x568)",
@@ -144,13 +144,6 @@
           "ariaLabel": null
         },
         {
-          "tagName": "A",
-          "id": "",
-          "className": "",
-          "text": "↗GITHUB",
-          "ariaLabel": null
-        },
-        {
           "tagName": "BUTTON",
           "id": "rm-toggle",
           "className": "rm-toggle-btn",
@@ -169,6 +162,13 @@
           "id": "",
           "className": "nav-action-pill",
           "text": "LINKEDIN ↗",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "btn-solid",
+          "text": "VIEW FIELD RECORD\n↓",
           "ariaLabel": null
         }
       ]
