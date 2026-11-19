@@ -9,7 +9,7 @@
 (function() {
   'use strict';
 
-  var DEFAULT_DOMAIN = 'https://rudrasharma.dev';
+  var DEFAULT_DOMAIN = 'https://rudras-portfolio.netlify.app';
 
   /**
    * Safely retrieves portfolio data following offline/file:// contract in interfaces.md

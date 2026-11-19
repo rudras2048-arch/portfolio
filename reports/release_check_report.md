@@ -62,7 +62,7 @@ Rendering components strictly from content/content.json:
   ✔ Synced:  content.json (root)
   ✔ Copied:  assets/ -> dist/assets/ (32 files)
   ✔ Copied:  data/ -> dist/data/ (1 files)
-  ✔ Generated: dist/robots.txt (Sitemap -> https://rudrasharma.dev/sitemap.xml)
+  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)
   ✔ Generated: dist/sitemap.xml (453 bytes)
   ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)
 
@@ -123,13 +123,13 @@ Rendering components strictly from content/content.json:
 
 | Status | HTTP Code | URL Target |
 | :---: | :---: | :--- |
-| **PASS** | 200 | `https://rudrasharma.dev/` |
-| **PASS** | 200 | `https://rudrasharma.dev/assets/og/og-hero.svg` |
+| **PASS** | 200 | `https://rudras-portfolio.netlify.app/` |
+| **PASS** | 200 | `https://rudras-portfolio.netlify.app/assets/og/og-hero.svg` |
 | **PASS** | 200 | `https://fonts.googleapis.com` |
 | **PASS** | 200 | `https://fonts.gstatic.com` |
 | **PASS** | 200 | `https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800&display=swap` |
 | **PASS** | 301 | `https://www.linkedin.com/in/rudra-sharma-7bb78b410/` |
-| **PASS** | 200 | `https://rudrasharma.dev/assets/og/og-hero.png` |
+| **PASS** | 200 | `https://rudras-portfolio.netlify.app/assets/og/og-hero.png` |
 
 ---
 

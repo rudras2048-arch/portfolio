@@ -131,7 +131,7 @@ As part of the production-grade static build migration, a comprehensive multi-so
 - **Discrepancy:**  
   Across `content.json`, HTML meta tags, and JSON-LD, the domain is specified as placeholder `https://YOUR-DOMAIN.com/`.
 - **Owner Decision Needed:**
-  - Specify the actual production domain (e.g., `https://rudrasharma.dev` or `https://rudrasharma.me`) to finalize canonical tags.
+  - Specify the actual production domain (e.g., `https://rudras-portfolio.netlify.app` or `https://rudrasharma.me`) to finalize canonical tags.
 
 ---
 

@@ -16,7 +16,7 @@
         "durationMs": 11342,
         "htmlSize": 346827,
         "assetsCount": 32,
-        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (345,374 bytes)\n  ✔ Synced:  index.html (345,374 bytes)\n  ✔ Synced:  index.v2.html (345,374 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Copied:  assets/ -> dist/assets/ (32 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudrasharma.dev/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (453 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
+        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (345,374 bytes)\n  ✔ Synced:  index.html (345,374 bytes)\n  ✔ Synced:  index.v2.html (345,374 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Copied:  assets/ -> dist/assets/ (32 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (453 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
         "error": null
       }
     },
@@ -234,14 +234,14 @@
           "blocked": 0,
           "items": [
             {
-              "url": "https://rudrasharma.dev/",
+              "url": "https://rudras-portfolio.netlify.app/",
               "statusCode": 200,
               "statusMessage": "Resolved locally against dist/",
               "status": "PASS",
               "isCanonicalAsset": true
             },
             {
-              "url": "https://rudrasharma.dev/assets/og/og-hero.svg",
+              "url": "https://rudras-portfolio.netlify.app/assets/og/og-hero.svg",
               "statusCode": 200,
               "statusMessage": "Resolved locally against dist/",
               "status": "PASS",
@@ -272,7 +272,7 @@
               "status": "PASS"
             },
             {
-              "url": "https://rudrasharma.dev/assets/og/og-hero.png",
+              "url": "https://rudras-portfolio.netlify.app/assets/og/og-hero.png",
               "statusCode": 200,
               "statusMessage": "Resolved locally against dist/",
               "status": "PASS",

@@ -6,17 +6,17 @@
  * ============================================================================
  */
 
-const DEFAULT_DOMAIN = 'https://rudrasharma.dev';
+const DEFAULT_DOMAIN = 'https://rudras-portfolio.netlify.app';
 
 /**
  * Returns the single centralized deployment domain without a trailing slash.
  * Follows strict resolution hierarchy:
  * 1. process.env.PORTFOLIO_DOMAIN or process.env.DEPLOY_DOMAIN (if configured)
  * 2. content.meta.canonical_url in content/content.json
- * 3. DEFAULT_DOMAIN ('https://rudrasharma.dev')
+ * 3. DEFAULT_DOMAIN ('https://rudras-portfolio.netlify.app')
  *
  * @param {Object} [content] - Parsed content/content.json object
- * @returns {string} Sanitized domain URL (e.g. 'https://rudrasharma.dev')
+ * @returns {string} Sanitized domain URL (e.g. 'https://rudras-portfolio.netlify.app')
  */
 function getDeploymentDomain(content) {
   if (process.env.PORTFOLIO_DOMAIN && process.env.PORTFOLIO_DOMAIN.trim()) {
@@ -36,7 +36,7 @@ function getDeploymentDomain(content) {
  *
  * @param {Object} [content] - Parsed content/content.json object
  * @param {string} [relativePath] - Optional relative path (e.g. 'assets/og/og-hero.svg' or '#competitions')
- * @returns {string} Absolute URL (e.g. 'https://rudrasharma.dev/assets/og/og-hero.svg')
+ * @returns {string} Absolute URL (e.g. 'https://rudras-portfolio.netlify.app/assets/og/og-hero.svg')
  */
 function getCanonicalUrl(content, relativePath = '') {
   const domain = getDeploymentDomain(content);

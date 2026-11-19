@@ -8,9 +8,9 @@ function checkExternalUrl(url, canonicalBaseDomain, distDir) {
     try {
       const parsed = new URL(url);
 
-      // If URL points to the local canonical deployment domain (e.g. https://rudrasharma.dev),
+      // If URL points to the local canonical deployment domain (e.g. https://rudras-portfolio.netlify.app),
       // verify that the asset or page exists locally in dist/
-      if (canonicalBaseDomain && (parsed.origin === canonicalBaseDomain || parsed.hostname === 'rudrasharma.dev')) {
+      if (canonicalBaseDomain && (parsed.origin === canonicalBaseDomain || parsed.hostname === 'rudras-portfolio.netlify.app')) {
         let localRel = parsed.pathname.replace(/^\/+/, '');
         if (!localRel || localRel === '') localRel = 'index.html';
         const diskFile = path.join(distDir, localRel);

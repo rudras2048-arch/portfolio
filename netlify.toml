@@ -1,6 +1,6 @@
 # ============================================================================
 # Netlify Deployment Configuration — Rudra Sharma Portfolio v2
-# Domain: rudrasharma.dev
+# Domain: rudras-portfolio.netlify.app
 # Build: node scripts/build.js → dist/
 # ============================================================================
 
@@ -10,33 +10,6 @@
 
 [build.environment]
   NODE_VERSION = "20"
-
-# ----------------------------------------------------------------------------
-# Redirect: HTTP → HTTPS (force HTTPS everywhere)
-# ----------------------------------------------------------------------------
-[[redirects]]
-  from = "http://rudrasharma.dev/*"
-  to = "https://rudrasharma.dev/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "http://www.rudrasharma.dev/*"
-  to = "https://rudrasharma.dev/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "https://www.rudrasharma.dev/*"
-  to = "https://rudrasharma.dev/:splat"
-  status = 301
-  force = true
-
-# Single-page app: all routes serve index.html
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
 
 # ----------------------------------------------------------------------------
 # Security & Performance Headers
