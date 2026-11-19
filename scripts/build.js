@@ -42,6 +42,18 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+// Helper: Resolve optimized thumbnail path if available
+function getThumbPath(assetPath) {
+  if (!assetPath || typeof assetPath !== 'string') return assetPath;
+  const parsed = path.parse(assetPath);
+  const webpThumb = path.join(parsed.dir, `${parsed.name}-thumb.webp`);
+  const diskPath = path.join(ROOT_DIR, webpThumb);
+  if (fs.existsSync(diskPath)) {
+    return webpThumb;
+  }
+  return assetPath;
+}
+
 // Helper: Deep copy directory
 function copyDirSync(src, dest) {
   if (!fs.existsSync(src)) return;
@@ -616,7 +628,7 @@ ${comps.map(comp => {
                         data-asset-caption="${escapeHtml(comp.proof.caption)} [Artifact ${aIdx + 1}]" 
                         data-asset-stamp="${escapeHtml(comp.proof.stamp)}" 
                         aria-label="View artifact ${aIdx + 1}">
-                  <img src="${assetPath}" alt="Thumbnail ${aIdx + 1}" loading="lazy">
+                  <img src="${getThumbPath(assetPath)}" width="640" height="400" alt="Artifact ${aIdx + 1}: ${escapeHtml(comp.proof.caption)}" loading="lazy">
                 </button>`).join('')}
               </div>
             </div>`;
@@ -732,9 +744,11 @@ ${comps.map(comp => {
             <span class="fr-asset-badge">${hasEvidence ? '<span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span>' : '<span>FIELD ARTIFACT</span>'}</span>
           </div>
 
-          <div class="fr-photo-frame" data-zoom-target="${comp.proof.url}">
-            <img class="case-photo fr-primary-photo" 
-                 src="${comp.proof.url}" 
+          <div class="fr-photo-frame" id="fr-visual-${comp.id}" data-zoom-target="${comp.proof.url}">
+            <img class="case-photo fr-primary-photo fr-main-img" id="fr-main-img-${comp.id}"
+                 src="${getThumbPath(comp.proof.url)}" 
+                 width="640" 
+                 height="400" 
                  alt="${escapeHtml(comp.proof.caption)}" 
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
@@ -746,6 +760,7 @@ ${comps.map(comp => {
                     data-asset-src="${comp.proof.url}" 
                     data-asset-caption="${escapeHtml(comp.proof.caption)}" 
                     data-asset-stamp="${escapeHtml(comp.proof.stamp)}" 
+                    data-comp-title="${escapeHtml(comp.title)}" 
                     aria-label="Inspect ${escapeHtml(comp.title)} evidence full size">
               <span aria-hidden="true">↗</span>
             </button>
@@ -754,10 +769,10 @@ ${comps.map(comp => {
           <div class="fr-photo-meta-bar">
             <span class="fr-photo-stamp mono">${escapeHtml(comp.proof.stamp)}</span>
             <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
-              <span class="fr-code-bracket">[</span><code>${escapeHtml(comp.proof.url)}</code><span class="fr-code-bracket">]</span>
+              <span class="fr-code-bracket">[</span><code id="fr-path-${comp.id}">${escapeHtml(comp.proof.url)}</code><span class="fr-code-bracket">]</span>
             </span>
           </div>
-          <p class="fr-photo-caption">${escapeHtml(comp.proof.caption)}</p>
+          <p class="fr-photo-caption" id="fr-caption-${comp.id}">${escapeHtml(comp.proof.caption)}</p>
 
           ${galleryHtml}
         </div>

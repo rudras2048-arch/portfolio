@@ -5615,7 +5615,7 @@ body.cs-modal-open {
         <!-- Editorial Pitch Portrait -->
         <div class="hero-portrait-card reveal">
           <div class="portrait-inner">
-            <img src="assets/rudra-pitch-portrait.jpg" fetchpriority="high" loading="eager" alt="Rudra Sharma pitching venture strategy in auditorium">
+            <img src="assets/rudra-pitch-portrait.jpg" width="810" height="1440" fetchpriority="high" loading="eager" alt="Rudra Sharma pitching venture strategy in auditorium">
             <div class="portrait-caption-box">
               <span class="portrait-tag">Live Field Record // 2026</span>
               <span class="portrait-name">Rudra Sharma pitching venture strategy</span>
@@ -6196,9 +6196,11 @@ body.cs-modal-open {
             <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span></span>
           </div>
 
-          <div class="fr-photo-frame" data-zoom-target="assets/cash-rush-ashoka.jpg">
-            <img class="case-photo fr-primary-photo" 
-                 src="assets/cash-rush-ashoka.jpg" 
+          <div class="fr-photo-frame" id="fr-visual-cash-rush" data-zoom-target="assets/cash-rush-ashoka.jpg">
+            <img class="case-photo fr-primary-photo fr-main-img" id="fr-main-img-cash-rush"
+                 src="assets/cash-rush-ashoka-thumb.webp" 
+                 width="640" 
+                 height="400" 
                  alt="Cash Rush Championship Team · Ashoka University" 
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
@@ -6210,6 +6212,7 @@ body.cs-modal-open {
                     data-asset-src="assets/cash-rush-ashoka.jpg" 
                     data-asset-caption="Cash Rush Championship Team · Ashoka University" 
                     data-asset-stamp="Field Evidence // Oct 2026" 
+                    data-comp-title="Cash Rush Competition" 
                     aria-label="Inspect Cash Rush Competition evidence full size">
               <span aria-hidden="true">↗</span>
             </button>
@@ -6218,10 +6221,10 @@ body.cs-modal-open {
           <div class="fr-photo-meta-bar">
             <span class="fr-photo-stamp mono">Field Evidence // Oct 2026</span>
             <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
-              <span class="fr-code-bracket">[</span><code>assets/cash-rush-ashoka.jpg</code><span class="fr-code-bracket">]</span>
+              <span class="fr-code-bracket">[</span><code id="fr-path-cash-rush">assets/cash-rush-ashoka.jpg</code><span class="fr-code-bracket">]</span>
             </span>
           </div>
-          <p class="fr-photo-caption">Cash Rush Championship Team · Ashoka University</p>
+          <p class="fr-photo-caption" id="fr-caption-cash-rush">Cash Rush Championship Team · Ashoka University</p>
 
           
         </div>
@@ -6354,9 +6357,11 @@ body.cs-modal-open {
             <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span></span>
           </div>
 
-          <div class="fr-photo-frame" data-zoom-target="assets/cinesell-iim-amritsar.jpg">
-            <img class="case-photo fr-primary-photo" 
-                 src="assets/cinesell-iim-amritsar.jpg" 
+          <div class="fr-photo-frame" id="fr-visual-cinesell" data-zoom-target="assets/cinesell-iim-amritsar.jpg">
+            <img class="case-photo fr-primary-photo fr-main-img" id="fr-main-img-cinesell"
+                 src="assets/cinesell-iim-amritsar-thumb.webp" 
+                 width="640" 
+                 height="400" 
                  alt="CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar" 
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
@@ -6368,6 +6373,7 @@ body.cs-modal-open {
                     data-asset-src="assets/cinesell-iim-amritsar.jpg" 
                     data-asset-caption="CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar" 
                     data-asset-stamp="Field Evidence // Oct 2026" 
+                    data-comp-title="CINE-SELL Brand Challenge" 
                     aria-label="Inspect CINE-SELL Brand Challenge evidence full size">
               <span aria-hidden="true">↗</span>
             </button>
@@ -6376,10 +6382,10 @@ body.cs-modal-open {
           <div class="fr-photo-meta-bar">
             <span class="fr-photo-stamp mono">Field Evidence // Oct 2026</span>
             <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
-              <span class="fr-code-bracket">[</span><code>assets/cinesell-iim-amritsar.jpg</code><span class="fr-code-bracket">]</span>
+              <span class="fr-code-bracket">[</span><code id="fr-path-cinesell">assets/cinesell-iim-amritsar.jpg</code><span class="fr-code-bracket">]</span>
             </span>
           </div>
-          <p class="fr-photo-caption">CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar</p>
+          <p class="fr-photo-caption" id="fr-caption-cinesell">CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar</p>
 
           
             <div class="fr-gallery-shelf">
@@ -6391,14 +6397,14 @@ body.cs-modal-open {
                         data-asset-caption="CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar [Artifact 1]" 
                         data-asset-stamp="Field Evidence // Oct 2026" 
                         aria-label="View artifact 1">
-                  <img src="assets/cinesell-iim-amritsar.jpg" alt="Thumbnail 1" loading="lazy">
+                  <img src="assets/cinesell-iim-amritsar-thumb.webp" width="640" height="400" alt="Artifact 1: CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar" loading="lazy">
                 </button>
                 <button type="button" class="fr-thumb-btn fr-gallery-thumb" 
                         data-asset-src="assets/cinesell-team-big4.jpg" 
                         data-asset-caption="CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar [Artifact 2]" 
                         data-asset-stamp="Field Evidence // Oct 2026" 
                         aria-label="View artifact 2">
-                  <img src="assets/cinesell-team-big4.jpg" alt="Thumbnail 2" loading="lazy">
+                  <img src="assets/cinesell-team-big4-thumb.webp" width="640" height="400" alt="Artifact 2: CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar" loading="lazy">
                 </button>
               </div>
             </div>
@@ -6531,9 +6537,11 @@ body.cs-modal-open {
             <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span></span>
           </div>
 
-          <div class="fr-photo-frame" data-zoom-target="assets/builders-bootcamp-demo-day.jpg">
-            <img class="case-photo fr-primary-photo" 
-                 src="assets/builders-bootcamp-demo-day.jpg" 
+          <div class="fr-photo-frame" id="fr-visual-builders-bootcamp" data-zoom-target="assets/builders-bootcamp-demo-day.jpg">
+            <img class="case-photo fr-primary-photo fr-main-img" id="fr-main-img-builders-bootcamp"
+                 src="assets/builders-bootcamp-demo-day-thumb.webp" 
+                 width="640" 
+                 height="400" 
                  alt="1st Place Winning Cohort · Builders&#39; Bootcamp Demo Day" 
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
@@ -6545,6 +6553,7 @@ body.cs-modal-open {
                     data-asset-src="assets/builders-bootcamp-demo-day.jpg" 
                     data-asset-caption="1st Place Winning Cohort · Builders&#39; Bootcamp Demo Day" 
                     data-asset-stamp="Field Evidence // June 2026" 
+                    data-comp-title="Builders&#39; Bootcamp (8th Edition)" 
                     aria-label="Inspect Builders&#39; Bootcamp (8th Edition) evidence full size">
               <span aria-hidden="true">↗</span>
             </button>
@@ -6553,10 +6562,10 @@ body.cs-modal-open {
           <div class="fr-photo-meta-bar">
             <span class="fr-photo-stamp mono">Field Evidence // June 2026</span>
             <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
-              <span class="fr-code-bracket">[</span><code>assets/builders-bootcamp-demo-day.jpg</code><span class="fr-code-bracket">]</span>
+              <span class="fr-code-bracket">[</span><code id="fr-path-builders-bootcamp">assets/builders-bootcamp-demo-day.jpg</code><span class="fr-code-bracket">]</span>
             </span>
           </div>
-          <p class="fr-photo-caption">1st Place Winning Cohort · Builders&#39; Bootcamp Demo Day</p>
+          <p class="fr-photo-caption" id="fr-caption-builders-bootcamp">1st Place Winning Cohort · Builders&#39; Bootcamp Demo Day</p>
 
           
             <div class="fr-gallery-shelf">
@@ -6568,14 +6577,14 @@ body.cs-modal-open {
                         data-asset-caption="1st Place Winning Cohort · Builders&#39; Bootcamp Demo Day [Artifact 1]" 
                         data-asset-stamp="Field Evidence // June 2026" 
                         aria-label="View artifact 1">
-                  <img src="assets/builders-bootcamp-demo-day.jpg" alt="Thumbnail 1" loading="lazy">
+                  <img src="assets/builders-bootcamp-demo-day-thumb.webp" width="640" height="400" alt="Artifact 1: 1st Place Winning Cohort · Builders&#39; Bootcamp Demo Day" loading="lazy">
                 </button>
                 <button type="button" class="fr-thumb-btn fr-gallery-thumb" 
                         data-asset-src="assets/builders-bootcamp-cohort.jpg" 
                         data-asset-caption="1st Place Winning Cohort · Builders&#39; Bootcamp Demo Day [Artifact 2]" 
                         data-asset-stamp="Field Evidence // June 2026" 
                         aria-label="View artifact 2">
-                  <img src="assets/builders-bootcamp-cohort.jpg" alt="Thumbnail 2" loading="lazy">
+                  <img src="assets/builders-bootcamp-cohort-thumb.webp" width="640" height="400" alt="Artifact 2: 1st Place Winning Cohort · Builders&#39; Bootcamp Demo Day" loading="lazy">
                 </button>
               </div>
             </div>
@@ -6710,9 +6719,11 @@ body.cs-modal-open {
             <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span></span>
           </div>
 
-          <div class="fr-photo-frame" data-zoom-target="assets/dcrust-podium-team.jpg">
-            <img class="case-photo fr-primary-photo" 
-                 src="assets/dcrust-podium-team.jpg" 
+          <div class="fr-photo-frame" id="fr-visual-dcrust-brand-pitch" data-zoom-target="assets/dcrust-podium-team.jpg">
+            <img class="case-photo fr-primary-photo fr-main-img" id="fr-main-img-dcrust-brand-pitch"
+                 src="assets/dcrust-podium-team-thumb.webp" 
+                 width="640" 
+                 height="400" 
                  alt="3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal)" 
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
@@ -6724,6 +6735,7 @@ body.cs-modal-open {
                     data-asset-src="assets/dcrust-podium-team.jpg" 
                     data-asset-caption="3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal)" 
                     data-asset-stamp="Field Evidence // Sept 2026" 
+                    data-comp-title="Advertising &amp; Brand Pitch" 
                     aria-label="Inspect Advertising &amp; Brand Pitch evidence full size">
               <span aria-hidden="true">↗</span>
             </button>
@@ -6732,10 +6744,10 @@ body.cs-modal-open {
           <div class="fr-photo-meta-bar">
             <span class="fr-photo-stamp mono">Field Evidence // Sept 2026</span>
             <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
-              <span class="fr-code-bracket">[</span><code>assets/dcrust-podium-team.jpg</code><span class="fr-code-bracket">]</span>
+              <span class="fr-code-bracket">[</span><code id="fr-path-dcrust-brand-pitch">assets/dcrust-podium-team.jpg</code><span class="fr-code-bracket">]</span>
             </span>
           </div>
-          <p class="fr-photo-caption">3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal)</p>
+          <p class="fr-photo-caption" id="fr-caption-dcrust-brand-pitch">3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal)</p>
 
           
             <div class="fr-gallery-shelf">
@@ -6747,21 +6759,21 @@ body.cs-modal-open {
                         data-asset-caption="3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal) [Artifact 1]" 
                         data-asset-stamp="Field Evidence // Sept 2026" 
                         aria-label="View artifact 1">
-                  <img src="assets/dcrust-podium-team.jpg" alt="Thumbnail 1" loading="lazy">
+                  <img src="assets/dcrust-podium-team-thumb.webp" width="640" height="400" alt="Artifact 1: 3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal)" loading="lazy">
                 </button>
                 <button type="button" class="fr-thumb-btn fr-gallery-thumb" 
                         data-asset-src="assets/dcrust-esummit-podium.jpg" 
                         data-asset-caption="3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal) [Artifact 2]" 
                         data-asset-stamp="Field Evidence // Sept 2026" 
                         aria-label="View artifact 2">
-                  <img src="assets/dcrust-esummit-podium.jpg" alt="Thumbnail 2" loading="lazy">
+                  <img src="assets/dcrust-esummit-podium-thumb.webp" width="640" height="400" alt="Artifact 2: 3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal)" loading="lazy">
                 </button>
                 <button type="button" class="fr-thumb-btn fr-gallery-thumb" 
                         data-asset-src="assets/dcrust-stage-pitch.jpg" 
                         data-asset-caption="3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal) [Artifact 3]" 
                         data-asset-stamp="Field Evidence // Sept 2026" 
                         aria-label="View artifact 3">
-                  <img src="assets/dcrust-stage-pitch.jpg" alt="Thumbnail 3" loading="lazy">
+                  <img src="assets/dcrust-stage-pitch-thumb.webp" width="640" height="400" alt="Artifact 3: 3rd Place Podium Finish · E-Summit DCRUST &#39;26 (Murthal)" loading="lazy">
                 </button>
               </div>
             </div>
@@ -9999,11 +10011,12 @@ window.__PORTFOLIO_CONTENT__ = {
       };
     });
 
-    // Click on main image also opens inspection
-    document.querySelectorAll('.fr-main-img').forEach(img => {
-      img.style.cursor = 'pointer';
-      img.onclick = function() {
-        const parent = img.closest('.fr-visual-frame');
+    // Click on main image or frame also opens inspection
+    document.querySelectorAll('.fr-main-img, .fr-primary-photo, .fr-photo-frame').forEach(el => {
+      el.style.cursor = 'pointer';
+      el.onclick = function(e) {
+        if (e.target.closest('.fr-inspect-btn')) return;
+        const parent = el.closest('.fr-photo-frame') || el;
         const inspectBtn = parent ? parent.querySelector('.fr-inspect-btn') : null;
         if (inspectBtn) inspectBtn.click();
       };
