@@ -406,6 +406,7 @@
       gap: 32px;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
       transition: all 0.3s ease;
+      flex-wrap: wrap;
     }
 
     nav.scrolled {
@@ -554,21 +555,33 @@
       pointer-events: auto;
       visibility: visible;
     }
-    #mobileMenu a {
+    #mobileMenu a,
+    #mobileMenu button {
       color: var(--text-bone);
       font-family: var(--font-display);
-      font-size: clamp(28px, 7vw, 42px);
+      font-size: clamp(24px, 6.5vw, 42px);
       font-weight: 700;
       text-transform: uppercase;
       padding: 12px 0;
+      border: 0;
+      background: transparent;
       border-bottom: 1px solid var(--rule);
       display: flex;
       align-items: baseline;
       gap: 14px;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      text-decoration: none;
     }
-    #mobileMenu a .idx {
+    #mobileMenu a .idx,
+    #mobileMenu button .idx {
       font-family: var(--font-mono);
       font-size: 13px;
+      color: var(--accent);
+    }
+    #mobileMenu button:hover,
+    #mobileMenu button:focus-visible {
       color: var(--accent);
     }
     body.menu-open {
@@ -1733,6 +1746,28 @@
     }
 
     @media (max-width: 640px) {
+      .nav-wrap {
+        padding: 0 12px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      nav {
+        gap: 10px;
+        padding: 10px 14px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        justify-content: space-between;
+      }
+      .nav-brand {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .nav-action-pill { display: none !important; }   /* LinkedIn already in mobile menu, hero actions, and contact */
+      .rm-toggle-btn,
+      #rm-toggle { display: none !important; }     /* moved into the mobile menu — see step 3 */
       section {
         padding: 36px 0 20px;
         scroll-margin-top: 76px;
@@ -4942,14 +4977,16 @@ body.cs-modal-open {
 }
 
 /* BRK-05: Expand mobile burger touch target to >= 44x44px (WCAG 2.5.5) */
-#burger, .nav-burger {
-  min-width: 44px !important;
-  min-height: 44px !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  padding: 10px !important;
+@media (max-width: 960px) {
+  #burger, .nav-burger {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 10px !important;
+  }
 }
 
 /* BRK-06: Pause typewriter cursor blinking under reduced motion */
@@ -5444,6 +5481,9 @@ body.cs-modal-open {
     <a href="#ventures"><span class="idx">02</span>Ventures & Systems</a>
     <a href="#contact"><span class="idx">03</span>Direct Contact</a>
     <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" target="_blank" rel="noopener"><span class="idx">↗</span>LinkedIn Profile</a>
+    <button type="button" id="rm-toggle-mobile" class="rm-mobile-link" aria-controls="rm-summary-drawer" aria-expanded="false">
+      <span class="idx">EXEC //</span>Recruiter Mode
+    </button>
   </div>
 
   <main class="page-spine">
@@ -8403,11 +8443,30 @@ window.__PORTFOLIO_CONTENT__ = {
         const open = document.body.classList.toggle('menu-open');
         burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-      document.querySelectorAll('#mobileMenu a').forEach(a => {
+      document.querySelectorAll('#mobileMenu a, #mobileMenu button:not(#rm-toggle-mobile)').forEach(a => {
         a.addEventListener('click', () => {
           document.body.classList.remove('menu-open');
           burger.setAttribute('aria-expanded', 'false');
         });
+      });
+      const rmToggleMobile = document.getElementById('rm-toggle-mobile');
+      if (rmToggleMobile) {
+        rmToggleMobile.addEventListener('click', (e) => {
+          e.preventDefault();
+          document.body.classList.remove('menu-open');
+          burger.setAttribute('aria-expanded', 'false');
+          const rmToggle = document.getElementById('rm-toggle');
+          if (rmToggle) {
+            rmToggle.click();
+            rmToggleMobile.setAttribute('aria-expanded', rmToggle.getAttribute('aria-expanded') || 'false');
+          }
+        });
+      }
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          document.body.classList.remove('menu-open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
       });
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
@@ -9459,6 +9518,12 @@ window.__PORTFOLIO_CONTENT__ = {
       toggleBtn.setAttribute('aria-pressed', nextActive ? 'true' : 'false');
       toggleBtn.setAttribute('aria-expanded', nextActive ? 'true' : 'false');
       toggleBtn.classList.toggle('rm-active', nextActive);
+
+      const rmToggleMobile = document.getElementById('rm-toggle-mobile');
+      if (rmToggleMobile) {
+        rmToggleMobile.setAttribute('aria-pressed', nextActive ? 'true' : 'false');
+        rmToggleMobile.setAttribute('aria-expanded', nextActive ? 'true' : 'false');
+      }
 
       // Update Drawer ARIA & visibility
       if (nextActive) {
