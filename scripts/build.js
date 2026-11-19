@@ -54,6 +54,17 @@ function getThumbPath(assetPath) {
   return assetPath;
 }
 
+const ARTIFACT_ALT_MAP = {
+  'assets/cash-rush-ashoka.jpg': 'Cash Rush Championship Team celebrating podium victory at Ashoka University',
+  'assets/cinesell-iim-amritsar.jpg': 'CINE-SELL unit economics modeling and campaign strategy at IIM Amritsar',
+  'assets/cinesell-team-big4.jpg': 'Team Big 4 presentation on stage at IIM Amritsar Marketing Fest 2026',
+  'assets/builders-bootcamp-demo-day.jpg': "Builders' Bootcamp Demo Day 1st place presentation at Rishihood University",
+  'assets/builders-bootcamp-cohort.jpg': "Builders' Bootcamp cohort and founders group photograph",
+  'assets/dcrust-podium-team.jpg': 'Advertising and Brand Pitch 3rd place podium team at DCRUST E-Summit 2026',
+  'assets/dcrust-esummit-podium.jpg': 'DCRUST E-Summit stage award ceremony and certificate presentation',
+  'assets/dcrust-stage-pitch.jpg': 'Live strategic pitch delivery on stage at DCRUST auditorium'
+};
+
 // Helper: Deep copy directory
 function copyDirSync(src, dest) {
   if (!fs.existsSync(src)) return;
@@ -622,14 +633,17 @@ ${comps.map(comp => {
             <div class="fr-gallery-shelf">
               <span class="fr-gallery-heading">Verified Field Artifacts (${allGallery.length}):</span>
               <div class="fr-gallery-switcher">
-                ${allGallery.map((assetPath, aIdx) => `
+                ${allGallery.map((assetPath, aIdx) => {
+                  const artifactAlt = ARTIFACT_ALT_MAP[assetPath] || `${comp.title} - Artifact ${aIdx + 1}`;
+                  return `
                 <button type="button" class="fr-thumb-btn fr-gallery-thumb${aIdx === 0 ? ' active' : ''}" 
                         data-asset-src="${assetPath}" 
                         data-asset-caption="${escapeHtml(comp.proof.caption)} [Artifact ${aIdx + 1}]" 
                         data-asset-stamp="${escapeHtml(comp.proof.stamp)}" 
-                        aria-label="View artifact ${aIdx + 1}">
-                  <img src="${getThumbPath(assetPath)}" width="640" height="400" alt="Artifact ${aIdx + 1}: ${escapeHtml(comp.proof.caption)}" loading="lazy">
-                </button>`).join('')}
+                        aria-label="View ${escapeHtml(artifactAlt)}">
+                  <img src="${getThumbPath(assetPath)}" width="640" height="400" alt="${escapeHtml(artifactAlt)}" loading="lazy">
+                </button>`;
+                }).join('')}
               </div>
             </div>`;
   }
@@ -749,7 +763,7 @@ ${comps.map(comp => {
                  src="${getThumbPath(comp.proof.url)}" 
                  width="640" 
                  height="400" 
-                 alt="${escapeHtml(comp.proof.caption)}" 
+                 alt="${escapeHtml(ARTIFACT_ALT_MAP[comp.proof.url] || comp.proof.caption)}" 
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
               <span class="fr-overlay-zoom-pill">
