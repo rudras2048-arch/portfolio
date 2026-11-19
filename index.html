@@ -10126,8 +10126,15 @@ window.__PORTFOLIO_CONTENT__ = {
       });
 
       if (updateUrlHash && window.history && window.history.replaceState) {
-        const targetHash = filterVal === 'all' ? '#all' : '#' + filterVal;
-        window.history.replaceState(null, '', targetHash);
+        if (filterVal === 'all') {
+          // Do not rewrite hash to #all; point to valid #competitions anchor if coming from another category
+          const currentHash = window.location.hash;
+          if (currentHash === '#all' || currentHash === '#1st-place' || currentHash === '#national' || currentHash === '#pitch') {
+            window.history.replaceState(null, '', '#competitions');
+          }
+        } else {
+          window.history.replaceState(null, '', '#' + filterVal);
+        }
       }
     }
 
