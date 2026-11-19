@@ -6887,7 +6887,12 @@ body.cs-modal-open {
       if (lbStamp) lbStamp.textContent = stamp || 'Field Evidence';
       if (lbCaption) lbCaption.textContent = caption || '';
       if (lbPath) lbPath.textContent = src;
-      if (lbRawBtn) lbRawBtn.href = src;
+      if (lbRawBtn) {
+        lbRawBtn.href = src;
+        lbRawBtn.target = '_blank';
+        lbRawBtn.rel = 'noopener';
+        lbRawBtn.setAttribute('download', '');
+      }
 
       if (typeof lightbox.showModal === 'function') {
         lightbox.showModal();
@@ -6962,27 +6967,34 @@ body.cs-modal-open {
     document.querySelectorAll('.fr-gallery-thumb').forEach(thumb => {
       thumb.onclick = function(e) {
         e.stopPropagation();
-        const compId = thumb.getAttribute('data-comp-id');
-        const src = thumb.getAttribute('data-src');
-        const caption = thumb.getAttribute('data-caption');
+        const card = thumb.closest('.fr-card');
+        const compId = thumb.getAttribute('data-comp-id') || (card ? card.getAttribute('data-comp-id') : null);
+        const src = thumb.getAttribute('data-asset-src') || thumb.getAttribute('data-src');
+        const caption = thumb.getAttribute('data-asset-caption') || thumb.getAttribute('data-caption');
+        const stamp = thumb.getAttribute('data-asset-stamp');
 
-        const mainImg = document.getElementById('fr-main-img-' + compId);
-        const captionEl = document.getElementById('fr-caption-' + compId);
-        const pathEl = document.getElementById('fr-path-' + compId);
-        const frame = document.getElementById('fr-visual-' + compId);
-        const inspectBtn = frame ? frame.querySelector('.fr-inspect-btn') : null;
-
-        if (mainImg) mainImg.src = src;
-        if (captionEl) captionEl.textContent = caption;
-        if (pathEl) pathEl.textContent = src;
-        if (inspectBtn) {
-          inspectBtn.setAttribute('data-asset-src', src);
-          inspectBtn.setAttribute('data-asset-caption', caption);
+        const parent = thumb.parentElement;
+        if (parent) {
+          parent.querySelectorAll('.fr-gallery-thumb').forEach(t => t.classList.remove('active'));
+          thumb.classList.add('active');
         }
 
-        const siblingThumbs = frame ? frame.querySelectorAll('.fr-gallery-thumb') : [];
-        siblingThumbs.forEach(t => t.classList.remove('active'));
-        thumb.classList.add('active');
+        if (compId && src) {
+          const mainImg = document.getElementById('fr-main-img-' + compId);
+          const captionEl = document.getElementById('fr-caption-' + compId);
+          const pathEl = document.getElementById('fr-path-' + compId);
+          const frame = document.getElementById('fr-visual-' + compId);
+          const inspectBtn = frame ? frame.querySelector('.fr-inspect-btn') : null;
+
+          if (mainImg) mainImg.src = src;
+          if (captionEl && caption) captionEl.textContent = caption;
+          if (pathEl) pathEl.textContent = src;
+          if (inspectBtn) {
+            inspectBtn.setAttribute('data-asset-src', src);
+            if (caption) inspectBtn.setAttribute('data-asset-caption', caption);
+            if (stamp) inspectBtn.setAttribute('data-asset-stamp', stamp);
+          }
+        }
       };
     });
 
