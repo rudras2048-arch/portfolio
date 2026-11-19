@@ -182,7 +182,7 @@ function renderHeroOg(content) {
     title: p.name || 'Rudra Sharma',
     subtitle: p.bio_statement || 'Curiosity starts the work. Execution proves it.',
     contentBody: cardsSvg,
-    footerTag: '2 CHAMPIONSHIPS · TOP 5 NATIONAL FINALIST · 4 VENTURES'
+    footerTag: '2 CHAMPIONSHIPS · TOP 3 NATIONAL FINALIST · 4 VENTURES'
   });
 }
 
@@ -220,7 +220,7 @@ function renderCompetitionsOg(content) {
     title: 'Championships & National Podiums',
     subtitle: 'Campus startup simulations, margin optimization, and venture sprints.',
     contentBody: cardsSvg,
-    footerTag: 'ASHOKA CASH RUSH #1 · IIM AMRITSAR TOP 5 · BOOTCAMP DEMO DAY #1'
+    footerTag: 'ASHOKA CASH RUSH #1 · IIM AMRITSAR TOP 3 · BOOTCAMP DEMO DAY #1'
   });
 }
 

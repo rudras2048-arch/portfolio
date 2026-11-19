@@ -32,3 +32,6 @@ reports/*.log
 # Large raw media (original WhatsApp/uncompressed source files are in assets/ already)
 # dist/ is auto-generated — do not commit it
 dist/
+
+# Local Netlify folder
+.netlify

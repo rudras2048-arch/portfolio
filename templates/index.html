@@ -126,9 +126,10 @@
     /* Interactive Particle Wave Canvas & Glow */
     #field {
       position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       pointer-events: none;
       z-index: 1;
       display: block;
@@ -147,11 +148,15 @@
       left: 50vw;
       top: 50vh;
       transition: opacity 0.3s ease;
+      overflow: hidden;
     }
 
     .grid-overlay {
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       background-size: 44px 44px;
       background-image: 
         linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
@@ -363,12 +368,12 @@
     }
 
     section {
-      padding: 100px 0 40px;
-      scroll-margin-top: 60px;
+      padding: 56px 0 28px;
+      scroll-margin-top: 96px;
     }
 
     .section-header {
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
 
     .section-eyebrow {
@@ -415,11 +420,12 @@
        HERO MONOLITH: SCULPTURAL EDITORIAL + PITCH PORTRAIT
        ========================================================================== */
     .hero-wrap {
-      padding-top: 100px;
-      padding-bottom: 72px;
-      min-height: 90vh;
+      padding-top: 76px;
+      padding-bottom: 36px;
+      min-height: auto;
       display: flex;
       align-items: center;
+      scroll-margin-top: 96px;
     }
 
     .hero-grid {
@@ -750,6 +756,7 @@
       align-items: center;
       transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.25s ease;
       position: relative;
+      scroll-margin-top: 96px;
     }
 
     .case-card:hover {
@@ -997,25 +1004,99 @@
       line-height: 1.5;
     }
 
-    .case-visual {
+    .case-visual,
+    .fr-media-frame,
+    .fr-photo-frame,
+    .fr-img-container {
       position: relative;
-      border-radius: 16px;
+      border-radius: 14px;
       overflow: hidden;
       aspect-ratio: 16 / 10;
+      max-height: 440px;
+      width: 100%;
       border: 1px solid var(--rule);
       background: #060608;
     }
 
-    .case-visual img {
+    .case-visual img,
+    .fr-media-frame img,
+    .fr-photo-frame img,
+    .fr-img-container img,
+    .case-photo,
+    .fr-primary-photo,
+    .fr-main-img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      object-position: center 20%;
+      object-position: center center !important;
+      display: block;
       transition: transform 0.4s ease;
     }
 
-    .case-card:hover .case-visual img {
-      transform: scale(1.03);
+    .case-card:hover .case-visual img,
+    .case-card:hover .fr-photo-frame img,
+    .case-card:hover .fr-media-frame img,
+    .fr-photo-frame:hover img,
+    .fr-img-container:hover .fr-main-img {
+      transform: scale(1.02);
+    }
+
+    .fr-photo-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(12, 12, 15, 0.85) 0%, rgba(12, 12, 15, 0.2) 50%, transparent 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      pointer-events: none;
+    }
+
+    .fr-photo-frame:hover .fr-photo-overlay {
+      opacity: 1;
+    }
+
+    .fr-overlay-zoom-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-bone);
+      background: rgba(12, 12, 14, 0.88);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--rule-hover);
+      padding: 4px 10px;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .fr-photo-meta-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .fr-photo-stamp {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .fr-photo-caption {
+      font-family: var(--font-body);
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-top: 6px;
     }
 
     .case-visual-caption {
@@ -1024,7 +1105,7 @@
       left: 0;
       right: 0;
       background: linear-gradient(to top, rgba(12, 12, 15, 0.94) 0%, rgba(12, 12, 15, 0.6) 60%, transparent 100%);
-      padding: 20px 16px 12px;
+      padding: 16px 14px 10px;
       display: flex;
       flex-direction: column;
       gap: 3px;
@@ -1052,7 +1133,7 @@
     .ventures-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 28px;
+      gap: 20px;
     }
 
     .venture-card {
@@ -1061,12 +1142,13 @@
       -webkit-backdrop-filter: blur(14px);
       border: 1px solid var(--rule);
       border-radius: var(--card-radius);
-      padding: 32px;
+      padding: 22px 24px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 22px;
+      gap: 16px;
       transition: all 0.25s ease;
+      scroll-margin-top: 96px;
     }
 
     .venture-card:hover {
@@ -1077,7 +1159,7 @@
     .venture-top {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     .venture-meta {
@@ -1085,8 +1167,8 @@
       justify-content: space-between;
       align-items: center;
       font-family: var(--font-mono);
-      font-size: 10.5px;
-      letter-spacing: 0.14em;
+      font-size: 10px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
       font-weight: 700;
@@ -1094,40 +1176,41 @@
 
     .venture-name {
       font-family: var(--font-display);
-      font-size: 28px;
+      font-size: 22px;
       font-weight: 800;
       color: var(--text-bone);
       letter-spacing: -0.02em;
+      line-height: 1.2;
     }
 
     .venture-thesis {
-      font-size: 15px;
+      font-size: 13.5px;
       color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
     /* Integrated Code Terminal Box */
     .term {
       background: #08080A;
       border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
-      margin-top: 14px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+      margin-top: 8px;
     }
 
     .term-bar {
       display: flex;
       align-items: center;
       gap: 6px;
-      padding: 9px 12px;
+      padding: 7px 10px;
       background: rgba(22, 22, 28, 0.75);
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .term-bar i {
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       display: block;
     }
@@ -1136,20 +1219,21 @@
     .term-bar i:nth-child(3) { background: #27C93F; }
 
     .term-bar span {
-      margin-left: 8px;
+      margin-left: 6px;
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 9.5px;
       color: var(--text-dim);
       letter-spacing: 0.08em;
     }
 
     .term-body {
-      padding: 14px 16px;
+      padding: 10px 12px;
       font-family: var(--font-mono);
-      font-size: 11.5px;
-      line-height: 1.65;
+      font-size: 11px;
+      line-height: 1.5;
       color: var(--text-muted);
       overflow-x: auto;
+      max-height: 120px;
     }
 
     .term-body .cm { color: var(--text-dim); }
@@ -1159,30 +1243,44 @@
 
     .venture-details {
       border-top: 1px solid var(--rule);
-      padding-top: 14px;
+      padding-top: 10px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      font-size: 13px;
+      gap: 5px;
+      font-size: 12px;
     }
 
     .venture-detail-row {
       display: flex;
       gap: 8px;
+      align-items: baseline;
     }
 
     .venture-detail-row .lbl {
       font-family: var(--font-mono);
-      font-size: 10px;
+      font-size: 9.5px;
       color: var(--text-dim);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      width: 70px;
+      letter-spacing: 0.08em;
+      width: 64px;
       flex-shrink: 0;
     }
 
     .venture-detail-row .val {
       color: var(--text-bone);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .venture-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .venture-actions .btn-solid {
+      padding: 8px 16px;
+      font-size: 11px;
+      border-radius: 8px;
     }
 
     .venture-btn {
@@ -1191,8 +1289,8 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 12px 18px;
-      border-radius: 10px;
+      padding: 10px 16px;
+      border-radius: 8px;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid var(--rule);
       color: var(--text-bone);
@@ -1368,6 +1466,32 @@
 
     /* Responsive Queries */
     @media (max-width: 960px) {
+      section {
+        padding: 44px 0 24px;
+        scroll-margin-top: 84px;
+      }
+      .ab-section {
+        padding: 44px 0 24px;
+        scroll-margin-top: 84px;
+      }
+      .hero-wrap {
+        padding-top: 64px;
+        padding-bottom: 28px;
+        min-height: auto;
+      }
+      .case-card,
+      .fr-card,
+      .venture-card,
+      [id^="comp-"],
+      [id^="ven-"] {
+        scroll-margin-top: 84px;
+      }
+      .case-visual,
+      .fr-media-frame,
+      .fr-photo-frame,
+      .fr-img-container {
+        max-height: 320px;
+      }
       .hero-grid {
         grid-template-columns: 1fr;
       }
@@ -1392,6 +1516,23 @@
     }
 
     @media (max-width: 640px) {
+      section {
+        padding: 36px 0 20px;
+        scroll-margin-top: 76px;
+      }
+      .ab-section {
+        padding: 36px 0 20px;
+        scroll-margin-top: 76px;
+      }
+      .case-visual,
+      .fr-media-frame,
+      .fr-photo-frame,
+      .fr-img-container {
+        max-height: 240px;
+      }
+      .venture-card {
+        padding: 18px 16px;
+      }
       .hero-stats-row {
         grid-template-columns: 1fr;
       }
@@ -2242,8 +2383,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
        ========================================================================== */
 /* Section Mount Container */
   .ab-section {
-    padding: 100px 0 40px;
-    scroll-margin-top: 60px;
+    padding: 56px 0 28px;
+    scroll-margin-top: 96px;
     position: relative;
     z-index: 10;
   }
@@ -2251,12 +2392,12 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   .ab-container {
     max-width: var(--container-max);
     margin: 0 auto;
-    padding: 0;
+    padding: 0 24px;
   }
 
   /* Section Header */
   .ab-header {
-    margin-bottom: 48px;
+    margin-bottom: 32px;
   }
 
   .ab-eyebrow {
@@ -2761,7 +2902,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
    ========================================================================== */
 
 /* Upgraded Case Card Layout */
-.case-card.fr-card {
+.case-card.fr-card,
+[id^="comp-"] {
   display: flex !important;
   flex-direction: column !important;
   gap: 28px !important;
@@ -2774,6 +2916,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, opacity 0.35s ease;
   position: relative;
   overflow: hidden;
+  scroll-margin-top: 96px;
 }
 
 .case-card.fr-card:hover {
@@ -3363,27 +3506,33 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   padding: 0 !important;
 }
 
-.fr-img-container {
+.fr-img-container,
+.fr-photo-frame,
+.fr-media-frame {
   position: relative;
-  border-radius: 10px;
+  border-radius: 12px;
   overflow: hidden;
-  background: #000;
+  background: #060608;
   border: 1px solid var(--rule);
-  aspect-ratio: 16 / 10.5;
+  aspect-ratio: 16 / 10;
+  max-height: 440px;
   width: 100%;
 }
 
-.fr-main-img {
+.fr-main-img,
+.case-photo,
+.fr-primary-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center center !important;
   display: block;
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.fr-img-container:hover .fr-main-img {
-  transform: scale(1.03);
+.fr-img-container:hover .fr-main-img,
+.fr-photo-frame:hover img {
+  transform: scale(1.02);
 }
 
 .fr-stamp-badge {
@@ -3696,8 +3845,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
 }
 
-.fr-lightbox-.footer-inner span { color: #B0ACA3; }
-    footer {
+.fr-lightbox-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -3779,19 +3927,19 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
+    padding: 9px 14px;
     background: rgba(255, 255, 255, 0.025);
     border: 1px solid var(--rule);
-    border-radius: 10px;
+    border-radius: 8px;
     color: var(--text-bone);
     font-family: var(--font-mono);
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-    margin-top: 10px;
+    margin-top: 6px;
     outline: none;
     user-select: none;
     -webkit-user-select: none;
@@ -4499,12 +4647,12 @@ body.cs-modal-open {
 .tfe-explorer {
   background: var(--bg2);
   border: 1px solid var(--rule);
-  border-radius: 14px;
-  padding: 20px;
-  margin-top: 14px;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   min-width: 0;
   box-sizing: border-box;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
@@ -5132,7 +5280,7 @@ body.cs-modal-open {
     const typedPhrases = [
       "researching how llms fail on punjabi, haryanvi & bhojpuri",
       "1st place cash rush winner at ashoka university",
-      "top 5 national finalist at iim amritsar (~700 teams)",
+      "top 3 national finalist at iim amritsar (~700 teams)",
       "1st place winner at builders' bootcamp demo day",
       "working on stratum, flow state and krama"
     ];
@@ -5493,11 +5641,11 @@ body.cs-modal-open {
 
       var metaDesc = (personal.name || "Rudra Sharma") + ", " +
         (personal.degree || "first-year B.Tech CS & Data Science at Rishihood University (Class of 2030)") +
-        ". 1st place champion at Ashoka Cash Rush and Builders' Bootcamp; top 5 national finalist at IIM Amritsar's CINE-SELL (~700 teams).";
+        ". 1st place champion at Ashoka Cash Rush and Builders' Bootcamp; top 3 national finalist at IIM Amritsar's CINE-SELL (~700 teams).";
 
       var ogTitle = (personal.name || "Rudra Sharma") + " — " + (personal.headline || "Builder · Rishihood '30");
       var ogDesc = personal.bio_statement ||
-        "Curiosity starts the work. Execution proves it. First-year B.Tech CS & Data Science at Rishihood University. 2 Championships, Top 5 National Finalist at IIM Amritsar (~700 teams).";
+        "Curiosity starts the work. Execution proves it. First-year B.Tech CS & Data Science at Rishihood University. 2 Championships, Top 3 National Finalist at IIM Amritsar (~700 teams).";
 
       // Dynamically update standard metadata
       setOrCreateMeta('name', 'description', metaDesc);

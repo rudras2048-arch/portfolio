@@ -127,7 +127,7 @@ function renderRecruiterDrawer(content) {
         <div class="rm-kpi-sub">Ashoka University Shatranj '26 &amp; Rishihood Builders' Bootcamp #1 Top Team.</div>
       </div>
       <div class="rm-kpi-card">
-        <div class="rm-kpi-val">TOP 5</div>
+        <div class="rm-kpi-val">TOP 3</div>
         <div class="rm-kpi-label">National Finalist</div>
         <div class="rm-kpi-sub">IIM Amritsar CINE-SELL out of ~700 teams. First-year undergrad team against MBA cohorts.</div>
       </div>
@@ -163,11 +163,11 @@ function renderRecruiterDrawer(content) {
           <div class="rm-proof-item">
             <div class="rm-proof-top">
               <span class="rm-proof-name">IIM Amritsar · CINE-SELL</span>
-              <span class="rm-proof-badge">⚡ Top 5 National</span>
+              <span class="rm-proof-badge">⚡ Top 3 National</span>
             </div>
             <div class="rm-proof-metrics">~700 National Teams · Lead of "Team Big 4"</div>
             <p class="rm-proof-desc">
-              National marketing fest challenge. Directed product positioning, filmed commercial reel, and live stage commercial skit; placed in top 5 against postgraduate B-school cohorts.
+              National marketing fest challenge. Directed product positioning, filmed commercial reel, and live stage commercial skit; placed in top 3 against postgraduate B-school cohorts.
             </p>
           </div>
 
@@ -461,15 +461,15 @@ function renderAbout(content) {
             <article class="ab-milestone-card">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">OCT 2026 · NATIONAL ARENA</span>
-                <span class="ab-milestone-badge">⚡ TOP 5 NATIONAL FINALIST</span>
+                <span class="ab-milestone-badge">⚡ TOP 3 NATIONAL FINALIST</span>
               </div>
               <h3 class="ab-milestone-title">CINE-SELL Brand Challenge</h3>
               <div class="ab-milestone-venue">IIM Amritsar · Marketing Fest '26</div>
               <p class="ab-milestone-body">
-                National marketing fest challenge with ~700 registered teams, primarily postgraduate MBA cohorts from top B-schools across India. Led 4-member undergraduate "Team Big 4" as Team Lead: coordinated telephone market positioning, directed promotional video reel, and led live commercial stage pitch to finish in the Top 5 nationally.
+                National marketing fest challenge with ~700 registered teams, primarily postgraduate MBA cohorts from top B-schools across India. Led 4-member undergraduate "Team Big 4" as Team Lead: coordinated telephone market positioning, directed promotional video reel, and led live commercial stage pitch to finish in the Top 3 nationally.
               </p>
               <div class="ab-milestone-tags">
-                <span class="ab-pill ab-accent-pill">Top 5 Nationally</span>
+                <span class="ab-pill ab-accent-pill">Top 3 Nationally</span>
                 <span class="ab-pill">~700 Team Registrations</span>
                 <span class="ab-pill">Team Lead · Team Big 4</span>
                 <span class="ab-pill">MBA &amp; UG Cohorts</span>
@@ -515,7 +515,7 @@ function renderCompetitions(content) {
         <span class="section-eyebrow reveal">01 // Competitive Field Record</span>
         <h2 class="section-title reveal">Top Finishes & Proof</h2>
         <p class="section-lead reveal">
-          Four competitions, Jun–Oct 2026: two 1st places, one top-5 national finish, one 3rd place. Filter by type below.
+          Four competitions, Jun–Oct 2026: two 1st places, one top-3 national finish, one 3rd place. Filter by type below.
         </p>
       </div>
 

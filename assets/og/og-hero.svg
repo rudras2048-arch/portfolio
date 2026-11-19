@@ -92,7 +92,7 @@
     <g transform="translate(274, 0)">
       <rect width="254" height="235" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
       <rect x="0" y="0" width="254" height="4" fill="url(#accentGrad)" opacity="0.8" rx="2" />
-      <text x="24" y="65" class="font-mono" font-size="38" font-weight="700" fill="#F5EFE6">TOP 5</text>
+      <text x="24" y="65" class="font-mono" font-size="38" font-weight="700" fill="#F5EFE6">TOP 3</text>
       <text x="24" y="105" class="font-mono" font-size="14" font-weight="600" fill="#A5BA28" letter-spacing="1">NATIONAL FINALIST</text>
       <text x="24" y="145" class="font-body" font-size="14" fill="#9C988D">IIM Amritsar · ~700 teams</text>
       <g transform="translate(24, 185)">
@@ -128,7 +128,7 @@
   <g transform="translate(64, 565)">
     <line x1="0" y1="0" x2="1072" y2="0" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
     <text x="0" y="24" class="font-mono" font-size="12" font-weight="600" fill="#A5BA28" letter-spacing="1.5">
-      2 CHAMPIONSHIPS · TOP 5 NATIONAL FINALIST · 4 VENTURES
+      2 CHAMPIONSHIPS · TOP 3 NATIONAL FINALIST · 4 VENTURES
     </text>
     <text x="1072" y="24" text-anchor="end" class="font-mono" font-size="12" fill="#5C5A53">
       B.Tech CS &amp; Data Science · Rishihood University

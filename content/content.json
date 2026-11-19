@@ -30,7 +30,7 @@
     "typewriter_phrases": [
       "researching how llms fail on punjabi, haryanvi & bhojpuri",
       "1st place cash rush winner at ashoka university",
-      "top 5 national finalist at iim amritsar (~700 teams)",
+      "top 3 national finalist at iim amritsar (~700 teams)",
       "1st place winner at builders' bootcamp demo day",
       "working on stratum, flow state and krama"
     ],
@@ -51,7 +51,7 @@
       },
       {
         "id": "national_finalist",
-        "value": "TOP 5",
+        "value": "TOP 3",
         "count": null,
         "label": "National Finalist",
         "description": "IIM Amritsar \u00b7 ~700 teams",
@@ -128,8 +128,8 @@
         "members": [
           "Rudra Sharma",
           "Raj Khatri",
-          "Sahaj Choukhani",
-          "Tripti Kaushik"
+          "Hitisha",
+          "Sanjani"
         ]
       },
       "deliverables": [
@@ -178,10 +178,10 @@
       "beacon": "IIM Amritsar \u00b7 Marketing Fest '26",
       "date": "October 2026",
       "category": "national",
-      "placement": "Top 5 National Finalist",
-      "trophy_pill": "\u26a1 Top 5 National Finalist",
+      "placement": "Top 3 National Finalist",
+      "trophy_pill": "\u26a1 Top 3 National Finalist",
       "tags": [
-        "Top 5 Nationally",
+        "Top 3 Nationally",
         "~700 Team Registrations",
         "Team Lead \u00b7 \"Team Big 4\"",
         "First-year undergrad team"
@@ -218,7 +218,7 @@
       "story": {
         "setup": "A national marketing fest challenge with ~700 registered teams where squads had to sell a telephone using Bollywood-inspired characters.",
         "key_decision": "Led \"Team Big 4\" as a first-year undergrad Team Lead\u2014coordinating market research, directing the promotional reel, and anchoring Sahaj's character mimicry act with our commercial pitch.",
-        "result": "Cleared screening rounds to finish in the Top 5 National Finalists, ranking in the top 5 of ~700 teams, most of them postgraduate B-school cohorts.",
+        "result": "Cleared screening rounds to finish in the Top 3 National Finalists, ranking in the top 3 of ~700 teams, most of them postgraduate B-school cohorts.",
         "takeaway": "TBD"
       },
       "telemetry": [

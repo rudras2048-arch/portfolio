@@ -12,12 +12,12 @@
 .tfe-explorer {
   background: var(--bg2);
   border: 1px solid var(--rule);
-  border-radius: 14px;
-  padding: 20px;
-  margin-top: 14px;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 12px;
   min-width: 0;
   box-sizing: border-box;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
