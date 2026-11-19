@@ -1,0 +1,420 @@
+<!-- ==========================================================================
+     PERFORMANCE / ADAPTIVE CANVAS ENGINE BLOCK (Phase 1)
+     Contract Prefix: .pf-
+     Tokens: tokens.md (var(--accent), var(--text-muted), var(--bg2), etc.)
+     Interfaces: interfaces.md (Component 5: Adaptive Canvas & FPS Telemetry)
+     ========================================================================== -->
+
+<style>
+  /* Scoped styles strictly prefixed with .pf- */
+  .pf-canvas-layer {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 1;
+    display: block;
+    opacity: 0.85;
+    contain: strict;
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  .pf-canvas-paused {
+    pointer-events: none;
+  }
+
+  .pf-canvas-static {
+    opacity: 0.72;
+  }
+
+  .pf-glow-hidden {
+    display: none !important;
+  }
+
+  /* Optional HUD / Telemetry container for diagnostics or recruiter debug */
+  .pf-telemetry-hud {
+    display: none;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 999;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--bg-card);
+    border: 1px solid var(--rule);
+    padding: 6px 10px;
+    border-radius: 6px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    pointer-events: none;
+    letter-spacing: 0.05em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pf-canvas-layer {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+/**
+ * Adaptive Particle Wavefield Canvas Engine
+ * Meets all Component 5 criteria from interfaces.md:
+ * 1. Pause requestAnimationFrame loop when canvas/hero is offscreen or tab is hidden.
+ * 2. Cut density/resolution grid on low-end hardware and mobile viewports (window.innerWidth < 768).
+ * 3. Respect prefers-reduced-motion: reduce (halt loop, render single static frame, hide glow).
+ * 4. Zero visual regression on high-end desktop.
+ * 5. Adaptive frame budget guard: downsize resolution if FPS < 40 across 120 consecutive frames.
+ */
+(function() {
+  'use strict';
+
+  // Global Engine state store
+  window.__CANVAS_ENGINE = window.__CANVAS_ENGINE || {
+    fps: 60,
+    active: true,
+    reduced: false,
+    deviceTier: 'high' // 'high' | 'medium' | 'low'
+  };
+
+  window.initAdaptiveCanvas = function() {
+    const canvas = document.getElementById('field');
+    if (!canvas) {
+      console.warn('[pf] #field canvas element not found.');
+      return {
+        pause: function() {},
+        resume: function() {},
+        getFPS: function() { return 60; },
+        setReduced: function() {}
+      };
+    }
+
+    const ctx = canvas.getContext('2d', { alpha: true });
+    if (!ctx) return;
+
+    // Apply performance containment class
+    canvas.classList.add('pf-canvas-layer');
+
+    const glowEl = document.getElementById('glow');
+    const heroEl = document.getElementById('hero');
+
+    // Engine internal states
+    let W = 0, H = 0;
+    let t = 0;
+    let mx = 0.5, my = 0.35, tx = 0.5, ty = 0.35;
+    let rafId = null;
+    let isLoopRunning = false;
+    let isTabVisible = !document.hidden;
+    let isHeroVisible = true;
+    let isManualPaused = false;
+    let isReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // FPS & Adaptive budget tracking
+    let lastFrameTime = performance.now();
+    let smoothedFps = 60;
+    let consecutiveLowFrames = 0;
+    const LOW_FPS_THRESHOLD = 40;
+    const CONSECUTIVE_LIMIT = 120;
+
+    // Hardware & Device Tier Profiling
+    function profileDeviceTier() {
+      const isMobileViewport = window.innerWidth < 768;
+      const cores = navigator.hardwareConcurrency || 4;
+      const memory = navigator.deviceMemory || 8; // GB (Chromium)
+
+      if (isMobileViewport || cores < 4 || memory < 4) {
+        return 'low';
+      }
+      if (cores <= 6 || memory <= 4) {
+        return 'medium';
+      }
+      return 'high';
+    }
+
+    let deviceTier = profileDeviceTier();
+    window.__CANVAS_ENGINE.deviceTier = deviceTier;
+    window.__CANVAS_ENGINE.reduced = isReduced;
+
+    // Grid Density Configuration
+    let cols = 80;
+    let rows = 46;
+    let DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    function computeGridConfig() {
+      const w = window.innerWidth;
+      const tier = window.__CANVAS_ENGINE.deviceTier;
+
+      if (w < 480) {
+        cols = 36;
+        rows = 22;
+        DPR = Math.min(window.devicePixelRatio || 1, 1.25);
+      } else if (w < 768 || tier === 'low') {
+        cols = 44;
+        rows = 26;
+        DPR = Math.min(window.devicePixelRatio || 1, 1.25);
+      } else if (tier === 'medium') {
+        cols = 64;
+        rows = 38;
+        DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+      } else {
+        // High-end desktop: ZERO visual regression
+        cols = 80;
+        rows = 46;
+        DPR = Math.min(window.devicePixelRatio || 1, 2);
+      }
+    }
+
+    function resizeCanvas() {
+      computeGridConfig();
+      W = canvas.width = Math.floor(window.innerWidth * DPR);
+      H = canvas.height = Math.floor(window.innerHeight * DPR);
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+
+      if (isReduced) {
+        drawStaticFrame();
+      }
+    }
+
+    // Static frame for prefers-reduced-motion: reduce
+    function drawStaticFrame() {
+      if (!ctx || W === 0 || H === 0) return;
+      ctx.clearRect(0, 0, W, H);
+      canvas.classList.add('pf-canvas-static');
+
+      const gx = W / (cols - 1);
+      const gy = H / (rows - 1);
+
+      // Render calm resting dot grid (single frame)
+      for (let j = 0; j < rows; j++) {
+        for (let i = 0; i < cols; i++) {
+          const px = i * gx;
+          const py = j * gy;
+          const idleWave = Math.sin(i * 0.16) * Math.cos(j * 0.19);
+          const y = py + idleWave * 0.2 * H * 0.04;
+          const a = Math.max(0.04, 0.10 + idleWave * 0.04);
+          const size = 1.3;
+
+          ctx.fillStyle = 'rgba(156, 152, 141, ' + a.toFixed(3) + ')';
+          ctx.fillRect(px, y, size * DPR, size * DPR);
+        }
+      }
+    }
+
+    // High-performance animated frame
+    function drawFrame() {
+      ctx.clearRect(0, 0, W, H);
+      const gx = W / (cols - 1);
+      const gy = H / (rows - 1);
+
+      for (let j = 0; j < rows; j++) {
+        for (let i = 0; i < cols; i++) {
+          const px = i * gx;
+          const py = j * gy;
+          const dist = Math.hypot(i / cols - mx, j / rows - my);
+          const idleWave = Math.sin(i * 0.16 + t) * Math.cos(j * 0.19 + t * 0.75);
+          const mouseSwell = Math.exp(-dist * 2.8);
+          const y = py + (idleWave * (0.2 + 0.8 * mouseSwell) + Math.exp(-dist * 3.4) * 0.8) * H * 0.04;
+          const a = Math.max(0.04, 0.12 + idleWave * 0.05 + mouseSwell * 0.45);
+          const size = 1.3 + mouseSwell * 1.2;
+
+          // Base tone: var(--text-muted) equivalent
+          ctx.fillStyle = 'rgba(156, 152, 141, ' + a.toFixed(3) + ')';
+          ctx.fillRect(px, y, size * DPR, size * DPR);
+
+          // Accent swell: var(--accent) tactical chartreuse
+          if (mouseSwell > 0.28) {
+            ctx.fillStyle = 'rgba(165, 186, 40, ' + ((mouseSwell - 0.28) * 0.85).toFixed(3) + ')';
+            ctx.fillRect(px, y, size * DPR, size * DPR);
+          }
+        }
+      }
+    }
+
+    // Adaptive animation loop
+    function loopCanvas(currentTime) {
+      if (!isLoopRunning) return;
+
+      // Delta time & FPS Telemetry
+      const delta = currentTime - lastFrameTime;
+      lastFrameTime = currentTime;
+
+      if (delta > 0 && delta < 500) {
+        const instantFps = 1000 / delta;
+        smoothedFps = smoothedFps * 0.92 + instantFps * 0.08;
+        window.__CANVAS_ENGINE.fps = Math.round(smoothedFps);
+
+        // Frame Budget Guard: Check for sustained frame drop (< 40 fps across 120 frames)
+        if (instantFps < LOW_FPS_THRESHOLD) {
+          consecutiveLowFrames++;
+          if (consecutiveLowFrames >= CONSECUTIVE_LIMIT && window.__CANVAS_ENGINE.deviceTier !== 'low') {
+            // Adaptive downgrade
+            window.__CANVAS_ENGINE.deviceTier = (window.__CANVAS_ENGINE.deviceTier === 'high') ? 'medium' : 'low';
+            consecutiveLowFrames = 0;
+            resizeCanvas();
+          }
+        } else if (consecutiveLowFrames > 0) {
+          consecutiveLowFrames--;
+        }
+      }
+
+      t += 0.014;
+      mx += (tx - mx) * 0.06;
+      my += (ty - my) * 0.06;
+
+      drawFrame();
+
+      rafId = requestAnimationFrame(loopCanvas);
+    }
+
+    function shouldAnimate() {
+      return !isReduced && !isManualPaused && isTabVisible && isHeroVisible;
+    }
+
+    function syncState() {
+      const active = shouldAnimate();
+      window.__CANVAS_ENGINE.active = active;
+
+      if (active) {
+        canvas.classList.remove('pf-canvas-paused', 'pf-canvas-static');
+        if (glowEl && !isReduced) glowEl.classList.remove('pf-glow-hidden');
+
+        if (!isLoopRunning) {
+          isLoopRunning = true;
+          lastFrameTime = performance.now();
+          rafId = requestAnimationFrame(loopCanvas);
+        }
+      } else {
+        canvas.classList.add('pf-canvas-paused');
+        if (isLoopRunning) {
+          isLoopRunning = false;
+          if (rafId) {
+            cancelAnimationFrame(rafId);
+            rafId = null;
+          }
+        }
+        if (isReduced) {
+          if (glowEl) glowEl.classList.add('pf-glow-hidden');
+          drawStaticFrame();
+        }
+      }
+    }
+
+    // IntersectionObserver: Pause when hero/canvas is offscreen
+    let heroObserver = null;
+    if (heroEl && 'IntersectionObserver' in window) {
+      heroObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          isHeroVisible = entry.isIntersecting;
+          syncState();
+        });
+      }, {
+        rootMargin: '100px 0px 100px 0px',
+        threshold: 0
+      });
+      heroObserver.observe(heroEl);
+    } else {
+      isHeroVisible = true;
+    }
+
+    // VisibilityChange: Pause when tab is hidden
+    function onVisibilityChange() {
+      isTabVisible = !document.hidden;
+      syncState();
+    }
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    // Media Query Listener for prefers-reduced-motion
+    let motionQuery = null;
+    function handleMotionChange(e) {
+      isReduced = e.matches;
+      window.__CANVAS_ENGINE.reduced = isReduced;
+      syncState();
+    }
+
+    if (window.matchMedia) {
+      motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      if (motionQuery.addEventListener) {
+        motionQuery.addEventListener('change', handleMotionChange);
+      } else if (motionQuery.addListener) {
+        motionQuery.addListener(handleMotionChange);
+      }
+    }
+
+    // Throttled Pointer tracking
+    const hasHover = window.matchMedia ? window.matchMedia('(hover: hover) and (pointer: fine)').matches : true;
+    function onPointerMove(e) {
+      if (isReduced || !isLoopRunning) return;
+      tx = e.clientX / window.innerWidth;
+      ty = e.clientY / window.innerHeight;
+
+      if (glowEl && hasHover) {
+        glowEl.style.left = e.clientX + 'px';
+        glowEl.style.top = e.clientY + 'px';
+      }
+    }
+    window.addEventListener('pointermove', onPointerMove, { passive: true });
+
+    // Window Resize handling
+    let resizeTimer = null;
+    function onResize() {
+      if (resizeTimer) clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        resizeCanvas();
+      }, 100);
+    }
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // Initial setup
+    resizeCanvas();
+    syncState();
+
+    // Exported controller object
+    return {
+      pause: function() {
+        isManualPaused = true;
+        syncState();
+      },
+      resume: function() {
+        isManualPaused = false;
+        syncState();
+      },
+      getFPS: function() {
+        return window.__CANVAS_ENGINE.fps;
+      },
+      setReduced: function(val) {
+        isReduced = Boolean(val);
+        window.__CANVAS_ENGINE.reduced = isReduced;
+        syncState();
+      },
+      destroy: function() {
+        if (rafId) cancelAnimationFrame(rafId);
+        isLoopRunning = false;
+        document.removeEventListener('visibilitychange', onVisibilityChange);
+        window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('resize', onResize);
+        if (heroObserver) heroObserver.disconnect();
+      }
+    };
+  };
+
+  // Self-initialize on DOM readiness
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      if (!window.__CANVAS_CONTROLLER) {
+        window.__CANVAS_CONTROLLER = window.initAdaptiveCanvas();
+      }
+    });
+  } else {
+    if (!window.__CANVAS_CONTROLLER) {
+      window.__CANVAS_CONTROLLER = window.initAdaptiveCanvas();
+    }
+  }
+})();
+</script>

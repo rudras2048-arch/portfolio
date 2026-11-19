@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     COMPONENT: VENTURE EXPANDABLE DEEP-DIVES & ARCHITECTURAL RETROSPECTIVES
+     Author: Case-Study Agent (Phase 1)
+     Contract: tokens.md (Tokens v2.0) & interfaces.md
+     Prefix: .cs- (Strict isolation)
+     Ventures Covered: Tathya, Stratum, Flow State, Krama
+     ========================================================================== -->
+
+<!-- ==========================================================================
+     1. SCOPED COMPONENT STYLES (.cs-)
+     ========================================================================== -->
+<style>
+  /* --------------------------------------------------------------------------
+     TRIGGER BUTTON
+     -------------------------------------------------------------------------- */
+  .cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    color: var(--text-bone);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px;
+    outline: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .cs-trigger:hover {
+    background: var(--accent-soft);
+    border-color: var(--rule-hover);
+    color: var(--accent);
+  }
+
+  .cs-trigger:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-color: var(--accent);
+  }
+
+  .cs-trigger[aria-expanded="true"] {
+    background: rgba(165, 186, 40, 0.09);
+    border-color: var(--accent);
+    color: var(--accent-bright);
+    box-shadow: 0 0 16px rgba(165, 186, 40, 0.12);
+  }
+
+  .cs-trigger-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .cs-trigger-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text-dim);
+    border: 1px solid var(--rule);
+    transition: all 0.2s ease;
+  }
+
+  .cs-trigger[aria-expanded="true"] .cs-trigger-badge {
+    background: var(--accent-soft);
+    color: var(--accent);
+    border-color: rgba(165, 186, 40, 0.35);
+  }
+
+  .cs-trigger-label {
+    font-size: 11px;
+    letter-spacing: 0.06em;
+  }
+
+  .cs-trigger-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: var(--text-dim);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
+  }
+
+  .cs-trigger:hover .cs-trigger-icon {
+    color: var(--accent);
+  }
+
+  .cs-trigger[aria-expanded="true"] .cs-trigger-icon {
+    transform: rotate(180deg);
+    color: var(--accent-bright);
+  }
+
+  /* --------------------------------------------------------------------------
+     EXPANDABLE DRAWER (CSS Grid 0fr -> 1fr interpolation)
+     -------------------------------------------------------------------------- */
+  .cs-drawer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, margin-top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+    margin-top: 0;
+    visibility: hidden;
+  }
+
+  .cs-drawer.cs-open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+    margin-top: 14px;
+    visibility: visible;
+  }
+
+  .cs-drawer-inner {
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  /* --------------------------------------------------------------------------
+     DEEP-DIVE CARD BODY
+     -------------------------------------------------------------------------- */
+  .cs-deepdive-body {
+    background: var(--bg2);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  /* Status Banner */
+  .cs-status-banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--bg3);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+
+  .cs-status-left {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cs-status-indicator {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .cs-status-indicator.cs-indicator-idea {
+    background: var(--text-dim);
+    box-shadow: 0 0 6px rgba(92, 90, 83, 0.4);
+  }
+
+  .cs-status-indicator.cs-indicator-building {
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent-glow);
+    animation: pulseBlink 2.2s infinite ease-in-out;
+  }
+
+  .cs-status-indicator.cs-indicator-shipped {
+    background: var(--accent-bright);
+    box-shadow: 0 0 8px var(--accent-glow);
+  }
+
+  .cs-status-headline {
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-bone);
+  }
+
+  .cs-status-detail-pill {
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
+  }
+
+  /* Section Blocks */
+  .cs-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cs-block-header {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .cs-block-num {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+  }
+
+  .cs-block-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-bone);
+  }
+
+  .cs-block-text {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    line-height: 1.62;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* Approach Feature List */
+  .cs-feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .cs-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.58;
+    color: var(--text-muted);
+  }
+
+  .cs-feature-bullet {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .cs-feature-text strong {
+    color: var(--text-bone);
+    font-weight: 600;
+  }
+
+  /* Retrospective Callout Card */
+  .cs-retrospective-card {
+    background: rgba(165, 186, 40, 0.04);
+    border: 1px solid rgba(165, 186, 40, 0.22);
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .cs-retrospective-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .cs-retrospective-icon {
+    font-size: 12px;
+  }
+
+  .cs-retrospective-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.62;
+    color: var(--text-bone);
+    margin: 0;
+    padding-left: 12px;
+    border-left: 2px solid var(--accent);
+  }
+
+  /* Bottom Collapse Button */
+  .cs-close-drawer-btn {
+    align-self: flex-start;
+    background: transparent;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    margin-top: 4px;
+  }
+
+  .cs-close-drawer-btn:hover {
+    border-color: var(--rule-hover);
+    color: var(--text-bone);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .cs-close-drawer-btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+  }
+
+  /* Reduced Motion Compliance */
+  @media (prefers-reduced-motion: reduce) {
+    .cs-drawer {
+      transition: none !important;
+    }
+    .cs-trigger,
+    .cs-trigger-icon,
+    .cs-close-drawer-btn {
+      transition: none !important;
+    }
+    .cs-status-indicator.cs-indicator-building {
+      animation: none !important;
+    }
+  }
+</style>
+
+<!-- ==========================================================================
+     2. STATIC HTML TEMPLATES (ONE PER VENTURE)
+     These can be placed directly inside .venture-card in index.html,
+     or dynamically mounted by window.initCaseStudyDeepDives().
+     ========================================================================== -->
+
+<!-- TEMPLATE 01: TATHYA (तथ्य) -->
+<template id="cs-template-tathya">
+  <!-- Trigger Button -->
+  <button type="button" 
+          class="cs-trigger" 
+          id="cs-trigger-tathya" 
+          aria-expanded="false" 
+          aria-controls="cs-drawer-tathya">
+    <span class="cs-trigger-left">
+      <span class="cs-trigger-badge">DEEP DIVE</span>
+      <span class="cs-trigger-label">Architecture & Retrospective</span>
+    </span>
+    <span class="cs-trigger-icon" aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Expandable Drawer -->
+  <div id="cs-drawer-tathya" 
+       class="cs-drawer" 
+       role="region" 
+       aria-labelledby="cs-trigger-tathya" 
+       hidden>
+    <div class="cs-drawer-inner">
+      <div class="cs-deepdive-body">
+        
+        <!-- Status Banner (Honest: Idea / Early Research) -->
+        <div class="cs-status-banner">
+          <div class="cs-status-left">
+            <span class="cs-status-indicator cs-indicator-idea" aria-hidden="true"></span>
+            <span class="cs-status-headline">Status: Idea // Early Research</span>
+          </div>
+          <span class="cs-status-detail-pill">Early research · eval set in progress</span>
+        </div>
+
+        <!-- 01: Problem Formulation -->
+        <div class="cs-block">
+          <div class="cs-block-header">
+            <span class="cs-block-num">01</span>
+            <span class="cs-block-title">Problem Formulation</span>
+          </div>
+          <p class="cs-block-text">
+            LLMs perform poorly on regional dialects due to token fragmentation. Subword tokenizers (e.g., Byte-Pair Encoding) trained heavily on English and standard Devanagari/Gurmukhi excessively split vernacular words into 4 to 8 byte fragments. This multiplies inference latency, inflates compute cost, and degrades semantic reasoning on non-standard Indian dialects like Punjabi, Haryanvi, and Bhojpuri.
+          </p>
+        </div>
+
+        <!-- 02: Approach & System Design -->
+        <div class="cs-block">
+          <div class="cs-block-header">
+            <span class="cs-block-num">02</span>
+            <span class="cs-block-title">Technical Approach & Architecture</span>
+          </div>
+          <ul class="cs-feature-list">
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Dialect token fragmentation analysis:</strong> Profiling subword token inflation ratios and token boundary mismatches across Indic vernacular vocabularies.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Custom evaluation benchmark:</strong> Curating a targeted test suite for Haryanvi, Punjabi, and Bhojpuri queries focused on government schemes and agricultural advisories.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Verification layer:</strong> Lightweight deterministic verification guard to validate factual consistency and prevent dialect translation hallucinations prior to final output.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 03: Retrospective / What I'd Do Differently -->
+        <div class="cs-block cs-retrospective-card">
+          <div class="cs-retrospective-title">
+            <span class="cs-retrospective-icon" aria-hidden="true">✦</span>
+            <span>Retrospective: What I'd Do Differently</span>
+          </div>
+          <blockquote class="cs-retrospective-quote">
+            "Ground the evaluation benchmark in authentic conversational audio and vernacular transcription directly from native speakers before attempting synthetic benchmark generation. Starting with standard synthetic LLM outputs overlooks colloquial phonetic shifts, regional idioms, and code-mixed phrasing in spoken Haryanvi, Punjabi, and Bhojpuri."
+          </blockquote>
+        </div>
+
+        <!-- Collapse Drawer Action -->
+        <button type="button" class="cs-close-drawer-btn" data-target-id="tathya">
+          <span>▲ Collapse Deep-Dive</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- TEMPLATE 02: STRATUM -->
+<template id="cs-template-stratum">
+  <!-- Trigger Button -->
+  <button type="button" 
+          class="cs-trigger" 
+          id="cs-trigger-stratum" 
+          aria-expanded="false" 
+          aria-controls="cs-drawer-stratum">
+    <span class="cs-trigger-left">
+      <span class="cs-trigger-badge">DEEP DIVE</span>
+      <span class="cs-trigger-label">Architecture & Retrospective</span>
+    </span>
+    <span class="cs-trigger-icon" aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Expandable Drawer -->
+  <div id="cs-drawer-stratum" 
+       class="cs-drawer" 
+       role="region" 
+       aria-labelledby="cs-trigger-stratum" 
+       hidden>
+    <div class="cs-drawer-inner">
+      <div class="cs-deepdive-body">
+        
+        <!-- Status Banner (Honest: Idea / Concept Stage) -->
+        <div class="cs-status-banner">
+          <div class="cs-status-left">
+            <span class="cs-status-indicator cs-indicator-idea" aria-hidden="true"></span>
+            <span class="cs-status-headline">Status: Idea // Concept Stage</span>
+          </div>
+          <span class="cs-status-detail-pill">Concept and pitch stage · sandbox design in progress</span>
+        </div>
+
+        <!-- 01: Problem Formulation -->
+        <div class="cs-block">
+          <div class="cs-block-header">
+            <span class="cs-block-num">01</span>
+            <span class="cs-block-title">Problem Formulation</span>
+          </div>
+          <p class="cs-block-text">
+            Hiring case studies are easily generated using LLMs without testing live judgment. Traditional take-home case assessments have lost signal because candidates can prompt AI tools to produce polished consulting frameworks in seconds, hiding whether a candidate actually understands capital allocation, volatility response, or cash burn dynamics under pressure.
+          </p>
+        </div>
+
+        <!-- 02: Approach & System Design -->
+        <div class="cs-block">
+          <div class="cs-block-header">
+            <span class="cs-block-num">02</span>
+            <span class="cs-block-title">Technical Approach & Architecture</span>
+          </div>
+          <ul class="cs-feature-list">
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Dynamic CPM volatility shock scenarios:</strong> A simulated market sandbox where ad pricing surges 40% mid-quarter, forcing real-time budget reallocation to defend margins.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Capital velocity and margin yield telemetry:</strong> Mathematical scoring of working capital turnover, cash conversion cycles, and unit economics resilience.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Real-time decision latency scoring:</strong> Measuring time-to-decision and risk adjustments when market parameters shift without warning.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 03: Retrospective / What I'd Do Differently -->
+        <div class="cs-block cs-retrospective-card">
+          <div class="cs-retrospective-title">
+            <span class="cs-retrospective-icon" aria-hidden="true">✦</span>
+            <span>Retrospective: What I'd Do Differently</span>
+          </div>
+          <blockquote class="cs-retrospective-quote">
+            "Build a headless, deterministic simulation state machine first before designing any candidate-facing dashboard UI. Sandboxing commercial market dynamics and CPM volatility shocks requires mathematical invariant testing prior to front-end visualization, avoiding wasted effort on components before core engine dynamics are locked."
+          </blockquote>
+        </div>
+
+        <!-- Collapse Drawer Action -->
+        <button type="button" class="cs-close-drawer-btn" data-target-id="stratum">
+          <span>▲ Collapse Deep-Dive</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- TEMPLATE 03: FLOW STATE -->
+<template id="cs-template-flow-state">
+  <!-- Trigger Button -->
+  <button type="button" 
+          class="cs-trigger" 
+          id="cs-trigger-flow-state" 
+          aria-expanded="false" 
+          aria-controls="cs-drawer-flow-state">
+    <span class="cs-trigger-left">
+      <span class="cs-trigger-badge">DEEP DIVE</span>
+      <span class="cs-trigger-label">Architecture & Retrospective</span>
+    </span>
+    <span class="cs-trigger-icon" aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Expandable Drawer -->
+  <div id="cs-drawer-flow-state" 
+       class="cs-drawer" 
+       role="region" 
+       aria-labelledby="cs-trigger-flow-state" 
+       hidden>
+    <div class="cs-drawer-inner">
+      <div class="cs-deepdive-body">
+        
+        <!-- Status Banner (Honest: Building / Local Build) -->
+        <div class="cs-status-banner">
+          <div class="cs-status-left">
+            <span class="cs-status-indicator cs-indicator-building" aria-hidden="true"></span>
+            <span class="cs-status-headline">Status: Building // Local Build</span>
+          </div>
+          <span class="cs-status-detail-pill">Local build · Zero-OAuth sync & 16-bit procedural audio synthesis</span>
+        </div>
+
+        <!-- 01: Problem Formulation -->
+        <div class="cs-block">
+          <div class="cs-block-header">
+            <span class="cs-block-num">01</span>
+            <span class="cs-block-title">Problem Formulation</span>
+          </div>
+          <p class="cs-block-text">
+            Cloud telemetry leaks and context switching fragment developer focus. Contemporary focus tools require intrusive third-party OAuth permissions, stream telemetry back to external corporate clouds, and force constant app-switching between calendars, music streamers, and timer apps.
+          </p>
+        </div>
+
+        <!-- 02: Approach & System Design -->
+        <div class="cs-block">
+          <div class="cs-block-header">
+            <span class="cs-block-num">02</span>
+            <span class="cs-block-title">Technical Approach & Architecture</span>
+          </div>
+          <ul class="cs-feature-list">
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Zero-OAuth RFC 5545 calendar synchronization:</strong> Direct ingestion of local .ics feeds without granting cloud access or exposing account OAuth scopes.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>16-bit 44.1kHz procedural audio synthesis via math.sin:</strong> Synthesizes ambient focus soundscapes mathematically in real time with 0 MP3 files and zero network streaming.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Weekly focus receipts:</strong> 30-day productivity telemetry and session tracking calculated and stored purely on-device.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>100% on-device local execution:</strong> Bypasses cloud analytics completely, keeping developer workflow private.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 03: Retrospective / What I'd Do Differently -->
+        <div class="cs-block cs-retrospective-card">
+          <div class="cs-retrospective-title">
+            <span class="cs-retrospective-icon" aria-hidden="true">✦</span>
+            <span>Retrospective: What I'd Do Differently</span>
+          </div>
+          <blockquote class="cs-retrospective-quote">
+            "Stick strictly to pure on-device audio synthesis primitives and local SQLite storage from day one rather than evaluating cross-platform wrapper frameworks. Keeping zero cloud dependencies and avoiding third-party authentication SDKs was the right call, but experimenting with Electron early added unnecessary bloat before switching to a lightweight native runtime."
+          </blockquote>
+        </div>
+
+        <!-- Collapse Drawer Action -->
+        <button type="button" class="cs-close-drawer-btn" data-target-id="flow-state">
+          <span>▲ Collapse Deep-Dive</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- TEMPLATE 04: KRAMA (क्रम) -->
+<template id="cs-template-krama">
+  <!-- Trigger Button -->
+  <button type="button" 
+          class="cs-trigger" 
+          id="cs-trigger-krama" 
+          aria-expanded="false" 
+          aria-controls="cs-drawer-krama">
+    <span class="cs-trigger-left">
+      <span class="cs-trigger-badge">DEEP DIVE</span>
+      <span class="cs-trigger-label">Architecture & Retrospective</span>
+    </span>
+    <span class="cs-trigger-icon" aria-hidden="true">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.5 4.5L6 8L9.5 4.5" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </span>
+  </button>
+
+  <!-- Expandable Drawer -->
+  <div id="cs-drawer-krama" 
+       class="cs-drawer" 
+       role="region" 
+       aria-labelledby="cs-trigger-krama" 
+       hidden>
+    <div class="cs-drawer-inner">
+      <div class="cs-deepdive-body">
+        
+        <!-- Status Banner (Honest: Building / Student Utility) -->
+        <div class="cs-status-banner">
+          <div class="cs-status-left">
+            <span class="cs-status-indicator cs-indicator-building" aria-hidden="true"></span>
+            <span class="cs-status-headline">Status: Building // Student Utility</span>
+          </div>
+          <span class="cs-status-detail-pill">Student utility · offline-first recovery calculus</span>
+        </div>
+
+        <!-- 01: Problem Formulation -->
+        <div class="cs-block">
+          <div class="cs-block-header">
+            <span class="cs-block-num">01</span>
+            <span class="cs-block-title">Problem Formulation</span>
+          </div>
+          <p class="cs-block-text">
+            Mandatory attendance cutoffs (75%) trigger sudden academic disqualifications without proactive recovery visibility. University ERP portals only report past percentage figures without calculating future schedules, leaving students unaware of how many sessions they can safely miss or must attend to remain eligible.
+          </p>
+        </div>
+
+        <!-- 02: Approach & System Design -->
+        <div class="cs-block">
+          <div class="cs-block-header">
+            <span class="cs-block-num">02</span>
+            <span class="cs-block-title">Technical Approach & Architecture</span>
+          </div>
+          <ul class="cs-feature-list">
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Automated timetable JSON ingestion:</strong> Ingests semester class schedules into a structured local timetable schema.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Safe leave buffer calculation and recovery calculus:</strong> Real-time arithmetic solving for exact permissible leaves and projecting consecutive attendance recovery targets to cross the mandatory 75% threshold.</span>
+            </li>
+            <li class="cs-feature-item">
+              <span class="cs-feature-bullet">▸</span>
+              <span class="cs-feature-text"><strong>Encrypted local SQLite storage:</strong> Runs completely client-side with zero account creation required, safeguarding academic schedules without third-party servers.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- 03: Retrospective / What I'd Do Differently -->
+        <div class="cs-block cs-retrospective-card">
+          <div class="cs-retrospective-title">
+            <span class="cs-retrospective-icon" aria-hidden="true">✦</span>
+            <span>Retrospective: What I'd Do Differently</span>
+          </div>
+          <blockquote class="cs-retrospective-quote">
+            "Build tolerant parser heuristics for non-standard university timetable formats upfront instead of assuming uniform tabular structures. Real-world academic schedules contain irregular slot rotations, unscheduled lab cancellations, and ad-hoc holiday makeup days that break brittle schedule parsers without proactive recovery buffers."
+          </blockquote>
+        </div>
+
+        <!-- Collapse Drawer Action -->
+        <button type="button" class="cs-close-drawer-btn" data-target-id="krama">
+          <span>▲ Collapse Deep-Dive</span>
+        </button>
+
+      </div>
+    </div>
+  </div>
+</template>
+
+<!-- ==========================================================================
+     3. COMPONENT CONTROLLER (JAVASCRIPT)
+     Exposes window.initCaseStudyDeepDives(content) per interfaces.md contract
+     ========================================================================== -->
+<script>
+(function() {
+  'use strict';
+
+  // Global In-Memory State per interfaces.md contract
+  window.__ACTIVE_CASE_STUDY = window.__ACTIVE_CASE_STUDY || {
+    currentId: null,
+    previousActiveElement: null
+  };
+
+  /**
+   * Helper to retrieve portfolio content safely across offline file:// protocols
+   */
+  function resolvePortfolioContent(content) {
+    if (content && content.ventures) return content;
+    if (window.__PORTFOLIO_CONTENT__ && window.__PORTFOLIO_CONTENT__.ventures) {
+      return window.__PORTFOLIO_CONTENT__;
+    }
+    const dataScript = document.getElementById('portfolio-content-data');
+    if (dataScript) {
+      try {
+        const parsed = JSON.parse(dataScript.textContent);
+        if (parsed && parsed.ventures) return parsed;
+      } catch (err) {
+        console.warn('[CaseStudy] Unable to parse #portfolio-content-data JSON', err);
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Global Init Function: window.initCaseStudyDeepDives(content)
+   * Mounts triggers and drawers into #ventures cards and binds accessible keyboard controls.
+   */
+  window.initCaseStudyDeepDives = function(content) {
+    const venturesSection = document.getElementById('ventures');
+    if (!venturesSection) {
+      return {
+        open: function() {},
+        close: function() {},
+        toggle: function() {},
+        collapseAll: function() {},
+        getState: function() { return null; }
+      };
+    }
+
+    const cards = venturesSection.querySelectorAll('.venture-card');
+    if (!cards || cards.length === 0) return;
+
+    // Supported venture mapping
+    const ventureMapping = [
+      { id: 'tathya', match: /tathya/i },
+      { id: 'stratum', match: /stratum/i },
+      { id: 'flow-state', match: /flow\s*state/i },
+      { id: 'krama', match: /krama/i }
+    ];
+
+    /**
+     * Mount DOM elements for each card if not already mounted
+     */
+    cards.forEach(function(card, index) {
+      // Determine venture id
+      let ventureId = card.getAttribute('data-venture-id');
+      if (!ventureId) {
+        const titleEl = card.querySelector('.venture-name');
+        const titleText = titleEl ? titleEl.textContent : '';
+        for (let i = 0; i < ventureMapping.length; i++) {
+          if (ventureMapping[i].match.test(titleText)) {
+            ventureId = ventureMapping[i].id;
+            break;
+          }
+        }
+        if (!ventureId && index < ventureMapping.length) {
+          ventureId = ventureMapping[index].id;
+        }
+        if (ventureId) {
+          card.setAttribute('data-venture-id', ventureId);
+        }
+      }
+
+      if (!ventureId) return;
+
+      // Check if trigger is already present
+      let trigger = card.querySelector('#cs-trigger-' + ventureId);
+      let drawer = card.querySelector('#cs-drawer-' + ventureId);
+
+      if (!trigger || !drawer) {
+        // Clone from template
+        const template = document.getElementById('cs-template-' + ventureId);
+        if (template && template.content) {
+          const clone = template.content.cloneNode(true);
+          const contactBtn = card.querySelector('.venture-btn');
+          if (contactBtn) {
+            card.insertBefore(clone, contactBtn);
+          } else {
+            card.appendChild(clone);
+          }
+          trigger = card.querySelector('#cs-trigger-' + ventureId);
+          drawer = card.querySelector('#cs-drawer-' + ventureId);
+        }
+      }
+
+      if (!trigger || !drawer) return;
+
+      // Attach idempotent listeners if not already bound
+      if (!trigger._csBound) {
+        trigger._csBound = true;
+
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleDrawer(ventureId);
+        });
+
+        trigger.addEventListener('keydown', function(e) {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            toggleDrawer(ventureId);
+          } else if (e.key === 'Escape') {
+            const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+            if (isExpanded) {
+              e.preventDefault();
+              closeDrawer(ventureId);
+            }
+          }
+        });
+      }
+
+      // Bottom collapse button listener
+      const closeBtn = drawer.querySelector('.cs-close-drawer-btn');
+      if (closeBtn && !closeBtn._csBound) {
+        closeBtn._csBound = true;
+        closeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          closeDrawer(ventureId);
+          trigger.focus();
+        });
+      }
+
+      // Escape key listener inside drawer
+      if (!drawer._csBound) {
+        drawer._csBound = true;
+        drawer.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            e.preventDefault();
+            closeDrawer(ventureId);
+            trigger.focus();
+          }
+        });
+      }
+    });
+
+    /**
+     * Opens a specific deep-dive drawer
+     */
+    function openDrawer(id) {
+      const card = venturesSection.querySelector('[data-venture-id="' + id + '"]');
+      if (!card) return;
+      const trigger = card.querySelector('#cs-trigger-' + id);
+      const drawer = card.querySelector('#cs-drawer-' + id);
+      if (!trigger || !drawer) return;
+
+      const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Store previous active element for accessibility
+      window.__ACTIVE_CASE_STUDY.previousActiveElement = document.activeElement;
+      window.__ACTIVE_CASE_STUDY.currentId = id;
+
+      trigger.setAttribute('aria-expanded', 'true');
+      const label = trigger.querySelector('.cs-trigger-label');
+      if (label) label.textContent = 'Collapse Deep-Dive';
+
+      drawer.hidden = false;
+
+      if (isReduced) {
+        drawer.classList.add('cs-open');
+      } else {
+        // Trigger reflow to ensure smooth grid animation
+        void drawer.offsetHeight;
+        drawer.classList.add('cs-open');
+      }
+
+      // Dispatch state notification
+      document.dispatchEvent(new CustomEvent('portfolio:case-study-toggle', {
+        detail: { id: id, open: true }
+      }));
+    }
+
+    /**
+     * Closes a specific deep-dive drawer
+     */
+    function closeDrawer(id) {
+      const card = venturesSection.querySelector('[data-venture-id="' + id + '"]');
+      if (!card) return;
+      const trigger = card.querySelector('#cs-trigger-' + id);
+      const drawer = card.querySelector('#cs-drawer-' + id);
+      if (!trigger || !drawer) return;
+
+      const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      trigger.setAttribute('aria-expanded', 'false');
+      const label = trigger.querySelector('.cs-trigger-label');
+      if (label) label.textContent = 'Architecture & Retrospective';
+
+      drawer.classList.remove('cs-open');
+
+      if (window.__ACTIVE_CASE_STUDY.currentId === id) {
+        window.__ACTIVE_CASE_STUDY.currentId = null;
+      }
+
+      if (isReduced) {
+        drawer.hidden = true;
+      } else {
+        const onEnd = function(e) {
+          if (e.target === drawer && e.propertyName === 'grid-template-rows') {
+            drawer.removeEventListener('transitionend', onEnd);
+            if (trigger.getAttribute('aria-expanded') === 'false') {
+              drawer.hidden = true;
+            }
+          }
+        };
+        drawer.addEventListener('transitionend', onEnd);
+        // Fallback timeout in case transitionend is cancelled
+        setTimeout(function() {
+          if (trigger.getAttribute('aria-expanded') === 'false') {
+            drawer.hidden = true;
+          }
+        }, 380);
+      }
+
+      // Dispatch state notification
+      document.dispatchEvent(new CustomEvent('portfolio:case-study-toggle', {
+        detail: { id: id, open: false }
+      }));
+    }
+
+    /**
+     * Toggles a drawer
+     */
+    function toggleDrawer(id) {
+      const card = venturesSection.querySelector('[data-venture-id="' + id + '"]');
+      if (!card) return;
+      const trigger = card.querySelector('#cs-trigger-' + id);
+      if (!trigger) return;
+      const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+      if (isExpanded) {
+        closeDrawer(id);
+      } else {
+        openDrawer(id);
+      }
+    }
+
+    /**
+     * Closes all drawers
+     */
+    function collapseAll() {
+      ventureMapping.forEach(function(item) {
+        closeDrawer(item.id);
+      });
+    }
+
+    // Return public controller API
+    return {
+      open: openDrawer,
+      close: closeDrawer,
+      toggle: toggleDrawer,
+      collapseAll: collapseAll,
+      getState: function(id) {
+        if (!id) return window.__ACTIVE_CASE_STUDY.currentId;
+        const trigger = venturesSection.querySelector('#cs-trigger-' + id);
+        return trigger ? trigger.getAttribute('aria-expanded') === 'true' : false;
+      }
+    };
+  };
+
+  // Safe auto-initialization when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initCaseStudyDeepDives();
+    });
+  } else {
+    window.initCaseStudyDeepDives();
+  }
+})();
+</script>

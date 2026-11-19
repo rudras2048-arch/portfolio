@@ -1,0 +1,34 @@
+# ============================================================================
+# .gitignore — Rudra Sharma Portfolio v2
+# ============================================================================
+
+# Node dependencies
+node_modules/
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Build logs and test artifacts
+*.log
+breaker_tests/
+reports/*.png
+reports/*.log
+
+# Temporary and scratch files
+*.tmp
+*.bak
+
+# Editor artifacts
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Environment files (never commit secrets)
+.env
+.env.*
+
+# Large raw media (original WhatsApp/uncompressed source files are in assets/ already)
+# dist/ is auto-generated — do not commit it
+dist/

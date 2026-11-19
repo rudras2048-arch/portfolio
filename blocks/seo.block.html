@@ -1,0 +1,711 @@
+<!-- ==========================================================================
+     DELIVERABLE: blocks/seo.block.html
+     DOMAIN: SEO & Structured Data Engine (Phase 1)
+     CONTRACT: tokens.md (prefix: .seo-) | interfaces.md (Component 1) | content.json
+     MOUNT POINT: Injected inside <head>, immediately preceding </head>
+     AUTHOR: @seo agent
+     ========================================================================== -->
+
+<!-- 
+  ==============================================================================
+  PART 1: STATIC HEAD MARKUP (Meta, OpenGraph, Twitter Cards, Schema.org JSON-LD)
+  ==============================================================================
+-->
+
+<!-- Primary Verification & Search Engine Metadata -->
+<meta name="description" content="Rudra Sharma, first-year B.Tech CS &amp; Data Science at Rishihood University (Class of 2030). 1st place champion at Ashoka Cash Rush and Builders' Bootcamp; top 5 national finalist at IIM Amritsar's CINE-SELL (~700 teams).">
+<meta name="author" content="Rudra Sharma">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0C0C0E">
+
+<!-- Canonical Link -->
+<!-- TODO: REPLACE_WITH_REAL_DOMAIN — Replace 'https://rudrasharma.dev/' with the production canonical URL upon deployment -->
+<link rel="canonical" href="https://rudrasharma.dev/">
+
+<!-- OpenGraph / Facebook Meta Tags -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Rudra Sharma Portfolio">
+<!-- TODO: REPLACE_WITH_REAL_DOMAIN — Replace 'https://rudrasharma.dev/' with the production domain -->
+<meta property="og:url" content="https://rudrasharma.dev/">
+<meta property="og:title" content="Rudra Sharma — First-Year B.Tech CS &amp; Data Science · Builder · Rishihood '30">
+<meta property="og:description" content="Curiosity starts the work. Execution proves it. First-year B.Tech CS &amp; Data Science at Rishihood University. 2 Championships, Top 5 National Finalist at IIM Amritsar (~700 teams).">
+<!-- TODO: REPLACE_WITH_REAL_DOMAIN — Replace 'https://rudrasharma.dev/' with the production domain -->
+<meta property="og:image" content="https://rudrasharma.dev/assets/rudra-pitch-portrait.jpg">
+<meta property="og:image:alt" content="Rudra Sharma pitching venture strategy">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Cards -->
+<meta name="twitter:card" content="summary_large_image">
+<!-- TODO: REPLACE_WITH_REAL_DOMAIN — Replace 'https://rudrasharma.dev/' with the production domain -->
+<meta name="twitter:url" content="https://rudrasharma.dev/">
+<meta name="twitter:title" content="Rudra Sharma — First-Year B.Tech CS &amp; Data Science · Builder · Rishihood '30">
+<meta name="twitter:description" content="Curiosity starts the work. Execution proves it. First-year B.Tech CS &amp; Data Science at Rishihood University. 2 Championships (Ashoka, Builders' Bootcamp), Top 5 National Finalist at IIM Amritsar (~700 teams).">
+<!-- TODO: REPLACE_WITH_REAL_DOMAIN — Replace 'https://rudrasharma.dev/' with the production domain -->
+<meta name="twitter:image" content="https://rudrasharma.dev/assets/rudra-pitch-portrait.jpg">
+<meta name="twitter:image:alt" content="Rudra Sharma pitching venture strategy">
+
+<!-- Schema.org JSON-LD Structured Data Engine -->
+<!-- TODO: REPLACE_WITH_REAL_DOMAIN — Update base URIs upon deployment -->
+<script type="application/ld+json" class="seo-schema-script">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://rudrasharma.dev/#website",
+      "url": "https://rudrasharma.dev/",
+      "name": "Rudra Sharma — Builder · Rishihood '30",
+      "description": "Single source of truth for Rudra Sharma portfolio v2 upgrade: Evidence, Not Noise.",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": "https://rudrasharma.dev/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://rudrasharma.dev/#person",
+      "name": "Rudra Sharma",
+      "givenName": "Rudra",
+      "familyName": "Sharma",
+      "jobTitle": "Undergraduate Builder & CS Researcher",
+      "headline": "First-Year B.Tech CS & Data Science · Builder · Rishihood '30",
+      "description": "Curiosity starts the work. Execution proves it. I build software systems, stress-test commercial models in competitive arenas, and develop ventures beyond the classroom.",
+      "url": "https://rudrasharma.dev/",
+      "email": "mailto:rudra.s26042@csds.rishihood.edu.in",
+      "image": "https://rudrasharma.dev/assets/rudra-pitch-portrait.jpg",
+      "sameAs": [
+        "https://www.linkedin.com/in/rudra-sharma-7bb78b410/"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Rishihood University"
+      },
+      "affiliation": {
+        "@type": "CollegeOrUniversity",
+        "name": "Rishihood University"
+      },
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "degree",
+          "name": "B.Tech CS & Data Science, Rishihood University Class of 2030",
+          "recognizedBy": {
+            "@type": "CollegeOrUniversity",
+            "name": "Rishihood University"
+          }
+        }
+      ],
+      "knowsAbout": [
+        "Computer Science",
+        "Data Science",
+        "Machine Learning & Dialect Evaluation",
+        "Market Simulation Systems",
+        "Offline-First Software Systems",
+        "Venture Strategy"
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://rudrasharma.dev/#competitions",
+      "name": "Verified Competition Accomplishments & Podiums",
+      "description": "Audited competition record and performance telemetry for Rudra Sharma across national and collegiate competitions.",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "1st Place Champion — Cash Rush Competition",
+          "item": {
+            "@type": "Award",
+            "name": "1st Place Champion — Cash Rush Competition",
+            "description": "Campus startup simulation competing under strict 120-minute time constraint with ₹300 seed capital. Fund grew 8.85x to ₹2,655, winning 1st place and ₹7,000 cash prize.",
+            "provider": {
+              "@type": "CollegeOrUniversity",
+              "name": "Ashoka University"
+            },
+            "location": "Ashoka University · Shatranj '26",
+            "startDate": "2026-10",
+            "url": "https://rudrasharma.dev/#competitions",
+            "image": "https://rudrasharma.dev/assets/cash-rush-ashoka.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Top 5 National Finalist — CINE-SELL Brand Challenge",
+          "item": {
+            "@type": "Award",
+            "name": "Top 5 National Finalist — CINE-SELL Brand Challenge",
+            "description": "National marketing festival challenge with ~700 team registrations competing against top postgraduate B-school cohorts. Team Lead for 'Team Big 4'.",
+            "provider": {
+              "@type": "CollegeOrUniversity",
+              "name": "IIM Amritsar"
+            },
+            "location": "IIM Amritsar · Marketing Fest '26",
+            "startDate": "2026-10",
+            "url": "https://rudrasharma.dev/#competitions",
+            "image": "https://rudrasharma.dev/assets/cinesell-iim-amritsar.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "#1 Overall Top Team — Builders' Bootcamp (8th Edition)",
+          "item": {
+            "@type": "Award",
+            "name": "#1 Overall Top Team — Builders' Bootcamp (8th Edition)",
+            "description": "7-day pre-college venture incubator covering AI, product design, psychology, and startup fundamentals. Shipped functional startup web prototype and won #1 overall on Demo Day.",
+            "provider": {
+              "@type": "CollegeOrUniversity",
+              "name": "Rishihood University"
+            },
+            "location": "Rishihood University · Demo Day '26",
+            "startDate": "2026-06",
+            "url": "https://rudrasharma.dev/#competitions",
+            "image": "https://rudrasharma.dev/assets/builders-bootcamp-demo-day.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "3rd Place Podium — Advertising & Brand Pitch",
+          "item": {
+            "@type": "Award",
+            "name": "3rd Place Podium — Advertising & Brand Pitch",
+            "description": "Offline brand pitch sprint representing Rishihood University at DCRUST Murthal E-Summit '26. Created 4-part campaign suite within 45 minutes, winning 3rd place podium and ₹1,100 cash prize.",
+            "provider": {
+              "@type": "CollegeOrUniversity",
+              "name": "DCRUST Murthal"
+            },
+            "location": "DCRUST Murthal · E-Summit '26",
+            "startDate": "2026-09",
+            "url": "https://rudrasharma.dev/#competitions",
+            "image": "https://rudrasharma.dev/assets/dcrust-podium-team.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://rudrasharma.dev/#ventures",
+      "name": "Ventures & Software Systems",
+      "description": "Software products, simulation engines, and AI research ventures initiated and engineered by Rudra Sharma.",
+      "numberOfItems": 4,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tathya (तथ्य)",
+          "item": {
+            "@type": "ResearchProject",
+            "name": "Tathya (तथ्य)",
+            "description": "Research into how LLMs fail on non-standard Indian dialects (Punjabi, Haryanvi, Bhojpuri), and a verification layer to catch those failures.",
+            "url": "https://rudrasharma.dev/#ventures"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Stratum",
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Stratum",
+            "applicationCategory": "BusinessApplication",
+            "description": "A live market simulation engine evaluating candidate decision speed and capital efficiency instead of static case studies.",
+            "url": "https://rudrasharma.dev/#ventures"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Flow State",
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Flow State",
+            "applicationCategory": "DeveloperApplication",
+            "operatingSystem": "Desktop OS",
+            "description": "A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.",
+            "url": "https://rudrasharma.dev/#ventures"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": "Krama (क्रम)",
+          "item": {
+            "@type": "SoftwareApplication",
+            "name": "Krama (क्रम)",
+            "applicationCategory": "EducationalApplication",
+            "description": "An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.",
+            "url": "https://rudrasharma.dev/#ventures"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<!-- 
+  ==============================================================================
+  PART 2: SCOPED CSS STYLES (.seo-)
+  ==============================================================================
+-->
+<style>
+/* ==========================================================================
+   SEO & SHARE SYSTEM STYLES (.seo-)
+   Strict prefix isolation obeying tokens.md
+   ========================================================================== */
+.seo-share-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 99999;
+  background: var(--bg-card, rgba(18, 18, 22, 0.9));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--accent, #A5BA28);
+  border-radius: 9999px;
+  padding: 10px 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-bone, #F5EFE6);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px var(--accent-glow, rgba(165, 186, 40, 0.28));
+  opacity: 0;
+  transform: translateY(14px) scale(0.96);
+  pointer-events: none;
+  transition: opacity 0.28s cubic-bezier(0.16, 1, 0.3, 1), transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.seo-share-toast.seo-share-toast--active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.seo-share-toast__beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent, #A5BA28);
+  box-shadow: 0 0 8px var(--accent-bright, #BEE024);
+  animation: seoPulseBlink 2s infinite ease-in-out;
+}
+
+.seo-share-toast__text {
+  letter-spacing: 0.04em;
+}
+
+.seo-meta-preview {
+  display: none; /* Debug and inspection utility */
+  background: var(--bg2, #131317);
+  border: 1px solid var(--rule, rgba(255, 255, 255, 0.08));
+  border-radius: var(--card-radius, 18px);
+  padding: 20px;
+  color: var(--text-muted, #9C988D);
+  font-family: var(--font-mono, monospace);
+  font-size: 0.85rem;
+}
+
+.seo-og-card {
+  display: none; /* Social card render container */
+  max-width: 600px;
+  border-radius: var(--card-radius, 18px);
+  background: var(--bg2, #131317);
+  border: 1px solid var(--rule, rgba(255, 255, 255, 0.08));
+  padding: 24px;
+}
+
+@keyframes seoPulseBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .seo-share-toast {
+    transition: none !important;
+    transform: none !important;
+  }
+  .seo-share-toast__beacon {
+    animation: none !important;
+  }
+}
+</style>
+
+<!-- 
+  ==============================================================================
+  PART 3: JAVASCRIPT SEO & SCHEMA INITIALIZER ENGINE
+  ==============================================================================
+-->
+<script>
+/**
+ * SEO & Schema.org Structured Data Engine (Phase 1)
+ * Idempotent runtime initialization & dynamic schema graph generation
+ */
+(function() {
+  'use strict';
+
+  // Fallback domain constant
+  // TODO: REPLACE_WITH_REAL_DOMAIN — Configure live production domain here
+  var FALLBACK_DOMAIN = 'https://rudrasharma.dev';
+
+  /**
+   * Safely retrieves portfolio data obeying the offline/file:// contract in interfaces.md
+   * @param {Object} [content] - Optional direct content object
+   * @returns {Object|null}
+   */
+  function getPortfolioData(content) {
+    if (content && typeof content === 'object') return content;
+    if (window.__PORTFOLIO_CONTENT__ && typeof window.__PORTFOLIO_CONTENT__ === 'object') {
+      return window.__PORTFOLIO_CONTENT__;
+    }
+    var el = document.getElementById('portfolio-content-data');
+    if (el && el.textContent) {
+      try {
+        return JSON.parse(el.textContent);
+      } catch (e) {
+        console.error('[SEO] Data parse error from #portfolio-content-data:', e);
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Determines current base domain safely across local file:// and web origins
+   * @returns {string}
+   */
+  function getBaseDomain() {
+    try {
+      if (window.location && window.location.origin && window.location.origin !== 'null' && !window.location.origin.startsWith('file:')) {
+        return window.location.origin;
+      }
+    } catch (e) {}
+    return FALLBACK_DOMAIN;
+  }
+
+  /**
+   * Updates or creates a <meta> element idempotently
+   * @param {string} attrName - 'name' or 'property'
+   * @param {string} attrVal - meta key
+   * @param {string} contentVal - meta value
+   */
+  function setOrCreateMeta(attrName, attrVal, contentVal) {
+    if (!contentVal) return;
+    var selector = 'meta[' + attrName + '="' + attrVal + '"]';
+    var el = document.querySelector(selector);
+    if (!el) {
+      el = document.createElement('meta');
+      el.setAttribute(attrName, attrVal);
+      document.head.appendChild(el);
+    }
+    el.setAttribute('content', contentVal);
+  }
+
+  /**
+   * Generates Schema.org JSON-LD object graph strictly using verified data
+   * @param {Object} data - Verified content.json structure
+   * @param {string} baseDomain - Canonical base URL
+   * @returns {Object} Valid Schema.org JSON-LD graph
+   */
+  function buildSchemaGraph(data, baseDomain) {
+    var personal = data.personal || {};
+    var hero = data.hero || {};
+    var comps = Array.isArray(data.competitions) ? data.competitions : [];
+    var ventures = Array.isArray(data.ventures) ? data.ventures : [];
+
+    var canonicalUrl = baseDomain.replace(/\/+$/, '') + '/';
+    var portraitUrl = (hero.portrait && hero.portrait.path)
+      ? canonicalUrl + hero.portrait.path.replace(/^\/+/, '')
+      : canonicalUrl + 'assets/rudra-pitch-portrait.jpg';
+
+    // 1. WebSite Node
+    var websiteNode = {
+      "@type": "WebSite",
+      "@id": canonicalUrl + "#website",
+      "url": canonicalUrl,
+      "name": personal.name ? (personal.name + " — Builder · Rishihood '30") : "Rudra Sharma — Builder · Rishihood '30",
+      "description": "Single source of truth for Rudra Sharma portfolio: Evidence, Not Noise.",
+      "inLanguage": "en-US",
+      "publisher": {
+        "@id": canonicalUrl + "#person"
+      }
+    };
+
+    // 2. Person Node
+    var personNode = {
+      "@type": "Person",
+      "@id": canonicalUrl + "#person",
+      "name": personal.name || "Rudra Sharma",
+      "givenName": personal.name ? personal.name.split(' ')[0] : "Rudra",
+      "familyName": personal.name ? personal.name.split(' ').slice(1).join(' ') : "Sharma",
+      "jobTitle": "Undergraduate Builder & CS Researcher",
+      "headline": personal.headline || "First-Year B.Tech CS & Data Science · Builder · Rishihood '30",
+      "description": personal.bio_statement || "Curiosity starts the work. Execution proves it.",
+      "url": canonicalUrl,
+      "image": portraitUrl,
+      "sameAs": []
+    };
+
+    if (personal.email && personal.email !== 'TBD') {
+      personNode.email = "mailto:" + personal.email;
+    }
+
+    if (personal.linkedin && personal.linkedin !== 'TBD') {
+      personNode.sameAs.push(personal.linkedin);
+    }
+
+    if (personal.institution && personal.institution !== 'TBD') {
+      personNode.alumniOf = {
+        "@type": "CollegeOrUniversity",
+        "name": personal.institution
+      };
+      personNode.affiliation = {
+        "@type": "CollegeOrUniversity",
+        "name": personal.institution
+      };
+    }
+
+    if (personal.degree && personal.degree !== 'TBD') {
+      personNode.hasCredential = [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "degree",
+          "name": personal.degree,
+          "recognizedBy": {
+            "@type": "CollegeOrUniversity",
+            "name": personal.institution || "Rishihood University"
+          }
+        }
+      ];
+    }
+
+    personNode.knowsAbout = [
+      "Computer Science",
+      "Data Science",
+      "Machine Learning & Dialect Evaluation",
+      "Market Simulation Systems",
+      "Offline-First Software Systems",
+      "Venture Strategy"
+    ];
+
+    // 3. ItemList for Verified Competitions
+    var competitionListElements = comps.map(function(comp, idx) {
+      var itemImg = comp.proof && comp.proof.url && comp.proof.url !== 'TBD'
+        ? canonicalUrl + comp.proof.url.replace(/^\/+/, '')
+        : undefined;
+
+      var awardObj = {
+        "@type": "Award",
+        "name": (comp.placement || "Podium") + " — " + comp.title,
+        "description": comp.field_context || comp.story && comp.story.result || comp.title,
+        "location": (comp.host || "") + (comp.event ? " · " + comp.event : ""),
+        "url": canonicalUrl + "#competitions"
+      };
+
+      if (comp.host && comp.host !== 'TBD') {
+        awardObj.provider = {
+          "@type": "CollegeOrUniversity",
+          "name": comp.host
+        };
+      }
+
+      if (comp.date && comp.date !== 'TBD') {
+        // Map e.g. "October 2026" or "June 2026"
+        var d = comp.date;
+        if (d.indexOf('October 2026') !== -1) awardObj.startDate = "2026-10";
+        else if (d.indexOf('June 2026') !== -1) awardObj.startDate = "2026-06";
+        else if (d.indexOf('September 2026') !== -1) awardObj.startDate = "2026-09";
+        else awardObj.startDate = d;
+      }
+
+      if (itemImg) {
+        awardObj.image = itemImg;
+      }
+
+      return {
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": (comp.placement || "Podium") + " — " + comp.title,
+        "item": awardObj
+      };
+    });
+
+    var competitionListNode = {
+      "@type": "ItemList",
+      "@id": canonicalUrl + "#competitions",
+      "name": "Verified Competition Accomplishments & Podiums",
+      "description": "Audited competition record and performance telemetry for Rudra Sharma across national and collegiate competitions.",
+      "numberOfItems": competitionListElements.length,
+      "itemListElement": competitionListElements
+    };
+
+    // 4. ItemList for Ventures & Systems
+    var ventureListElements = ventures.map(function(ven, idx) {
+      var isResearch = ven.category && ven.category.indexOf('RESEARCH') !== -1;
+      var itemType = isResearch ? "ResearchProject" : "SoftwareApplication";
+
+      var itemNode = {
+        "@type": itemType,
+        "name": ven.name,
+        "description": ven.thesis || ven.problem || ven.name,
+        "url": canonicalUrl + "#ventures"
+      };
+
+      if (!isResearch) {
+        if (ven.category && ven.category.indexOf('DESKTOP') !== -1) {
+          itemNode.applicationCategory = "DeveloperApplication";
+          itemNode.operatingSystem = "Desktop OS";
+        } else if (ven.category && ven.category.indexOf('SAAS') !== -1) {
+          itemNode.applicationCategory = "BusinessApplication";
+        } else {
+          itemNode.applicationCategory = "EducationalApplication";
+        }
+      }
+
+      return {
+        "@type": "ListItem",
+        "position": idx + 1,
+        "name": ven.name,
+        "item": itemNode
+      };
+    });
+
+    var ventureListNode = {
+      "@type": "ItemList",
+      "@id": canonicalUrl + "#ventures",
+      "name": "Ventures & Software Systems",
+      "description": "Software products, simulation engines, and AI research ventures initiated and engineered by Rudra Sharma.",
+      "numberOfItems": ventureListElements.length,
+      "itemListElement": ventureListElements
+    };
+
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        websiteNode,
+        personNode,
+        competitionListNode,
+        ventureListNode
+      ]
+    };
+  }
+
+  /**
+   * Main Initialization Function
+   * @param {Object} [content]
+   */
+  window.initSEOAndSchema = function(content) {
+    var data = getPortfolioData(content);
+    var baseDomain = getBaseDomain();
+    var canonicalUrl = baseDomain.replace(/\/+$/, '') + '/';
+
+    if (data) {
+      var personal = data.personal || {};
+      var hero = data.hero || {};
+      var portraitPath = (hero.portrait && hero.portrait.path)
+        ? hero.portrait.path.replace(/^\/+/, '')
+        : 'assets/rudra-pitch-portrait.jpg';
+      var portraitUrl = canonicalUrl + portraitPath;
+
+      var metaDesc = (personal.name || "Rudra Sharma") + ", " +
+        (personal.degree || "first-year B.Tech CS & Data Science at Rishihood University (Class of 2030)") +
+        ". 1st place champion at Ashoka Cash Rush and Builders' Bootcamp; top 5 national finalist at IIM Amritsar's CINE-SELL (~700 teams).";
+
+      var ogTitle = (personal.name || "Rudra Sharma") + " — " + (personal.headline || "Builder · Rishihood '30");
+      var ogDesc = personal.bio_statement ||
+        "Curiosity starts the work. Execution proves it. First-year B.Tech CS & Data Science at Rishihood University. 2 Championships, Top 5 National Finalist at IIM Amritsar (~700 teams).";
+
+      // Dynamically update standard metadata
+      setOrCreateMeta('name', 'description', metaDesc);
+      setOrCreateMeta('property', 'og:title', ogTitle);
+      setOrCreateMeta('property', 'og:description', ogDesc);
+      setOrCreateMeta('property', 'og:url', canonicalUrl);
+      setOrCreateMeta('property', 'og:image', portraitUrl);
+      setOrCreateMeta('name', 'twitter:title', ogTitle);
+      setOrCreateMeta('name', 'twitter:description', ogDesc);
+      setOrCreateMeta('name', 'twitter:image', portraitUrl);
+      setOrCreateMeta('name', 'twitter:url', canonicalUrl);
+
+      // Canonical link tag update
+      var canonicalEl = document.querySelector('link[rel="canonical"]');
+      if (canonicalEl) {
+        canonicalEl.setAttribute('href', canonicalUrl);
+      }
+
+      // Generate & inject or update Schema.org JSON-LD
+      var schemaObj = buildSchemaGraph(data, baseDomain);
+      var scriptEl = document.querySelector('script.seo-schema-script');
+      if (!scriptEl) {
+        scriptEl = document.createElement('script');
+        scriptEl.type = 'application/ld+json';
+        scriptEl.className = 'seo-schema-script';
+        document.head.appendChild(scriptEl);
+      }
+      scriptEl.textContent = JSON.stringify(schemaObj, null, 2);
+    }
+  };
+
+  /**
+   * Tactical Share & Clipboard helper with design-token-compliant HUD toast
+   * @param {Object} [options]
+   */
+  window.copyPortfolioShareLink = function(options) {
+    var opts = options || {};
+    var urlToCopy = opts.url || window.location.href;
+    var message = opts.message || '[LINK COPIED TO CLIPBOARD]';
+
+    function showToast() {
+      var toast = document.querySelector('.seo-share-toast');
+      if (!toast) {
+        toast = document.createElement('div');
+        toast.className = 'seo-share-toast';
+        toast.setAttribute('role', 'status');
+        toast.setAttribute('aria-live', 'polite');
+        toast.innerHTML = '<span class="seo-share-toast__beacon" aria-hidden="true"></span><span class="seo-share-toast__text"></span>';
+        document.body.appendChild(toast);
+      }
+      var textEl = toast.querySelector('.seo-share-toast__text');
+      if (textEl) textEl.textContent = message;
+
+      toast.classList.add('seo-share-toast--active');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(function() {
+        toast.classList.remove('seo-share-toast--active');
+      }, 3000);
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(urlToCopy).then(showToast).catch(function() {
+        showToast();
+      });
+    } else {
+      // Fallback
+      var ta = document.createElement('textarea');
+      ta.value = urlToCopy;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); } catch (e) {}
+      document.body.removeChild(ta);
+      showToast();
+    }
+  };
+
+  // Safe automatic execution on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initSEOAndSchema();
+    });
+  } else {
+    window.initSEOAndSchema();
+  }
+})();
+</script>

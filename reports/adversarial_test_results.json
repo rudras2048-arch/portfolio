@@ -1,0 +1,156 @@
+{
+  "c1_320px": {
+    "passed": true,
+    "metrics": {
+      "innerW": 435,
+      "scrollW": 435,
+      "bodyScrollW": 435,
+      "overflowPx": 0,
+      "overflowingElements": [
+        {
+          "tag": "div",
+          "id": "glow",
+          "className": null,
+          "width": 580,
+          "right": 450,
+          "overflowPx": 15,
+          "snippet": ""
+        },
+        {
+          "tag": "nav",
+          "id": "nav",
+          "className": null,
+          "width": 538.1,
+          "right": 486.5,
+          "overflowPx": 51.5,
+          "snippet": "RUDRA SHARMA\n      \n      \n        00Abo"
+        },
+        {
+          "tag": "button",
+          "id": "burger",
+          "className": null,
+          "width": 44,
+          "right": 461.5,
+          "overflowPx": 26.5,
+          "snippet": ""
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": null,
+          "width": 44,
+          "right": 461.5,
+          "overflowPx": 26.5,
+          "snippet": ""
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": null,
+          "width": 44,
+          "right": 461.5,
+          "overflowPx": 26.5,
+          "snippet": ""
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": null,
+          "width": 44,
+          "right": 461.5,
+          "overflowPx": 26.5,
+          "snippet": ""
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "cm",
+          "width": 393.3,
+          "right": 467.3,
+          "overflowPx": 32.3,
+          "snippet": "$ krama analyze --timetable schedule.jso"
+        }
+      ],
+      "illegibleTextCount": 0,
+      "illegibleTextSamples": [],
+      "totalTouchTargets": 30,
+      "tinyTargetsCount": 0,
+      "tinyTargets": []
+    },
+    "screenshot": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/reports/adversarial-320px.png"
+  },
+  "c2_reducedMotion": {
+    "passed": true,
+    "motionTelemetry": {
+      "reducedMatch": true,
+      "canvasActive": false,
+      "canvasReduced": true,
+      "canvasPausedClass": true,
+      "canvasStaticClass": true,
+      "rafCalls500ms": 0,
+      "cursorAnim": "none",
+      "cursorOpacity": "1",
+      "revealsCount": 32,
+      "revealsStatic": true,
+      "revealsFailing": []
+    },
+    "screenshot": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/reports/adversarial-reduced-motion.png"
+  },
+  "c3_noScript": {
+    "passed": true,
+    "domCheck": {
+      "bodyBackground": "rgb(12, 12, 14)",
+      "sectionStates": [
+        {
+          "selector": "#hero",
+          "found": true,
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "flex"
+        },
+        {
+          "selector": "#about",
+          "found": true,
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block"
+        },
+        {
+          "selector": "#competitions",
+          "found": true,
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block"
+        },
+        {
+          "selector": "#ventures",
+          "found": true,
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block"
+        },
+        {
+          "selector": "#contact",
+          "found": true,
+          "opacity": "1",
+          "visibility": "visible",
+          "display": "block"
+        }
+      ],
+      "zeroOpacityCount": 0,
+      "zeroOpacityElements": []
+    },
+    "screenshot": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/reports/adversarial-noscript.png"
+  },
+  "c4_slow3g": {
+    "passed": true,
+    "clsAndMetrics": {
+      "fcpMs": 656,
+      "domContentLoadedMs": 14699,
+      "clsScore": 0,
+      "shiftCount": 0,
+      "structuralIntegrity": true
+    },
+    "screenshot": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/reports/adversarial-slow3g.png"
+  }
+}

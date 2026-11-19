@@ -1,0 +1,13 @@
+{
+  "name": "rudra-sharma-portfolio",
+  "version": "2.0.0",
+  "description": "Production portfolio for Rudra Sharma — Evidence, Not Noise",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "build:share": "node -e \"require('./templates/share').generateShareArtifacts()\"",
+    "validate": "node scripts/build.js --validate-only",
+    "release-check": "node scripts/gates/release-check.js"
+  },
+  "author": "Rudra Sharma",
+  "license": "ISC"
+}

@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C0C0E" />
+      <stop offset="60%" stop-color="#111115" />
+      <stop offset="100%" stop-color="#16161C" />
+    </linearGradient>
+
+    <!-- Tactical Accent Gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A5BA28" />
+      <stop offset="100%" stop-color="#BEE024" />
+    </linearGradient>
+
+    <!-- Subtle Radial Glow -->
+    <radialGradient id="cornerGlow" cx="90%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#A5BA28" stop-opacity="0.16" />
+      <stop offset="50%" stop-color="#A5BA28" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#A5BA28" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="tacticalGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.03" />
+    </pattern>
+
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Menlo', 'Consolas', monospace; }
+      .font-display { font-family: 'Syne', -apple-system, sans-serif; font-weight: 700; }
+      .font-body { font-family: 'DM Sans', -apple-system, sans-serif; }
+      .font-serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; }
+    </style>
+  </defs>
+
+  <!-- Base Canvas -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+  <rect width="1200" height="630" fill="url(#tacticalGrid)" />
+  <rect width="1200" height="630" fill="url(#cornerGlow)" />
+
+  <!-- Outer Structural Hairline Border -->
+  <rect x="24" y="24" width="1152" height="582" rx="18" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1.5" />
+
+  <!-- Top Header / Navigation HUD -->
+  <g transform="translate(64, 60)">
+    <!-- Beacon Dot -->
+    <circle cx="6" cy="6" r="5" fill="#A5BA28" />
+    <circle cx="6" cy="6" r="9" fill="none" stroke="#A5BA28" stroke-opacity="0.35" stroke-width="1.5" />
+    
+    <text x="28" y="10" class="font-mono" font-size="12" font-weight="600" fill="#A5BA28" letter-spacing="2">
+      RUDRA SHARMA // EVIDENCE, NOT NOISE
+    </text>
+
+    <text x="1072" y="10" text-anchor="end" class="font-mono" font-size="12" font-weight="500" fill="#5C5A53" letter-spacing="1.5">
+      OVERVIEW // 00
+    </text>
+    <line x1="0" y1="28" x2="1072" y2="28" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+  </g>
+
+  <!-- Main Hero Block -->
+  <g transform="translate(64, 120)">
+    <!-- Kicker Eyebrow -->
+    <text x="0" y="20" class="font-mono" font-size="13" font-weight="600" fill="#9C988D" letter-spacing="2.5">
+      FIRST-YEAR B.TECH CS &amp; DATA SCIENCE · BUILDER · RISHIHOOD &apos;30
+    </text>
+
+    <!-- Main Title -->
+    <text x="0" y="80" class="font-display" font-size="52" fill="#F5EFE6" letter-spacing="-1">
+      Rudra Sharma
+    </text>
+
+    <!-- Subtitle / Statement -->
+    <text x="0" y="120" class="font-body" font-size="18" fill="#9C988D" font-weight="400">
+      Curiosity starts the work. Execution proves it. I build software systems, stress-test commercial models in competitive arenas, and develop ventures beyond the classroom.
+    </text>
+  </g>
+
+  <!-- Section-Specific Content Injection -->
+  <g transform="translate(64, 275)">
+    
+    <g transform="translate(0, 0)">
+      <rect width="254" height="235" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+      <rect x="0" y="0" width="254" height="4" fill="url(#accentGrad)" opacity="0.8" rx="2" />
+      <text x="24" y="65" class="font-mono" font-size="38" font-weight="700" fill="#F5EFE6">02</text>
+      <text x="24" y="105" class="font-mono" font-size="14" font-weight="600" fill="#A5BA28" letter-spacing="1">CHAMPIONSHIPS</text>
+      <text x="24" y="145" class="font-body" font-size="14" fill="#9C988D">Ashoka &amp; Builders&apos; Bootcamp</text>
+      <g transform="translate(24, 185)">
+        <rect width="90" height="24" rx="12" fill="#A5BA28" fill-opacity="0.12" stroke="#A5BA28" stroke-opacity="0.3" stroke-width="1" />
+        <text x="45" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="600" fill="#A5BA28">AUDITED</text>
+      </g>
+    </g>
+    <g transform="translate(274, 0)">
+      <rect width="254" height="235" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+      <rect x="0" y="0" width="254" height="4" fill="url(#accentGrad)" opacity="0.8" rx="2" />
+      <text x="24" y="65" class="font-mono" font-size="38" font-weight="700" fill="#F5EFE6">TOP 5</text>
+      <text x="24" y="105" class="font-mono" font-size="14" font-weight="600" fill="#A5BA28" letter-spacing="1">NATIONAL FINALIST</text>
+      <text x="24" y="145" class="font-body" font-size="14" fill="#9C988D">IIM Amritsar · ~700 teams</text>
+      <g transform="translate(24, 185)">
+        <rect width="90" height="24" rx="12" fill="#A5BA28" fill-opacity="0.12" stroke="#A5BA28" stroke-opacity="0.3" stroke-width="1" />
+        <text x="45" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="600" fill="#A5BA28">AUDITED</text>
+      </g>
+    </g>
+    <g transform="translate(548, 0)">
+      <rect width="254" height="235" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+      <rect x="0" y="0" width="254" height="4" fill="url(#accentGrad)" opacity="0.8" rx="2" />
+      <text x="24" y="65" class="font-mono" font-size="38" font-weight="700" fill="#F5EFE6">03</text>
+      <text x="24" y="105" class="font-mono" font-size="14" font-weight="600" fill="#A5BA28" letter-spacing="1">PODIUMS</text>
+      <text x="24" y="145" class="font-body" font-size="14" fill="#9C988D">Jun–Oct 2026</text>
+      <g transform="translate(24, 185)">
+        <rect width="90" height="24" rx="12" fill="#A5BA28" fill-opacity="0.12" stroke="#A5BA28" stroke-opacity="0.3" stroke-width="1" />
+        <text x="45" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="600" fill="#A5BA28">AUDITED</text>
+      </g>
+    </g>
+    <g transform="translate(822, 0)">
+      <rect width="254" height="235" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+      <rect x="0" y="0" width="254" height="4" fill="url(#accentGrad)" opacity="0.8" rx="2" />
+      <text x="24" y="65" class="font-mono" font-size="38" font-weight="700" fill="#F5EFE6">04</text>
+      <text x="24" y="105" class="font-mono" font-size="14" font-weight="600" fill="#A5BA28" letter-spacing="1">PROJECTS</text>
+      <text x="24" y="145" class="font-body" font-size="14" fill="#9C988D">Tathya · Stratum · Flow State · Krama</text>
+      <g transform="translate(24, 185)">
+        <rect width="90" height="24" rx="12" fill="#A5BA28" fill-opacity="0.12" stroke="#A5BA28" stroke-opacity="0.3" stroke-width="1" />
+        <text x="45" y="16" text-anchor="middle" class="font-mono" font-size="10" font-weight="600" fill="#A5BA28">AUDITED</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Metadata / Watermark Footer -->
+  <g transform="translate(64, 565)">
+    <line x1="0" y1="0" x2="1072" y2="0" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+    <text x="0" y="24" class="font-mono" font-size="12" font-weight="600" fill="#A5BA28" letter-spacing="1.5">
+      2 CHAMPIONSHIPS · TOP 5 NATIONAL FINALIST · 4 VENTURES
+    </text>
+    <text x="1072" y="24" text-anchor="end" class="font-mono" font-size="12" fill="#5C5A53">
+      B.Tech CS &amp; Data Science · Rishihood University
+    </text>
+  </g>
+</svg>

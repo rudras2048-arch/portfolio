@@ -1,0 +1,246 @@
+{
+  "timestamp": "2026-11-19T02:29:23.751Z",
+  "viewports": {
+    "320px": {
+      "name": "Ultra-Narrow Mobile (320x568)",
+      "width": 320,
+      "height": 568,
+      "metrics": {
+        "innerWidth": 435,
+        "scrollWidth": 435,
+        "bodyScrollWidth": 435,
+        "hasOverflow": false,
+        "overflowPx": 0,
+        "overflowingElementsCount": 7,
+        "topOverflowing": [
+          {
+            "tag": "div",
+            "id": "glow",
+            "className": null,
+            "width": 580,
+            "right": 450,
+            "overflowPx": 15,
+            "snippet": ""
+          },
+          {
+            "tag": "nav",
+            "id": "nav",
+            "className": null,
+            "width": 538.1,
+            "right": 486.5,
+            "overflowPx": 51.5,
+            "snippet": "RUDRA SHARMA\n      \n      \n        00Abo"
+          },
+          {
+            "tag": "button",
+            "id": "burger",
+            "className": null,
+            "width": 44,
+            "right": 461.5,
+            "overflowPx": 26.5,
+            "snippet": ""
+          },
+          {
+            "tag": "span",
+            "id": null,
+            "className": null,
+            "width": 44,
+            "right": 461.5,
+            "overflowPx": 26.5,
+            "snippet": ""
+          },
+          {
+            "tag": "span",
+            "id": null,
+            "className": null,
+            "width": 44,
+            "right": 461.5,
+            "overflowPx": 26.5,
+            "snippet": ""
+          }
+        ]
+      },
+      "screenshot": "viewport-320px.png",
+      "passed": true
+    },
+    "768px": {
+      "name": "Tablet Portrait (768x1024)",
+      "width": 768,
+      "height": 1024,
+      "metrics": {
+        "innerWidth": 768,
+        "scrollWidth": 768,
+        "bodyScrollWidth": 768,
+        "hasOverflow": false,
+        "overflowPx": 0,
+        "overflowingElementsCount": 2,
+        "topOverflowing": [
+          {
+            "tag": "span",
+            "id": null,
+            "className": "cm",
+            "width": 358.8,
+            "right": 806.8,
+            "overflowPx": 38.8,
+            "snippet": "$ stratum simulate --scenario \"cpm_volat"
+          },
+          {
+            "tag": "span",
+            "id": null,
+            "className": "cm",
+            "width": 393.3,
+            "right": 841.3,
+            "overflowPx": 73.3,
+            "snippet": "$ krama analyze --timetable schedule.jso"
+          }
+        ]
+      },
+      "screenshot": "viewport-768px.png",
+      "passed": true
+    },
+    "1440px": {
+      "name": "Desktop Large (1440x900)",
+      "width": 1440,
+      "height": 900,
+      "metrics": {
+        "innerWidth": 1440,
+        "scrollWidth": 1440,
+        "bodyScrollWidth": 1440,
+        "hasOverflow": false,
+        "overflowPx": 0,
+        "overflowingElementsCount": 0,
+        "topOverflowing": []
+      },
+      "screenshot": "viewport-1440px.png",
+      "passed": true
+    }
+  },
+  "interactions": [
+    {
+      "step": "tab_sequence",
+      "description": "Sequential tab navigation across header and navigation links",
+      "items": [
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "nav-brand",
+          "text": "RUDRA SHARMA",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "ab-nav-link",
+          "text": "00ABOUT",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "",
+          "text": "01RECORD",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "",
+          "text": "02VENTURES",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "",
+          "text": "03CONTACT",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "BUTTON",
+          "id": "rm-toggle",
+          "className": "rm-toggle-btn",
+          "text": "EXECUTIVE\nRECRUITER MODE\n30S V",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "nav-action-pill",
+          "text": "LINKEDIN ↗",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "BUTTON",
+          "id": "burger",
+          "className": "",
+          "text": "",
+          "ariaLabel": "Toggle Menu"
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "btn-solid",
+          "text": "VIEW FIELD RECORD\n↓",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "btn-outline",
+          "text": "LINKEDIN NETWORK\n↗",
+          "ariaLabel": null
+        }
+      ]
+    },
+    {
+      "step": "recruiter_mode_keyboard",
+      "action": "Press Enter on #rm-toggle to expand, then press Escape to close",
+      "stateBefore": {
+        "isHidden": true,
+        "ariaHidden": "true"
+      },
+      "stateOpen": {
+        "isHidden": false,
+        "ariaHidden": "false",
+        "expanded": true
+      },
+      "stateClosed": {
+        "isHidden": true,
+        "ariaHidden": "true",
+        "closed": true
+      },
+      "screenshot": "recruiter-mode-open.png",
+      "passed": true
+    },
+    {
+      "step": "cs_modal_keyboard",
+      "triggerFound": true,
+      "stateOpen": {
+        "isOpen": true,
+        "activeTag": "BUTTON",
+        "activeId": "cs-modal-close",
+        "activeClass": "cs-modal__close"
+      },
+      "stateClosed": {
+        "isOpen": false,
+        "activeTag": "BUTTON",
+        "activeId": "",
+        "activeClass": "cs-deepdive-btn fr-deepdive-btn"
+      },
+      "screenshot": "cs-modal-open.png",
+      "passed": true
+    },
+    {
+      "step": "fr_lightbox_keyboard",
+      "triggerFound": true,
+      "stateOpen": {
+        "isOpen": true
+      },
+      "stateClosed": {
+        "isOpen": false
+      },
+      "screenshot": "fr-lightbox-open.png",
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,600 @@
+{
+  "$schema": "./schema.json",
+  "meta": {
+    "version": "2.0.0",
+    "last_updated": "2026-11-17",
+    "theme": "EVIDENCE, NOT NOISE",
+    "description": "Single source of truth for Rudra Sharma portfolio v2 upgrade.",
+    "canonical_url": "https://rudrasharma.dev"
+  },
+  "personal": {
+    "name": "Rudra Sharma",
+    "headline": "First-Year B.Tech CS & Data Science · Builder · Rishihood '30",
+    "bio_statement": "Curiosity starts the work. Execution proves it. I build software systems, stress-test commercial models in competitive arenas, and develop ventures beyond the classroom.",
+    "degree": "B.Tech CS & Data Science, Rishihood University Class of 2030",
+    "institution": "Rishihood University",
+    "class_year": "2030",
+    "current_status": "First-Year Undergraduate",
+    "email": "rudra.s26042@csds.rishihood.edu.in",
+    "linkedin": "https://www.linkedin.com/in/rudra-sharma-7bb78b410/",
+    "resume_url": "assets/rudra-sharma-resume.pdf",
+    "github": "TBD",
+    "twitter": "TBD",
+    "location": "TBD"
+  },
+  "hero": {
+    "kicker": "First-Year B.Tech CS & Data Science · Builder · Rishihood '30",
+    "headline_first": "Rudra",
+    "headline_last": "Sharma",
+    "terminal_prompt": "~/whoami $",
+    "typewriter_phrases": [
+      "researching how llms fail on punjabi, haryanvi & bhojpuri",
+      "1st place cash rush winner at ashoka university",
+      "top 5 national finalist at iim amritsar (~700 teams)",
+      "1st place winner at builders' bootcamp demo day",
+      "working on stratum, flow state and krama"
+    ],
+    "statement": "“Curiosity starts the work. Execution proves it. I build software systems, stress-test commercial models in competitive arenas, and develop ventures beyond the classroom.”",
+    "portrait": {
+      "path": "assets/rudra-pitch-portrait.jpg",
+      "alt": "Rudra Sharma pitching venture strategy",
+      "status": "linked"
+    },
+    "stats": [
+      {
+        "id": "championships",
+        "value": "02",
+        "count": 2,
+        "label": "Championships",
+        "description": "Ashoka & Builders' Bootcamp",
+        "verified": true
+      },
+      {
+        "id": "national_finalist",
+        "value": "TOP 5",
+        "count": null,
+        "label": "National Finalist",
+        "description": "IIM Amritsar · ~700 teams",
+        "verified": true
+      },
+      {
+        "id": "podiums",
+        "value": "03",
+        "count": 3,
+        "label": "Podiums",
+        "description": "Jun–Oct 2026",
+        "verified": true
+      },
+      {
+        "id": "projects",
+        "value": "04",
+        "count": 4,
+        "label": "Projects",
+        "description": "Tathya · Stratum · Flow State · Krama",
+        "verified": true
+      }
+    ]
+  },
+  "competitions": [
+    {
+      "id": "cash-rush",
+      "title": "Cash Rush Competition",
+      "host": "Ashoka University",
+      "event": "Shatranj '26",
+      "beacon": "Ashoka University · Shatranj '26",
+      "date": "October 2026",
+      "category": "1st-place",
+      "placement": "1st Place Champion",
+      "trophy_pill": "🏆 1st Place Champion",
+      "tags": [
+        "#1 Position Leaderboard",
+        "₹7,000 Cash Prize",
+        "Fund grew 8.85x in 2 hrs",
+        "4-Member Squad"
+      ],
+      "field_context": "Campus startup simulation competing under strict 120-minute time constraint with ₹300 seed capital.",
+      "financials": {
+        "starting_capital_inr": 300,
+        "ending_fund_inr": 2655,
+        "multiplier": "8.85x",
+        "time_window_minutes": 120,
+        "total_costs_inr": 45,
+        "cost_items": "paper and a marker",
+        "total_service_revenue_inr": 2400,
+        "cash_prize_inr": 7000,
+        "services_sold_count": 3,
+        "service_breakdown": [
+          {
+            "name": "Mind-reading website",
+            "revenue_inr": 1050,
+            "mechanism": "Interactive website ending with QR code redirecting to LinkedIn as a curiosity hook"
+          },
+          {
+            "name": "Campus quiz challenge",
+            "revenue_inr": 550,
+            "mechanism": "Winners got paid, losers paid the squad"
+          },
+          {
+            "name": "On-the-spot caricatures",
+            "revenue_inr": 800,
+            "mechanism": "Zero-inventory live drawing service"
+          }
+        ]
+      },
+      "team": {
+        "squad_name": "TBD",
+        "size": 4,
+        "rudra_role": "Co-Strategist & Digital Experience Lead",
+        "members": [
+          "Rudra Sharma",
+          "Raj Khatri",
+          "Sahaj Choukhani",
+          "Tripti Kaushik"
+        ]
+      },
+      "deliverables": [
+        "Interactive mind-reading web curiosity funnel",
+        "Monetized live campus quiz mechanic",
+        "Zero-inventory live caricature production"
+      ],
+      "story": {
+        "setup": "Teams got ₹300 and 120 minutes to grow it on campus however they could.",
+        "key_decision": "We sold experiences, not goods: a mind-reading website that ended on a QR to LinkedIn as a curiosity hook, a quiz challenge where winners got paid and losers paid us, and on-the-spot caricatures. No inventory, so almost every rupee earned was margin. Total costs were ₹45 (paper and a marker).",
+        "result": "Services brought in ₹2,400 (₹1,050 mind-reading, ₹550 quiz, ₹800 caricatures). The fund ended at ₹2,655: 1st place and the ₹7,000 prize.",
+        "takeaway": "Sell what costs nothing to produce. With 120 minutes on the clock, experiences beat inventory."
+      },
+      "telemetry": [
+        {
+          "label": "Ending Fund",
+          "value": "₹2,655",
+          "accent": true
+        },
+        {
+          "label": "Costs",
+          "value": "₹45",
+          "accent": false
+        },
+        {
+          "label": "Services Sold",
+          "value": "3",
+          "accent": false
+        }
+      ],
+      "proof": {
+        "status": "linked",
+        "url": "assets/cash-rush-ashoka.jpg",
+        "alt": "Ashoka Cash Rush Championship Team celebrating",
+        "caption": "Cash Rush Championship Team · Ashoka University",
+        "stamp": "Field Evidence // Oct 2026",
+        "additional_assets": []
+      },
+      "evidence_url": "assets/cash-rush-ashoka.jpg"
+    },
+    {
+      "id": "cinesell",
+      "title": "CINE-SELL Brand Challenge",
+      "host": "IIM Amritsar",
+      "event": "Marketing Fest '26",
+      "beacon": "IIM Amritsar · Marketing Fest '26",
+      "date": "October 2026",
+      "category": "national",
+      "placement": "Top 5 National Finalist",
+      "trophy_pill": "⚡ Top 5 National Finalist",
+      "tags": [
+        "Top 5 Nationally",
+        "~700 Team Registrations",
+        "Team Lead · \"Team Big 4\"",
+        "First-year undergrad team"
+      ],
+      "field_context": "Competing against MBA cohorts from top B-schools across India.",
+      "financials": {
+        "starting_capital_inr": "TBD",
+        "ending_fund_inr": "TBD",
+        "multiplier": "TBD",
+        "time_window_minutes": "TBD",
+        "total_costs_inr": "TBD",
+        "cost_items": "TBD",
+        "total_service_revenue_inr": "TBD",
+        "cash_prize_inr": "TBD",
+        "services_sold_count": "TBD",
+        "service_breakdown": []
+      },
+      "team": {
+        "squad_name": "Team Big 4",
+        "size": 4,
+        "rudra_role": "Team Lead",
+        "members": [
+          "Rudra Sharma (Lead)",
+          "Raj Khatri",
+          "Sahaj Choukhani",
+          "Tripti Kaushik"
+        ]
+      },
+      "deliverables": [
+        "Market research dossier on telephone product positioning",
+        "Promotional video reel directed by Rudra",
+        "Live stage commercial skit featuring Bollywood character mimicry"
+      ],
+      "story": {
+        "setup": "A national marketing fest challenge with ~700 registered teams where squads had to sell a telephone using Bollywood-inspired characters.",
+        "key_decision": "Led \"Team Big 4\" as a first-year undergrad Team Lead—coordinating market research, directing the promotional reel, and anchoring Sahaj's character mimicry act with our commercial pitch.",
+        "result": "Cleared screening rounds to finish in the Top 5 National Finalists, ranking in the top 5 of ~700 teams, most of them postgraduate B-school cohorts.",
+        "takeaway": "TBD"
+      },
+      "telemetry": [
+        {
+          "label": "Deliverables",
+          "value": "Reel & Stage Skit",
+          "accent": false
+        },
+        {
+          "label": "Role",
+          "value": "Team Lead",
+          "accent": false
+        },
+        {
+          "label": "Field",
+          "value": "MBA & UG Cohorts",
+          "accent": true
+        }
+      ],
+      "proof": {
+        "status": "linked",
+        "url": "assets/cinesell-iim-amritsar.jpg",
+        "alt": "CINE-SELL Strategy Session at IIM Amritsar",
+        "caption": "CINE-SELL Strategy & Modeling Sprint · IIM Amritsar",
+        "stamp": "Field Evidence // Oct 2026",
+        "additional_assets": [
+          "assets/cinesell-team-big4.jpg"
+        ]
+      },
+      "evidence_url": "assets/cinesell-iim-amritsar.jpg"
+    },
+    {
+      "id": "builders-bootcamp",
+      "title": "Builders' Bootcamp (8th Edition)",
+      "host": "Rishihood University",
+      "event": "Demo Day '26",
+      "beacon": "Rishihood University · Demo Day '26",
+      "date": "June 2026",
+      "category": "1st-place",
+      "placement": "#1 Overall Top Team",
+      "trophy_pill": "🥇 #1 Overall Top Team",
+      "tags": [
+        "#1 Overall Winning Team",
+        "7-Day Venture Incubator",
+        "Working Prototype Shipped",
+        "Live Demo Day Pitch"
+      ],
+      "field_context": "Pre-college venture incubator covering AI, product design, psychology, and startup fundamentals.",
+      "financials": {
+        "starting_capital_inr": "TBD",
+        "ending_fund_inr": "TBD",
+        "multiplier": "TBD",
+        "time_window_minutes": "TBD",
+        "total_costs_inr": "TBD",
+        "cost_items": "TBD",
+        "total_service_revenue_inr": "TBD",
+        "cash_prize_inr": "TBD",
+        "services_sold_count": "TBD",
+        "service_breakdown": []
+      },
+      "team": {
+        "squad_name": "TBD",
+        "size": "TBD",
+        "rudra_role": "Venture Builder & Pitch Presenter",
+        "members": [
+          "Rudra Sharma",
+          "TBD"
+        ]
+      },
+      "deliverables": [
+        "Functional startup web prototype built from scratch within 7 days",
+        "Demo Day pitch deck presented to industry jury"
+      ],
+      "story": {
+        "setup": "Selected for a 7-day pre-college venture sprint at Rishihood University covering AI, product design, psychology, and startup fundamentals.",
+        "key_decision": "Built a functional startup web prototype from scratch during the 7 days and put it in front of people rather than stopping at slide decks.",
+        "result": "Pitched live on Demo Day and finished as the #1 Overall Winning Team across all participating cohorts.",
+        "takeaway": "TBD"
+      },
+      "telemetry": [
+        {
+          "label": "Edition",
+          "value": "8th Edition",
+          "accent": false
+        },
+        {
+          "label": "Tracks",
+          "value": "AI, Design & Psych",
+          "accent": false
+        },
+        {
+          "label": "Evaluation",
+          "value": "Demo Day Jury",
+          "accent": true
+        }
+      ],
+      "proof": {
+        "status": "linked",
+        "url": "assets/builders-bootcamp-demo-day.jpg",
+        "alt": "Builders Bootcamp Cohort Rishihood University",
+        "caption": "1st Place Winning Cohort · Builders' Bootcamp Demo Day",
+        "stamp": "Field Evidence // June 2026",
+        "additional_assets": [
+          "assets/builders-bootcamp-cohort.jpg"
+        ]
+      },
+      "evidence_url": "assets/builders-bootcamp-demo-day.jpg"
+    },
+    {
+      "id": "dcrust-brand-pitch",
+      "title": "Advertising & Brand Pitch",
+      "host": "DCRUST Murthal",
+      "event": "E-Summit '26",
+      "beacon": "DCRUST Murthal · E-Summit '26",
+      "date": "September 2026",
+      "category": "pitch",
+      "placement": "3rd Place Podium",
+      "trophy_pill": "🥉 3rd Place Podium",
+      "tags": [
+        "3rd Position Podium",
+        "45-Minute Prep Sprint",
+        "₹1,100 Cash Prize",
+        "4-Part Campaign Suite"
+      ],
+      "field_context": "Offline university brand pitch sprint representing Rishihood University.",
+      "financials": {
+        "starting_capital_inr": "TBD",
+        "ending_fund_inr": "TBD",
+        "multiplier": "TBD",
+        "time_window_minutes": 45,
+        "total_costs_inr": "TBD",
+        "cost_items": "TBD",
+        "total_service_revenue_inr": "TBD",
+        "cash_prize_inr": 1100,
+        "services_sold_count": "TBD",
+        "service_breakdown": []
+      },
+      "team": {
+        "squad_name": "TBD",
+        "size": 4,
+        "rudra_role": "Pitch Presenter & Campaign Strategist",
+        "members": [
+          "Rudra Sharma",
+          "Raj Khatri",
+          "Sahaj Choukhani",
+          "Tripti Kaushik"
+        ]
+      },
+      "deliverables": [
+        "Promotional campaign poster",
+        "Short filmed video advertisement",
+        "Live theatrical comedy skit",
+        "Stage product sales pitch"
+      ],
+      "story": {
+        "setup": "Represented Rishihood University offline at DCRUST E-Summit '26. Teams were assigned a consumer soap brand and given 45 minutes to build a full campaign from scratch.",
+        "key_decision": "Divided the 45-minute window across four concrete deliverables—a promotional poster, a short filmed ad, a live skit, and a product pitch for the stage round.",
+        "result": "Finished 3rd Position Podium overall and won the ₹1,100 cash prize.",
+        "takeaway": "TBD"
+      },
+      "telemetry": [
+        {
+          "label": "Assigned Brief",
+          "value": "Soap FMCG Brand",
+          "accent": false
+        },
+        {
+          "label": "Deliverables",
+          "value": "Poster, Video, Skit, Pitch",
+          "accent": false
+        },
+        {
+          "label": "Format",
+          "value": "Live Stage Pitch",
+          "accent": true
+        }
+      ],
+      "proof": {
+        "status": "linked",
+        "url": "assets/dcrust-podium-team.jpg",
+        "alt": "DCRUST E-Summit Podium Team",
+        "caption": "3rd Place Podium Finish · E-Summit DCRUST '26 (Murthal)",
+        "stamp": "Field Evidence // Sept 2026",
+        "additional_assets": [
+          "assets/dcrust-esummit-podium.jpg",
+          "assets/dcrust-stage-pitch.jpg"
+        ]
+      },
+      "evidence_url": "assets/dcrust-podium-team.jpg"
+    }
+  ],
+  "ventures": [
+    {
+      "id": "tathya",
+      "name": "Tathya (तथ्य)",
+      "category": "VENTURE // EARLY RESEARCH",
+      "badge": "RESEARCH PHASE",
+      "status": "idea",
+      "status_detail": "Early research · eval set in progress",
+      "thesis": "Research into how LLMs fail on non-standard Indian dialects (Punjabi, Haryanvi, Bhojpuri), and a verification layer to catch those failures.",
+      "problem": "LLMs perform poorly on regional dialects due to token fragmentation.",
+      "features": [
+        "Dialect token fragmentation analysis",
+        "Custom evaluation benchmark for Haryanvi, Punjabi, and Bhojpuri",
+        "Verification layer for government schemes and regional queries"
+      ],
+      "terminal_preview": {
+        "filename": "tathya-verify.sh",
+        "badge": "SIMULATED PREVIEW",
+        "command": "tathya eval --lang haryanvi --set gov-schemes",
+        "lines": [
+          {
+            "type": "comment",
+            "text": "$ tathya eval --lang haryanvi --set gov-schemes"
+          },
+          {
+            "type": "status",
+            "prefix": "[STATUS]",
+            "text": "Research phase · building Haryanvi / Punjabi / Bhojpuri eval set"
+          },
+          {
+            "type": "next",
+            "prefix": "[NEXT]",
+            "text": "Publish LLM failure analysis"
+          }
+        ]
+      },
+      "proof_asset": {
+        "status": "unlinked",
+        "url": "TBD",
+        "alt": "TBD"
+      },
+      "action_cta": {
+        "label": "Talk to me about Tathya",
+        "target": "#contact"
+      },
+      "evidence_url": null
+    },
+    {
+      "id": "stratum",
+      "name": "Stratum",
+      "category": "SAAS PLATFORM // SIMULATION",
+      "badge": "CONCEPT STAGE",
+      "status": "idea",
+      "status_detail": "Concept and pitch stage · sandbox design in progress",
+      "thesis": "A live market simulation engine evaluating candidate decision speed and capital efficiency instead of static case studies.",
+      "problem": "Hiring case studies are easily generated using LLMs without testing live judgment.",
+      "features": [
+        "Dynamic CPM volatility shock scenarios",
+        "Capital velocity and margin yield telemetry",
+        "Real-time decision latency scoring"
+      ],
+      "terminal_preview": {
+        "filename": "stratum-engine.py",
+        "badge": "SIMULATED PREVIEW",
+        "command": "stratum simulate --scenario \"cpm_volatility_shock\"",
+        "lines": [
+          {
+            "type": "comment",
+            "text": "$ stratum simulate --scenario \"cpm_volatility_shock\""
+          },
+          {
+            "type": "scenario",
+            "prefix": "[SCENARIO]",
+            "text": "Ad CPMs spike 40% mid-quarter. Reallocate budget to protect margin."
+          },
+          {
+            "type": "score",
+            "prefix": "[SCORED ON]",
+            "text": "capital velocity · margin yield · decision speed"
+          }
+        ]
+      },
+      "proof_asset": {
+        "status": "unlinked",
+        "url": "assets/stratum-preview.png",
+        "alt": "Stratum simulation engine preview"
+      },
+      "action_cta": {
+        "label": "Talk to me about Stratum",
+        "target": "#contact"
+      },
+      "evidence_url": "assets/stratum-preview.png"
+    },
+    {
+      "id": "flow-state",
+      "name": "Flow State",
+      "category": "DESKTOP OS // FOCUS",
+      "badge": "LOCAL BUILD",
+      "status": "building",
+      "status_detail": "Local build · Zero-OAuth sync & 16-bit procedural audio synthesis",
+      "thesis": "A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.",
+      "problem": "Cloud telemetry leaks and context switching fragment developer focus.",
+      "features": [
+        "Zero-OAuth RFC 5545 calendar synchronization",
+        "16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files)",
+        "Weekly focus receipts with 30-day productivity telemetry",
+        "100% on-device local execution"
+      ],
+      "terminal_preview": {
+        "filename": "flowstate-core.py",
+        "badge": "SIMULATED PREVIEW",
+        "command": "flowstate run --zero-oauth --audio procedural_sine",
+        "lines": [
+          {
+            "type": "comment",
+            "text": "$ flowstate run --zero-oauth --audio procedural_sine"
+          },
+          {
+            "type": "audio",
+            "prefix": "[AUDIO]",
+            "text": "16-bit 44.1kHz synthesized via math.sin (0 MP3 files)"
+          },
+          {
+            "type": "sync",
+            "prefix": "[SYNC]",
+            "text": "Cloud telemetry bypassed · 100% on-device"
+          }
+        ]
+      },
+      "proof_asset": {
+        "status": "unlinked",
+        "url": "assets/flowstate-receipt.png",
+        "alt": "Flow State productivity telemetry receipt"
+      },
+      "action_cta": {
+        "label": "Connect With Builder",
+        "target": "#contact"
+      },
+      "evidence_url": "assets/flowstate-receipt.png"
+    },
+    {
+      "id": "krama",
+      "name": "Krama (क्रम)",
+      "category": "SYSTEM UTILITY // ACADEMIC OS",
+      "badge": "STUDENT UTILITY",
+      "status": "building",
+      "status_detail": "Student utility · offline-first recovery calculus",
+      "thesis": "An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.",
+      "problem": "Mandatory attendance cutoffs (75%) trigger sudden academic disqualifications without proactive recovery visibility.",
+      "features": [
+        "Automated timetable JSON ingestion",
+        "Safe leave buffer calculation and recovery calculus",
+        "Encrypted local SQLite storage with zero account creation required"
+      ],
+      "terminal_preview": {
+        "filename": "krama-calc.py",
+        "badge": "SIMULATED PREVIEW",
+        "command": "krama analyze --timetable schedule.json --threshold 75%",
+        "lines": [
+          {
+            "type": "comment",
+            "text": "$ krama analyze --timetable schedule.json --threshold 75%"
+          },
+          {
+            "type": "status",
+            "prefix": "[STATUS]",
+            "text": "Current: 68.4% | Target threshold: 75.0%"
+          },
+          {
+            "type": "recovery",
+            "prefix": "[RECOVERY]",
+            "text": "Attend next 4 consecutive sessions to recover margin"
+          }
+        ]
+      },
+      "proof_asset": {
+        "status": "unlinked",
+        "url": "assets/krama-preview.jpg",
+        "alt": "Krama schedule optimization preview"
+      },
+      "action_cta": {
+        "label": "Inquire About Krama",
+        "target": "#contact"
+      },
+      "evidence_url": "assets/krama-preview.jpg"
+    }
+  ]
+}

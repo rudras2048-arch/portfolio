@@ -1,0 +1,80 @@
+# ============================================================================
+# Netlify Deployment Configuration — Rudra Sharma Portfolio v2
+# Domain: rudrasharma.dev
+# Build: node scripts/build.js → dist/
+# ============================================================================
+
+[build]
+  publish = "dist"
+  command = "node scripts/build.js"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# ----------------------------------------------------------------------------
+# Redirect: HTTP → HTTPS (force HTTPS everywhere)
+# ----------------------------------------------------------------------------
+[[redirects]]
+  from = "http://rudrasharma.dev/*"
+  to = "https://rudrasharma.dev/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.rudrasharma.dev/*"
+  to = "https://rudrasharma.dev/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.rudrasharma.dev/*"
+  to = "https://rudrasharma.dev/:splat"
+  status = 301
+  force = true
+
+# Single-page app: all routes serve index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# ----------------------------------------------------------------------------
+# Security & Performance Headers
+# ----------------------------------------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    # Content Security Policy — inline styles/scripts needed for SSG output
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; frame-ancestors 'none';"
+    # HSTS (1 year, include subdomains)
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+# Long-term cache for versioned assets (images, fonts, PDF)
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# No-cache for HTML (always fetch fresh)
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Sitemap and robots.txt — weekly cache
+[[headers]]
+  for = "/sitemap.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+    Content-Type = "application/xml; charset=utf-8"
+
+[[headers]]
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"

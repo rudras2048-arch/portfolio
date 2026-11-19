@@ -1,0 +1,26 @@
+{
+  "dataset": "tathya-eval-preview",
+  "version": "0.1.0",
+  "description": "Indic dialect evaluation benchmarks and token fragmentation test vectors for Haryanvi, Punjabi, and Bhojpuri.",
+  "status": "research_preview",
+  "samples": [
+    {
+      "dialect": "haryanvi",
+      "prompt": "म्हारी सरकार की लाडो योजना के के फायदे सैं?",
+      "standard_hindi": "हमारी सरकार की लाडो योजना के क्या लाभ हैं?",
+      "category": "civic_schemes"
+    },
+    {
+      "dialect": "punjabi",
+      "prompt": "ਸਰਕਾਰੀ ਹਸਪਤਾਲ ਵਿਚ ਪਰਚੀ ਕਟਵਾਉਣ ਦਾ ਕੀ ਤਰੀਕਾ ਹੈ?",
+      "standard_hindi": "सरकारी अस्पताल में पर्ची कटवाने का क्या तरीका है?",
+      "category": "healthcare"
+    },
+    {
+      "dialect": "bhojpuri",
+      "prompt": "ई राशन कार्ड बनावे खातिर कवन कवन कागजात चाहीं?",
+      "standard_hindi": "यह राशन कार्ड बनवाने के लिए कौन-कौन से दस्तावेज चाहिए?",
+      "category": "governance"
+    }
+  ]
+}

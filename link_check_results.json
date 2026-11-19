@@ -1,0 +1,115 @@
+{
+  "summary": {
+    "localTotal": 10,
+    "localPassed": 10,
+    "localFailed": 0,
+    "externalTotal": 5,
+    "externalPassed": 3,
+    "externalFailed": 2,
+    "externalBlocked": 0
+  },
+  "localAssets": [
+    {
+      "reference": "assets/rudra-sharma-resume.pdf",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/rudra-sharma-resume.pdf",
+      "exists": true,
+      "sizeBytes": 335322,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/cash-rush-ashoka.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/cash-rush-ashoka.jpg",
+      "exists": true,
+      "sizeBytes": 194071,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/cinesell-iim-amritsar.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/cinesell-iim-amritsar.jpg",
+      "exists": true,
+      "sizeBytes": 106967,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/builders-bootcamp-demo-day.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/builders-bootcamp-demo-day.jpg",
+      "exists": true,
+      "sizeBytes": 9093603,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/dcrust-podium-team.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/dcrust-podium-team.jpg",
+      "exists": true,
+      "sizeBytes": 314471,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/rudra-pitch-portrait.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/rudra-pitch-portrait.jpg",
+      "exists": true,
+      "sizeBytes": 515146,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/cinesell-team-big4.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/cinesell-team-big4.jpg",
+      "exists": true,
+      "sizeBytes": 194071,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/builders-bootcamp-cohort.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/builders-bootcamp-cohort.jpg",
+      "exists": true,
+      "sizeBytes": 9093603,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/dcrust-esummit-podium.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/dcrust-esummit-podium.jpg",
+      "exists": true,
+      "sizeBytes": 314471,
+      "status": "PASS"
+    },
+    {
+      "reference": "assets/dcrust-stage-pitch.jpg",
+      "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/dcrust-stage-pitch.jpg",
+      "exists": true,
+      "sizeBytes": 95266,
+      "status": "PASS"
+    }
+  ],
+  "externalUrls": [
+    {
+      "url": "https://YOUR-DOMAIN.com/",
+      "statusCode": 200,
+      "statusMessage": "OK",
+      "status": "PASS"
+    },
+    {
+      "url": "https://fonts.googleapis.com",
+      "statusCode": 404,
+      "statusMessage": "Not Found",
+      "status": "FAIL"
+    },
+    {
+      "url": "https://fonts.gstatic.com",
+      "statusCode": 404,
+      "statusMessage": "Not Found",
+      "status": "FAIL"
+    },
+    {
+      "url": "https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800&display=swap",
+      "statusCode": 200,
+      "statusMessage": "OK",
+      "status": "PASS"
+    },
+    {
+      "url": "https://www.linkedin.com/in/rudra-sharma-7bb78b410/",
+      "statusCode": 301,
+      "statusMessage": "Moved Permanently",
+      "status": "PASS"
+    }
+  ]
+}

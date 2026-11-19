@@ -1,0 +1,936 @@
+<!-- ==========================================================================
+     ABOUT / BUILDER JOURNEY SECTION BLOCK (Phase 1)
+     Contract Prefix: .ab-
+     Tokens: tokens.md (var(--accent), var(--text-bone), var(--bg-card), etc.)
+     Interfaces: interfaces.md (Component 3: About & Builder Journey Section)
+     Single Source of Truth: content.json
+     Author: @about agent
+     ========================================================================== -->
+
+<!-- ==========================================================================
+     PART 1: SCOPED STYLES (.ab- prefix strictly enforced)
+     ========================================================================== -->
+<style>
+  /* Section Mount Container */
+  .ab-section {
+    padding: 100px 0 40px;
+    scroll-margin-top: 60px;
+    position: relative;
+    z-index: 10;
+  }
+
+  .ab-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  /* Section Header */
+  .ab-header {
+    margin-bottom: 48px;
+  }
+
+  .ab-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+
+  .ab-title {
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4.8vw, 54px);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.08;
+    color: var(--text-bone);
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .ab-serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-style: italic;
+    text-transform: none;
+    color: var(--accent-bright);
+    padding-left: 4px;
+  }
+
+  .ab-lead {
+    font-family: var(--font-body);
+    font-size: 17.5px;
+    color: var(--text-muted);
+    max-width: 68ch;
+    margin-top: 16px;
+    line-height: 1.65;
+  }
+
+  /* Split Architecture Grid */
+  .ab-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.28fr;
+    gap: 36px;
+    align-items: start;
+  }
+
+  @media (max-width: 960px) {
+    .ab-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+  }
+
+  /* Left Column: Ethos & Foundation (Sticky on desktop) */
+  .ab-ethos-col {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 96px;
+  }
+
+  @media (max-width: 960px) {
+    .ab-ethos-col {
+      position: static;
+    }
+  }
+
+  /* Shared Elevated Card Foundation */
+  .ab-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--rule);
+    border-radius: var(--card-radius);
+    padding: 32px;
+    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+
+  .ab-card:hover {
+    border-color: var(--rule-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 0 0 20px rgba(165, 186, 40, 0.08);
+  }
+
+  .ab-card-label {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .ab-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: abPulse 2.2s infinite ease-in-out;
+  }
+
+  @keyframes abPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.85); }
+  }
+
+  .ab-quote {
+    font-family: var(--font-serif);
+    font-size: clamp(22px, 2.5vw, 26px);
+    font-style: italic;
+    color: var(--text-bone);
+    line-height: 1.32;
+    margin: 0 0 14px 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--accent);
+  }
+
+  .ab-thesis-desc {
+    font-family: var(--font-body);
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+
+  /* Pillar Breakdown */
+  .ab-pillars-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ab-pillar-item {
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .ab-pillar-item:hover {
+    border-color: rgba(165, 186, 40, 0.3);
+    background: rgba(165, 186, 40, 0.04);
+  }
+
+  .ab-pillar-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    padding-top: 2px;
+  }
+
+  .ab-pillar-content {
+    flex: 1;
+  }
+
+  .ab-pillar-title {
+    font-family: var(--font-body);
+    font-size: 13.5px;
+    font-weight: 700;
+    color: var(--text-bone);
+    display: block;
+    margin-bottom: 3px;
+  }
+
+  .ab-pillar-text {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Academic Credentials Card */
+  .ab-cred-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ab-cred-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 13px;
+  }
+
+  .ab-cred-row:last-child {
+    border-bottom: none;
+  }
+
+  .ab-cred-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .ab-cred-val {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--text-bone);
+    text-align: right;
+  }
+
+  /* Telemetry Quick Strip */
+  .ab-telemetry-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .ab-telemetry-badge {
+    background: var(--accent-soft);
+    border: 1px solid rgba(165, 186, 40, 0.25);
+    border-radius: 10px;
+    padding: 10px 8px;
+    text-align: center;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .ab-telemetry-badge:hover {
+    transform: translateY(-1px);
+    border-color: rgba(165, 186, 40, 0.45);
+  }
+
+  .ab-telemetry-val {
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent-bright);
+    display: block;
+    line-height: 1.2;
+  }
+
+  .ab-telemetry-lbl {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    display: block;
+    margin-top: 4px;
+  }
+
+  /* Right Column: Timeline Chronology */
+  .ab-timeline-meta {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .ab-timeline-heading {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .ab-timeline-caption {
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  .ab-timeline {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: 28px;
+    list-style: none;
+    margin: 0;
+  }
+
+  .ab-timeline-spine {
+    position: absolute;
+    left: 8px;
+    top: 12px;
+    bottom: 28px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, rgba(165, 186, 40, 0.35) 75%, rgba(255, 255, 255, 0.06) 100%);
+    pointer-events: none;
+  }
+
+  /* Milestone Items */
+  .ab-milestone {
+    position: relative;
+  }
+
+  .ab-milestone-marker {
+    position: absolute;
+    left: -28px;
+    top: 24px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--bg2);
+    border: 2px solid var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+
+  .ab-marker-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+  }
+
+  .ab-milestone-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--rule);
+    border-radius: var(--card-radius);
+    padding: 24px 28px;
+    transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+
+  .ab-milestone-card:hover {
+    border-color: var(--rule-hover);
+    transform: translateX(4px);
+    box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4), 0 0 16px rgba(165, 186, 40, 0.08);
+  }
+
+  .ab-milestone-card.ab-active {
+    border-color: rgba(165, 186, 40, 0.35);
+    background: linear-gradient(145deg, rgba(18, 18, 22, 0.92), rgba(27, 27, 34, 0.72));
+  }
+
+  .ab-milestone-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .ab-milestone-date {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+  }
+
+  .ab-milestone-badge {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 11px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--rule);
+    color: var(--text-bone);
+  }
+
+  .ab-milestone-badge.ab-gold {
+    background: var(--accent-soft);
+    border-color: rgba(165, 186, 40, 0.45);
+    color: var(--accent-bright);
+    box-shadow: 0 0 14px rgba(165, 186, 40, 0.2);
+  }
+
+  .ab-milestone-badge.ab-active-badge {
+    background: rgba(190, 224, 36, 0.15);
+    border-color: var(--accent-bright);
+    color: var(--accent-bright);
+  }
+
+  .ab-milestone-title {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.4vw, 24px);
+    font-weight: 700;
+    color: var(--text-bone);
+    margin: 0 0 4px 0;
+    letter-spacing: -0.02em;
+  }
+
+  .ab-milestone-venue {
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .ab-milestone-body {
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.6;
+    color: #C8C5BC;
+    margin: 0 0 16px 0;
+  }
+
+  .ab-milestone-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .ab-pill {
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    border: 1px solid var(--rule);
+    background: rgba(255, 255, 255, 0.025);
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+
+  .ab-pill.ab-accent-pill {
+    background: var(--accent-soft);
+    border-color: rgba(165, 186, 40, 0.3);
+    color: var(--accent);
+  }
+
+  /* Reveal Animation Utility */
+  .ab-reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .ab-reveal.ab-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Nav link styling additions */
+  .ab-nav-link,
+  .ab-mobile-link {
+    /* Uses existing nav styling rules */
+  }
+
+  /* Accessibility & prefers-reduced-motion Specification */
+  @media (prefers-reduced-motion: reduce) {
+    .ab-section *,
+    .ab-section *::before,
+    .ab-section *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .ab-reveal {
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    .ab-card:hover,
+    .ab-milestone-card:hover,
+    .ab-telemetry-badge:hover {
+      transform: none !important;
+    }
+
+    .ab-pulse-dot {
+      animation: none !important;
+    }
+  }
+</style>
+
+<!-- ==========================================================================
+     PART 2: HTML MARKUP TEMPLATE
+     ========================================================================== -->
+<section id="about" class="ab-section" aria-labelledby="ab-title">
+  <div class="ab-container">
+    <!-- Section Header -->
+    <div class="ab-header ab-reveal">
+      <span class="ab-eyebrow">00 // Trajectory &amp; Builder Ethos</span>
+      <h2 id="ab-title" class="ab-title">
+        How I Got <span class="ab-serif">Here</span>
+      </h2>
+      <p class="ab-lead" id="ab-lead-text">
+        First-year CS &amp; Data Science undergraduate at Rishihood University ('30). Rather than waiting four years to validate hypotheses, I test software systems and commercial models in live competitive arenas under hard capital and clock constraints.
+      </p>
+    </div>
+
+    <!-- Main Architecture Grid -->
+    <div class="ab-grid">
+      <!-- Left Column: Operating Thesis & Institutional Credential -->
+      <div class="ab-ethos-col">
+        <!-- Operating Thesis Card -->
+        <div class="ab-card ab-reveal" id="ab-thesis-card">
+          <div class="ab-card-label">
+            <span class="ab-pulse-dot" aria-hidden="true"></span>
+            <span>OPERATING THESIS</span>
+          </div>
+          <blockquote class="ab-quote" id="ab-bio-statement">
+            “Curiosity starts the work. Execution proves it.”
+          </blockquote>
+          <p class="ab-thesis-desc">
+            Building software systems, stress-testing commercial models in competitive arenas, and developing ventures beyond the classroom.
+          </p>
+
+          <!-- Focus Area Pillars -->
+          <div class="ab-pillars-list">
+            <div class="ab-pillar-item">
+              <span class="ab-pillar-num mono">01</span>
+              <div class="ab-pillar-content">
+                <strong class="ab-pillar-title">Dialect NLP Failure Analysis</strong>
+                <p class="ab-pillar-text">Benchmarking token fragmentation and semantic degradation in non-standard Indic languages (Punjabi, Haryanvi, Bhojpuri) via Tathya.</p>
+              </div>
+            </div>
+
+            <div class="ab-pillar-item">
+              <span class="ab-pillar-num mono">02</span>
+              <div class="ab-pillar-content">
+                <strong class="ab-pillar-title">Local-First Desktop OS</strong>
+                <p class="ab-pillar-text">Zero cloud telemetry leaks, procedural 16-bit sine audio synthesis (Flow State), and offline recovery calculus (Krama).</p>
+              </div>
+            </div>
+
+            <div class="ab-pillar-item">
+              <span class="ab-pillar-num mono">03</span>
+              <div class="ab-pillar-content">
+                <strong class="ab-pillar-title">Extreme-Constraint Economics</strong>
+                <p class="ab-pillar-text">Turning ₹300 into ₹2,655 in 120 minutes with ₹45 costs (Ashoka) and delivering 4-part ad suites in 45 minutes (DCRUST).</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Academic & Institutional Foundation Card -->
+        <div class="ab-card ab-reveal" id="ab-foundation-card">
+          <div class="ab-card-label">ACADEMIC &amp; INSTITUTIONAL RECORD</div>
+          <div class="ab-cred-list">
+            <div class="ab-cred-row">
+              <span class="ab-cred-label">Degree</span>
+              <span class="ab-cred-val" id="ab-cred-degree">B.Tech CS &amp; Data Science</span>
+            </div>
+            <div class="ab-cred-row">
+              <span class="ab-cred-label">Institution</span>
+              <span class="ab-cred-val" id="ab-cred-institution">Rishihood University</span>
+            </div>
+            <div class="ab-cred-row">
+              <span class="ab-cred-label">Cohort</span>
+              <span class="ab-cred-val mono" id="ab-cred-cohort">Class of 2030 · First-Year</span>
+            </div>
+            <div class="ab-cred-row">
+              <span class="ab-cred-label">Verified Record</span>
+              <span class="ab-cred-val mono">04 Podiums (Jun–Oct 2026)</span>
+            </div>
+          </div>
+
+          <!-- Quantitative Telemetry Quick Strip -->
+          <div class="ab-telemetry-strip">
+            <div class="ab-telemetry-badge">
+              <span class="ab-telemetry-val mono">02</span>
+              <span class="ab-telemetry-lbl">Champs</span>
+            </div>
+            <div class="ab-telemetry-badge">
+              <span class="ab-telemetry-val mono">8.85x</span>
+              <span class="ab-telemetry-lbl">Fund Run</span>
+            </div>
+            <div class="ab-telemetry-badge">
+              <span class="ab-telemetry-val mono">~700</span>
+              <span class="ab-telemetry-lbl">Nat'l Teams</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Chronological Sprint Arc -->
+      <div class="ab-timeline-col">
+        <div class="ab-timeline-meta ab-reveal">
+          <span class="ab-timeline-heading">FIELD EVIDENCE CHRONOLOGY (JUN – OCT 2026)</span>
+          <span class="ab-timeline-caption">Verified milestones from campus incubators to national finals</span>
+        </div>
+
+        <ol class="ab-timeline">
+          <div class="ab-timeline-spine" aria-hidden="true"></div>
+
+          <!-- Milestone 1: Builders' Bootcamp -->
+          <li class="ab-milestone ab-reveal">
+            <div class="ab-milestone-marker" aria-hidden="true">
+              <span class="ab-marker-dot"></span>
+            </div>
+            <article class="ab-milestone-card">
+              <div class="ab-milestone-header">
+                <span class="ab-milestone-date mono">JUN 2026 · 7-DAY SPRINT</span>
+                <span class="ab-milestone-badge ab-gold">🥇 #1 OVERALL TOP TEAM</span>
+              </div>
+              <h3 class="ab-milestone-title">Builders' Bootcamp (8th Edition)</h3>
+              <div class="ab-milestone-venue">Rishihood University · Demo Day '26</div>
+              <p class="ab-milestone-body">
+                Selected for an intensive 7-day pre-college incubator covering AI, product design, psychology, and startup fundamentals. Rather than stopping at pitch decks, engineered and shipped a functional startup web prototype from scratch within 7 days, pitching live on Demo Day to finish as the #1 Overall Winning Team across all cohorts.
+              </p>
+              <div class="ab-milestone-tags">
+                <span class="ab-pill ab-accent-pill">Working Prototype Shipped</span>
+                <span class="ab-pill">Live Demo Day Pitch</span>
+                <span class="ab-pill">7-Day Venture Incubator</span>
+              </div>
+            </article>
+          </li>
+
+          <!-- Milestone 2: DCRUST Murthal -->
+          <li class="ab-milestone ab-reveal">
+            <div class="ab-milestone-marker" aria-hidden="true">
+              <span class="ab-marker-dot"></span>
+            </div>
+            <article class="ab-milestone-card">
+              <div class="ab-milestone-header">
+                <span class="ab-milestone-date mono">SEP 2026 · 45-MIN SPRINT</span>
+                <span class="ab-milestone-badge">🥉 3RD PLACE PODIUM</span>
+              </div>
+              <h3 class="ab-milestone-title">Advertising &amp; Brand Pitch</h3>
+              <div class="ab-milestone-venue">DCRUST Murthal · E-Summit '26</div>
+              <p class="ab-milestone-body">
+                Represented Rishihood University offline under a high-pressure 45-minute turnaround. Assigned a consumer soap brand and divided the sprint across four concrete deliverables—promotional poster, short filmed ad, live comedic skit, and stage product pitch—securing 3rd Position Podium overall and a ₹1,100 cash prize.
+              </p>
+              <div class="ab-milestone-tags">
+                <span class="ab-pill ab-accent-pill">₹1,100 Cash Prize</span>
+                <span class="ab-pill">45-Minute Prep Sprint</span>
+                <span class="ab-pill">4-Part Campaign Suite</span>
+                <span class="ab-pill">Live Stage Round</span>
+              </div>
+            </article>
+          </li>
+
+          <!-- Milestone 3: Ashoka Cash Rush -->
+          <li class="ab-milestone ab-reveal">
+            <div class="ab-milestone-marker" aria-hidden="true">
+              <span class="ab-marker-dot"></span>
+            </div>
+            <article class="ab-milestone-card">
+              <div class="ab-milestone-header">
+                <span class="ab-milestone-date mono">OCT 2026 · 120-MIN SPRINT</span>
+                <span class="ab-milestone-badge ab-gold">🏆 1ST PLACE CHAMPION</span>
+              </div>
+              <h3 class="ab-milestone-title">Cash Rush Competition</h3>
+              <div class="ab-milestone-venue">Ashoka University · Shatranj '26</div>
+              <p class="ab-milestone-body">
+                Campus startup simulation with ₹300 seed capital and a 120-minute countdown. Deployed zero-inventory experience models: a web-based curiosity funnel hooked to LinkedIn, a paid campus quiz challenge, and live caricatures. Total costs were just ₹45 (paper and marker). Services generated ₹2,400 to end fund at ₹2,655 (8.85x multiplier), taking 1st place and the ₹7,000 prize.
+              </p>
+              <div class="ab-milestone-tags">
+                <span class="ab-pill ab-accent-pill">₹7,000 Cash Prize</span>
+                <span class="ab-pill ab-accent-pill">8.85x Fund Multiplier</span>
+                <span class="ab-pill">₹45 Total Costs</span>
+                <span class="ab-pill">120-Min Constraint</span>
+                <span class="ab-pill">#1 On Leaderboard</span>
+              </div>
+            </article>
+          </li>
+
+          <!-- Milestone 4: IIM Amritsar CINE-SELL -->
+          <li class="ab-milestone ab-reveal">
+            <div class="ab-milestone-marker" aria-hidden="true">
+              <span class="ab-marker-dot"></span>
+            </div>
+            <article class="ab-milestone-card">
+              <div class="ab-milestone-header">
+                <span class="ab-milestone-date mono">OCT 2026 · NATIONAL ARENA</span>
+                <span class="ab-milestone-badge">⚡ TOP 5 NATIONAL FINALIST</span>
+              </div>
+              <h3 class="ab-milestone-title">CINE-SELL Brand Challenge</h3>
+              <div class="ab-milestone-venue">IIM Amritsar · Marketing Fest '26</div>
+              <p class="ab-milestone-body">
+                National marketing fest challenge with ~700 registered teams, primarily postgraduate MBA cohorts from top B-schools across India. Led 4-member undergraduate "Team Big 4" as Team Lead: coordinated telephone market positioning, directed promotional video reel, and led live commercial stage pitch to finish in the Top 5 nationally.
+              </p>
+              <div class="ab-milestone-tags">
+                <span class="ab-pill ab-accent-pill">Top 5 Nationally</span>
+                <span class="ab-pill">~700 Team Registrations</span>
+                <span class="ab-pill">Team Lead · Team Big 4</span>
+                <span class="ab-pill">MBA &amp; UG Cohorts</span>
+              </div>
+            </article>
+          </li>
+
+          <!-- Milestone 5: Active Systems & Research -->
+          <li class="ab-milestone ab-reveal">
+            <div class="ab-milestone-marker" aria-hidden="true">
+              <span class="ab-marker-dot"></span>
+            </div>
+            <article class="ab-milestone-card ab-active">
+              <div class="ab-milestone-header">
+                <span class="ab-milestone-date mono">PRESENT · ACTIVE BUILDS</span>
+                <span class="ab-milestone-badge ab-active-badge">⚙ ACTIVE SYSTEMS</span>
+              </div>
+              <h3 class="ab-milestone-title">Software Systems &amp; Dialect NLP</h3>
+              <div class="ab-milestone-venue">Personal Lab &amp; Independent Engineering</div>
+              <p class="ab-milestone-body">
+                Translating field sprint discipline into persistent software architectures. Currently building Tathya (Haryanvi/Punjabi/Bhojpuri dialect token fragmentation analysis), Stratum (live candidate market simulator), Flow State (zero-telemetry desktop environment), and Krama (academic recovery calculus).
+              </p>
+              <div class="ab-milestone-tags">
+                <span class="ab-pill ab-accent-pill">Tathya (NLP Dialects)</span>
+                <span class="ab-pill">Stratum (Sim Engine)</span>
+                <span class="ab-pill">Flow State (Local OS)</span>
+                <span class="ab-pill">Krama (Academic OS)</span>
+              </div>
+            </article>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     PART 3: JAVASCRIPT INITIALIZATION ENGINE
+     ========================================================================== -->
+<script>
+(function() {
+  'use strict';
+
+  /**
+   * Helper: Retrieve portfolio single source of truth data safely
+   * Supports explicit argument, window.__PORTFOLIO_CONTENT__, or JSON script tag.
+   */
+  function getPortfolioData(content) {
+    if (content && typeof content === 'object') return content;
+    if (typeof window !== 'undefined' && window.__PORTFOLIO_CONTENT__) {
+      return window.__PORTFOLIO_CONTENT__;
+    }
+    if (typeof document !== 'undefined') {
+      const el = document.getElementById('portfolio-content-data');
+      if (el) {
+        try {
+          return JSON.parse(el.textContent);
+        } catch (e) {
+          console.warn('[AboutBlock] Failed to parse #portfolio-content-data JSON', e);
+        }
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Global Init Function: window.initAboutSection(content)
+   * Adheres strictly to interfaces.md Component 3 specification.
+   */
+  window.initAboutSection = function(content) {
+    const data = getPortfolioData(content);
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 1. Ensure DOM Section Mount (Inserted between #hero and #competitions)
+    let section = document.getElementById('about');
+    if (!section) {
+      // Find template or create element
+      const template = document.querySelector('section#about.ab-section');
+      if (template) {
+        section = template;
+      }
+    }
+
+    if (section) {
+      const competitions = document.getElementById('competitions');
+      const hero = document.getElementById('hero');
+      if (competitions && competitions.parentNode) {
+        // Guarantee insertion immediately BEFORE #competitions
+        if (section.nextElementSibling !== competitions) {
+          competitions.parentNode.insertBefore(section, competitions);
+        }
+      } else if (hero && hero.parentNode) {
+        // Or immediately AFTER #hero
+        if (hero.nextElementSibling !== section) {
+          hero.parentNode.insertBefore(section, hero.nextSibling);
+        }
+      }
+    }
+
+    // 2. Hook Nav Item into .nav-links without breaking existing order
+    const navLinks = document.querySelector('.nav-links');
+    if (navLinks) {
+      let aboutNavLi = navLinks.querySelector('a[href="#about"]')?.parentElement;
+      if (!aboutNavLi) {
+        aboutNavLi = document.createElement('li');
+        aboutNavLi.innerHTML = '<a href="#about" class="ab-nav-link"><span class="idx">00</span>About</a>';
+        
+        const compLi = navLinks.querySelector('a[href="#competitions"]')?.parentElement;
+        if (compLi) {
+          navLinks.insertBefore(aboutNavLi, compLi);
+        } else {
+          navLinks.insertBefore(aboutNavLi, navLinks.firstChild);
+        }
+      }
+    }
+
+    // 3. Hook Nav Item into #mobileMenu without breaking existing order
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenu) {
+      let aboutMobileA = mobileMenu.querySelector('a[href="#about"]');
+      if (!aboutMobileA) {
+        aboutMobileA = document.createElement('a');
+        aboutMobileA.href = '#about';
+        aboutMobileA.className = 'ab-mobile-link';
+        aboutMobileA.innerHTML = '<span class="idx">00</span>About &amp; Trajectory';
+
+        // Ensure clicking closes mobile drawer
+        aboutMobileA.addEventListener('click', function() {
+          document.body.classList.remove('menu-open');
+          const burger = document.getElementById('burger');
+          if (burger) burger.setAttribute('aria-expanded', 'false');
+        });
+
+        const compMobileA = mobileMenu.querySelector('a[href="#competitions"]');
+        if (compMobileA) {
+          mobileMenu.insertBefore(aboutMobileA, compMobileA);
+        } else {
+          mobileMenu.insertBefore(aboutMobileA, mobileMenu.firstChild);
+        }
+      }
+    }
+
+    // 4. Hydrate Verified Facts from content.json if available
+    if (data && data.personal) {
+      const p = data.personal;
+      
+      const bioEl = document.getElementById('ab-bio-statement');
+      if (bioEl && p.bio_statement) {
+        bioEl.textContent = '“' + p.bio_statement.replace(/^“|”$/g, '') + '”';
+      }
+
+      const degreeEl = document.getElementById('ab-cred-degree');
+      if (degreeEl && p.degree) {
+        // Degree formatting
+        degreeEl.textContent = p.degree.split(',')[0] || p.degree;
+      }
+
+      const instEl = document.getElementById('ab-cred-institution');
+      if (instEl && p.institution) {
+        instEl.textContent = p.institution;
+      }
+
+      const cohortEl = document.getElementById('ab-cred-cohort');
+      if (cohortEl) {
+        const year = p.class_year ? ("Class of " + p.class_year) : "Class of 2030";
+        const status = p.current_status || "First-Year";
+        cohortEl.textContent = year + " · " + status;
+      }
+    }
+
+    // 5. Staggered Intersection Reveal Observer (Reduced Motion Aware)
+    const revealElements = document.querySelectorAll('.ab-reveal');
+    if (reduced) {
+      // In reduced motion, snap immediately to full visibility
+      revealElements.forEach(function(el) {
+        el.classList.add('ab-in');
+      });
+    } else if (typeof IntersectionObserver !== 'undefined') {
+      const abObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('ab-in');
+            abObserver.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -40px 0px'
+      });
+
+      revealElements.forEach(function(el) {
+        abObserver.observe(el);
+      });
+    } else {
+      // Fallback: display immediately
+      revealElements.forEach(function(el) {
+        el.classList.add('ab-in');
+      });
+    }
+  };
+
+  // Auto-initialize if DOM is already parsed
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    window.initAboutSection();
+  } else {
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initAboutSection();
+    });
+  }
+})();
+</script>

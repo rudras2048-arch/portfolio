@@ -1,0 +1,150 @@
+[
+  {
+    "step": 1,
+    "viewport": "1440x900",
+    "action": "Desktop viewport rendered",
+    "file": "screenshot-1440px.png"
+  },
+  {
+    "step": 2,
+    "viewport": "768x1024",
+    "action": "Tablet viewport rendered",
+    "file": "screenshot-768px.png"
+  },
+  {
+    "step": 3,
+    "viewport": "320x568",
+    "action": "Mobile narrow viewport rendered",
+    "file": "screenshot-320px.png"
+  },
+  {
+    "step": 4,
+    "action": "Tab key pressed",
+    "focusedElement": {
+      "tag": "A",
+      "id": "",
+      "class": "nav-brand",
+      "text": "RUDRA SHARMA"
+    }
+  },
+  {
+    "step": 5,
+    "action": "Tab key pressed",
+    "focusedElement": {
+      "tag": "A",
+      "id": "",
+      "class": "ab-nav-link",
+      "text": "00ABOUT"
+    }
+  },
+  {
+    "step": 6,
+    "action": "Tab key pressed",
+    "focusedElement": {
+      "tag": "A",
+      "id": "",
+      "class": "",
+      "text": "01RECORD"
+    }
+  },
+  {
+    "step": 7,
+    "action": "Tab key pressed",
+    "focusedElement": {
+      "tag": "A",
+      "id": "",
+      "class": "",
+      "text": "02VENTURES"
+    }
+  },
+  {
+    "step": 8,
+    "action": "Tab key pressed",
+    "focusedElement": {
+      "tag": "A",
+      "id": "",
+      "class": "",
+      "text": "03CONTACT"
+    }
+  },
+  {
+    "step": 9,
+    "action": "Tab key pressed",
+    "focusedElement": {
+      "tag": "BUTTON",
+      "id": "rm-toggle",
+      "class": "rm-toggle-btn",
+      "text": "EXECUTIVE\nRECRUITER MODE\n30S V"
+    }
+  },
+  {
+    "step": 10,
+    "action": "Tab key pressed",
+    "focusedElement": {
+      "tag": "A",
+      "id": "",
+      "class": "nav-action-pill",
+      "text": "LINKEDIN ↗"
+    }
+  },
+  {
+    "step": 11,
+    "action": "Tab key pressed",
+    "focusedElement": {
+      "tag": "BUTTON",
+      "id": "burger",
+      "class": "",
+      "text": ""
+    }
+  },
+  {
+    "step": 13,
+    "action": "Recruiter Mode Enter pressed",
+    "stateBefore": {
+      "isHidden": true,
+      "ariaHidden": "true"
+    },
+    "stateAfter": {
+      "isHidden": false,
+      "ariaHidden": "false"
+    },
+    "file": "recruiter-mode-open.png",
+    "status": "PASS"
+  },
+  {
+    "step": 14,
+    "action": "#cs-modal open and escape test",
+    "openedState": {
+      "isOpen": true,
+      "modalDisplay": "block",
+      "activeTag": "BUTTON",
+      "activeId": "cs-modal-close",
+      "activeClass": "cs-modal__close"
+    },
+    "closedState": {
+      "isOpen": false,
+      "activeTag": "BUTTON",
+      "activeClass": "cs-deepdive-btn fr-deepdive-btn"
+    },
+    "file": "cs-modal-open.png",
+    "status": "PASS"
+  },
+  {
+    "step": 15,
+    "action": "#fr-lightbox open and escape test",
+    "openedState": {
+      "isOpen": true,
+      "lbDisplay": "flex",
+      "activeTag": "BUTTON",
+      "activeId": "fr-lightbox-close",
+      "activeClass": "fr-lightbox-close"
+    },
+    "closedState": {
+      "isOpen": false,
+      "activeTag": "BUTTON",
+      "activeClass": "fr-inspect-btn"
+    },
+    "file": "fr-lightbox-open.png",
+    "status": "PASS"
+  }
+]

@@ -1,0 +1,118 @@
+{
+  "timestamp": "2026-11-17T13:31:31.563Z",
+  "url": "http://127.0.0.1:8080/index.html",
+  "totalViolations": 4,
+  "violationsByImpact": {
+    "critical": 0,
+    "serious": 4,
+    "moderate": 0,
+    "minor": 0
+  },
+  "violations": [
+    {
+      "id": "aria-hidden-focus",
+      "impact": "serious",
+      "description": "Ensure aria-hidden elements are not focusable nor contain focusable elements",
+      "help": "ARIA hidden element must not be focusable or contain focusable elements",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/aria-hidden-focus?application=axeAPI",
+      "nodesCount": 1,
+      "nodes": [
+        {
+          "html": "<dialog id=\"fr-lightbox\" class=\"fr-lightbox\" aria-hidden=\"true\" aria-modal=\"true\">",
+          "target": [
+            "#fr-lightbox"
+          ],
+          "failureSummary": "Fix all of the following:\n  Focusable content should be disabled, be removed from the DOM, or not be hidden with aria-hidden\n  Focusable content should have tabindex=\"-1\", be removed from the DOM, or not be hidden with aria-hidden"
+        }
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/color-contrast?application=axeAPI",
+      "nodesCount": 3,
+      "nodes": [
+        {
+          "html": "<span class=\"prompt\">~/whoami $</span>",
+          "target": [
+            ".prompt"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.83 (foreground color: #5c5a53, background color: #0c0c0e, font size: 10.1pt (13.5px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "html": "<span>RUDRA SHARMA // CLASS OF 2030</span>",
+          "target": [
+            ".footer-inner > span:nth-child(1)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.83 (foreground color: #5c5a53, background color: #0c0c0e, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        },
+        {
+          "html": "<span>EVIDENCE, NOT NOISE · ZERO FLUFF</span>",
+          "target": [
+            ".footer-inner > span:nth-child(2)"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element has insufficient color contrast of 2.83 (foreground color: #5c5a53, background color: #0c0c0e, font size: 8.3pt (11px), font weight: normal). Expected contrast ratio of 4.5:1"
+        }
+      ]
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "impact": "serious",
+      "description": "Ensure that elements labelled through their content must have their visible text as part of their accessible name",
+      "help": "Elements must have their visible text as part of their accessible name",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/label-content-name-mismatch?application=axeAPI",
+      "nodesCount": 1,
+      "nodes": [
+        {
+          "html": "<button id=\"rm-toggle\" class=\"rm-toggle-btn\" aria-pressed=\"false\" aria-expanded=\"false\" aria-controls=\"rm-summary-drawer\" aria-label=\"Toggle Recruiter Mode (30-second executive view)\" type=\"button\" data-rm-bound=\"true\">",
+          "target": [
+            "#rm-toggle"
+          ],
+          "failureSummary": "Fix any of the following:\n  Text inside the element is not included in the accessible name"
+        }
+      ]
+    },
+    {
+      "id": "scrollable-region-focusable",
+      "impact": "serious",
+      "description": "Ensure elements that have scrollable content are accessible by keyboard in Safari",
+      "help": "Scrollable region must have keyboard access",
+      "helpUrl": "https://dequeuniversity.com/rules/axe/4.14/scrollable-region-focusable?application=axeAPI",
+      "nodesCount": 4,
+      "nodes": [
+        {
+          "html": "<pre class=\"term-body\"><span class=\"cm\">$ tathya eval --lang haryanvi --set gov-schemes</span>\n<span class=\"kw\">[STATUS]</span> Research phase · building Haryanvi / Punjabi / Bhojpuri eval set\n<span class=\"kw\">[NEXT]</span> Publish LLM failure analysis</pre>",
+          "target": [
+            "article[data-venture-id=\"tathya\"] > .venture-top > .term > pre"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+        },
+        {
+          "html": "<pre class=\"term-body\"><span class=\"cm\">$ stratum simulate --scenario \"cpm_volatility_shock\"</span>\n<span class=\"kw\">[SCENARIO]</span> Ad CPMs spike 40% mid-quarter. Reallocate budget to protect margin.\n<span class=\"kw\">[SCORED ON]</span> capital velocity · margin yield · decision speed</pre>",
+          "target": [
+            "article[data-venture-id=\"stratum\"] > .venture-top > .term > pre"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+        },
+        {
+          "html": "<pre class=\"term-body\"><span class=\"cm\">$ flowstate run --zero-oauth --audio procedural_sine</span>\n<span class=\"kw\">[AUDIO]</span> 16-bit 44.1kHz synthesized via <span class=\"fn\">math.sin</span> (0 MP3 files)\n<span class=\"kw\">[SYNC]</span> Cloud telemetry bypassed · 100% on-device</pre>",
+          "target": [
+            "article[data-venture-id=\"flow-state\"] > .venture-top > .term > pre"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+        },
+        {
+          "html": "<pre class=\"term-body\">",
+          "target": [
+            "article[data-venture-id=\"krama\"] > .venture-top > .term > pre"
+          ],
+          "failureSummary": "Fix any of the following:\n  Element should have focusable content\n  Element should be focusable"
+        }
+      ]
+    }
+  ],
+  "passesCount": 37,
+  "incompleteCount": 1
+}

@@ -1,0 +1,1204 @@
+<!-- ==========================================================================
+     RECRUITER MODE DELIVERABLE (v2.0)
+     File: /Users/rudrasharma/Desktop/portfolio/blocks/recruiter.block.html
+     Component: Recruiter Mode & Executive Brief ("30-Second View")
+     Contract: tokens.md, interfaces.md, content.json
+     Prefix: .rm- (Strict CSS Isolation)
+     ========================================================================== -->
+
+<!-- ==========================================================================
+     SECTION A: SCOPED STYLES (.rm-)
+     ========================================================================== -->
+<style>
+/* --- Recruiter Mode CSS Reset & Root Scoping --- */
+.rm-toggle-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--rule);
+  color: var(--text-bone);
+  border-radius: 9999px;
+  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  outline: none;
+}
+
+.rm-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--rule-hover);
+  color: var(--text-bone);
+  transform: translateY(-1px);
+}
+
+.rm-toggle-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.rm-toggle-btn[aria-pressed="true"],
+.rm-toggle-btn.rm-active,
+body.rm-mode-active #rm-toggle {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent-bright);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.rm-toggle-beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--text-dim);
+  transition: background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.rm-toggle-btn:hover .rm-toggle-beacon {
+  background: var(--accent);
+}
+
+.rm-toggle-btn[aria-pressed="true"] .rm-toggle-beacon,
+.rm-toggle-btn.rm-active .rm-toggle-beacon,
+body.rm-mode-active #rm-toggle .rm-toggle-beacon {
+  background: var(--accent-bright);
+  box-shadow: 0 0 8px var(--accent-bright);
+  animation: rm-pulse 2.2s infinite ease-in-out;
+}
+
+.rm-toggle-badge {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 2px 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  transition: all 0.25s ease;
+}
+
+.rm-toggle-btn[aria-pressed="true"] .rm-toggle-badge,
+.rm-toggle-btn.rm-active .rm-toggle-badge,
+body.rm-mode-active #rm-toggle .rm-toggle-badge {
+  background: var(--accent);
+  color: #0C0C0E;
+}
+
+.rm-toggle-label {
+  letter-spacing: 0.08em;
+}
+
+.rm-toggle-shortcut {
+  font-size: 9.5px;
+  color: var(--text-dim);
+  padding-left: 2px;
+}
+
+.rm-toggle-btn[aria-pressed="true"] .rm-toggle-shortcut,
+.rm-toggle-btn.rm-active .rm-toggle-shortcut,
+body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
+  color: var(--accent);
+}
+
+@keyframes rm-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.6; }
+}
+
+/* --- Executive Summary Drawer Mount & Animation --- */
+.rm-summary-drawer {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 32px auto 0 auto;
+  position: relative;
+  z-index: 25;
+}
+
+.rm-summary-drawer[hidden] {
+  display: none !important;
+}
+
+.rm-drawer-shell {
+  background: var(--bg2);
+  border: 1px solid var(--accent);
+  border-radius: var(--card-radius);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.75), 0 0 32px var(--accent-glow);
+  padding: 36px;
+  position: relative;
+  overflow: hidden;
+  animation: rm-drawerOpen 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes rm-drawerOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rm-drawer-watermark {
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  font-family: var(--font-display);
+  font-size: 140px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.015);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+/* --- Header Row --- */
+.rm-header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 28px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+  z-index: 1;
+}
+
+.rm-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.rm-signal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent-bright);
+  background: var(--accent-soft);
+  border: 1px solid rgba(165, 186, 40, 0.35);
+  border-radius: 9999px;
+  padding: 4px 10px;
+}
+
+.rm-signal-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  box-shadow: 0 0 6px var(--accent-bright);
+}
+
+.rm-header-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.rm-header-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--text-bone);
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  margin: 0 0 8px 0;
+}
+
+.rm-header-title span {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.rm-header-desc {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  max-width: 820px;
+  margin: 0;
+}
+
+.rm-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.rm-close-btn {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  color: var(--text-muted);
+  border-radius: 9999px;
+  padding: 8px 16px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.rm-close-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--rule-hover);
+  color: var(--text-bone);
+}
+
+.rm-close-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* --- Fast Facts / KPI Matrix --- */
+.rm-kpis-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.rm-kpi-card {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+}
+
+.rm-kpi-card:hover {
+  border-color: var(--rule-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+}
+
+.rm-kpi-val {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent-bright);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 8px;
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+.rm-kpi-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-bone);
+  margin-bottom: 6px;
+}
+
+.rm-kpi-sub {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+
+/* --- Main Split Grid (Proof Dossier vs Project Roster) --- */
+.rm-split-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  margin-bottom: 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.rm-panel {
+  background: rgba(18, 18, 22, 0.65);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 24px;
+}
+
+.rm-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.rm-panel-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-bone);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.rm-panel-count {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px 7px;
+  border-radius: 9999px;
+  font-weight: 700;
+}
+
+/* Proof Records List */
+.rm-proof-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rm-proof-item {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.rm-proof-item:hover {
+  border-color: var(--rule-hover);
+  background: rgba(30, 30, 38, 0.9);
+}
+
+.rm-proof-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.rm-proof-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-bone);
+}
+
+.rm-proof-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent-bright);
+  background: var(--accent-soft);
+  padding: 2px 8px;
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+.rm-proof-metrics {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.rm-proof-desc {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Projects Stack */
+.rm-projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rm-project-card {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 12px;
+  padding: 16px;
+  transition: border-color 0.25s ease;
+}
+
+.rm-project-card:hover {
+  border-color: var(--rule-hover);
+}
+
+.rm-project-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.rm-project-name {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--text-bone);
+}
+
+.rm-project-status {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-muted);
+}
+
+.rm-project-status.rm-status-building {
+  background: var(--accent-soft);
+  color: var(--accent-bright);
+  border: 1px solid rgba(165, 186, 40, 0.3);
+}
+
+.rm-project-thesis {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* --- Action Footer --- */
+.rm-footer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  position: relative;
+  z-index: 1;
+}
+
+.rm-footer-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.rm-btn-primary {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--accent);
+  color: #0C0C0E;
+  padding: 10px 20px;
+  border-radius: 9999px;
+  border: 1px solid var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rm-btn-primary:hover {
+  background: var(--accent-bright);
+  box-shadow: 0 0 20px var(--accent-glow);
+  transform: translateY(-2px);
+  color: #0C0C0E;
+}
+
+.rm-btn-secondary {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--bg3);
+  color: var(--text-bone);
+  padding: 10px 18px;
+  border-radius: 9999px;
+  border: 1px solid var(--rule);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.rm-btn-secondary:hover {
+  border-color: var(--rule-hover);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+  color: var(--text-bone);
+}
+
+.rm-btn-secondary:focus-visible,
+.rm-btn-primary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.rm-footer-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.rm-footer-note kbd {
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 2px 5px;
+  color: var(--text-bone);
+}
+
+/* --- Toast Notification for Clipboard Copy --- */
+.rm-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--bg2);
+  border: 1px solid var(--accent);
+  color: var(--text-bone);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.rm-toast.rm-toast-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Responsive Layout Rules --- */
+@media (max-width: 1024px) {
+  .rm-kpis-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .rm-split-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .rm-drawer-shell {
+    padding: 24px 18px;
+  }
+  .rm-header-row {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 16px;
+  }
+  .rm-header-actions {
+    justify-content: flex-end;
+  }
+  .rm-kpis-grid {
+    grid-template-columns: 1fr;
+  }
+  .rm-toggle-shortcut {
+    display: none;
+  }
+  .rm-footer-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .rm-footer-cta-group {
+    flex-direction: column;
+  }
+  .rm-btn-primary, .rm-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- Accessibility & prefers-reduced-motion Specification --- */
+@media (prefers-reduced-motion: reduce) {
+  .rm-toggle-btn,
+  .rm-drawer-shell,
+  .rm-kpi-card,
+  .rm-proof-item,
+  .rm-project-card,
+  .rm-btn-primary,
+  .rm-btn-secondary,
+  .rm-toast {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+  .rm-toggle-btn[aria-pressed="true"] .rm-toggle-beacon,
+  .rm-toggle-btn.rm-active .rm-toggle-beacon,
+  body.rm-mode-active #rm-toggle .rm-toggle-beacon {
+    animation: none !important;
+  }
+}
+</style>
+
+<!-- ==========================================================================
+     SECTION B: HTML ANCHOR TEMPLATES
+     Insertion Anchors:
+     1. #rm-toggle: Inside .nav-wrap nav, appended after .nav-links
+     2. #rm-summary-drawer: Inside <section id="hero">, after .hero-stats-row
+     ========================================================================== -->
+
+<!-- Toggle Switch Button (Mounted in Nav) -->
+<button id="rm-toggle" class="rm-toggle-btn" aria-pressed="false" aria-expanded="false" aria-controls="rm-summary-drawer" aria-label="Toggle Recruiter Mode (30-second executive view)" type="button">
+  <span class="rm-toggle-beacon" aria-hidden="true"></span>
+  <span class="rm-toggle-badge">EXECUTIVE</span>
+  <span class="rm-toggle-label">Recruiter Mode</span>
+  <span class="rm-toggle-shortcut" aria-hidden="true">30s view</span>
+</button>
+
+<!-- Executive Summary Drawer (Mounted in Hero) -->
+<div id="rm-summary-drawer" class="rm-summary-drawer" role="region" aria-label="Executive Brief and Recruiter Summary" aria-hidden="true" hidden>
+  <div class="rm-drawer-shell">
+    <div class="rm-drawer-watermark" aria-hidden="true">EXEC</div>
+
+    <!-- Header / Identity & Status -->
+    <div class="rm-header-row">
+      <div class="rm-header-info">
+        <div class="rm-header-meta">
+          <span class="rm-signal-pill">
+            <span class="rm-signal-dot" aria-hidden="true"></span>
+            Executive Dossier // 30-Second View
+          </span>
+          <span class="rm-header-kicker">Verified Candidate Brief</span>
+        </div>
+        <h2 class="rm-header-title">Rudra <span>Sharma</span></h2>
+        <p class="rm-header-desc">
+          First-Year B.Tech CS &amp; Data Science at Rishihood University (Class of 2030). Builder of production software systems, stress-tested commercial models in competitive arenas, and multi-agent platforms with verified competitive wins.
+        </p>
+      </div>
+      <div class="rm-header-actions">
+        <button type="button" class="rm-close-btn" id="rm-close-btn" aria-label="Close Recruiter Mode (Esc)">
+          <span>✕</span>
+          <span>Close</span>
+          <span class="rm-toggle-shortcut">[Esc]</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 High-Density Key Proof Telemetry Cards -->
+    <div class="rm-kpis-grid">
+      <div class="rm-kpi-card">
+        <div class="rm-kpi-val">8.85x</div>
+        <div class="rm-kpi-label">Fund Growth Run</div>
+        <div class="rm-kpi-sub">Ashoka Cash Rush: ₹300 → ₹2,655 in 120m. ₹45 costs. 1st Place Champion.</div>
+      </div>
+      <div class="rm-kpi-card">
+        <div class="rm-kpi-val">02</div>
+        <div class="rm-kpi-label">Championships</div>
+        <div class="rm-kpi-sub">Ashoka University Shatranj '26 &amp; Rishihood Builders' Bootcamp #1 Top Team.</div>
+      </div>
+      <div class="rm-kpi-card">
+        <div class="rm-kpi-val">TOP 5</div>
+        <div class="rm-kpi-label">National Finalist</div>
+        <div class="rm-kpi-sub">IIM Amritsar CINE-SELL out of ~700 teams. Sole 1st-year team vs MBA cohorts.</div>
+      </div>
+      <div class="rm-kpi-card">
+        <div class="rm-kpi-val">03</div>
+        <div class="rm-kpi-label">Podiums In 4 Mos</div>
+        <div class="rm-kpi-sub">Jun–Oct 2026: 2x 1st Place, 1x 3rd Place (DCRUST Murthal). ₹8,100+ won.</div>
+      </div>
+    </div>
+
+    <!-- Main Split Grid: Competitive Track Record + Venture Portfolio -->
+    <div class="rm-split-grid">
+      <!-- Left Panel: Verified Field Evidence & Unit Economics -->
+      <div class="rm-panel">
+        <div class="rm-panel-head">
+          <h3 class="rm-panel-title">
+            <span>Verified Field Evidence &amp; Commercial ROI</span>
+          </h3>
+          <span class="rm-panel-count">4 Records</span>
+        </div>
+        <div class="rm-proof-list">
+          <div class="rm-proof-item">
+            <div class="rm-proof-top">
+              <span class="rm-proof-name">Ashoka University · Cash Rush</span>
+              <span class="rm-proof-badge">🏆 1st Place Champion</span>
+            </div>
+            <div class="rm-proof-metrics">₹300 → ₹2,655 in 2 hrs · 8.85x Return · ₹7,000 Prize</div>
+            <p class="rm-proof-desc">
+              Zero-inventory service business model: built interactive curiosity funnel, live campus quiz challenge, and on-the-spot caricatures. Total production cost: ₹45. Margin: 98.3%.
+            </p>
+          </div>
+
+          <div class="rm-proof-item">
+            <div class="rm-proof-top">
+              <span class="rm-proof-name">IIM Amritsar · CINE-SELL</span>
+              <span class="rm-proof-badge">⚡ Top 5 National</span>
+            </div>
+            <div class="rm-proof-metrics">~700 National Teams · Lead of "Team Big 4"</div>
+            <p class="rm-proof-desc">
+              National marketing fest challenge. Directed product positioning, filmed commercial reel, and live stage commercial skit; placed in top 5 against postgraduate B-school cohorts.
+            </p>
+          </div>
+
+          <div class="rm-proof-item">
+            <div class="rm-proof-top">
+              <span class="rm-proof-name">Rishihood · Builders' Bootcamp</span>
+              <span class="rm-proof-badge">🥇 #1 Overall Top Team</span>
+            </div>
+            <div class="rm-proof-metrics">7-Day Venture Incubator · Shipped Working Web App</div>
+            <p class="rm-proof-desc">
+              Intensive product design, AI, and startup sprint. Engineered functional web prototype from scratch within 7 days and pitched live on Demo Day to industry jury.
+            </p>
+          </div>
+
+          <div class="rm-proof-item">
+            <div class="rm-proof-top">
+              <span class="rm-proof-name">DCRUST Murthal · Brand Pitch</span>
+              <span class="rm-proof-badge">🥉 3rd Place Podium</span>
+            </div>
+            <div class="rm-proof-metrics">45-Minute Prep Sprint · ₹1,100 Cash Prize</div>
+            <p class="rm-proof-desc">
+              Built 4 full campaign deliverables in 45 minutes: poster, video commercial, comedy skit, and live stage pitch for FMCG soap brand.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Panel: Venture Portfolio & Technical Systems -->
+      <div class="rm-panel">
+        <div class="rm-panel-head">
+          <h3 class="rm-panel-title">
+            <span>Ventures &amp; Technical Systems</span>
+          </h3>
+          <span class="rm-panel-count">4 Systems</span>
+        </div>
+        <div class="rm-projects-list">
+          <div class="rm-project-card">
+            <div class="rm-project-top">
+              <span class="rm-project-name">Tathya (तथ्य)</span>
+              <span class="rm-project-status">Research Phase</span>
+            </div>
+            <p class="rm-project-thesis">
+              Evaluation benchmark investigating LLM token fragmentation and failure modes on non-standard Indian dialects (Punjabi, Haryanvi, Bhojpuri) with verification layer for civic queries.
+            </p>
+          </div>
+
+          <div class="rm-project-card">
+            <div class="rm-project-top">
+              <span class="rm-project-name">Stratum</span>
+              <span class="rm-project-status">Concept Stage</span>
+            </div>
+            <p class="rm-project-thesis">
+              High-velocity market simulation platform evaluating candidate decision speed and capital efficiency under CPM volatility shocks instead of static LLM-cheatable case studies.
+            </p>
+          </div>
+
+          <div class="rm-project-card">
+            <div class="rm-project-top">
+              <span class="rm-project-name">Flow State</span>
+              <span class="rm-project-status rm-status-building">Local Build</span>
+            </div>
+            <p class="rm-project-thesis">
+              Privacy-first desktop focus environment: zero-OAuth RFC 5545 calendar synchronization and 16-bit 44.1kHz procedural sine wave audio synthesis (0 MP3 files, zero telemetry).
+            </p>
+          </div>
+
+          <div class="rm-project-card">
+            <div class="rm-project-top">
+              <span class="rm-project-name">Krama (क्रम)</span>
+              <span class="rm-project-status rm-status-building">Student Utility</span>
+            </div>
+            <p class="rm-project-thesis">
+              Offline-first academic schedule optimization and attendance recovery calculus utility to proactively prevent dipping below the mandatory 75% university eligibility cutoff.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Bar / Direct Outreach -->
+    <div class="rm-footer-bar">
+      <div class="rm-footer-cta-group">
+        <a href="assets/rudra-sharma-resume.pdf" class="rm-btn-primary" target="_blank" rel="noopener noreferrer" download="rudra-sharma-resume.pdf" id="rm-resume-link">
+          <span>↓</span>
+          <span>Download Résumé (PDF)</span>
+        </a>
+        <button type="button" class="rm-btn-secondary" id="rm-copy-email-btn" aria-label="Copy Rudra's email address">
+          <span>✉</span>
+          <span id="rm-copy-email-text">Copy Email</span>
+        </button>
+        <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="rm-btn-secondary" target="_blank" rel="noopener noreferrer" id="rm-linkedin-link">
+          <span>↗</span>
+          <span>LinkedIn Network</span>
+        </a>
+      </div>
+      <div class="rm-footer-note">
+        Press <kbd>Esc</kbd> anytime or toggle nav button to return to full portfolio
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Toast notification element -->
+<div id="rm-toast" class="rm-toast" role="status" aria-live="polite" aria-atomic="true">
+  Email copied to clipboard: rudra.s26042@csds.rishihood.edu.in
+</div>
+
+<!-- ==========================================================================
+     SECTION C: JAVASCRIPT CONTROLLER & INITIALIZER
+     Global Function: window.initRecruiterMode(content)
+     ========================================================================== -->
+<script>
+(function() {
+  'use strict';
+
+  // In-memory state management (Strictly persist NOTHING sensitive, zero localStorage/sessionStorage/cookies)
+  window.__RECRUITER_MODE = {
+    active: false,
+    timestamp: null
+  };
+
+  /**
+   * Safe data resolution adhering to offline / file:// protocol contract
+   */
+  function resolveContentData(content) {
+    if (content && typeof content === 'object') return content;
+    if (window.__PORTFOLIO_CONTENT__ && typeof window.__PORTFOLIO_CONTENT__ === 'object') {
+      return window.__PORTFOLIO_CONTENT__;
+    }
+    const scriptEl = document.getElementById('portfolio-content-data');
+    if (scriptEl && scriptEl.textContent) {
+      try {
+        return JSON.parse(scriptEl.textContent);
+      } catch (e) {
+        console.warn('[RecruiterMode] Failed to parse #portfolio-content-data JSON', e);
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Helper to copy text to clipboard with fallback for non-secure / file:// origins
+   */
+  function copyTextToClipboard(text, onSuccess, onError) {
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
+        fallbackCopyText(text, onSuccess, onError);
+      });
+    } else {
+      fallbackCopyText(text, onSuccess, onError);
+    }
+  }
+
+  function fallbackCopyText(text, onSuccess, onError) {
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = text;
+      textArea.style.position = 'fixed';
+      textArea.style.top = '-9999px';
+      textArea.style.left = '-9999px';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (successful && onSuccess) onSuccess();
+      else if (!successful && onError) onError();
+    } catch (err) {
+      if (onError) onError(err);
+    }
+  }
+
+  /**
+   * Ensure mount points exist in DOM. If not present in HTML, inject dynamically.
+   */
+  function ensureDOMMounts() {
+    // 1. Check or mount #rm-toggle in nav
+    let toggleBtn = document.getElementById('rm-toggle');
+    if (!toggleBtn) {
+      const nav = document.querySelector('.nav-wrap nav') || document.querySelector('nav');
+      if (nav) {
+        toggleBtn = document.createElement('button');
+        toggleBtn.id = 'rm-toggle';
+        toggleBtn.className = 'rm-toggle-btn';
+        toggleBtn.setAttribute('aria-pressed', 'false');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtn.setAttribute('aria-controls', 'rm-summary-drawer');
+        toggleBtn.setAttribute('aria-label', 'Toggle Recruiter Mode (30-second executive view)');
+        toggleBtn.type = 'button';
+        toggleBtn.innerHTML = `
+          <span class="rm-toggle-beacon" aria-hidden="true"></span>
+          <span class="rm-toggle-badge">EXECUTIVE</span>
+          <span class="rm-toggle-label">Recruiter Mode</span>
+          <span class="rm-toggle-shortcut" aria-hidden="true">30s view</span>
+        `;
+        const burger = nav.querySelector('#burger');
+        const actionPill = nav.querySelector('.nav-action-pill');
+        if (actionPill) {
+          nav.insertBefore(toggleBtn, actionPill);
+        } else if (burger) {
+          nav.insertBefore(toggleBtn, burger);
+        } else {
+          nav.appendChild(toggleBtn);
+        }
+      }
+    }
+
+    // 2. Check or mount #rm-summary-drawer in hero
+    let drawerEl = document.getElementById('rm-summary-drawer');
+    if (!drawerEl) {
+      const hero = document.getElementById('hero') || document.querySelector('.hero-wrap');
+      if (hero) {
+        const statsRow = hero.querySelector('.hero-stats-row');
+        drawerEl = document.createElement('div');
+        drawerEl.id = 'rm-summary-drawer';
+        drawerEl.className = 'rm-summary-drawer';
+        drawerEl.setAttribute('role', 'region');
+        drawerEl.setAttribute('aria-label', 'Executive Brief and Recruiter Summary');
+        drawerEl.setAttribute('aria-hidden', 'true');
+        drawerEl.hidden = true;
+        if (statsRow && statsRow.parentNode) {
+          statsRow.parentNode.insertBefore(drawerEl, statsRow.nextSibling);
+        } else {
+          hero.appendChild(drawerEl);
+        }
+      }
+    }
+
+    // 3. Check or mount #rm-toast
+    let toast = document.getElementById('rm-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'rm-toast';
+      toast.className = 'rm-toast';
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      toast.setAttribute('aria-atomic', 'true');
+      toast.textContent = 'Email copied to clipboard: rudra.s26042@csds.rishihood.edu.in';
+      document.body.appendChild(toast);
+    }
+
+    return { toggleBtn, drawerEl, toast };
+  }
+
+  /**
+   * Main Recruiter Mode Initializer
+   * Global signature per interfaces.md: window.initRecruiterMode(content)
+   * @param {Object} [content] Optional content object conforming to content.json schema
+   * @returns {{ toggle: Function, getState: Function }}
+   */
+  window.initRecruiterMode = function(content) {
+    const data = resolveContentData(content);
+    const { toggleBtn, drawerEl, toast } = ensureDOMMounts();
+
+    if (!toggleBtn || !drawerEl) {
+      console.warn('[RecruiterMode] Missing toggle button or drawer mount target');
+      return {
+        toggle: function() { return false; },
+        getState: function() { return false; }
+      };
+    }
+
+    const emailToCopy = (data && data.personal && data.personal.email) 
+      ? data.personal.email 
+      : 'rudra.s26042@csds.rishihood.edu.in';
+
+    const resumeUrl = (data && data.personal && data.personal.resume_url)
+      ? data.personal.resume_url
+      : 'assets/rudra-sharma-resume.pdf';
+
+    const linkedinUrl = (data && data.personal && data.personal.linkedin)
+      ? data.personal.linkedin
+      : 'https://www.linkedin.com/in/rudra-sharma-7bb78b410/';
+
+    // Update dynamic anchor attributes if rendered
+    const resumeLink = drawerEl.querySelector('#rm-resume-link');
+    if (resumeLink) resumeLink.href = resumeUrl;
+    const linkedinLink = drawerEl.querySelector('#rm-linkedin-link');
+    if (linkedinLink) linkedinLink.href = linkedinUrl;
+
+    let toastTimer = null;
+    function showToast(message) {
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('rm-toast-visible');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function() {
+        toast.classList.remove('rm-toast-visible');
+      }, 3000);
+    }
+
+    // Email Copy Button binding
+    const copyBtn = drawerEl.querySelector('#rm-copy-email-btn');
+    if (copyBtn && !copyBtn.dataset.rmBound) {
+      copyBtn.dataset.rmBound = 'true';
+      copyBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        copyTextToClipboard(emailToCopy, function() {
+          showToast('Copied to clipboard: ' + emailToCopy);
+          const textSpan = copyBtn.querySelector('#rm-copy-email-text');
+          if (textSpan) {
+            const original = textSpan.textContent;
+            textSpan.textContent = 'Copied!';
+            setTimeout(function() { textSpan.textContent = original; }, 2000);
+          }
+        }, function() {
+          showToast('Email: ' + emailToCopy);
+        });
+      });
+    }
+
+    // Toggle implementation
+    function setRecruiterState(nextActive) {
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.__RECRUITER_MODE.active = nextActive;
+      window.__RECRUITER_MODE.timestamp = Date.now();
+
+      // Update Body class
+      document.body.classList.toggle('rm-mode-active', nextActive);
+
+      // Update Toggle Button ARIA & classes
+      toggleBtn.setAttribute('aria-pressed', nextActive ? 'true' : 'false');
+      toggleBtn.setAttribute('aria-expanded', nextActive ? 'true' : 'false');
+      toggleBtn.classList.toggle('rm-active', nextActive);
+
+      // Update Drawer ARIA & visibility
+      if (nextActive) {
+        drawerEl.hidden = false;
+        drawerEl.setAttribute('aria-hidden', 'false');
+
+        // Scroll to drawer unless reduced motion forbids animated scrolling
+        if (!reduced) {
+          try {
+            drawerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          } catch (e) {
+            drawerEl.scrollIntoView();
+          }
+        } else {
+          drawerEl.scrollIntoView({ behavior: 'auto', block: 'start' });
+        }
+
+        // Focus close button for intuitive keyboard navigation
+        const closeBtn = drawerEl.querySelector('#rm-close-btn');
+        if (closeBtn) {
+          setTimeout(function() { closeBtn.focus(); }, 50);
+        }
+      } else {
+        drawerEl.hidden = true;
+        drawerEl.setAttribute('aria-hidden', 'true');
+      }
+
+      // Dispatch custom event per interfaces contract
+      document.dispatchEvent(new CustomEvent('portfolio:recruiter-mode', {
+        detail: { active: nextActive }
+      }));
+
+      return nextActive;
+    }
+
+    function toggle() {
+      const next = !window.__RECRUITER_MODE.active;
+      return setRecruiterState(next);
+    }
+
+    function getState() {
+      return Boolean(window.__RECRUITER_MODE.active);
+    }
+
+    // Bind Toggle Button click (avoid multiple bindings)
+    if (!toggleBtn.dataset.rmBound) {
+      toggleBtn.dataset.rmBound = 'true';
+      toggleBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        toggle();
+      });
+    }
+
+    // Bind Close Button inside Drawer (avoid multiple bindings)
+    const closeBtn = drawerEl.querySelector('#rm-close-btn');
+    if (closeBtn && !closeBtn.dataset.rmBound) {
+      closeBtn.dataset.rmBound = 'true';
+      closeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        setRecruiterState(false);
+        toggleBtn.focus();
+      });
+    }
+
+    // Keyboard navigation: Escape key collapses drawer and returns focus to toggle
+    if (!window.__RM_ESCAPE_BOUND) {
+      window.__RM_ESCAPE_BOUND = true;
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' || e.key === 'Esc') {
+          if (window.__RECRUITER_MODE && window.__RECRUITER_MODE.active) {
+            setRecruiterState(false);
+            if (toggleBtn) toggleBtn.focus();
+          }
+        }
+      });
+    }
+
+    return {
+      toggle: toggle,
+      getState: getState
+    };
+  };
+
+  // Auto-init on DOMContentLoaded or immediate execution if DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() {
+      window.initRecruiterMode();
+    });
+  } else {
+    window.initRecruiterMode();
+  }
+})();
+</script>

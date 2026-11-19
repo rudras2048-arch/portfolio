@@ -1,0 +1,28 @@
+{
+  "timestamp": "2026-11-17T13:33:07.575Z",
+  "totalMismatches": 3,
+  "passed": false,
+  "mismatches": [
+    {
+      "area": "Competitions Pillar 02 (Builders Bootcamp)",
+      "rendered": "Squad: Rudra Sharma, TBD",
+      "contentJson": "content.json lists squad members as [\"Rudra Sharma\", \"TBD\"]",
+      "severity": "CRITICAL / TBD LEAK",
+      "detail": "Literal \"TBD\" rendered to visible user DOM instead of fallback suppression."
+    },
+    {
+      "area": "Cash Rush Metric",
+      "rendered": "Missing or altered multiplier in visible text",
+      "contentJson": "multiplier: \"8.85x\"",
+      "severity": "MEDIUM / FACT DISCREPANCY",
+      "detail": "35.2x multiplier expected from content.json"
+    },
+    {
+      "area": "Cash Rush Metric",
+      "rendered": "Ending fund figure missing or formatted differently",
+      "contentJson": "ending_fund_inr: 2655",
+      "severity": "LOW",
+      "detail": "₹17,600 ending fund figure check"
+    }
+  ]
+}

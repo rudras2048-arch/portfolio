@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, follow">
+  <title>Rudra Sharma — Builder · Rishihood '30</title>
+  <meta name="description" content="Rudra Sharma, first-year B.Tech CS & Data Science at Rishihood University (Class of 2030). 1st place at Ashoka Cash Rush and Builders' Bootcamp; top 5 national finalist at IIM Amritsar's CINE-SELL (~700 teams).">
+  <meta property="og:title" content="Rudra Sharma — Builder · Rishihood '30">
+  <meta property="og:description" content="First-year builder turning ambiguous problems into working systems, testing commercial ideas in competitive arenas, and developing ventures outside the classroom.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rudrasharma.dev/">
+  <meta property="og:image" content="https://rudrasharma.dev/assets/rudra-pitch-portrait.jpg">
+  <meta property="og:image:alt" content="Rudra Sharma pitching venture strategy">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Tactical Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23101012'/%3E%3Ctext x='14' y='44' font-family='monospace' font-size='30' fill='%23A5BA28'%3E%3E_%3C/text%3E%3C/svg%3E">
+
+  <!-- Avant-Garde Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM TOKENS — HIGH-INTERACTIVE LUXURY EDITORIAL
+       ========================================================================== */
+    :root {
+      --bg: #0C0C0E;
+      --bg2: #131317;
+      --bg3: #1B1B22;
+      --bg-card: rgba(18, 18, 22, 0.84);
+      
+      --text-bone: #F5EFE6;
+      --text-muted: #9C988D;
+      --text-dim: #5C5A53;
+      
+      --accent: #A5BA28;
+      --accent-bright: #BEE024;
+      --accent-soft: rgba(165, 186, 40, 0.12);
+      --accent-glow: rgba(165, 186, 40, 0.28);
+      --rule: rgba(255, 255, 255, 0.08);
+      --rule-hover: rgba(165, 186, 40, 0.35);
+      
+      --card-radius: 18px;
+      
+      --font-display: 'Syne', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
+      --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, Menlo, Consolas, monospace;
+      
+      --container-max: 1220px;
+    }
+
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      background-color: var(--bg);
+      color: var(--text-bone);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-bone);
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    ::selection {
+      background: var(--accent);
+      color: #0C0C0E;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #25252D;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #383844;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .mono {
+      font-family: var(--font-mono);
+      font-feature-settings: "tnum" 1, "zero" 1;
+    }
+
+    /* Scroll Progress Bar */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2.5px;
+      width: 0;
+      background: linear-gradient(90deg, rgba(165, 186, 40, 0.4), var(--accent-bright));
+      z-index: 100;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    /* Interactive Particle Wave Canvas & Glow */
+    #field {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      display: block;
+      opacity: 0.85;
+    }
+
+    #glow {
+      position: fixed;
+      width: 580px;
+      height: 580px;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(circle, rgba(165, 186, 40, 0.08) 0%, transparent 65%);
+      transform: translate(-50%, -50%);
+      left: 50vw;
+      top: 50vh;
+      transition: opacity 0.3s ease;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-size: 44px 44px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Fixed Navigation Pill */
+    .nav-wrap {
+      position: fixed;
+      top: 16px;
+      left: 0;
+      right: 0;
+      z-index: 80;
+      display: flex;
+      justify-content: center;
+      padding: 0 24px;
+    }
+
+    nav {
+      background: rgba(14, 14, 18, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--rule);
+      border-radius: 9999px;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+      transition: all 0.3s ease;
+    }
+
+    nav.scrolled {
+      background: rgba(12, 12, 15, 0.94);
+      border-color: rgba(165, 186, 40, 0.25);
+      padding: 8px 22px;
+    }
+
+    .nav-brand {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--text-bone);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pulse-dot {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulseBlink 2.2s infinite ease-in-out;
+    }
+
+    @keyframes pulseBlink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.85); }
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      position: relative;
+      padding: 4px 0;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 1.5px;
+      width: 100%;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-links a:hover {
+      color: var(--text-bone);
+    }
+
+    .nav-links a:hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+
+    .nav-links a .idx {
+      color: var(--accent);
+      font-size: 9.5px;
+      margin-right: 4px;
+    }
+
+    .nav-action-pill {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: #0C0C0E;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-action-pill:hover {
+      background: var(--accent-bright);
+      box-shadow: 0 0 20px var(--accent-glow);
+      transform: translateY(-1px);
+    }
+
+    /* Mobile Hamburger */
+    #burger {
+      display: none;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      width: 28px;
+      height: 20px;
+      position: relative;
+      z-index: 95;
+    }
+
+    #burger span {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--text-bone);
+      transition: transform 0.3s, top 0.3s, opacity 0.3s;
+    }
+    #burger span:nth-child(1) { top: 2px; }
+    #burger span:nth-child(2) { top: 9px; }
+    #burger span:nth-child(3) { top: 16px; }
+
+    body.menu-open #burger span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+    body.menu-open #burger span:nth-child(2) { opacity: 0; }
+    body.menu-open #burger span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+    #mobileMenu {
+      position: fixed;
+      inset: 0;
+      background: rgba(12, 12, 15, 0.98);
+      z-index: 90;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 32px;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    body.menu-open #mobileMenu {
+      opacity: 1;
+      pointer-events: auto;
+      visibility: visible;
+    }
+    #mobileMenu a {
+      color: var(--text-bone);
+      font-family: var(--font-display);
+      font-size: clamp(28px, 7vw, 42px);
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+    }
+    #mobileMenu a .idx {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--accent);
+    }
+    body.menu-open {
+      overflow: hidden;
+    }
+
+    /* Page Architecture */
+    .page-spine {
+      position: relative;
+      z-index: 10;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 100px 0 40px;
+      scroll-margin-top: 60px;
+    }
+
+    .section-header {
+      margin-bottom: 48px;
+    }
+
+    .section-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: inline-block;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(34px, 4.8vw, 54px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--text-bone);
+      text-transform: uppercase;
+    }
+
+    .section-lead {
+      font-size: 17.5px;
+      color: var(--text-muted);
+      max-width: 66ch;
+      margin-top: 16px;
+      line-height: 1.65;
+    }
+
+    /* Reveal Animation Utility */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ==========================================================================
+       HERO MONOLITH: SCULPTURAL EDITORIAL + PITCH PORTRAIT
+       ========================================================================== */
+    .hero-wrap {
+      padding-top: 100px;
+      padding-bottom: 72px;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 52px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .hero-meta-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: var(--accent-soft);
+      border: 1px solid rgba(165, 186, 40, 0.3);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(54px, 7.6vw, 98px);
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      color: var(--text-bone);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      user-select: none;
+    }
+
+    .hero-headline .stagger {
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--text-bone);
+      display: block;
+      transition: color 0.3s ease;
+    }
+    .hero-headline .stagger:hover {
+      color: var(--text-bone);
+    }
+
+    /* Live Typed Command Prompt */
+    .hero-tagline-prompt {
+      margin-bottom: 24px;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-family: var(--font-mono);
+    }
+
+    .hero-tagline-prompt .prompt {
+      font-size: 13.5px;
+      color: var(--text-dim);
+    }
+
+    .typed-output {
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      min-height: 22px;
+      font-weight: 500;
+    }
+
+    .typed-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background: var(--accent);
+      vertical-align: -2px;
+      animation: blinkCursor 1.1s step-start infinite;
+    }
+    @keyframes blinkCursor {
+      50% { opacity: 0; }
+    }
+
+    .hero-statement {
+      font-family: var(--font-serif);
+      font-size: clamp(19px, 2.2vw, 24px);
+      font-style: italic;
+      color: var(--text-bone);
+      line-height: 1.45;
+      margin-bottom: 32px;
+      max-width: 40ch;
+    }
+
+    /* Interactive Count-Up Stats Row */
+    .hero-stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-bottom: 36px;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      padding: 16px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.25s ease;
+    }
+
+    .stat-card:hover {
+      border-color: var(--rule-hover);
+      transform: translateY(-2px);
+    }
+
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-bone);
+    }
+
+    .stat-desc {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      color: var(--text-dim);
+      line-height: 1.35;
+    }
+
+    /* Action Buttons */
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-solid {
+      background: var(--accent);
+      color: #0C0C0E;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 24px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .btn-solid:hover {
+      background: var(--accent-bright);
+      box-shadow: 0 0 24px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: var(--bg-card);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--rule);
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 14px 22px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-soft);
+      transform: translateY(-2px);
+    }
+
+    .btn-arrow {
+      display: inline-block;
+      transition: transform 0.25s ease;
+    }
+    .btn-solid:hover .btn-arrow {
+      transform: translateY(2px);
+    }
+    .btn-outline:hover .btn-arrow {
+      transform: translate(3px, -3px);
+    }
+
+    /* Hero Portrait (Luxury Frame) */
+    .hero-portrait-card {
+      position: relative;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--rule);
+      border-radius: var(--card-radius);
+      padding: 14px;
+      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55);
+      transition: border-color 0.3s ease;
+    }
+
+    .hero-portrait-card:hover {
+      border-color: var(--rule-hover);
+    }
+
+    .portrait-inner {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 4 / 5;
+      background: #060608;
+    }
+
+    .portrait-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .hero-portrait-card:hover .portrait-inner img {
+      transform: scale(1.03);
+    }
+
+    .portrait-caption-box {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(12, 12, 15, 0.96) 0%, rgba(12, 12, 15, 0.6) 60%, transparent 100%);
+      padding: 24px 18px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .portrait-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .portrait-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-bone);
+    }
+
+    /* ==========================================================================
+       SECTION 01: PODIUMS & PROOF (WITH INTERACTIVE FILTERS)
+       ========================================================================== */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: var(--bg2);
+      border: 1px solid var(--rule);
+      padding: 9px 18px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover {
+      border-color: #3A3A46;
+      color: var(--text-bone);
+    }
+
+    .filter-btn.active {
+      color: #0C0C0E;
+      background: var(--accent);
+      border-color: var(--accent);
+      font-weight: 700;
+      box-shadow: 0 0 16px var(--accent-soft);
+    }
+
+    .case-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+    }
+
+    .case-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--rule);
+      border-radius: var(--card-radius);
+      padding: 36px;
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 40px;
+      align-items: center;
+      transition: opacity 0.35s ease, transform 0.35s ease, border-color 0.25s ease;
+      position: relative;
+    }
+
+    .case-card:hover {
+      border-color: var(--rule-hover);
+      box-shadow: 0 16px 44px rgba(0, 0, 0, 0.4);
+      transform: translateY(-2px);
+    }
+
+    .case-card.dimmed {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    .case-card.hidden {
+      display: none;
+    }
+
+    /* Pulsing Beacon Indicator */
+    .beacon-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .beacon-pulse {
+      position: relative;
+      display: inline-flex;
+      width: 10px;
+      height: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .beacon-pulse::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.85;
+      animation: pingDot 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+
+    .beacon-pulse::after {
+      content: '';
+      position: relative;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-bright);
+    }
+
+    @keyframes pingDot {
+      70%, 100% {
+        transform: scale(2.6);
+        opacity: 0;
+      }
+    }
+
+    .case-title-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .case-title {
+      font-family: var(--font-display);
+      font-size: clamp(26px, 3.2vw, 36px);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-bone);
+      line-height: 1.12;
+    }
+
+    .case-trophy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(165, 186, 40, 0.24), rgba(190, 224, 36, 0.12));
+      border: 1px solid rgba(165, 186, 40, 0.45);
+      color: #FFFFFF;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      box-shadow: 0 0 16px rgba(165, 186, 40, 0.2);
+    }
+
+    .case-pills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .case-tag {
+      display: inline-flex;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 11px;
+      border-radius: 9999px;
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-muted);
+      letter-spacing: 0.03em;
+    }
+
+    .case-tag.gold {
+      background: var(--accent-soft);
+      border-color: rgba(165, 186, 40, 0.35);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .case-beaten-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(165, 186, 40, 0.25);
+      padding: 5px 12px;
+      border-radius: 6px;
+      margin-bottom: 18px;
+    }
+
+    .case-story {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      margin-bottom: 20px;
+      font-family: var(--font-body);
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #C8C5BC;
+    }
+
+    .case-story p {
+      margin: 0;
+    }
+
+    .case-story strong {
+      color: var(--text-bone);
+      font-weight: 700;
+    }
+
+    /* Quantitative Telemetry Grid */
+    .case-telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 640px) {
+      .case-telemetry-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .telemetry-cell {
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 9px 12px;
+      transition: all 0.2s ease;
+    }
+
+    .telemetry-cell:hover {
+      border-color: rgba(165, 186, 40, 0.35);
+      background: rgba(165, 186, 40, 0.04);
+      transform: translateY(-1px);
+    }
+
+    .telemetry-lbl {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-dim);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .telemetry-val {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bone);
+      letter-spacing: 0.02em;
+      line-height: 1.25;
+    }
+
+    .telemetry-val.accent {
+      color: var(--accent);
+    }
+
+    .case-squad-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .case-squad-row strong {
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .case-squad-row span {
+      color: var(--text-bone);
+    }
+
+    .case-quote {
+      border-left: 2px solid var(--accent);
+      padding-left: 16px;
+      margin-top: 14px;
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 16px;
+      color: #E6E1D8;
+      line-height: 1.5;
+    }
+
+    .case-visual {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 16 / 10;
+      border: 1px solid var(--rule);
+      background: #060608;
+    }
+
+    .case-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+      transition: transform 0.4s ease;
+    }
+
+    .case-card:hover .case-visual img {
+      transform: scale(1.03);
+    }
+
+    .case-visual-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(12, 12, 15, 0.94) 0%, rgba(12, 12, 15, 0.6) 60%, transparent 100%);
+      padding: 20px 16px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .case-visual-caption .stamp {
+      font-family: var(--font-mono);
+      font-size: 9.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .case-visual-caption .caption-txt {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-bone);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       SECTION 02: VENTURES & SYSTEMS (WITH INTERACTIVE TERMINAL PREVIEWS)
+       ========================================================================== */
+    .ventures-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .venture-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--rule);
+      border-radius: var(--card-radius);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 22px;
+      transition: all 0.25s ease;
+    }
+
+    .venture-card:hover {
+      border-color: var(--rule-hover);
+      transform: translateY(-2px);
+    }
+
+    .venture-top {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .venture-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .venture-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--text-bone);
+      letter-spacing: -0.02em;
+    }
+
+    .venture-thesis {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Integrated Code Terminal Box */
+    .term {
+      background: #08080A;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+      margin-top: 14px;
+    }
+
+    .term-bar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 12px;
+      background: rgba(22, 22, 28, 0.75);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .term-bar i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: block;
+    }
+    .term-bar i:nth-child(1) { background: #FF5F56; }
+    .term-bar i:nth-child(2) { background: #FFBD2E; }
+    .term-bar i:nth-child(3) { background: #27C93F; }
+
+    .term-bar span {
+      margin-left: 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+    }
+
+    .term-body {
+      padding: 14px 16px;
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      overflow-x: auto;
+    }
+
+    .term-body .cm { color: var(--text-dim); }
+    .term-body .kw { color: var(--accent); font-weight: 600; }
+    .term-body .st { color: #E8D6B8; }
+    .term-body .fn { color: #A9C7E8; }
+
+    .venture-details {
+      border-top: 1px solid var(--rule);
+      padding-top: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .venture-detail-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .venture-detail-row .lbl {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      width: 70px;
+      flex-shrink: 0;
+    }
+
+    .venture-detail-row .val {
+      color: var(--text-bone);
+    }
+
+    .venture-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 12px 18px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--rule);
+      color: var(--text-bone);
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .venture-btn:hover {
+      background: var(--accent-soft);
+      border-color: rgba(165, 186, 40, 0.3);
+      color: var(--accent);
+    }
+
+    /* ==========================================================================
+       SECTION 03: TRANSMISSION (CONTACT & NETWORK)
+       ========================================================================== */
+    .contact-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--rule);
+      border-radius: var(--card-radius);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .contact-left h3 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 800;
+      color: var(--text-bone);
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 14px;
+    }
+
+    .contact-left p {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .contact-channels {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .channel-box {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.25s ease;
+      cursor: pointer;
+    }
+
+    .channel-box:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .channel-box .info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .channel-box .info-lbl {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .channel-box .info-val {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      color: var(--text-bone);
+      font-weight: 600;
+    }
+
+    .channel-action {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .channel-box.copied {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+    .channel-box.copied .channel-action {
+      color: var(--accent-bright);
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding: 40px 24px;
+      margin-top: 64px;
+    }
+
+    .footer-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .footer-inner a:hover {
+      color: var(--accent);
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 960px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+      .case-card {
+        grid-template-columns: 1fr;
+      }
+      .ventures-grid {
+        grid-template-columns: 1fr;
+      }
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+      .hero-stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .nav-links {
+        display: none;
+      }
+      #burger {
+        display: block;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-stats-row {
+        grid-template-columns: 1fr;
+      }
+      .contact-card {
+        padding: 28px 20px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="progress"></div>
+
+  <!-- Interactive Canvas & Mouse Glow -->
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div id="glow" aria-hidden="true"></div>
+  <div class="grid-overlay" aria-hidden="true"></div>
+
+  <!-- Fixed Navigation Pill -->
+  <div class="nav-wrap">
+    <nav id="nav" role="navigation" aria-label="Main Navigation">
+      <a href="#hero" class="nav-brand">
+        <span class="pulse-dot"></span>
+        <span>RUDRA SHARMA</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#competitions"><span class="idx">01</span>Record</a></li>
+        <li><a href="#ventures"><span class="idx">02</span>Ventures</a></li>
+        <li><a href="#contact"><span class="idx">03</span>Contact</a></li>
+      </ul>
+      <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="nav-action-pill" target="_blank" rel="noopener">
+        LinkedIn ↗
+      </a>
+      <button id="burger" aria-label="Toggle Menu" aria-controls="mobileMenu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="mobileMenu">
+    <a href="#competitions"><span class="idx">01</span>Track Record & Proof</a>
+    <a href="#ventures"><span class="idx">02</span>Ventures & Systems</a>
+    <a href="#contact"><span class="idx">03</span>Direct Contact</a>
+    <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" target="_blank" rel="noopener"><span class="idx">↗</span>LinkedIn Profile</a>
+  </div>
+
+  <main class="page-spine">
+
+    <!-- ========================================================================
+         HERO SECTION: MONOLITH + REAL PITCH PORTRAIT + COUNT-UP STATS
+         ======================================================================== -->
+    <section class="hero-wrap" id="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-meta-pill reveal">
+            <span class="beacon-pulse" aria-hidden="true"></span>
+            First-Year B.Tech CS & Data Science · Builder · Rishihood '30
+          </div>
+
+          <h1 class="hero-headline reveal">
+            Rudra
+            <span class="stagger">Sharma</span>
+          </h1>
+
+          <!-- Live Terminal Typewriter -->
+          <div class="hero-tagline-prompt reveal">
+            <span class="prompt">~/whoami $</span>
+            <span class="typed-output" id="typedOutput"></span>
+            <span class="typed-cursor" aria-hidden="true"></span>
+          </div>
+
+          <p class="hero-statement reveal">
+            “Curiosity starts the work. Execution proves it. I build software systems, stress-test commercial models in competitive arenas, and develop ventures beyond the classroom.”
+          </p>
+
+          <!-- Interactive Count-Up Stats -->
+          <div class="hero-stats-row reveal">
+            <div class="stat-card">
+              <span class="stat-num mono" data-count="2">02</span>
+              <span class="stat-label">Championships</span>
+              <span class="stat-desc">Ashoka & Builders' Bootcamp</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num mono">TOP 5</span>
+              <span class="stat-label">National Finalist</span>
+              <span class="stat-desc">IIM Amritsar · ~700 teams</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num mono" data-count="3">03</span>
+              <span class="stat-label">Podiums</span>
+              <span class="stat-desc">Jun–Oct 2026</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-num mono" data-count="4">04</span>
+              <span class="stat-label">Projects</span>
+              <span class="stat-desc">Tathya · Stratum · Flow State · Krama</span>
+            </div>
+          </div>
+
+          <div class="hero-actions reveal">
+            <a href="#competitions" class="btn-solid">
+              <span>View Field Record</span>
+              <span class="btn-arrow">↓</span>
+            </a>
+            <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="btn-outline" target="_blank" rel="noopener">
+              <span>LinkedIn Network</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+            <a href="assets/rudra-sharma-resume.pdf" class="btn-outline" target="_blank" rel="noopener">
+              <span>Official Résumé (PDF)</span>
+              <span class="btn-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Editorial Pitch Portrait -->
+        <div class="hero-portrait-card reveal">
+          <div class="portrait-inner">
+            <img src="assets/rudra-pitch-portrait.jpg" fetchpriority="high" alt="Rudra Sharma pitching venture strategy in auditorium">
+            <div class="portrait-caption-box">
+              <span class="portrait-tag">Live Field Record // 2026</span>
+              <span class="portrait-name">Rudra Sharma pitching venture strategy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 01: COMPETITIVE FIELD RECORD (WITH INTERACTIVE FILTERING)
+         ======================================================================== -->
+    <section id="competitions">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">01 // Competitive Field Record</span>
+        <h2 class="section-title reveal">Top Finishes & Proof</h2>
+        <p class="section-lead reveal">
+          Four competitions, Jun–Oct 2026: two 1st places, one top-5 national finish, one 3rd place. Filter by type below.
+        </p>
+      </div>
+
+      <!-- Interactive Filter Controls -->
+      <div class="filter-bar reveal">
+        <button class="filter-btn active" data-filter="all">All Arenas (04)</button>
+        <button class="filter-btn" data-filter="1st-place">1st Place Championships (02)</button>
+        <button class="filter-btn" data-filter="national">National Finalist (IIM Amritsar)</button>
+        <button class="filter-btn" data-filter="pitch">Offline Brand Pitch (DCRUST)</button>
+      </div>
+
+      <div class="case-stack">
+
+        <!-- 01: CASH RUSH (ASHOKA UNIVERSITY) -->
+        <article class="case-card reveal" data-category="1st-place">
+          <div>
+            <div class="beacon-row">
+              <span class="beacon-pulse" aria-hidden="true"></span>
+              <span>Ashoka University · Shatranj '26</span>
+            </div>
+
+            <div class="case-title-row">
+              <h3 class="case-title">Cash Rush Competition</h3>
+              <span class="case-trophy-pill">🏆 1st Place Champion</span>
+            </div>
+
+            <div class="case-pills-row">
+              <span class="case-tag gold">#1 Position Leaderboard</span>
+              <span class="case-tag">₹7,000 Cash Prize</span>
+              <span class="case-tag">Fund grew 8.85x in 2 hrs</span>
+              <span class="case-tag">4-Member Squad</span>
+            </div>
+
+            <div class="case-story">
+              <p>
+                <strong>The Setup:</strong> Teams got ₹300 and 120 minutes to grow it on campus however they could.
+              </p>
+              <p>
+                <strong>The Key Decision:</strong> We sold experiences, not goods: a mind-reading website that ended on a QR to LinkedIn as a curiosity hook, a quiz challenge where winners got paid and losers paid us, and on-the-spot caricatures. No inventory, so almost every rupee earned was margin. Total costs were ₹45 (paper and a marker).
+              </p>
+              <p>
+                <strong>The Result:</strong> Services brought in ₹2,400 (₹1,050 mind-reading, ₹550 quiz, ₹800 caricatures). The fund ended at ₹2,655: 1st place and the ₹7,000 prize.
+              </p>
+            </div>
+
+            <div class="case-telemetry-grid">
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Ending Fund</span>
+                <span class="telemetry-val accent">₹2,655</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Costs</span>
+                <span class="telemetry-val">₹45</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Services Sold</span>
+                <span class="telemetry-val">3</span>
+              </div>
+            </div>
+
+            <div class="case-squad-row">
+              <strong>Team:</strong>
+              <span>Rudra Sharma, Raj Khatri, Sahaj Choukhani, Tripti Kaushik</span>
+            </div>
+
+            <div class="case-quote">
+              <strong>What I took from it:</strong> Sell what costs nothing to produce. With 120 minutes on the clock, experiences beat inventory.
+            </div>
+          </div>
+
+          <div class="case-visual">
+            <img src="assets/cash-rush-ashoka.jpg" loading="lazy" alt="Ashoka Cash Rush Championship Team celebrating">
+            <div class="case-visual-caption">
+              <span class="stamp">Field Evidence // Oct 2026</span>
+              <span class="caption-txt">Cash Rush Championship Team · Ashoka University</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02: CINE-SELL (IIM AMRITSAR) -->
+        <article class="case-card reveal" data-category="national">
+          <div>
+            <div class="beacon-row">
+              <span class="beacon-pulse" aria-hidden="true"></span>
+              <span>IIM Amritsar · Marketing Fest '26</span>
+            </div>
+
+            <div class="case-title-row">
+              <h3 class="case-title">CINE-SELL Brand Challenge</h3>
+              <span class="case-trophy-pill">⚡ Top 5 National Finalist</span>
+            </div>
+
+            <div class="case-pills-row">
+              <span class="case-tag gold">Top 5 Nationally</span>
+              <span class="case-tag">~700 Team Registrations</span>
+              <span class="case-tag">Team Lead · "Team Big 4"</span>
+              <span class="case-tag">First-year undergrad team</span>
+            </div>
+
+            <div class="case-beaten-tag">
+              Competing against MBA cohorts from top B-schools
+            </div>
+
+            <div class="case-story">
+              <p>
+                <strong>The Setup:</strong> A national marketing fest challenge with ~700 registered teams where squads had to sell a telephone using Bollywood-inspired characters.
+              </p>
+              <p>
+                <strong>The Key Decision:</strong> Led "Team Big 4" as a first-year undergrad Team Lead—coordinating market research, directing the promotional reel, and anchoring Sahaj's character mimicry act with our commercial pitch.
+              </p>
+              <p>
+                <strong>The Result:</strong> Cleared screening rounds to finish in the <strong>Top 5 National Finalists</strong>, ranking in the top 5 of ~700 teams, most of them postgraduate B-school cohorts.
+              </p>
+            </div>
+
+            <div class="case-telemetry-grid">
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Deliverables</span>
+                <span class="telemetry-val">Reel & Stage Skit</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Role</span>
+                <span class="telemetry-val">Team Lead</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Field</span>
+                <span class="telemetry-val accent">MBA & UG Cohorts</span>
+              </div>
+            </div>
+
+            <div class="case-squad-row">
+              <strong>Team:</strong>
+              <span>Team Big 4 (Rudra Sharma - Lead, Raj Khatri, Sahaj Choukhani, Tripti Kaushik)</span>
+            </div>
+          </div>
+
+          <div class="case-visual">
+            <img src="assets/cinesell-iim-amritsar.jpg" loading="lazy" alt="CINE-SELL Strategy Session at IIM Amritsar">
+            <div class="case-visual-caption">
+              <span class="stamp">Field Evidence // Oct 2026</span>
+              <span class="caption-txt">CINE-SELL Strategy & Modeling Sprint · IIM Amritsar</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03: BUILDERS' BOOTCAMP (RISHIHOOD UNIVERSITY) -->
+        <article class="case-card reveal" data-category="1st-place">
+          <div>
+            <div class="beacon-row">
+              <span class="beacon-pulse" aria-hidden="true"></span>
+              <span>Rishihood University · Demo Day '26</span>
+            </div>
+
+            <div class="case-title-row">
+              <h3 class="case-title">Builders' Bootcamp (8th Edition)</h3>
+              <span class="case-trophy-pill">🥇 #1 Overall Top Team</span>
+            </div>
+
+            <div class="case-pills-row">
+              <span class="case-tag gold">#1 Overall Winning Team</span>
+              <span class="case-tag">7-Day Venture Incubator</span>
+              <span class="case-tag">Working Prototype Shipped</span>
+              <span class="case-tag">Live Demo Day Pitch</span>
+            </div>
+
+            <div class="case-story">
+              <p>
+                <strong>The Setup:</strong> Selected for a 7-day pre-college venture sprint at Rishihood University covering AI, product design, psychology, and startup fundamentals.
+              </p>
+              <p>
+                <strong>The Key Decision:</strong> Built a functional startup web prototype from scratch during the 7 days and put it in front of people rather than stopping at slide decks.
+              </p>
+              <p>
+                <strong>The Result:</strong> Pitched live on Demo Day and finished as the <strong>#1 Overall Winning Team</strong> across all participating cohorts.
+              </p>
+            </div>
+
+            <div class="case-telemetry-grid">
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Edition</span>
+                <span class="telemetry-val">8th Edition</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Tracks</span>
+                <span class="telemetry-val">AI, Design & Psych</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Evaluation</span>
+                <span class="telemetry-val accent">Demo Day Jury</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="case-visual">
+            <img src="assets/builders-bootcamp-demo-day.jpg" loading="lazy" alt="Builders Bootcamp Cohort Rishihood University">
+            <div class="case-visual-caption">
+              <span class="stamp">Field Evidence // June 2026</span>
+              <span class="caption-txt">1st Place Winning Cohort · Builders' Bootcamp Demo Day</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04: ADVERTISING & BRAND PITCH (DCRUST E-SUMMIT '26 MURTHAL) -->
+        <article class="case-card reveal" data-category="pitch">
+          <div>
+            <div class="beacon-row">
+              <span class="beacon-pulse" aria-hidden="true"></span>
+              <span>DCRUST Murthal · E-Summit '26</span>
+            </div>
+
+            <div class="case-title-row">
+              <h3 class="case-title">Advertising & Brand Pitch</h3>
+              <span class="case-trophy-pill">🥉 3rd Place Podium</span>
+            </div>
+
+            <div class="case-pills-row">
+              <span class="case-tag gold">3rd Position Podium</span>
+              <span class="case-tag">45-Minute Prep Sprint</span>
+              <span class="case-tag">₹1,100 Cash Prize</span>
+              <span class="case-tag">4-Part Campaign Suite</span>
+            </div>
+
+            <div class="case-story">
+              <p>
+                <strong>The Setup:</strong> Represented Rishihood University offline at DCRUST E-Summit '26. Teams were assigned a consumer soap brand and given 45 minutes to build a full campaign from scratch.
+              </p>
+              <p>
+                <strong>The Key Decision:</strong> Divided the 45-minute window across four concrete deliverables—a promotional poster, a short filmed ad, a live skit, and a product pitch for the stage round.
+              </p>
+              <p>
+                <strong>The Result:</strong> Finished <strong>3rd Position Podium</strong> overall and won the <strong>₹1,100 cash prize</strong>.
+              </p>
+            </div>
+
+            <div class="case-telemetry-grid">
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Assigned Brief</span>
+                <span class="telemetry-val">Soap FMCG Brand</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Deliverables</span>
+                <span class="telemetry-val">Poster, Video, Skit, Pitch</span>
+              </div>
+              <div class="telemetry-cell">
+                <span class="telemetry-lbl">Format</span>
+                <span class="telemetry-val accent">Live Stage Pitch</span>
+              </div>
+            </div>
+
+            <div class="case-squad-row">
+              <strong>Team:</strong>
+              <span>Rudra Sharma, Raj Khatri, Sahaj Choukhani, Tripti Kaushik</span>
+            </div>
+          </div>
+
+          <div class="case-visual">
+            <img src="assets/dcrust-podium-team.jpg" loading="lazy" alt="DCRUST E-Summit Podium Team" style="object-position: center 25%;">
+            <div class="case-visual-caption">
+              <span class="stamp">Field Evidence // Sept 2026</span>
+              <span class="caption-txt">3rd Place Podium Finish · E-Summit DCRUST '26 (Murthal)</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 02: VENTURES & SYSTEMS (WITH INTERACTIVE CODE TERMINALS)
+         ======================================================================== -->
+    <section id="ventures">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">02 // Ventures & Systems</span>
+        <h2 class="section-title reveal">What I Am Building</h2>
+        <p class="section-lead reveal">
+          Four projects at different stages, from an early concept to small tools I use myself.
+        </p>
+      </div>
+
+      <div class="ventures-grid">
+
+        <!-- 01: TATHYA (STARTUP) -->
+        <article class="venture-card reveal">
+          <div class="venture-top">
+            <div class="venture-meta">
+              <span>VENTURE // EARLY RESEARCH</span>
+              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>RESEARCH PHASE</span>
+            </div>
+            <h3 class="venture-name">Tathya (तथ्य)</h3>
+            <p class="venture-thesis">
+              Research into how LLMs fail on non-standard Indian dialects (Punjabi, Haryanvi, Bhojpuri), and a verification layer to catch those failures.
+            </p>
+
+            <!-- Integrated Terminal Output -->
+            <div class="term">
+              <div class="term-bar">
+                <i></i><i></i><i></i>
+                <span>tathya-verify.sh · SIMULATED PREVIEW</span>
+              </div>
+              <pre class="term-body"><span class="cm">$ tathya eval --lang haryanvi --set gov-schemes</span>
+<span class="kw">[STATUS]</span> Research phase · building Haryanvi / Punjabi / Bhojpuri eval set
+<span class="kw">[NEXT]</span> Publish LLM failure analysis</pre>
+            </div>
+          </div>
+
+          <div class="venture-details">
+            <div class="venture-detail-row">
+              <span class="lbl">Problem</span>
+              <span class="val">LLMs perform poorly on regional dialects due to token fragmentation.</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Status</span>
+              <span class="val" style="color: var(--accent);">Early research · eval set in progress</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="venture-btn">
+            <span>Talk to me about Tathya</span>
+            <span>↗</span>
+          </a>
+        </article>
+
+        <!-- 02: STRATUM -->
+        <article class="venture-card reveal">
+          <div class="venture-top">
+            <div class="venture-meta">
+              <span>ASSESSMENT PLATFORM</span>
+              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>CONCEPT</span>
+            </div>
+            <h3 class="venture-name">Stratum</h3>
+            <p class="venture-thesis">
+              A concept for a LeetCode-style business acumen assessment: dynamic market sandboxes that score how candidates handle unit economics under volatility, instead of static case studies.
+            </p>
+
+            <!-- Integrated Terminal Output -->
+            <div class="term">
+              <div class="term-bar">
+                <i></i><i></i><i></i>
+                <span>stratum-engine.py · SIMULATED PREVIEW</span>
+              </div>
+              <pre class="term-body"><span class="cm">$ stratum simulate --scenario "cpm_volatility_shock"</span>
+<span class="kw">[SCENARIO]</span> Ad CPMs spike 40% mid-quarter. Reallocate budget to protect margin.
+<span class="kw">[SCORED ON]</span> capital velocity · margin yield · decision speed</pre>
+            </div>
+          </div>
+
+          <div class="venture-details">
+            <div class="venture-detail-row">
+              <span class="lbl">Problem</span>
+              <span class="val">Hiring case studies are easily generated using LLMs without testing live judgment.</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Status</span>
+              <span class="val" style="color: var(--accent);">Concept and pitch stage · sandbox design in progress</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="venture-btn">
+            <span>Talk to me about Stratum</span>
+            <span>↗</span>
+          </a>
+        </article>
+
+        <!-- 03: FLOW STATE -->
+        <article class="venture-card reveal">
+          <div class="venture-top">
+            <div class="venture-meta">
+              <span>DESKTOP OS // FOCUS</span>
+              <span class="mono">LOCAL BUILD</span>
+            </div>
+            <h3 class="venture-name">Flow State</h3>
+            <p class="venture-thesis">
+              A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.
+            </p>
+
+            <!-- Integrated Terminal Output -->
+            <div class="term">
+              <div class="term-bar">
+                <i></i><i></i><i></i>
+                <span>flowstate-core.py · SIMULATED PREVIEW</span>
+              </div>
+              <pre class="term-body"><span class="cm">$ flowstate run --zero-oauth --audio procedural_sine</span>
+<span class="kw">[AUDIO]</span> 16-bit 44.1kHz synthesized via <span class="fn">math.sin</span> (0 MP3 files)
+<span class="kw">[SYNC]</span> Cloud telemetry bypassed · 100% on-device</pre>
+            </div>
+          </div>
+
+          <div class="venture-details">
+            <div class="venture-detail-row">
+              <span class="lbl">Features</span>
+              <span class="val">Zero-OAuth RFC 5545 sync & 16-bit procedural audio synthesis.</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Output</span>
+              <span class="val">Weekly focus receipts with 30-day productivity telemetry.</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="venture-btn">
+            <span>Connect With Builder</span>
+            <span>↗</span>
+          </a>
+        </article>
+
+        <!-- 04: KRAMA -->
+        <article class="venture-card reveal">
+          <div class="venture-top">
+            <div class="venture-meta">
+              <span>SYSTEM UTILITY // ACADEMIC OS</span>
+              <span class="mono">STUDENT UTILITY</span>
+            </div>
+            <h3 class="venture-name">Krama (क्रम)</h3>
+            <p class="venture-thesis">
+              An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.
+            </p>
+
+            <!-- Integrated Terminal Output -->
+            <div class="term">
+              <div class="term-bar">
+                <i></i><i></i><i></i>
+                <span>krama-calc.py · SIMULATED PREVIEW</span>
+              </div>
+              <pre class="term-body"><span class="cm">$ krama analyze --timetable schedule.json --threshold 75%</span>
+<span class="kw">[STATUS]</span> Current: <span class="fn">68.4%</span> | Target threshold: <span class="st">75.0%</span>
+<span class="kw">[RECOVERY]</span> Attend next 4 consecutive sessions to recover margin</pre>
+            </div>
+          </div>
+
+          <div class="venture-details">
+            <div class="venture-detail-row">
+              <span class="lbl">Features</span>
+              <span class="val">Automated timetable JSON ingestion & safe leave buffer calculation.</span>
+            </div>
+            <div class="venture-detail-row">
+              <span class="lbl">Privacy</span>
+              <span class="val">Encrypted local SQLite storage with zero account creation required.</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="venture-btn">
+            <span>Inquire About Krama</span>
+            <span>↗</span>
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+         SECTION 03: TRANSMISSION (CONTACT & NETWORK)
+         ======================================================================== -->
+    <section id="contact">
+      <div class="contact-card reveal">
+        <div class="contact-left">
+          <h3>Working on something interesting?</h3>
+          <p>
+            Open to first-year internships, early-stage builder collaborations, and mentorship — reach out directly below.
+          </p>
+        </div>
+
+        <div class="contact-channels">
+          <div class="channel-box" id="btnCopyEmail">
+            <div class="info">
+              <span class="info-lbl">Direct Institutional Email</span>
+              <span class="info-val" id="emailVal">rudra.s26042@csds.rishihood.edu.in</span>
+            </div>
+            <span class="channel-action" id="copyTag">[COPY]</span>
+          </div>
+
+          <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="channel-box" target="_blank" rel="noopener">
+            <div class="info">
+              <span class="info-lbl">Professional Network</span>
+              <span class="info-val">LinkedIn Profile (Rudra Sharma)</span>
+            </div>
+            <span class="channel-action">[CONNECT ↗]</span>
+          </a>
+
+          <a href="assets/rudra-sharma-resume.pdf" class="channel-box" target="_blank" rel="noopener">
+            <div class="info">
+              <span class="info-lbl">Résumé</span>
+              <span class="info-val">Download Résumé (PDF)</span>
+            </div>
+            <span class="channel-action" style="color: var(--accent); font-weight: 700;">[DOWNLOAD ↗]</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <span>RUDRA SHARMA // CLASS OF 2030</span>
+      <span>EVIDENCE, NOT NOISE · ZERO FLUFF</span>
+      <a href="#hero" style="color: var(--text-bone);">TOP OF ARCHIVE ↑</a>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       INTERACTIVE SCRIPTS: PROGRESS, PARTICLES, TYPEWRITER, FILTERS, OBSERVERS
+       ======================================================================== -->
+  <script>
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // 1. Scroll Progress & Sticky Navbar Scroll State
+    const nav = document.getElementById('nav');
+    const progressBar = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (progressBar) progressBar.style.width = (h > 0 ? (window.scrollY / h * 100) : 0) + '%';
+      if (nav) nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    // 2. Mobile Hamburger Toggle
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (burger && mobileMenu) {
+      burger.addEventListener('click', () => {
+        const open = document.body.classList.toggle('menu-open');
+        burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      document.querySelectorAll('#mobileMenu a').forEach(a => {
+        a.addEventListener('click', () => {
+          document.body.classList.remove('menu-open');
+          burger.setAttribute('aria-expanded', 'false');
+        });
+      });
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && document.body.classList.contains('menu-open')) {
+          document.body.classList.remove('menu-open');
+          burger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    // 3. Interactive Mouse-Responsive Particle Wavefield
+    const canvas = document.getElementById('field');
+    const ctx = canvas.getContext('2d');
+    let W, H;
+    let t = 0, mx = 0.5, my = 0.35, tx = 0.5, ty = 0.35;
+    let animRunning = true;
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+    function resizeCanvas() {
+      W = canvas.width = window.innerWidth * DPR;
+      H = canvas.height = window.innerHeight * DPR;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      if (reduced) drawFrame();
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function drawFrame() {
+      ctx.clearRect(0, 0, W, H);
+      const cols = window.innerWidth < 700 ? 44 : 80;
+      const rows = window.innerWidth < 700 ? 26 : 46;
+      const gx = W / (cols - 1);
+      const gy = H / (rows - 1);
+
+      for (let j = 0; j < rows; j++) {
+        for (let i = 0; i < cols; i++) {
+          const px = i * gx;
+          const py = j * gy;
+          const dist = Math.hypot(i / cols - mx, j / rows - my);
+          const idleWave = Math.sin(i * 0.16 + t) * Math.cos(j * 0.19 + t * 0.75);
+          const mouseSwell = Math.exp(-dist * 2.8);
+          const y = py + (idleWave * (0.2 + 0.8 * mouseSwell) + Math.exp(-dist * 3.4) * 0.8) * H * 0.04;
+          const a = Math.max(0.04, 0.12 + idleWave * 0.05 + mouseSwell * 0.45);
+          const size = 1.3 + mouseSwell * 1.2;
+
+          ctx.fillStyle = `rgba(156, 152, 141, ${a.toFixed(3)})`;
+          ctx.fillRect(px, y, size * DPR, size * DPR);
+
+          if (mouseSwell > 0.28) {
+            ctx.fillStyle = `rgba(165, 186, 40, ${((mouseSwell - 0.28) * 0.85).toFixed(3)})`;
+            ctx.fillRect(px, y, size * DPR, size * DPR);
+          }
+        }
+      }
+    }
+
+    function loopCanvas() {
+      if (animRunning && !reduced) {
+        t += 0.014;
+        mx += (tx - mx) * 0.06;
+        my += (ty - my) * 0.06;
+        drawFrame();
+      }
+      requestAnimationFrame(loopCanvas);
+    }
+    loopCanvas();
+
+    document.addEventListener('visibilitychange', () => {
+      animRunning = !document.hidden;
+    });
+
+    const glowEl = document.getElementById('glow');
+    if (!reduced) {
+      window.addEventListener('pointermove', e => {
+        tx = e.clientX / window.innerWidth;
+        ty = e.clientY / window.innerHeight;
+        if (glowEl) {
+          glowEl.style.left = e.clientX + 'px';
+          glowEl.style.top = e.clientY + 'px';
+        }
+      });
+    } else if (glowEl) {
+      glowEl.style.display = 'none';
+    }
+
+    // 4. Live Typewriter Terminal
+    const typedPhrases = [
+      "researching how llms fail on punjabi, haryanvi & bhojpuri",
+      "1st place cash rush winner at ashoka university",
+      "top 5 national finalist at iim amritsar (~700 teams)",
+      "1st place winner at builders' bootcamp demo day",
+      "working on stratum, flow state and krama"
+    ];
+    let pIdx = 0, cIdx = 0, deleting = false;
+    const typedEl = document.getElementById('typedOutput');
+
+    function runTypewriter() {
+      if (!typedEl) return;
+      const current = typedPhrases[pIdx];
+      cIdx = deleting ? cIdx - 1 : cIdx + 1;
+      typedEl.textContent = current.substring(0, cIdx);
+
+      let speed = deleting ? 24 : 45;
+      if (!deleting && cIdx === current.length) {
+        speed = 2200;
+        deleting = true;
+      } else if (deleting && cIdx === 0) {
+        deleting = false;
+        pIdx = (pIdx + 1) % typedPhrases.length;
+        speed = 400;
+      }
+      setTimeout(runTypewriter, speed);
+    }
+    if (reduced) {
+      if (typedEl) typedEl.textContent = typedPhrases[0];
+    } else {
+      runTypewriter();
+    }
+
+    // 5. Dynamic Count-Up Stat Numbers
+    const statObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        statObserver.unobserve(entry.target);
+        const targetVal = +entry.target.dataset.count;
+        if (isNaN(targetVal)) return;
+        if (reduced) {
+          entry.target.textContent = String(targetVal).padStart(2, '0');
+          return;
+        }
+
+        let curr = 0;
+        const interval = setInterval(() => {
+          curr += 1;
+          if (curr >= targetVal) {
+            curr = targetVal;
+            clearInterval(interval);
+          }
+          entry.target.textContent = String(curr).padStart(2, '0');
+        }, 80);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-num[data-count]').forEach(el => statObserver.observe(el));
+
+    // 6. Scroll Reveal Observer
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // 7. Interactive Category Filtering (Field Record)
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const caseCards = document.querySelectorAll('.case-card');
+    const hideTimers = new WeakMap();
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filterVal = btn.dataset.filter;
+
+        caseCards.forEach(card => {
+          const match = filterVal === 'all' || card.dataset.category === filterVal;
+          if (match) {
+            if (hideTimers.has(card)) {
+              clearTimeout(hideTimers.get(card));
+              hideTimers.delete(card);
+            }
+            card.classList.remove('hidden');
+            requestAnimationFrame(() => card.classList.remove('dimmed'));
+          } else {
+            card.classList.add('dimmed');
+            hideTimers.set(card, setTimeout(() => card.classList.add('hidden'), 350));
+          }
+        });
+      });
+    });
+
+    // 8. Direct Institutional Email Copy with Instant Checkmark
+    const btnCopyEmail = document.getElementById('btnCopyEmail');
+    const copyTag = document.getElementById('copyTag');
+    if (btnCopyEmail && copyTag) {
+      btnCopyEmail.addEventListener('click', () => {
+        const email = (document.getElementById('emailVal')?.textContent || '').trim();
+        navigator.clipboard.writeText(email).then(() => {
+          btnCopyEmail.classList.add('copied');
+          copyTag.textContent = '[COPIED ✓]';
+          setTimeout(() => {
+            btnCopyEmail.classList.remove('copied');
+            copyTag.textContent = '[COPY]';
+          }, 2400);
+        }).catch(() => {
+          window.location.href = 'mailto:' + email;
+        });
+      });
+    }
+  </script>
+</body>
+</html>

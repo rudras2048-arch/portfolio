@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0C0C0E" />
+      <stop offset="60%" stop-color="#111115" />
+      <stop offset="100%" stop-color="#16161C" />
+    </linearGradient>
+
+    <!-- Tactical Accent Gradient -->
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A5BA28" />
+      <stop offset="100%" stop-color="#BEE024" />
+    </linearGradient>
+
+    <!-- Subtle Radial Glow -->
+    <radialGradient id="cornerGlow" cx="90%" cy="10%" r="60%">
+      <stop offset="0%" stop-color="#A5BA28" stop-opacity="0.16" />
+      <stop offset="50%" stop-color="#A5BA28" stop-opacity="0.04" />
+      <stop offset="100%" stop-color="#A5BA28" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Grid Pattern -->
+    <pattern id="tacticalGrid" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#FFFFFF" stroke-width="1" stroke-opacity="0.03" />
+    </pattern>
+
+    <style>
+      .font-mono { font-family: 'JetBrains Mono', 'Menlo', 'Consolas', monospace; }
+      .font-display { font-family: 'Syne', -apple-system, sans-serif; font-weight: 700; }
+      .font-body { font-family: 'DM Sans', -apple-system, sans-serif; }
+      .font-serif { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; }
+    </style>
+  </defs>
+
+  <!-- Base Canvas -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+  <rect width="1200" height="630" fill="url(#tacticalGrid)" />
+  <rect width="1200" height="630" fill="url(#cornerGlow)" />
+
+  <!-- Outer Structural Hairline Border -->
+  <rect x="24" y="24" width="1152" height="582" rx="18" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1.5" />
+
+  <!-- Top Header / Navigation HUD -->
+  <g transform="translate(64, 60)">
+    <!-- Beacon Dot -->
+    <circle cx="6" cy="6" r="5" fill="#A5BA28" />
+    <circle cx="6" cy="6" r="9" fill="none" stroke="#A5BA28" stroke-opacity="0.35" stroke-width="1.5" />
+    
+    <text x="28" y="10" class="font-mono" font-size="12" font-weight="600" fill="#A5BA28" letter-spacing="2">
+      RUDRA SHARMA // EVIDENCE, NOT NOISE
+    </text>
+
+    <text x="1072" y="10" text-anchor="end" class="font-mono" font-size="12" font-weight="500" fill="#5C5A53" letter-spacing="1.5">
+      TRANSMISSION // 03
+    </text>
+    <line x1="0" y1="28" x2="1072" y2="28" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+  </g>
+
+  <!-- Main Hero Block -->
+  <g transform="translate(64, 120)">
+    <!-- Kicker Eyebrow -->
+    <text x="0" y="20" class="font-mono" font-size="13" font-weight="600" fill="#9C988D" letter-spacing="2.5">
+      DIRECT TRANSMISSION CHANNELS
+    </text>
+
+    <!-- Main Title -->
+    <text x="0" y="80" class="font-display" font-size="52" fill="#F5EFE6" letter-spacing="-1">
+      Initiate Direct Transmission
+    </text>
+
+    <!-- Subtitle / Statement -->
+    <text x="0" y="120" class="font-body" font-size="18" fill="#9C988D" font-weight="400">
+      Available for technical collaboration, venture evaluation, and research discussions.
+    </text>
+  </g>
+
+  <!-- Section-Specific Content Injection -->
+  <g transform="translate(64, 275)">
+    
+    <g transform="translate(0, 0)">
+      <!-- Channel 1: Email -->
+      <g transform="translate(0, 0)">
+        <rect width="520" height="105" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+        <text x="28" y="38" class="font-mono" font-size="12" font-weight="600" fill="#A5BA28" letter-spacing="1">PRIMARY TRANSMISSION // EMAIL</text>
+        <text x="28" y="75" class="font-mono" font-size="20" font-weight="600" fill="#F5EFE6">rudra.s26042@csds.rishihood.edu.in</text>
+      </g>
+
+      <!-- Channel 2: LinkedIn -->
+      <g transform="translate(552, 0)">
+        <rect width="520" height="105" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+        <text x="28" y="38" class="font-mono" font-size="12" font-weight="600" fill="#A5BA28" letter-spacing="1">PROFESSIONAL NETWORK // LINKEDIN</text>
+        <text x="28" y="75" class="font-mono" font-size="18" font-weight="500" fill="#F5EFE6">linkedin.com/in/rudra-sharma-7bb78b410</text>
+      </g>
+
+      <!-- Channel 3: Academic Base -->
+      <g transform="translate(0, 125)">
+        <rect width="1072" height="95" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+        <text x="28" y="38" class="font-mono" font-size="12" font-weight="600" fill="#5C5A53" letter-spacing="1">ACADEMIC RESIDENCE</text>
+        <text x="28" y="70" class="font-body" font-size="18" fill="#F5EFE6">B.Tech Computer Science &amp; Data Science · Rishihood University (Class of 2030)</text>
+      </g>
+    </g>
+  
+  </g>
+
+  <!-- Bottom Metadata / Watermark Footer -->
+  <g transform="translate(64, 565)">
+    <line x1="0" y1="0" x2="1072" y2="0" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
+    <text x="0" y="24" class="font-mono" font-size="12" font-weight="600" fill="#A5BA28" letter-spacing="1.5">
+      DIRECT CHANNELS · NO TELEMETRY INTERMEDIARIES
+    </text>
+    <text x="1072" y="24" text-anchor="end" class="font-mono" font-size="12" fill="#5C5A53">
+      B.Tech CS &amp; Data Science · Rishihood University
+    </text>
+  </g>
+</svg>

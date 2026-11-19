@@ -1,0 +1,2042 @@
+<!-- ==========================================================================
+     FIELD RECORD PROOF LAYER DELIVERABLE (v2.0)
+     Prefix: .fr-
+     Mount Point: Inside <section id="competitions"> in index.html
+     Includes:
+       1. Scoped CSS for proof layer & lightbox
+       2. Upgraded 4 Competition Cards (Ashoka, IIM Amritsar, Rishihood, DCRUST)
+       3. Accessible Lightbox modal markup
+       4. window.initFieldRecordProof(content) JS engine
+     ========================================================================== -->
+
+<style>
+/* ==========================================================================
+   FIELD RECORD & PROOF LAYER COMPONENT STYLES
+   Scope Prefix: .fr-
+   Contract: tokens.md (v2.0) & interfaces.md (v2.0)
+   ========================================================================== */
+
+/* Upgraded Case Card Layout */
+.case-card.fr-card {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 28px !important;
+  padding: 34px !important;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--rule);
+  border-radius: var(--card-radius);
+  transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, opacity 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.case-card.fr-card:hover {
+  border-color: var(--rule-hover);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.45), 0 0 24px rgba(165, 186, 40, 0.08);
+  transform: translateY(-2px);
+}
+
+.case-card.fr-card.dimmed {
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+}
+
+.case-card.fr-card.hidden {
+  display: none !important;
+}
+
+/* Header Elements Scoped */
+.fr-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 20px;
+}
+
+.fr-beacon-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.fr-beacon-pulse {
+  position: relative;
+  display: inline-flex;
+  width: 10px;
+  height: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+.fr-beacon-pulse::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.85;
+  animation: frPingDot 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.fr-beacon-pulse::after {
+  content: '';
+  position: relative;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+}
+
+@keyframes frPingDot {
+  70%, 100% {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+.fr-title-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.fr-title {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--text-bone);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.fr-trophy-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(165, 186, 40, 0.22), rgba(190, 224, 36, 0.1));
+  border: 1px solid rgba(165, 186, 40, 0.45);
+  color: #FFFFFF;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 0 16px rgba(165, 186, 40, 0.2);
+}
+
+.fr-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fr-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  color: var(--text-muted);
+}
+
+.fr-tag.gold {
+  color: var(--accent-bright);
+  background: var(--accent-soft);
+  border-color: rgba(165, 186, 40, 0.28);
+  font-weight: 600;
+}
+
+/* Master Proof Layer Grid (Pillars 1-3 Left, Pillar 4 Right) */
+.fr-proof-layer {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: start;
+  width: 100%;
+}
+
+@media (max-width: 980px) {
+  .fr-proof-layer {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+.fr-proof-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.fr-proof-evidence {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* Individual Proof Pillar Containers */
+.fr-pillar {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+.fr-pillar:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(23, 23, 29, 0.95);
+}
+
+.fr-pillar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 10px;
+}
+
+.fr-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fr-pillar-idx {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--accent-glow);
+  letter-spacing: 0.05em;
+}
+
+.fr-pillar-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-bone);
+}
+
+.fr-arena-badge-kicker {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Pillar 01: The Arena & Brief */
+.fr-arena-lead {
+  font-family: var(--font-body);
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-bone);
+  margin: 0;
+}
+
+.fr-arena-meta-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.fr-meta-chip {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 4px 10px;
+  color: var(--text-muted);
+}
+
+.fr-meta-chip strong {
+  color: var(--text-bone);
+  font-weight: 600;
+}
+
+.fr-context-narrative {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fr-narrative-lbl {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.fr-narrative-text {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Pillar 02: My Specific Role & Deliverables */
+.fr-role-highlight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.fr-role-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.fr-role-title {
+  font-family: var(--font-display);
+  font-size: 15.5px;
+  font-weight: 700;
+  color: var(--text-bone);
+  letter-spacing: -0.01em;
+}
+
+.fr-role-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-soft);
+  color: var(--accent-bright);
+  border: 1px solid var(--accent-glow);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.fr-deliverables-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.fr-deliverables-title {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.fr-deliverables-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.fr-deliverable-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-bone);
+}
+
+.fr-check-icon {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 12px;
+  margin-top: 1px;
+}
+
+.fr-deliverable-text {
+  flex: 1;
+}
+
+.fr-squad-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-dim);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  border-top: 1px dashed var(--rule);
+  padding-top: 10px;
+  margin-top: 2px;
+}
+
+.fr-squad-names {
+  color: var(--text-muted);
+}
+
+/* Pillar 03: Outcome & Verified Numbers */
+.fr-result-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-bright);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.fr-telemetry-matrix {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)) !important;
+  gap: 10px !important;
+  margin: 6px 0 !important;
+}
+
+.fr-telemetry-chip {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fr-telemetry-lbl {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.fr-telemetry-val {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-bone);
+  font-feature-settings: "tnum" 1, "zero" 1;
+}
+
+.fr-telemetry-val.accent {
+  color: var(--accent-bright);
+}
+
+.fr-service-breakdown-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.fr-breakdown-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.fr-breakdown-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fr-breakdown-pill {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  background: rgba(165, 186, 40, 0.08);
+  border: 1px solid rgba(165, 186, 40, 0.22);
+  border-radius: 9999px;
+  padding: 3px 10px;
+  color: var(--text-bone);
+}
+
+.fr-breakdown-pill strong {
+  color: var(--accent-bright);
+}
+
+.fr-takeaway-box {
+  border-left: 2px solid var(--accent);
+  padding: 6px 0 6px 14px;
+  margin: 4px 0 0 0;
+  background: transparent;
+}
+
+.fr-takeaway-lbl {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.fr-takeaway-txt {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text-bone);
+  margin: 0;
+}
+
+/* Phase 3 Case Studies Deep Dives Button Integration Anchor */
+.fr-deepdive-btn {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: transparent;
+  border: 1px dashed var(--rule);
+  color: var(--text-muted);
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  width: 100%;
+  transition: all 0.25s ease;
+  margin-top: 4px;
+}
+
+.fr-deepdive-btn:hover {
+  border-color: var(--rule-hover);
+  color: var(--accent-bright);
+  background: var(--accent-soft);
+  box-shadow: 0 0 16px rgba(165, 186, 40, 0.12);
+}
+
+.fr-deepdive-btn .fr-arrow {
+  color: var(--accent);
+  font-weight: 700;
+  transition: transform 0.2s ease;
+}
+
+.fr-deepdive-btn:hover .fr-arrow {
+  transform: translate(2px, -2px);
+}
+
+/* Pillar 04: Field Evidence & Assets */
+.fr-evidence-header {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 10px;
+}
+
+.fr-proof-status-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 9px;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fr-status-linked {
+  background: var(--accent-soft);
+  color: var(--accent-bright);
+  border: 1px solid var(--accent-glow);
+}
+
+.fr-status-unlinked {
+  background: rgba(255, 90, 90, 0.1);
+  color: #FF7B7B;
+  border: 1px solid rgba(255, 90, 90, 0.3);
+}
+
+.fr-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  display: inline-block;
+  animation: frPulseBlink 2s infinite;
+}
+
+@keyframes frPulseBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.85); }
+}
+
+.case-visual.fr-visual-frame {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+}
+
+.fr-img-container {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--rule);
+  aspect-ratio: 16 / 10.5;
+  width: 100%;
+}
+
+.fr-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fr-img-container:hover .fr-main-img {
+  transform: scale(1.03);
+}
+
+.fr-stamp-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(12, 12, 14, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--accent-bright);
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.fr-inspect-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 2;
+  background: rgba(12, 12, 14, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--rule-hover);
+  color: var(--text-bone);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.fr-inspect-btn:hover {
+  background: var(--accent);
+  color: #0C0C0E;
+  border-color: var(--accent);
+  font-weight: 700;
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.fr-inspect-svg {
+  flex-shrink: 0;
+}
+
+.fr-arrow-tiny {
+  font-weight: 700;
+}
+
+.fr-caption-strip {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fr-caption-text {
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.fr-asset-identity {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 6px 10px;
+}
+
+.fr-asset-tag {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 72%;
+}
+
+.fr-asset-tag code {
+  color: var(--accent);
+  font-family: var(--font-mono);
+}
+
+.fr-direct-link {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: color 0.2s ease;
+}
+
+.fr-direct-link:hover {
+  color: var(--accent-bright);
+}
+
+/* Gallery Shelf for Multi-Asset Competitions */
+.fr-gallery-shelf {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+  margin-top: 4px;
+}
+
+.fr-gallery-heading {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.fr-gallery-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fr-gallery-thumb {
+  position: relative;
+  width: 58px;
+  height: 42px;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  background: #000;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.fr-gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fr-gallery-thumb:hover {
+  border-color: var(--rule-hover);
+  transform: translateY(-1px);
+}
+
+.fr-gallery-thumb.active {
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.fr-thumb-badge {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  font-family: var(--font-mono);
+  font-size: 8px;
+  font-weight: 700;
+  background: rgba(0, 0, 0, 0.75);
+  color: #FFFFFF;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+/* Accessible Evidence Lightbox Modal */
+.fr-lightbox {
+  border: none;
+  padding: 0;
+  background: transparent;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.fr-lightbox[open] {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.fr-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 10, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.fr-lightbox-window {
+  position: relative;
+  z-index: 2;
+  width: 92%;
+  max-width: 880px;
+  max-height: 90vh;
+  background: var(--bg2);
+  border: 1px solid var(--rule-hover);
+  border-radius: var(--card-radius);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7), 0 0 32px var(--accent-glow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: scale(0.96);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.fr-lightbox[open] .fr-lightbox-window {
+  transform: scale(1);
+}
+
+.fr-lightbox-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+.fr-lightbox-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fr-lightbox-title {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-bone);
+}
+
+.fr-lightbox-stamp {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid var(--accent-glow);
+  padding: 2px 7px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.fr-lightbox-close {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--text-bone);
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  transition: all 0.2s ease;
+}
+
+.fr-lightbox-close:hover {
+  border-color: var(--accent);
+  color: var(--accent-bright);
+  background: var(--accent-soft);
+}
+
+.fr-lightbox-body {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #000;
+  min-height: 240px;
+}
+
+.fr-lightbox-img {
+  max-width: 100%;
+  max-height: 62vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+}
+
+.fr-lightbox-.footer-inner span { color: #B0ACA3; }
+    footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 12px 20px;
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+.fr-lightbox-caption {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--text-bone);
+}
+
+.fr-lightbox-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fr-lightbox-path {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--text-dim);
+  background: var(--bg3);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+}
+
+.fr-lightbox-raw-btn {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--accent-bright);
+  text-decoration: none;
+  border: 1px solid var(--accent-soft);
+  background: var(--accent-soft);
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fr-lightbox-raw-btn:hover {
+  background: var(--accent);
+  color: #0C0C0E;
+  font-weight: 700;
+}
+
+/* Reduced Motion Safety Gate */
+@media (prefers-reduced-motion: reduce) {
+  .case-card.fr-card,
+  .fr-beacon-pulse::before,
+  .fr-status-dot,
+  .fr-main-img,
+  .fr-lightbox,
+  .fr-lightbox-window,
+  .fr-inspect-btn,
+  .fr-deepdive-btn {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transform: none !important;
+  }
+}
+
+</style>
+
+<!-- Upgraded Competition Cards Stack -->
+<div class="case-stack fr-case-stack">
+
+      <!-- ========================================================================
+           COMPETITION CARD: Cash Rush Competition (Ashoka University)
+           ID: cash-rush | CATEGORY: 1st-place
+           ======================================================================== -->
+      <article class="case-card fr-card reveal" data-category="1st-place" data-comp-id="cash-rush" id="comp-cash-rush">
+        <div class="fr-card-header">
+          <div class="beacon-row fr-beacon-row">
+            <span class="beacon-pulse fr-beacon-pulse" aria-hidden="true"></span>
+            <span>Ashoka University · Shatranj &#x27;26</span>
+          </div>
+
+          <div class="case-title-row fr-title-row">
+            <h3 class="case-title fr-title">Cash Rush Competition</h3>
+            <span class="case-trophy-pill fr-trophy-pill">🏆 1st Place Champion</span>
+          </div>
+
+          <div class="case-pills-row fr-pills-row">
+            <span class="case-tag gold fr-tag">#1 Position Leaderboard</span><span class="case-tag  fr-tag">₹7,000 Cash Prize</span><span class="case-tag  fr-tag">Fund grew 8.85x in 2 hrs</span><span class="case-tag  fr-tag">4-Member Squad</span>
+          </div>
+        </div>
+
+        <div class="fr-proof-layer">
+          <div class="fr-proof-column fr-proof-narrative">
+            
+        <!-- PILLAR 01: THE ARENA & BRIEF -->
+        <div class="fr-pillar fr-pillar-arena">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">01</span>
+              <span class="fr-pillar-title">THE ARENA & BRIEF</span>
+            </div>
+            <span class="fr-arena-badge-kicker">Ashoka University</span>
+          </div>
+          <p class="fr-arena-lead">Campus startup simulation competing under strict 120-minute time constraint with ₹300 seed capital.</p>
+          <div class="fr-arena-meta-strip">
+            <span class="fr-meta-chip"><strong>Host:</strong> Ashoka University</span>
+            <span class="fr-meta-chip"><strong>Event:</strong> Shatranj &#x27;26</span>
+            <span class="fr-meta-chip"><strong>Date:</strong> October 2026</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Field Dynamics & Setup:</span>
+            <p class="fr-narrative-text">Teams got ₹300 and 120 minutes to grow it on campus however they could.</p>
+          </div>
+        </div>
+    
+            
+        <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
+        <div class="fr-pillar fr-pillar-role">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">02</span>
+              <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
+            </div>
+            <span class="fr-role-badge">VERIFIED CONTRIBUTION</span>
+          </div>
+          <div class="fr-role-highlight">
+            <span class="fr-role-tag">DESIGNATION:</span>
+            <span class="fr-role-title">Co-Strategist &amp; Digital Experience Lead</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Execution Strategy & Key Decision:</span>
+            <p class="fr-narrative-text">We sold experiences, not goods: a mind-reading website that ended on a QR to LinkedIn as a curiosity hook, a quiz challenge where winners got paid and losers paid us, and on-the-spot caricatures. No inventory, so almost every rupee earned was margin. Total costs were ₹45 (paper and a marker).</p>
+          </div>
+          <div class="fr-deliverables-box">
+            <span class="fr-deliverables-title">Shipped Deliverables:</span>
+            <ul class="fr-deliverables-list">
+              <li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Interactive mind-reading web curiosity funnel</span></li><li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Monetized live campus quiz mechanic</span></li><li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Zero-inventory live caricature production</span></li>
+            </ul>
+          </div>
+          <div class="case-squad-row fr-squad-meta">
+            <strong>Squad:</strong>
+            <span class="fr-squad-names">Rudra Sharma, Raj Khatri, Sahaj Choukhani, Tripti Kaushik</span>
+          </div>
+        </div>
+    
+            
+        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <div class="fr-pillar fr-pillar-outcome">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">03</span>
+              <span class="fr-pillar-title">OUTCOME & VERIFIED TELEMETRY</span>
+            </div>
+            <span class="fr-result-badge">1st Place Champion</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <p class="fr-narrative-text">Services brought in ₹2,400 (₹1,050 mind-reading, ₹550 quiz, ₹800 caricatures). The fund ended at ₹2,655: 1st place and the ₹7,000 prize.</p>
+          </div>
+          <div class="case-telemetry-grid fr-telemetry-matrix">
+            
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Ending Fund</span>
+              <span class="telemetry-val fr-telemetry-val accent">₹2,655</span>
+            </div>
+        
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Costs</span>
+              <span class="telemetry-val fr-telemetry-val ">₹45</span>
+            </div>
+        
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Services Sold</span>
+              <span class="telemetry-val fr-telemetry-val ">3</span>
+            </div>
+        
+          </div>
+          
+          <div class="fr-service-breakdown-box">
+            <span class="fr-breakdown-title">Zero-Inventory Service Yield (Total ₹2400):</span>
+            <div class="fr-breakdown-row"><span class="fr-breakdown-pill"><strong>Mind-reading website:</strong> ₹1050</span><span class="fr-breakdown-pill"><strong>Campus quiz challenge:</strong> ₹550</span><span class="fr-breakdown-pill"><strong>On-the-spot caricatures:</strong> ₹800</span></div>
+          </div>
+        
+          
+          <div class="case-quote fr-takeaway-box">
+            <span class="fr-takeaway-lbl">Core Field Takeaway:</span>
+            <p class="fr-takeaway-txt">"Sell what costs nothing to produce. With 120 minutes on the clock, experiences beat inventory."</p>
+          </div>
+        
+          <!-- Case Study Telemetry Deep Dive Anchor Button (Phase 3 Integration Contract) -->
+          <button class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="cash-rush" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics & telemetry for Cash Rush Competition">
+            <span>Examine Unit Economics & Telemetry</span>
+            <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>
+    
+          </div>
+          <div class="fr-proof-column fr-proof-evidence">
+            
+        <!-- PILLAR 04: EVIDENCE & FIELD ARTIFACTS -->
+        <div class="fr-pillar fr-pillar-evidence">
+          <div class="fr-pillar-header fr-evidence-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">04</span>
+              <span class="fr-pillar-title">FIELD EVIDENCE & ASSETS</span>
+            </div>
+            <div class="fr-proof-status-pill fr-status-linked">
+              <span class="fr-status-dot" aria-hidden="true"></span>
+              <span>VERIFIED FIELD ASSET</span>
+            </div>
+          </div>
+
+          <div class="case-visual fr-visual-frame" id="fr-visual-cash-rush">
+            <div class="fr-img-container">
+              <img src="assets/cash-rush-ashoka.jpg" loading="lazy" alt="Ashoka Cash Rush Championship Team celebrating" class="fr-main-img" id="fr-main-img-cash-rush">
+              <div class="fr-stamp-badge">
+                <span class="stamp fr-stamp">Field Evidence // Oct 2026</span>
+              </div>
+              <button type="button" class="fr-inspect-btn" aria-label="Inspect evidence photograph for Cash Rush Competition" data-asset-src="assets/cash-rush-ashoka.jpg" data-asset-caption="Cash Rush Championship Team · Ashoka University" data-asset-stamp="Field Evidence // Oct 2026" data-comp-title="Cash Rush Competition">
+                <svg class="fr-inspect-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span>Inspect Proof</span>
+                <span class="fr-arrow-tiny" aria-hidden="true">↗</span>
+              </button>
+            </div>
+
+            <div class="case-visual-caption fr-caption-strip">
+              <div class="caption-txt fr-caption-text" id="fr-caption-cash-rush">Cash Rush Championship Team · Ashoka University</div>
+              <div class="fr-asset-identity">
+                <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                  <span>Asset:</span>
+                  <code class="fr-asset-path" id="fr-path-cash-rush">assets/cash-rush-ashoka.jpg</code>
+                </span>
+                <a href="assets/cash-rush-ashoka.jpg" target="_blank" rel="noopener" class="fr-direct-link" title="Open high-res local asset in browser tab">
+                  <span>Direct Asset</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+            </div>
+
+            
+          </div>
+        </div>
+    
+          </div>
+        </div>
+      </article>
+    
+
+      <!-- ========================================================================
+           COMPETITION CARD: CINE-SELL Brand Challenge (IIM Amritsar)
+           ID: cinesell | CATEGORY: national
+           ======================================================================== -->
+      <article class="case-card fr-card reveal" data-category="national" data-comp-id="cinesell" id="comp-cinesell">
+        <div class="fr-card-header">
+          <div class="beacon-row fr-beacon-row">
+            <span class="beacon-pulse fr-beacon-pulse" aria-hidden="true"></span>
+            <span>IIM Amritsar · Marketing Fest &#x27;26</span>
+          </div>
+
+          <div class="case-title-row fr-title-row">
+            <h3 class="case-title fr-title">CINE-SELL Brand Challenge</h3>
+            <span class="case-trophy-pill fr-trophy-pill">⚡ Top 5 National Finalist</span>
+          </div>
+
+          <div class="case-pills-row fr-pills-row">
+            <span class="case-tag gold fr-tag">Top 5 Nationally</span><span class="case-tag  fr-tag">~700 Team Registrations</span><span class="case-tag  fr-tag">Team Lead · &quot;Team Big 4&quot;</span><span class="case-tag  fr-tag">First-year undergrad team</span>
+          </div>
+        </div>
+
+        <div class="fr-proof-layer">
+          <div class="fr-proof-column fr-proof-narrative">
+            
+        <!-- PILLAR 01: THE ARENA & BRIEF -->
+        <div class="fr-pillar fr-pillar-arena">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">01</span>
+              <span class="fr-pillar-title">THE ARENA & BRIEF</span>
+            </div>
+            <span class="fr-arena-badge-kicker">IIM Amritsar</span>
+          </div>
+          <p class="fr-arena-lead">Competing against MBA cohorts from top B-schools across India.</p>
+          <div class="fr-arena-meta-strip">
+            <span class="fr-meta-chip"><strong>Host:</strong> IIM Amritsar</span>
+            <span class="fr-meta-chip"><strong>Event:</strong> Marketing Fest &#x27;26</span>
+            <span class="fr-meta-chip"><strong>Date:</strong> October 2026</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Field Dynamics & Setup:</span>
+            <p class="fr-narrative-text">A national marketing fest challenge with ~700 registered teams where squads had to sell a telephone using Bollywood-inspired characters.</p>
+          </div>
+        </div>
+    
+            
+        <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
+        <div class="fr-pillar fr-pillar-role">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">02</span>
+              <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
+            </div>
+            <span class="fr-role-badge">VERIFIED CONTRIBUTION</span>
+          </div>
+          <div class="fr-role-highlight">
+            <span class="fr-role-tag">DESIGNATION:</span>
+            <span class="fr-role-title">Team Lead</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Execution Strategy & Key Decision:</span>
+            <p class="fr-narrative-text">Led &quot;Team Big 4&quot; as a first-year undergrad Team Lead—coordinating market research, directing the promotional reel, and anchoring Sahaj&#x27;s character mimicry act with our commercial pitch.</p>
+          </div>
+          <div class="fr-deliverables-box">
+            <span class="fr-deliverables-title">Shipped Deliverables:</span>
+            <ul class="fr-deliverables-list">
+              <li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Market research dossier on telephone product positioning</span></li><li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Promotional video reel directed by Rudra</span></li><li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Live stage commercial skit featuring Bollywood character mimicry</span></li>
+            </ul>
+          </div>
+          <div class="case-squad-row fr-squad-meta">
+            <strong>Squad:</strong>
+            <span class="fr-squad-names">Rudra Sharma (Lead), Raj Khatri, Sahaj Choukhani, Tripti Kaushik</span>
+          </div>
+        </div>
+    
+            
+        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <div class="fr-pillar fr-pillar-outcome">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">03</span>
+              <span class="fr-pillar-title">OUTCOME & VERIFIED TELEMETRY</span>
+            </div>
+            <span class="fr-result-badge">Top 5 National Finalist</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <p class="fr-narrative-text">Cleared screening rounds to finish in the Top 5 National Finalists, ranking in the top 5 of ~700 teams, most of them postgraduate B-school cohorts.</p>
+          </div>
+          <div class="case-telemetry-grid fr-telemetry-matrix">
+            
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Deliverables</span>
+              <span class="telemetry-val fr-telemetry-val ">Reel &amp; Stage Skit</span>
+            </div>
+        
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Role</span>
+              <span class="telemetry-val fr-telemetry-val ">Team Lead</span>
+            </div>
+        
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Field</span>
+              <span class="telemetry-val fr-telemetry-val accent">MBA &amp; UG Cohorts</span>
+            </div>
+        
+          </div>
+          
+          
+          <!-- Case Study Telemetry Deep Dive Anchor Button (Phase 3 Integration Contract) -->
+          <button class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="cinesell" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics & telemetry for CINE-SELL Brand Challenge">
+            <span>Examine Unit Economics & Telemetry</span>
+            <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>
+    
+          </div>
+          <div class="fr-proof-column fr-proof-evidence">
+            
+        <!-- PILLAR 04: EVIDENCE & FIELD ARTIFACTS -->
+        <div class="fr-pillar fr-pillar-evidence">
+          <div class="fr-pillar-header fr-evidence-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">04</span>
+              <span class="fr-pillar-title">FIELD EVIDENCE & ASSETS</span>
+            </div>
+            <div class="fr-proof-status-pill fr-status-linked">
+              <span class="fr-status-dot" aria-hidden="true"></span>
+              <span>VERIFIED FIELD ASSET</span>
+            </div>
+          </div>
+
+          <div class="case-visual fr-visual-frame" id="fr-visual-cinesell">
+            <div class="fr-img-container">
+              <img src="assets/cinesell-iim-amritsar.jpg" loading="lazy" alt="CINE-SELL Strategy Session at IIM Amritsar" class="fr-main-img" id="fr-main-img-cinesell">
+              <div class="fr-stamp-badge">
+                <span class="stamp fr-stamp">Field Evidence // Oct 2026</span>
+              </div>
+              <button type="button" class="fr-inspect-btn" aria-label="Inspect evidence photograph for CINE-SELL Brand Challenge" data-asset-src="assets/cinesell-iim-amritsar.jpg" data-asset-caption="CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar" data-asset-stamp="Field Evidence // Oct 2026" data-comp-title="CINE-SELL Brand Challenge">
+                <svg class="fr-inspect-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span>Inspect Proof</span>
+                <span class="fr-arrow-tiny" aria-hidden="true">↗</span>
+              </button>
+            </div>
+
+            <div class="case-visual-caption fr-caption-strip">
+              <div class="caption-txt fr-caption-text" id="fr-caption-cinesell">CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar</div>
+              <div class="fr-asset-identity">
+                <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                  <span>Asset:</span>
+                  <code class="fr-asset-path" id="fr-path-cinesell">assets/cinesell-iim-amritsar.jpg</code>
+                </span>
+                <a href="assets/cinesell-iim-amritsar.jpg" target="_blank" rel="noopener" class="fr-direct-link" title="Open high-res local asset in browser tab">
+                  <span>Direct Asset</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+            </div>
+
+            
+          <div class="fr-gallery-shelf">
+            <span class="fr-gallery-heading">Verified Field Artifacts (2):</span>
+            <div class="fr-gallery-row">
+              
+              <button type="button" class="fr-gallery-thumb active" data-comp-id="cinesell" data-src="assets/cinesell-iim-amritsar.jpg" data-caption="CINE-SELL Strategy &amp; Modeling Sprint · IIM Amritsar" aria-label="View asset 1">
+                <img src="assets/cinesell-iim-amritsar.jpg" alt="Thumbnail 1 for CINE-SELL Brand Challenge" loading="lazy">
+                <span class="fr-thumb-badge">01</span>
+              </button>
+            
+              <button type="button" class="fr-gallery-thumb " data-comp-id="cinesell" data-src="assets/cinesell-team-big4.jpg" data-caption="CINE-SELL Brand Challenge // Field Proof Asset #2" aria-label="View asset 2">
+                <img src="assets/cinesell-team-big4.jpg" alt="Thumbnail 2 for CINE-SELL Brand Challenge" loading="lazy">
+                <span class="fr-thumb-badge">02</span>
+              </button>
+            
+            </div>
+          </div>
+        
+          </div>
+        </div>
+    
+          </div>
+        </div>
+      </article>
+    
+
+      <!-- ========================================================================
+           COMPETITION CARD: Builders' Bootcamp (8th Edition) (Rishihood University)
+           ID: builders-bootcamp | CATEGORY: 1st-place
+           ======================================================================== -->
+      <article class="case-card fr-card reveal" data-category="1st-place" data-comp-id="builders-bootcamp" id="comp-builders-bootcamp">
+        <div class="fr-card-header">
+          <div class="beacon-row fr-beacon-row">
+            <span class="beacon-pulse fr-beacon-pulse" aria-hidden="true"></span>
+            <span>Rishihood University · Demo Day &#x27;26</span>
+          </div>
+
+          <div class="case-title-row fr-title-row">
+            <h3 class="case-title fr-title">Builders&#x27; Bootcamp (8th Edition)</h3>
+            <span class="case-trophy-pill fr-trophy-pill">🥇 #1 Overall Top Team</span>
+          </div>
+
+          <div class="case-pills-row fr-pills-row">
+            <span class="case-tag gold fr-tag">#1 Overall Winning Team</span><span class="case-tag  fr-tag">7-Day Venture Incubator</span><span class="case-tag  fr-tag">Working Prototype Shipped</span><span class="case-tag  fr-tag">Live Demo Day Pitch</span>
+          </div>
+        </div>
+
+        <div class="fr-proof-layer">
+          <div class="fr-proof-column fr-proof-narrative">
+            
+        <!-- PILLAR 01: THE ARENA & BRIEF -->
+        <div class="fr-pillar fr-pillar-arena">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">01</span>
+              <span class="fr-pillar-title">THE ARENA & BRIEF</span>
+            </div>
+            <span class="fr-arena-badge-kicker">Rishihood University</span>
+          </div>
+          <p class="fr-arena-lead">Pre-college venture incubator covering AI, product design, psychology, and startup fundamentals.</p>
+          <div class="fr-arena-meta-strip">
+            <span class="fr-meta-chip"><strong>Host:</strong> Rishihood University</span>
+            <span class="fr-meta-chip"><strong>Event:</strong> Demo Day &#x27;26</span>
+            <span class="fr-meta-chip"><strong>Date:</strong> June 2026</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Field Dynamics & Setup:</span>
+            <p class="fr-narrative-text">Selected for a 7-day pre-college venture sprint at Rishihood University covering AI, product design, psychology, and startup fundamentals.</p>
+          </div>
+        </div>
+    
+            
+        <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
+        <div class="fr-pillar fr-pillar-role">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">02</span>
+              <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
+            </div>
+            <span class="fr-role-badge">VERIFIED CONTRIBUTION</span>
+          </div>
+          <div class="fr-role-highlight">
+            <span class="fr-role-tag">DESIGNATION:</span>
+            <span class="fr-role-title">Venture Builder &amp; Pitch Presenter</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Execution Strategy & Key Decision:</span>
+            <p class="fr-narrative-text">Built a functional startup web prototype from scratch during the 7 days and put it in front of people rather than stopping at slide decks.</p>
+          </div>
+          <div class="fr-deliverables-box">
+            <span class="fr-deliverables-title">Shipped Deliverables:</span>
+            <ul class="fr-deliverables-list">
+              <li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Functional startup web prototype built from scratch within 7 days</span></li><li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Demo Day pitch deck presented to industry jury</span></li>
+            </ul>
+          </div>
+          <div class="case-squad-row fr-squad-meta">
+            <strong>Squad:</strong>
+            <span class="fr-squad-names">Rudra Sharma, TBD</span>
+          </div>
+        </div>
+    
+            
+        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <div class="fr-pillar fr-pillar-outcome">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">03</span>
+              <span class="fr-pillar-title">OUTCOME & VERIFIED TELEMETRY</span>
+            </div>
+            <span class="fr-result-badge">#1 Overall Top Team</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <p class="fr-narrative-text">Pitched live on Demo Day and finished as the #1 Overall Winning Team across all participating cohorts.</p>
+          </div>
+          <div class="case-telemetry-grid fr-telemetry-matrix">
+            
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Edition</span>
+              <span class="telemetry-val fr-telemetry-val ">8th Edition</span>
+            </div>
+        
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Tracks</span>
+              <span class="telemetry-val fr-telemetry-val ">AI, Design &amp; Psych</span>
+            </div>
+        
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Evaluation</span>
+              <span class="telemetry-val fr-telemetry-val accent">Demo Day Jury</span>
+            </div>
+        
+          </div>
+          
+          
+          <!-- Case Study Telemetry Deep Dive Anchor Button (Phase 3 Integration Contract) -->
+          <button class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="builders-bootcamp" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics & telemetry for Builders&#x27; Bootcamp (8th Edition)">
+            <span>Examine Unit Economics & Telemetry</span>
+            <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>
+    
+          </div>
+          <div class="fr-proof-column fr-proof-evidence">
+            
+        <!-- PILLAR 04: EVIDENCE & FIELD ARTIFACTS -->
+        <div class="fr-pillar fr-pillar-evidence">
+          <div class="fr-pillar-header fr-evidence-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">04</span>
+              <span class="fr-pillar-title">FIELD EVIDENCE & ASSETS</span>
+            </div>
+            <div class="fr-proof-status-pill fr-status-linked">
+              <span class="fr-status-dot" aria-hidden="true"></span>
+              <span>VERIFIED FIELD ASSET</span>
+            </div>
+          </div>
+
+          <div class="case-visual fr-visual-frame" id="fr-visual-builders-bootcamp">
+            <div class="fr-img-container">
+              <img src="assets/builders-bootcamp-demo-day.jpg" loading="lazy" alt="Builders Bootcamp Cohort Rishihood University" class="fr-main-img" id="fr-main-img-builders-bootcamp">
+              <div class="fr-stamp-badge">
+                <span class="stamp fr-stamp">Field Evidence // June 2026</span>
+              </div>
+              <button type="button" class="fr-inspect-btn" aria-label="Inspect evidence photograph for Builders&#x27; Bootcamp (8th Edition)" data-asset-src="assets/builders-bootcamp-demo-day.jpg" data-asset-caption="1st Place Winning Cohort · Builders&#x27; Bootcamp Demo Day" data-asset-stamp="Field Evidence // June 2026" data-comp-title="Builders&#x27; Bootcamp (8th Edition)">
+                <svg class="fr-inspect-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span>Inspect Proof</span>
+                <span class="fr-arrow-tiny" aria-hidden="true">↗</span>
+              </button>
+            </div>
+
+            <div class="case-visual-caption fr-caption-strip">
+              <div class="caption-txt fr-caption-text" id="fr-caption-builders-bootcamp">1st Place Winning Cohort · Builders&#x27; Bootcamp Demo Day</div>
+              <div class="fr-asset-identity">
+                <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                  <span>Asset:</span>
+                  <code class="fr-asset-path" id="fr-path-builders-bootcamp">assets/builders-bootcamp-demo-day.jpg</code>
+                </span>
+                <a href="assets/builders-bootcamp-demo-day.jpg" target="_blank" rel="noopener" class="fr-direct-link" title="Open high-res local asset in browser tab">
+                  <span>Direct Asset</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+            </div>
+
+            
+          <div class="fr-gallery-shelf">
+            <span class="fr-gallery-heading">Verified Field Artifacts (2):</span>
+            <div class="fr-gallery-row">
+              
+              <button type="button" class="fr-gallery-thumb active" data-comp-id="builders-bootcamp" data-src="assets/builders-bootcamp-demo-day.jpg" data-caption="1st Place Winning Cohort · Builders&#x27; Bootcamp Demo Day" aria-label="View asset 1">
+                <img src="assets/builders-bootcamp-demo-day.jpg" alt="Thumbnail 1 for Builders&#x27; Bootcamp (8th Edition)" loading="lazy">
+                <span class="fr-thumb-badge">01</span>
+              </button>
+            
+              <button type="button" class="fr-gallery-thumb " data-comp-id="builders-bootcamp" data-src="assets/builders-bootcamp-cohort.jpg" data-caption="Builders&#x27; Bootcamp (8th Edition) // Field Proof Asset #2" aria-label="View asset 2">
+                <img src="assets/builders-bootcamp-cohort.jpg" alt="Thumbnail 2 for Builders&#x27; Bootcamp (8th Edition)" loading="lazy">
+                <span class="fr-thumb-badge">02</span>
+              </button>
+            
+            </div>
+          </div>
+        
+          </div>
+        </div>
+    
+          </div>
+        </div>
+      </article>
+    
+
+      <!-- ========================================================================
+           COMPETITION CARD: Advertising & Brand Pitch (DCRUST Murthal)
+           ID: dcrust-brand-pitch | CATEGORY: pitch
+           ======================================================================== -->
+      <article class="case-card fr-card reveal" data-category="pitch" data-comp-id="dcrust-brand-pitch" id="comp-dcrust-brand-pitch">
+        <div class="fr-card-header">
+          <div class="beacon-row fr-beacon-row">
+            <span class="beacon-pulse fr-beacon-pulse" aria-hidden="true"></span>
+            <span>DCRUST Murthal · E-Summit &#x27;26</span>
+          </div>
+
+          <div class="case-title-row fr-title-row">
+            <h3 class="case-title fr-title">Advertising &amp; Brand Pitch</h3>
+            <span class="case-trophy-pill fr-trophy-pill">🥉 3rd Place Podium</span>
+          </div>
+
+          <div class="case-pills-row fr-pills-row">
+            <span class="case-tag gold fr-tag">3rd Position Podium</span><span class="case-tag  fr-tag">45-Minute Prep Sprint</span><span class="case-tag  fr-tag">₹1,100 Cash Prize</span><span class="case-tag  fr-tag">4-Part Campaign Suite</span>
+          </div>
+        </div>
+
+        <div class="fr-proof-layer">
+          <div class="fr-proof-column fr-proof-narrative">
+            
+        <!-- PILLAR 01: THE ARENA & BRIEF -->
+        <div class="fr-pillar fr-pillar-arena">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">01</span>
+              <span class="fr-pillar-title">THE ARENA & BRIEF</span>
+            </div>
+            <span class="fr-arena-badge-kicker">DCRUST Murthal</span>
+          </div>
+          <p class="fr-arena-lead">Offline university brand pitch sprint representing Rishihood University.</p>
+          <div class="fr-arena-meta-strip">
+            <span class="fr-meta-chip"><strong>Host:</strong> DCRUST Murthal</span>
+            <span class="fr-meta-chip"><strong>Event:</strong> E-Summit &#x27;26</span>
+            <span class="fr-meta-chip"><strong>Date:</strong> September 2026</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Field Dynamics & Setup:</span>
+            <p class="fr-narrative-text">Represented Rishihood University offline at DCRUST E-Summit &#x27;26. Teams were assigned a consumer soap brand and given 45 minutes to build a full campaign from scratch.</p>
+          </div>
+        </div>
+    
+            
+        <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
+        <div class="fr-pillar fr-pillar-role">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">02</span>
+              <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
+            </div>
+            <span class="fr-role-badge">VERIFIED CONTRIBUTION</span>
+          </div>
+          <div class="fr-role-highlight">
+            <span class="fr-role-tag">DESIGNATION:</span>
+            <span class="fr-role-title">Pitch Presenter &amp; Campaign Strategist</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Execution Strategy & Key Decision:</span>
+            <p class="fr-narrative-text">Divided the 45-minute window across four concrete deliverables—a promotional poster, a short filmed ad, a live skit, and a product pitch for the stage round.</p>
+          </div>
+          <div class="fr-deliverables-box">
+            <span class="fr-deliverables-title">Shipped Deliverables:</span>
+            <ul class="fr-deliverables-list">
+              <li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Promotional campaign poster</span></li><li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Short filmed video advertisement</span></li><li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Live theatrical comedy skit</span></li><li class="fr-deliverable-item"><span class="fr-check-icon">✓</span><span class="fr-deliverable-text">Stage product sales pitch</span></li>
+            </ul>
+          </div>
+          <div class="case-squad-row fr-squad-meta">
+            <strong>Squad:</strong>
+            <span class="fr-squad-names">Rudra Sharma, Raj Khatri, Sahaj Choukhani, Tripti Kaushik</span>
+          </div>
+        </div>
+    
+            
+        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <div class="fr-pillar fr-pillar-outcome">
+          <div class="fr-pillar-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">03</span>
+              <span class="fr-pillar-title">OUTCOME & VERIFIED TELEMETRY</span>
+            </div>
+            <span class="fr-result-badge">3rd Place Podium</span>
+          </div>
+          <div class="fr-context-narrative">
+            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <p class="fr-narrative-text">Finished 3rd Position Podium overall and won the ₹1,100 cash prize.</p>
+          </div>
+          <div class="case-telemetry-grid fr-telemetry-matrix">
+            
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Assigned Brief</span>
+              <span class="telemetry-val fr-telemetry-val ">Soap FMCG Brand</span>
+            </div>
+        
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Deliverables</span>
+              <span class="telemetry-val fr-telemetry-val ">Poster, Video, Skit, Pitch</span>
+            </div>
+        
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Format</span>
+              <span class="telemetry-val fr-telemetry-val accent">Live Stage Pitch</span>
+            </div>
+        
+          </div>
+          
+          
+          <!-- Case Study Telemetry Deep Dive Anchor Button (Phase 3 Integration Contract) -->
+          <button class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="dcrust-brand-pitch" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics & telemetry for Advertising &amp; Brand Pitch">
+            <span>Examine Unit Economics & Telemetry</span>
+            <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
+          </button>
+        </div>
+    
+          </div>
+          <div class="fr-proof-column fr-proof-evidence">
+            
+        <!-- PILLAR 04: EVIDENCE & FIELD ARTIFACTS -->
+        <div class="fr-pillar fr-pillar-evidence">
+          <div class="fr-pillar-header fr-evidence-header">
+            <div class="fr-header-left">
+              <span class="fr-pillar-idx">04</span>
+              <span class="fr-pillar-title">FIELD EVIDENCE & ASSETS</span>
+            </div>
+            <div class="fr-proof-status-pill fr-status-linked">
+              <span class="fr-status-dot" aria-hidden="true"></span>
+              <span>VERIFIED FIELD ASSET</span>
+            </div>
+          </div>
+
+          <div class="case-visual fr-visual-frame" id="fr-visual-dcrust-brand-pitch">
+            <div class="fr-img-container">
+              <img src="assets/dcrust-podium-team.jpg" loading="lazy" alt="DCRUST E-Summit Podium Team" class="fr-main-img" id="fr-main-img-dcrust-brand-pitch">
+              <div class="fr-stamp-badge">
+                <span class="stamp fr-stamp">Field Evidence // Sept 2026</span>
+              </div>
+              <button type="button" class="fr-inspect-btn" aria-label="Inspect evidence photograph for Advertising &amp; Brand Pitch" data-asset-src="assets/dcrust-podium-team.jpg" data-asset-caption="3rd Place Podium Finish · E-Summit DCRUST &#x27;26 (Murthal)" data-asset-stamp="Field Evidence // Sept 2026" data-comp-title="Advertising &amp; Brand Pitch">
+                <svg class="fr-inspect-svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span>Inspect Proof</span>
+                <span class="fr-arrow-tiny" aria-hidden="true">↗</span>
+              </button>
+            </div>
+
+            <div class="case-visual-caption fr-caption-strip">
+              <div class="caption-txt fr-caption-text" id="fr-caption-dcrust-brand-pitch">3rd Place Podium Finish · E-Summit DCRUST &#x27;26 (Murthal)</div>
+              <div class="fr-asset-identity">
+                <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                  <span>Asset:</span>
+                  <code class="fr-asset-path" id="fr-path-dcrust-brand-pitch">assets/dcrust-podium-team.jpg</code>
+                </span>
+                <a href="assets/dcrust-podium-team.jpg" target="_blank" rel="noopener" class="fr-direct-link" title="Open high-res local asset in browser tab">
+                  <span>Direct Asset</span>
+                  <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+            </div>
+
+            
+          <div class="fr-gallery-shelf">
+            <span class="fr-gallery-heading">Verified Field Artifacts (3):</span>
+            <div class="fr-gallery-row">
+              
+              <button type="button" class="fr-gallery-thumb active" data-comp-id="dcrust-brand-pitch" data-src="assets/dcrust-podium-team.jpg" data-caption="3rd Place Podium Finish · E-Summit DCRUST &#x27;26 (Murthal)" aria-label="View asset 1">
+                <img src="assets/dcrust-podium-team.jpg" alt="Thumbnail 1 for Advertising &amp; Brand Pitch" loading="lazy">
+                <span class="fr-thumb-badge">01</span>
+              </button>
+            
+              <button type="button" class="fr-gallery-thumb " data-comp-id="dcrust-brand-pitch" data-src="assets/dcrust-esummit-podium.jpg" data-caption="Advertising &amp; Brand Pitch // Field Proof Asset #2" aria-label="View asset 2">
+                <img src="assets/dcrust-esummit-podium.jpg" alt="Thumbnail 2 for Advertising &amp; Brand Pitch" loading="lazy">
+                <span class="fr-thumb-badge">02</span>
+              </button>
+            
+              <button type="button" class="fr-gallery-thumb " data-comp-id="dcrust-brand-pitch" data-src="assets/dcrust-stage-pitch.jpg" data-caption="Advertising &amp; Brand Pitch // Field Proof Asset #3" aria-label="View asset 3">
+                <img src="assets/dcrust-stage-pitch.jpg" alt="Thumbnail 3 for Advertising &amp; Brand Pitch" loading="lazy">
+                <span class="fr-thumb-badge">03</span>
+              </button>
+            
+            </div>
+          </div>
+        
+          </div>
+        </div>
+    
+          </div>
+        </div>
+      </article>
+    
+</div>
+
+<!-- Evidence Lightbox Host -->
+<dialog id="fr-lightbox" class="fr-lightbox" aria-modal="true">
+  <div class="fr-lightbox-backdrop" id="fr-lightbox-backdrop"></div>
+  <div class="fr-lightbox-window" role="document">
+    <div class="fr-lightbox-header">
+      <div class="fr-lightbox-title-wrap">
+        <span class="fr-lightbox-title" id="fr-lightbox-title">Evidence Artifact</span>
+        <span class="fr-lightbox-stamp" id="fr-lightbox-stamp">Field Evidence</span>
+      </div>
+      <button type="button" class="fr-lightbox-close" id="fr-lightbox-close" aria-label="Close evidence inspection modal">✕</button>
+    </div>
+    <div class="fr-lightbox-body">
+      <img class="fr-lightbox-img" id="fr-lightbox-img" src="" alt="Full resolution evidence photo">
+    </div>
+    <div class="fr-lightbox-footer">
+      <div class="fr-lightbox-caption" id="fr-lightbox-caption"></div>
+      <div class="fr-lightbox-meta">
+        <span class="fr-lightbox-path" id="fr-lightbox-path"></span>
+        <a href="#" target="_blank" rel="noopener" class="fr-lightbox-raw-btn" id="fr-lightbox-raw-btn">Raw Asset ↗</a>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/**
+ * FIELD RECORD PROOF LAYER ENGINE (v2.0)
+ * Scoped to prefix: .fr-
+ * Compatible with category filters: #all, #1st-place, #national, #pitch
+ */
+(function() {
+  'use strict';
+
+  function getPortfolioData(content) {
+    if (content) return content;
+    if (typeof window !== 'undefined' && window.__PORTFOLIO_CONTENT__) return window.__PORTFOLIO_CONTENT__;
+    const el = document.getElementById('portfolio-content-data');
+    if (el) {
+      try { return JSON.parse(el.textContent); } catch (e) { console.error('Data parse error', e); }
+    }
+    return null;
+  }
+
+  window.initFieldRecordProof = function(content) {
+    const data = getPortfolioData(content);
+
+    // 1. Evidence Lightbox Modal Management
+    let lightbox = document.getElementById('fr-lightbox');
+    if (!lightbox) {
+      lightbox = document.createElement('dialog');
+      lightbox.id = 'fr-lightbox';
+      lightbox.className = 'fr-lightbox';
+      
+      lightbox.setAttribute('aria-modal', 'true');
+      lightbox.innerHTML = `
+        <div class="fr-lightbox-backdrop" id="fr-lightbox-backdrop"></div>
+        <div class="fr-lightbox-window" role="document">
+          <div class="fr-lightbox-header">
+            <div class="fr-lightbox-title-wrap">
+              <span class="fr-lightbox-title" id="fr-lightbox-title">Evidence Artifact</span>
+              <span class="fr-lightbox-stamp" id="fr-lightbox-stamp">Field Evidence</span>
+            </div>
+            <button type="button" class="fr-lightbox-close" id="fr-lightbox-close" aria-label="Close evidence inspection modal">✕</button>
+          </div>
+          <div class="fr-lightbox-body">
+            <img class="fr-lightbox-img" id="fr-lightbox-img" src="" alt="Full resolution evidence photo">
+          </div>
+          <div class="fr-lightbox-footer">
+            <div class="fr-lightbox-caption" id="fr-lightbox-caption"></div>
+            <div class="fr-lightbox-meta">
+              <span class="fr-lightbox-path" id="fr-lightbox-path"></span>
+              <a href="#" target="_blank" rel="noopener" class="fr-lightbox-raw-btn" id="fr-lightbox-raw-btn">Raw Asset ↗</a>
+            </div>
+          </div>
+        </div>
+      `;
+      document.body.appendChild(lightbox);
+    }
+
+    const lbImg = document.getElementById('fr-lightbox-img');
+    const lbTitle = document.getElementById('fr-lightbox-title');
+    const lbStamp = document.getElementById('fr-lightbox-stamp');
+    const lbCaption = document.getElementById('fr-lightbox-caption');
+    const lbPath = document.getElementById('fr-lightbox-path');
+    const lbRawBtn = document.getElementById('fr-lightbox-raw-btn');
+    const lbClose = document.getElementById('fr-lightbox-close');
+    const lbBackdrop = document.getElementById('fr-lightbox-backdrop');
+
+    let previousActiveElement = null;
+
+    function openLightbox(src, caption, stamp, compTitle) {
+      previousActiveElement = document.activeElement;
+      if (lbImg) lbImg.src = src;
+      if (lbTitle) lbTitle.textContent = compTitle || 'Evidence Artifact';
+      if (lbStamp) lbStamp.textContent = stamp || 'Field Evidence';
+      if (lbCaption) lbCaption.textContent = caption || '';
+      if (lbPath) lbPath.textContent = src;
+      if (lbRawBtn) lbRawBtn.href = src;
+
+      if (typeof lightbox.showModal === 'function') {
+        lightbox.showModal();
+      } else {
+        lightbox.setAttribute('open', '');
+      }
+      
+      document.body.classList.add('fr-lightbox-open');
+
+      if (lbClose) lbClose.focus();
+    }
+
+    function closeLightbox() {
+      if (!lightbox || !lightbox.hasAttribute('open')) return;
+      if (typeof lightbox.close === 'function') {
+        lightbox.close();
+      } else {
+        lightbox.removeAttribute('open');
+      }
+      
+      document.body.classList.remove('fr-lightbox-open');
+      if (previousActiveElement && typeof previousActiveElement.focus === 'function') {
+        previousActiveElement.focus();
+      }
+    }
+
+    if (lbClose) lbClose.onclick = closeLightbox;
+    if (lbBackdrop) lbBackdrop.onclick = closeLightbox;
+
+    lightbox.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closeLightbox();
+      } else if (e.key === 'Tab') {
+        const focusables = lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    // 2. Wire Up Proof Inspect Buttons
+    document.querySelectorAll('.fr-inspect-btn').forEach(btn => {
+      btn.onclick = function(e) {
+        e.stopPropagation();
+        const src = btn.getAttribute('data-asset-src');
+        const caption = btn.getAttribute('data-asset-caption');
+        const stamp = btn.getAttribute('data-asset-stamp');
+        const compTitle = btn.getAttribute('data-comp-title');
+        openLightbox(src, caption, stamp, compTitle);
+      };
+    });
+
+    // Click on main image also opens inspection
+    document.querySelectorAll('.fr-main-img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.onclick = function() {
+        const parent = img.closest('.fr-visual-frame');
+        const inspectBtn = parent ? parent.querySelector('.fr-inspect-btn') : null;
+        if (inspectBtn) inspectBtn.click();
+      };
+    });
+
+    // 3. Multi-Asset Gallery Switchers
+    document.querySelectorAll('.fr-gallery-thumb').forEach(thumb => {
+      thumb.onclick = function(e) {
+        e.stopPropagation();
+        const compId = thumb.getAttribute('data-comp-id');
+        const src = thumb.getAttribute('data-src');
+        const caption = thumb.getAttribute('data-caption');
+
+        const mainImg = document.getElementById('fr-main-img-' + compId);
+        const captionEl = document.getElementById('fr-caption-' + compId);
+        const pathEl = document.getElementById('fr-path-' + compId);
+        const frame = document.getElementById('fr-visual-' + compId);
+        const inspectBtn = frame ? frame.querySelector('.fr-inspect-btn') : null;
+
+        if (mainImg) mainImg.src = src;
+        if (captionEl) captionEl.textContent = caption;
+        if (pathEl) pathEl.textContent = src;
+        if (inspectBtn) {
+          inspectBtn.setAttribute('data-asset-src', src);
+          inspectBtn.setAttribute('data-asset-caption', caption);
+        }
+
+        const siblingThumbs = frame ? frame.querySelectorAll('.fr-gallery-thumb') : [];
+        siblingThumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      };
+    });
+
+    // 4. Category Filtering & Deep-Link Hash Compatibility
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const caseCards = document.querySelectorAll('.case-card');
+    const hideTimers = new WeakMap();
+
+    function applyFilter(filterVal, updateUrlHash = true) {
+      if (!filterVal) filterVal = 'all';
+
+      // Update button active state
+      filterButtons.forEach(btn => {
+        const isMatch = btn.dataset.filter === filterVal;
+        btn.classList.toggle('active', isMatch);
+        btn.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      });
+
+      // Show/hide cards
+      caseCards.forEach(card => {
+        const matches = filterVal === 'all' || card.dataset.category === filterVal;
+        if (matches) {
+          if (hideTimers.has(card)) {
+            clearTimeout(hideTimers.get(card));
+            hideTimers.delete(card);
+          }
+          card.classList.remove('hidden');
+          requestAnimationFrame(() => card.classList.remove('dimmed'));
+        } else {
+          card.classList.add('dimmed');
+          hideTimers.set(card, setTimeout(() => card.classList.add('hidden'), 320));
+        }
+      });
+
+      if (updateUrlHash && window.history && window.history.replaceState) {
+        const targetHash = filterVal === 'all' ? '#all' : '#' + filterVal;
+        window.history.replaceState(null, '', targetHash);
+      }
+    }
+
+    // Attach click listener to existing filter buttons
+    filterButtons.forEach(btn => {
+      btn.onclick = function() {
+        applyFilter(btn.dataset.filter, true);
+      };
+    });
+
+    // Read initial hash on page load
+    function checkHashFilter() {
+      const hash = (window.location.hash || '').replace(/^#/, '').trim();
+      const validCategories = ['all', '1st-place', 'national', 'pitch'];
+      if (validCategories.includes(hash)) {
+        applyFilter(hash, false);
+      }
+    }
+
+    window.addEventListener('hashchange', checkHashFilter);
+    checkHashFilter();
+
+    return {
+      openProof: openLightbox,
+      closeProof: closeLightbox,
+      setFilter: applyFilter
+    };
+  };
+
+  // Auto-init on DOMContentLoaded or immediately if ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => window.initFieldRecordProof());
+  } else {
+    window.initFieldRecordProof();
+  }
+})();
+</script>
+

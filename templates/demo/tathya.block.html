@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<!-- ==========================================================================
+     COMPONENT: TATHYA LLM FAILURE EXPLORER
+     Author: Agent 4 (Demo)
+     Directory: templates/demo/
+     Dataset: /data/tathya.json
+     Prefix: .tfe-
+     Contract: tokens.md & interfaces.md
+     ========================================================================== -->
+
+<style>
+/* Scoped styles in templates/demo/tathya-explorer.css */
+.tfe-explorer {
+  background: var(--bg2);
+  border: 1px solid var(--rule);
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tfe-explorer:focus-within {
+  border-color: rgba(165, 186, 40, 0.4);
+}
+
+.tfe-top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tfe-top-bar__left {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tfe-indicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tfe-indicator .pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  display: inline-block;
+}
+
+.tfe-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tfe-top-bar__right {
+  display: inline-flex;
+  align-items: center;
+}
+
+.tfe-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--rule);
+  padding: 3px 8px;
+  border-radius: 9999px;
+}
+
+.tfe-dialects {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+
+.tfe-dialects::-webkit-scrollbar {
+  display: none;
+}
+
+.tfe-tab {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 9px 12px;
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.tfe-tab:hover {
+  background: var(--accent-soft);
+  border-color: var(--rule-hover);
+  color: var(--text-bone);
+}
+
+.tfe-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+
+.tfe-tab[aria-selected="true"] {
+  background: rgba(165, 186, 40, 0.14);
+  border-color: var(--accent);
+  color: var(--accent-bright);
+  box-shadow: 0 0 14px rgba(165, 186, 40, 0.16);
+}
+
+.tfe-tab__num {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-weight: 700;
+}
+
+.tfe-tab[aria-selected="true"] .tfe-tab__num {
+  color: var(--accent);
+}
+
+.tfe-tab__script {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  opacity: 0.8;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.tfe-meta-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 8px 12px;
+}
+
+.tfe-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.tfe-meta-lbl {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.tfe-meta-val {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-bone);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tfe-category-val {
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.tfe-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+}
+
+.tfe-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  min-width: 0;
+}
+
+.tfe-compare-col {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tfe-compare-col--dialect {
+  border-left: 3px solid var(--accent);
+}
+
+.tfe-compare-col--standard {
+  border-left: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.tfe-col-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tfe-col-badge {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.tfe-col-badge--dialect {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid rgba(165, 186, 40, 0.25);
+}
+
+.tfe-col-badge--standard {
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--rule);
+}
+
+.tfe-col-hint {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-dim);
+}
+
+.tfe-prompt-box {
+  min-width: 0;
+}
+
+.tfe-prompt-text {
+  font-family: var(--font-body);
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text-bone);
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.tfe-prompt-text--dialect {
+  font-weight: 500;
+  color: #FFFFFF;
+}
+
+.tfe-prompt-text--standard {
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.tfe-analysis-box {
+  background: rgba(12, 12, 14, 0.65);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.tfe-analysis-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.tfe-analysis-icon {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.tfe-analysis-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-bone);
+}
+
+.tfe-analysis-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.tfe-analysis-p {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 0;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.tfe-analysis-p strong {
+  color: var(--text-bone);
+  font-weight: 600;
+}
+
+.tfe-analysis-p code {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent);
+  background: rgba(165, 186, 40, 0.08);
+  padding: 1px 4px;
+  border-radius: 3px;
+  border: 1px solid rgba(165, 186, 40, 0.18);
+}
+
+.tfe-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tfe-explorer,
+  .tfe-tab,
+  .tfe-panel,
+  .tfe-compare-col,
+  .tfe-indicator .pulse-dot {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .tfe-explorer {
+    padding: 14px;
+  }
+  .tfe-tab {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+  .tfe-meta-bar {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+
+<!-- TATHYA LLM FAILURE EXPLORER MOUNT -->
+<section class="tfe-explorer" role="region" aria-label="Tathya LLM Failure Explorer">
+  <div class="tfe-top-bar">
+    <div class="tfe-top-bar__left">
+      <span class="tfe-indicator" aria-hidden="true"><span class="pulse-dot"></span></span>
+      <span class="tfe-kicker">LLM Failure Explorer // Dialect Benchmarks</span>
+    </div>
+    <div class="tfe-top-bar__right">
+      <span class="tfe-badge" id="tfe-dataset-badge">DATASET: tathya-eval-preview v0.1.0</span>
+    </div>
+  </div>
+
+  <div class="tfe-dialects" role="tablist" aria-label="Select Indic dialect test vector">
+    <button type="button" class="tfe-tab" role="tab" id="tfe-tab-haryanvi" aria-selected="true" aria-controls="tfe-panel" tabindex="0" data-dialect="haryanvi">
+      <span class="tfe-tab__num">01</span>
+      <span class="tfe-tab__name">Haryanvi</span>
+      <span class="tfe-tab__script">हरियाणवी</span>
+    </button>
+    <button type="button" class="tfe-tab" role="tab" id="tfe-tab-punjabi" aria-selected="false" aria-controls="tfe-panel" tabindex="-1" data-dialect="punjabi">
+      <span class="tfe-tab__num">02</span>
+      <span class="tfe-tab__name">Punjabi</span>
+      <span class="tfe-tab__script">ਪੰਜਾਬੀ</span>
+    </button>
+    <button type="button" class="tfe-tab" role="tab" id="tfe-tab-bhojpuri" aria-selected="false" aria-controls="tfe-panel" tabindex="-1" data-dialect="bhojpuri">
+      <span class="tfe-tab__num">03</span>
+      <span class="tfe-tab__name">Bhojpuri</span>
+      <span class="tfe-tab__script">भोजपुरी</span>
+    </button>
+  </div>
+
+  <div class="tfe-meta-bar">
+    <div class="tfe-meta-item">
+      <span class="tfe-meta-lbl">CATEGORY</span>
+      <span class="tfe-meta-val tfe-category-val" id="tfe-category-val">CIVIC SCHEMES</span>
+    </div>
+    <div class="tfe-meta-item">
+      <span class="tfe-meta-lbl">STATUS</span>
+      <span class="tfe-meta-val" id="tfe-status-val">RESEARCH PREVIEW</span>
+    </div>
+    <div class="tfe-meta-item">
+      <span class="tfe-meta-lbl">ACTIVE VECTOR</span>
+      <span class="tfe-meta-val" id="tfe-dialect-val">Haryanvi (haryanvi)</span>
+    </div>
+  </div>
+
+  <div id="tfe-panel" class="tfe-panel" role="tabpanel" aria-labelledby="tfe-tab-haryanvi">
+    <div class="tfe-compare-grid">
+      <div class="tfe-compare-col tfe-compare-col--dialect">
+        <div class="tfe-col-header">
+          <span class="tfe-col-badge tfe-col-badge--dialect">NON-STANDARD DIALECT INPUT</span>
+          <span class="tfe-col-hint" id="tfe-dialect-script-hint">Colloquial Devanagari Orthography</span>
+        </div>
+        <div class="tfe-prompt-box">
+          <p class="tfe-prompt-text tfe-prompt-text--dialect" id="tfe-dialect-prompt">म्हारी सरकार की लाडो योजना के के फायदे सैं?</p>
+        </div>
+      </div>
+
+      <div class="tfe-compare-col tfe-compare-col--standard">
+        <div class="tfe-col-header">
+          <span class="tfe-col-badge tfe-col-badge--standard">STANDARD HINDI EQUIVALENT</span>
+          <span class="tfe-col-hint">Manak Hindi Target</span>
+        </div>
+        <div class="tfe-prompt-box">
+          <p class="tfe-prompt-text tfe-prompt-text--standard" id="tfe-standard-prompt">हमारी सरकार की लाडो योजना के क्या लाभ हैं?</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tfe-analysis-box">
+      <div class="tfe-analysis-header">
+        <span class="tfe-analysis-icon" aria-hidden="true">⚡</span>
+        <span class="tfe-analysis-title">Token Fragmentation &amp; Failure Mechanism</span>
+      </div>
+      <div class="tfe-analysis-body" id="tfe-analysis-body">
+        <p class="tfe-analysis-p"><strong>Tokenizer Breakdown:</strong> Standard Indic LLM tokenizers trained on formal web Hindi (Manak Hindi) lack vocabulary IDs for regional colloquial markers (<code>म्हारी</code>, <code>सैं</code>). Words are shattered into byte-level subword fragments, inflating token length.</p>
+        <p class="tfe-analysis-p"><strong>Downstream Failure Mode:</strong> Attention weights dilute across inflated byte sequences, causing critical entity degradation over state welfare policy (<code>लाडो योजना</code>) and resulting in civic query hallucinations.</p>
+        <p class="tfe-analysis-p"><strong>Tathya Verification Layer:</strong> Normalizes colloquial orthography and assertion boundaries against audited municipal scheme records before response generation.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tfe-live" class="tfe-sr-only" aria-live="polite" aria-atomic="true"></div>
+</section>
+
+<script>
+// Interactive client script in templates/demo/tathya-explorer.js
+</script>
