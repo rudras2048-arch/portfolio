@@ -934,6 +934,8 @@ ${vens.map(ven => {
 
           <div class="venture-actions">
             <a href="${escapeHtml(ven.action_cta.target)}" class="btn-solid">${escapeHtml(ven.action_cta.label)} <span class="btn-arrow">→</span></a>
+            ${ven.repo_url && ven.repo_url !== 'TBD' ? `<a href="${escapeHtml(ven.repo_url)}" class="btn-ghost venture-repo-link" target="_blank" rel="noopener">Code ↗</a>` : ''}
+            ${ven.demo_url && ven.demo_url !== 'TBD' ? `<a href="${escapeHtml(ven.demo_url)}" class="btn-ghost venture-demo-link" target="_blank" rel="noopener">Demo ↗</a>` : ''}
             ${ven.id === 'tathya' ? '<a href="#tathya-workbench" class="venture-explorer-link">🔬 Open Live Benchmark ↓</a>' : ''}
           </div>
 
