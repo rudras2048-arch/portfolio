@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-19T03:44:14.616Z",
+  "timestamp": "2026-11-19T05:53:20.789Z",
   "viewports": {
     "320px": {
       "name": "Ultra-Narrow Mobile (320x568)",
       "width": 320,
       "height": 568,
       "metrics": {
-        "innerWidth": 435,
-        "scrollWidth": 435,
-        "bodyScrollWidth": 435,
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "bodyScrollWidth": 320,
         "hasOverflow": false,
         "overflowPx": 0,
-        "overflowingElementsCount": 6,
+        "overflowingElementsCount": 7,
         "topOverflowing": [
           {
             "tag": "div",
@@ -19,44 +19,44 @@
             "className": null,
             "width": 580,
             "right": 450,
-            "overflowPx": 15,
+            "overflowPx": 130,
             "snippet": ""
           },
           {
-            "tag": "nav",
-            "id": "nav",
+            "tag": "code",
+            "id": "fr-path-builders-bootcamp",
             "className": null,
-            "width": 538.1,
-            "right": 486.5,
-            "overflowPx": 51.5,
-            "snippet": "RUDRA SHARMA\n      \n      \n        00Abo"
-          },
-          {
-            "tag": "button",
-            "id": "burger",
-            "className": null,
-            "width": 44,
-            "right": 461.5,
-            "overflowPx": 26.5,
-            "snippet": ""
+            "width": 233.1,
+            "right": 327.4,
+            "overflowPx": 7.4,
+            "snippet": "assets/builders-bootcamp-demo-day.jpg"
           },
           {
             "tag": "span",
             "id": null,
-            "className": null,
-            "width": 44,
-            "right": 461.5,
-            "overflowPx": 26.5,
-            "snippet": ""
+            "className": "fr-code-bracket",
+            "width": 6.3,
+            "right": 339.7,
+            "overflowPx": 19.7,
+            "snippet": "]"
           },
           {
             "tag": "span",
             "id": null,
-            "className": null,
-            "width": 44,
-            "right": 461.5,
-            "overflowPx": 26.5,
-            "snippet": ""
+            "className": "cm",
+            "width": 310.2,
+            "right": 364.2,
+            "overflowPx": 44.2,
+            "snippet": "$ tathya eval --lang haryanvi --set gov-"
+          },
+          {
+            "tag": "span",
+            "id": null,
+            "className": "cm",
+            "width": 343.2,
+            "right": 397.2,
+            "overflowPx": 77.2,
+            "snippet": "$ stratum simulate --scenario \"cpm_volat"
           }
         ]
       },
@@ -104,6 +104,13 @@
         {
           "tagName": "A",
           "id": "",
+          "className": "skip-link",
+          "text": "SKIP TO MAIN CONTENT",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
           "className": "nav-brand",
           "text": "RUDRA SHARMA",
           "ariaLabel": null
@@ -137,6 +144,13 @@
           "ariaLabel": null
         },
         {
+          "tagName": "A",
+          "id": "",
+          "className": "",
+          "text": "↗GITHUB",
+          "ariaLabel": null
+        },
+        {
           "tagName": "BUTTON",
           "id": "rm-toggle",
           "className": "rm-toggle-btn",
@@ -147,28 +161,14 @@
           "tagName": "A",
           "id": "",
           "className": "nav-action-pill",
+          "text": "GITHUB ↗",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "nav-action-pill",
           "text": "LINKEDIN ↗",
-          "ariaLabel": null
-        },
-        {
-          "tagName": "BUTTON",
-          "id": "burger",
-          "className": "",
-          "text": "",
-          "ariaLabel": "Toggle Menu"
-        },
-        {
-          "tagName": "A",
-          "id": "",
-          "className": "btn-solid",
-          "text": "VIEW FIELD RECORD\n↓",
-          "ariaLabel": null
-        },
-        {
-          "tagName": "A",
-          "id": "",
-          "className": "btn-outline",
-          "text": "LINKEDIN NETWORK\n↗",
           "ariaLabel": null
         }
       ]

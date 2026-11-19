@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-11-19T03:44:14.618Z",
-  "durationSeconds": 72.78,
-  "allPassed": true,
+  "timestamp": "2026-11-19T05:53:20.790Z",
+  "durationSeconds": 68.12,
+  "allPassed": false,
   "gates": [
     {
       "gate": "G-01",
       "name": "Static Build Engine",
       "target": "Clean npm run build generation into dist/",
-      "measured": "338.7 KB HTML, 32 assets",
+      "measured": "347.5 KB HTML, 48 assets",
       "passed": true,
       "data": {
         "gate": "G-01",
         "name": "Static Build Engine",
         "passed": true,
-        "durationMs": 11342,
-        "htmlSize": 346827,
-        "assetsCount": 32,
-        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (345,374 bytes)\n  ✔ Synced:  index.html (345,374 bytes)\n  ✔ Synced:  index.v2.html (345,374 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Copied:  assets/ -> dist/assets/ (32 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (453 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
+        "durationMs": 9093,
+        "htmlSize": 355833,
+        "assetsCount": 48,
+        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (354,371 bytes)\n  ✔ Synced:  index.html (354,371 bytes)\n  ✔ Synced:  index.v2.html (354,371 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  assets/ -> dist/assets/ (48 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (479 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
         "error": null
       }
     },
@@ -69,12 +69,12 @@
           "passesCount": 41
         },
         "perfMetrics": {
-          "ttfb": 4,
-          "domContentLoaded": 359,
-          "loadEvent": 505,
-          "firstContentfulPaintMs": 100,
-          "domNodes": 1165,
-          "totalTransferBytes": 299939,
+          "ttfb": 2,
+          "domContentLoaded": 248,
+          "loadEvent": 315,
+          "firstContentfulPaintMs": 284,
+          "domNodes": 1185,
+          "totalTransferBytes": 131626,
           "largeResources": []
         },
         "perfIssues": [],
@@ -101,15 +101,15 @@
       "gate": "G-04",
       "name": "Link & Asset Integrity",
       "target": "100% local assets & external URLs valid (0 broken)",
-      "measured": "Local: 10/10 | Anchors: 6/6 | Ext: 7/7",
-      "passed": true,
+      "measured": "Local: 18/18 | Anchors: 6/6 | Ext: 7/8",
+      "passed": false,
       "data": {
         "gate": "G-04",
         "name": "Link & Asset Integrity",
-        "passed": true,
+        "passed": false,
         "localAssets": {
-          "total": 10,
-          "passed": 10,
+          "total": 18,
+          "passed": 18,
           "failed": 0,
           "items": [
             {
@@ -123,7 +123,14 @@
               "reference": "assets/rudra-pitch-portrait.jpg",
               "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/rudra-pitch-portrait.jpg",
               "exists": true,
-              "sizeBytes": 296586,
+              "sizeBytes": 128586,
+              "status": "PASS"
+            },
+            {
+              "reference": "assets/cash-rush-ashoka-thumb.webp",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/cash-rush-ashoka-thumb.webp",
+              "exists": true,
+              "sizeBytes": 57272,
               "status": "PASS"
             },
             {
@@ -131,6 +138,13 @@
               "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/cash-rush-ashoka.jpg",
               "exists": true,
               "sizeBytes": 194071,
+              "status": "PASS"
+            },
+            {
+              "reference": "assets/cinesell-iim-amritsar-thumb.webp",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/cinesell-iim-amritsar-thumb.webp",
+              "exists": true,
+              "sizeBytes": 20254,
               "status": "PASS"
             },
             {
@@ -148,6 +162,20 @@
               "status": "PASS"
             },
             {
+              "reference": "assets/cinesell-team-big4-thumb.webp",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/cinesell-team-big4-thumb.webp",
+              "exists": true,
+              "sizeBytes": 57272,
+              "status": "PASS"
+            },
+            {
+              "reference": "assets/builders-bootcamp-demo-day-thumb.webp",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/builders-bootcamp-demo-day-thumb.webp",
+              "exists": true,
+              "sizeBytes": 36166,
+              "status": "PASS"
+            },
+            {
               "reference": "assets/builders-bootcamp-demo-day.jpg",
               "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/builders-bootcamp-demo-day.jpg",
               "exists": true,
@@ -159,6 +187,20 @@
               "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/builders-bootcamp-cohort.jpg",
               "exists": true,
               "sizeBytes": 663425,
+              "status": "PASS"
+            },
+            {
+              "reference": "assets/builders-bootcamp-cohort-thumb.webp",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/builders-bootcamp-cohort-thumb.webp",
+              "exists": true,
+              "sizeBytes": 36538,
+              "status": "PASS"
+            },
+            {
+              "reference": "assets/dcrust-podium-team-thumb.webp",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/dcrust-podium-team-thumb.webp",
+              "exists": true,
+              "sizeBytes": 49620,
               "status": "PASS"
             },
             {
@@ -176,10 +218,24 @@
               "status": "PASS"
             },
             {
+              "reference": "assets/dcrust-esummit-podium-thumb.webp",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/dcrust-esummit-podium-thumb.webp",
+              "exists": true,
+              "sizeBytes": 49620,
+              "status": "PASS"
+            },
+            {
               "reference": "assets/dcrust-stage-pitch.jpg",
               "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/dcrust-stage-pitch.jpg",
               "exists": true,
               "sizeBytes": 95266,
+              "status": "PASS"
+            },
+            {
+              "reference": "assets/dcrust-stage-pitch-thumb.webp",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/dcrust-stage-pitch-thumb.webp",
+              "exists": true,
+              "sizeBytes": 30142,
               "status": "PASS"
             }
           ]
@@ -228,9 +284,9 @@
           ]
         },
         "externalUrls": {
-          "total": 7,
+          "total": 8,
           "passed": 7,
-          "failed": 0,
+          "failed": 1,
           "blocked": 0,
           "items": [
             {
@@ -264,6 +320,12 @@
               "statusCode": 200,
               "statusMessage": "OK",
               "status": "PASS"
+            },
+            {
+              "url": "https://github.com/RUDRA-GITHUB-USERNAME",
+              "statusCode": 404,
+              "statusMessage": "Not Found",
+              "status": "FAIL"
             },
             {
               "url": "https://www.linkedin.com/in/rudra-sharma-7bb78b410/",
@@ -316,12 +378,12 @@
             "width": 320,
             "height": 568,
             "metrics": {
-              "innerWidth": 435,
-              "scrollWidth": 435,
-              "bodyScrollWidth": 435,
+              "innerWidth": 320,
+              "scrollWidth": 320,
+              "bodyScrollWidth": 320,
               "hasOverflow": false,
               "overflowPx": 0,
-              "overflowingElementsCount": 6,
+              "overflowingElementsCount": 7,
               "topOverflowing": [
                 {
                   "tag": "div",
@@ -329,44 +391,44 @@
                   "className": null,
                   "width": 580,
                   "right": 450,
-                  "overflowPx": 15,
+                  "overflowPx": 130,
                   "snippet": ""
                 },
                 {
-                  "tag": "nav",
-                  "id": "nav",
+                  "tag": "code",
+                  "id": "fr-path-builders-bootcamp",
                   "className": null,
-                  "width": 538.1,
-                  "right": 486.5,
-                  "overflowPx": 51.5,
-                  "snippet": "RUDRA SHARMA\n      \n      \n        00Abo"
-                },
-                {
-                  "tag": "button",
-                  "id": "burger",
-                  "className": null,
-                  "width": 44,
-                  "right": 461.5,
-                  "overflowPx": 26.5,
-                  "snippet": ""
+                  "width": 233.1,
+                  "right": 327.4,
+                  "overflowPx": 7.4,
+                  "snippet": "assets/builders-bootcamp-demo-day.jpg"
                 },
                 {
                   "tag": "span",
                   "id": null,
-                  "className": null,
-                  "width": 44,
-                  "right": 461.5,
-                  "overflowPx": 26.5,
-                  "snippet": ""
+                  "className": "fr-code-bracket",
+                  "width": 6.3,
+                  "right": 339.7,
+                  "overflowPx": 19.7,
+                  "snippet": "]"
                 },
                 {
                   "tag": "span",
                   "id": null,
-                  "className": null,
-                  "width": 44,
-                  "right": 461.5,
-                  "overflowPx": 26.5,
-                  "snippet": ""
+                  "className": "cm",
+                  "width": 310.2,
+                  "right": 364.2,
+                  "overflowPx": 44.2,
+                  "snippet": "$ tathya eval --lang haryanvi --set gov-"
+                },
+                {
+                  "tag": "span",
+                  "id": null,
+                  "className": "cm",
+                  "width": 343.2,
+                  "right": 397.2,
+                  "overflowPx": 77.2,
+                  "snippet": "$ stratum simulate --scenario \"cpm_volat"
                 }
               ]
             },
@@ -414,6 +476,13 @@
               {
                 "tagName": "A",
                 "id": "",
+                "className": "skip-link",
+                "text": "SKIP TO MAIN CONTENT",
+                "ariaLabel": null
+              },
+              {
+                "tagName": "A",
+                "id": "",
                 "className": "nav-brand",
                 "text": "RUDRA SHARMA",
                 "ariaLabel": null
@@ -447,6 +516,13 @@
                 "ariaLabel": null
               },
               {
+                "tagName": "A",
+                "id": "",
+                "className": "",
+                "text": "↗GITHUB",
+                "ariaLabel": null
+              },
+              {
                 "tagName": "BUTTON",
                 "id": "rm-toggle",
                 "className": "rm-toggle-btn",
@@ -457,28 +533,14 @@
                 "tagName": "A",
                 "id": "",
                 "className": "nav-action-pill",
+                "text": "GITHUB ↗",
+                "ariaLabel": null
+              },
+              {
+                "tagName": "A",
+                "id": "",
+                "className": "nav-action-pill",
                 "text": "LINKEDIN ↗",
-                "ariaLabel": null
-              },
-              {
-                "tagName": "BUTTON",
-                "id": "burger",
-                "className": "",
-                "text": "",
-                "ariaLabel": "Toggle Menu"
-              },
-              {
-                "tagName": "A",
-                "id": "",
-                "className": "btn-solid",
-                "text": "VIEW FIELD RECORD\n↓",
-                "ariaLabel": null
-              },
-              {
-                "tagName": "A",
-                "id": "",
-                "className": "btn-outline",
-                "text": "LINKEDIN NETWORK\n↗",
                 "ariaLabel": null
               }
             ]
