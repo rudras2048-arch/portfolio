@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-11-19T06:22:28.732Z",
-  "durationSeconds": 67.51,
-  "allPassed": false,
+  "timestamp": "2026-11-20T06:57:58.770Z",
+  "durationSeconds": 73.55,
+  "allPassed": true,
   "gates": [
     {
       "gate": "G-01",
       "name": "Static Build Engine",
       "target": "Clean npm run build generation into dist/",
-      "measured": "348.2 KB HTML, 48 assets",
+      "measured": "386.3 KB HTML, 48 assets",
       "passed": true,
       "data": {
         "gate": "G-01",
         "name": "Static Build Engine",
         "passed": true,
-        "durationMs": 8946,
-        "htmlSize": 356521,
+        "durationMs": 11075,
+        "htmlSize": 395533,
         "assetsCount": 48,
-        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (355,061 bytes)\n  ✔ Synced:  index.html (355,061 bytes)\n  ✔ Synced:  index.v2.html (355,061 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  assets/ -> dist/assets/ (48 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (479 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
+        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (393,968 bytes)\n  ✔ Synced:  index.html (393,968 bytes)\n  ✔ Synced:  index.v2.html (393,968 bytes)\n  ✔ Synced:  portfolio/index.html (393,968 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  assets/ -> dist/assets/ (48 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (479 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
         "error": null
       }
     },
@@ -66,26 +66,26 @@
             "minor": 0
           },
           "violations": [],
-          "passesCount": 41
+          "passesCount": 40
         },
         "perfMetrics": {
-          "ttfb": 4,
-          "domContentLoaded": 272,
-          "loadEvent": 324,
-          "firstContentfulPaintMs": 300,
-          "domNodes": 1182,
+          "ttfb": 5,
+          "domContentLoaded": 330,
+          "loadEvent": 397,
+          "firstContentfulPaintMs": 376,
+          "domNodes": 1351,
           "totalTransferBytes": 131626,
           "largeResources": []
         },
         "perfIssues": [],
         "seoAudit": {
           "title": "Rudra Sharma — First-Year B.Tech CS & Data Science · Builder · Rishihood '30",
-          "metaDesc": "Rudra Sharma, B.Tech CS & Data Science, Rishihood University Class of 2030. 1st place champion at Ashoka Cash Rush and Builders' Bootcamp; top 3 national finalist at IIM Amritsar's CINE-SELL (~700 teams).",
+          "metaDesc": "Rudra Sharma, B.Tech CS & Data Science, Rishihood University Class of 2030. 1st place champion at Ashoka Cash Rush and Builders' Bootcamp; top 10 national finalist at IIM Amritsar's CINE-SELL (~700 teams).",
           "canonical": "http://127.0.0.1:8091/",
           "viewport": "width=device-width, initial-scale=1.0",
           "h1Count": 1,
           "ogTitle": "Rudra Sharma — First-Year B.Tech CS & Data Science · Builder · Rishihood '30",
-          "ogDesc": "Curiosity starts the work. Execution proves it. I build software systems, stress-test commercial models in competitive arenas, and develop ventures beyond the classroom.",
+          "ogDesc": "First-year CS & Data Science undergraduate at Rishihood University ('30). Builder of software tools, local utilities, and early venture prototypes, learning through live execution.",
           "ogImage": "http://127.0.0.1:8091/assets/rudra-pitch-portrait.jpg",
           "twitterCard": "summary_large_image",
           "schemaScriptsCount": 1,
@@ -101,12 +101,12 @@
       "gate": "G-04",
       "name": "Link & Asset Integrity",
       "target": "100% local assets & external URLs valid (0 broken)",
-      "measured": "Local: 18/18 | Anchors: 6/6 | Ext: 7/8",
-      "passed": false,
+      "measured": "Local: 18/18 | Anchors: 6/6 | Ext: 7/7",
+      "passed": true,
       "data": {
         "gate": "G-04",
         "name": "Link & Asset Integrity",
-        "passed": false,
+        "passed": true,
         "localAssets": {
           "total": 18,
           "passed": 18,
@@ -284,9 +284,9 @@
           ]
         },
         "externalUrls": {
-          "total": 8,
+          "total": 7,
           "passed": 7,
-          "failed": 1,
+          "failed": 0,
           "blocked": 0,
           "items": [
             {
@@ -320,12 +320,6 @@
               "statusCode": 200,
               "statusMessage": "OK",
               "status": "PASS"
-            },
-            {
-              "url": "https://github.com/RUDRA-GITHUB-USERNAME",
-              "statusCode": 404,
-              "statusMessage": "Not Found",
-              "status": "FAIL"
             },
             {
               "url": "https://www.linkedin.com/in/rudra-sharma-7bb78b410/",
@@ -378,9 +372,9 @@
             "width": 320,
             "height": 568,
             "metrics": {
-              "innerWidth": 320,
-              "scrollWidth": 320,
-              "bodyScrollWidth": 320,
+              "innerWidth": 351,
+              "scrollWidth": 351,
+              "bodyScrollWidth": 351,
               "hasOverflow": false,
               "overflowPx": 0,
               "overflowingElementsCount": 7,
@@ -391,43 +385,43 @@
                   "className": null,
                   "width": 580,
                   "right": 450,
-                  "overflowPx": 130,
+                  "overflowPx": 99,
                   "snippet": ""
                 },
                 {
                   "tag": "code",
                   "id": "fr-path-builders-bootcamp",
                   "className": null,
-                  "width": 233.1,
-                  "right": 327.4,
-                  "overflowPx": 7.4,
+                  "width": 266.4,
+                  "right": 353.6,
+                  "overflowPx": 2.6,
                   "snippet": "assets/builders-bootcamp-demo-day.jpg"
                 },
                 {
                   "tag": "span",
                   "id": null,
                   "className": "fr-code-bracket",
-                  "width": 6.3,
-                  "right": 339.7,
-                  "overflowPx": 19.7,
+                  "width": 7.2,
+                  "right": 366.8,
+                  "overflowPx": 15.8,
                   "snippet": "]"
                 },
                 {
                   "tag": "span",
                   "id": null,
                   "className": "cm",
-                  "width": 310.2,
-                  "right": 364.2,
-                  "overflowPx": 44.2,
+                  "width": 338.4,
+                  "right": 384.4,
+                  "overflowPx": 33.4,
                   "snippet": "$ tathya eval --lang haryanvi --set gov-"
                 },
                 {
                   "tag": "span",
                   "id": null,
                   "className": "cm",
-                  "width": 343.2,
-                  "right": 397.2,
-                  "overflowPx": 77.2,
+                  "width": 374.4,
+                  "right": 420.4,
+                  "overflowPx": 69.4,
                   "snippet": "$ stratum simulate --scenario \"cpm_volat"
                 }
               ]
@@ -526,21 +520,21 @@
                 "tagName": "A",
                 "id": "",
                 "className": "nav-action-pill",
-                "text": "GITHUB ↗",
-                "ariaLabel": null
-              },
-              {
-                "tagName": "A",
-                "id": "",
-                "className": "nav-action-pill",
                 "text": "LINKEDIN ↗",
                 "ariaLabel": null
               },
               {
                 "tagName": "A",
                 "id": "",
-                "className": "btn-solid",
+                "className": "btn-solid hero-btn-primary",
                 "text": "VIEW FIELD RECORD\n↓",
+                "ariaLabel": null
+              },
+              {
+                "tagName": "A",
+                "id": "",
+                "className": "btn-outline hero-btn-secondary",
+                "text": "LINKEDIN NETWORK\n↗",
                 "ariaLabel": null
               }
             ]

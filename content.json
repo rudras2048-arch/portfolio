@@ -10,7 +10,7 @@
   "personal": {
     "name": "Rudra Sharma",
     "headline": "First-Year B.Tech CS & Data Science · Builder · Rishihood '30",
-    "bio_statement": "Curiosity starts the work. Execution proves it. I build software systems, stress-test commercial models in competitive arenas, and develop ventures beyond the classroom.",
+    "bio_statement": "First-year CS & Data Science undergraduate at Rishihood University ('30). Builder of software tools, local utilities, and early venture prototypes, learning through live execution.",
     "degree": "B.Tech CS & Data Science, Rishihood University Class of 2030",
     "institution": "Rishihood University",
     "class_year": "2030",
@@ -18,7 +18,7 @@
     "email": "rudra.s26042@csds.rishihood.edu.in",
     "linkedin": "https://www.linkedin.com/in/rudra-sharma-7bb78b410/",
     "resume_url": "assets/rudra-sharma-resume.pdf",
-    "github": "https://github.com/RUDRA-GITHUB-USERNAME",
+    "github": "TBD",
     "twitter": "TBD",
     "location": "TBD"
   },
@@ -30,11 +30,11 @@
     "typewriter_phrases": [
       "researching how llms fail on punjabi, haryanvi & bhojpuri",
       "1st place cash rush winner at ashoka university",
-      "top 3 national finalist at iim amritsar (~700 teams)",
+      "top 10 national finalist at iim amritsar (~700 teams)",
       "1st place winner at builders' bootcamp demo day",
       "working on stratum, flow state and krama"
     ],
-    "statement": "“Curiosity starts the work. Execution proves it. I build software systems, stress-test commercial models in competitive arenas, and develop ventures beyond the classroom.”",
+    "statement": "I build software systems and stress-test commercial models in live competitive arenas.",
     "portrait": {
       "path": "assets/rudra-pitch-portrait.jpg",
       "alt": "Rudra Sharma pitching venture strategy",
@@ -51,10 +51,10 @@
       },
       {
         "id": "national_finalist",
-        "value": "TOP 3",
+        "value": "TOP 10",
         "count": null,
         "label": "National Finalist",
-        "description": "IIM Amritsar · ~700 teams",
+        "description": "IIM Amritsar · 700+ registrations",
         "verified": true
       },
       {
@@ -69,7 +69,7 @@
         "id": "projects",
         "value": "04",
         "count": 4,
-        "label": "Projects",
+        "label": "Ventures",
         "description": "Tathya · Stratum · Flow State · Krama",
         "verified": true
       }
@@ -105,9 +105,9 @@
         "services_sold_count": 3,
         "service_breakdown": [
           {
-            "name": "Mind-reading website",
+            "name": "Dynamic web curiosity funnel",
             "revenue_inr": 1050,
-            "mechanism": "Interactive website ending with QR code redirecting to LinkedIn as a curiosity hook"
+            "mechanism": "Web experience ending with QR code redirecting to LinkedIn as a curiosity hook"
           },
           {
             "name": "Campus quiz challenge",
@@ -124,23 +124,25 @@
       "team": {
         "squad_name": "TBD",
         "size": 4,
-        "rudra_role": "Co-Strategist & Digital Experience Lead",
+        "rudra_role": "Curiosity Thesis & Live Quiz Lead",
         "members": [
           "Rudra Sharma",
           "Raj Khatri",
           "Hitisha",
           "Sanjani"
-        ]
+        ],
+        "role": "Curiosity Thesis & Live Quiz Lead"
       },
       "deliverables": [
-        "Interactive mind-reading web curiosity funnel",
-        "Monetized live campus quiz mechanic",
-        "Zero-inventory live caricature production"
+        "Curiosity-monetization commercial thesis design",
+        "Live campus crowd quiz mechanics & execution",
+        "Co-designed LinkedIn-DM curiosity web funnel",
+        "Team engine: live caricature keepsake sketches (team deliverable)"
       ],
       "story": {
         "setup": "Teams got ₹300 and 120 minutes to grow it on campus however they could.",
-        "key_decision": "We sold experiences, not goods: a mind-reading website that ended on a QR to LinkedIn as a curiosity hook, a quiz challenge where winners got paid and losers paid us, and on-the-spot caricatures. No inventory, so almost every rupee earned was margin. Total costs were ₹45 (paper and a marker).",
-        "result": "Services brought in ₹2,400 (₹1,050 mind-reading, ₹550 quiz, ₹800 caricatures). The fund ended at ₹2,655: 1st place and the ₹7,000 prize.",
+        "key_decision": "We sold experiences, not goods: designed a curiosity-monetization thesis pairing a web funnel to LinkedIn with a live campus crowd quiz, alongside on-the-spot caricature keepsakes from our squad. Total costs were ₹45 (paper and marker).",
+        "result": "Services brought in ₹2,400 (₹1,050 web funnel, ₹550 quiz, ₹800 caricatures). The fund ended at ₹2,655: 1st place and the ₹7,000 prize.",
         "takeaway": "Sell what costs nothing to produce. With 120 minutes on the clock, experiences beat inventory."
       },
       "telemetry": [
@@ -178,10 +180,10 @@
       "beacon": "IIM Amritsar · Marketing Fest '26",
       "date": "October 2026",
       "category": "national",
-      "placement": "Top 3 National Finalist",
-      "trophy_pill": "<span aria-hidden=\"true\">⚡</span> Top 3 National Finalist",
+      "placement": "Top 10 National Finalist",
+      "trophy_pill": "<span aria-hidden=\"true\">⚡</span> Top 10 National Finalist",
       "tags": [
-        "Top 3 Nationally",
+        "Top 10 Nationally",
         "~700 Team Registrations",
         "Team Lead · \"Team Big 4\"",
         "First-year undergrad team"
@@ -202,23 +204,24 @@
       "team": {
         "squad_name": "Team Big 4",
         "size": 4,
-        "rudra_role": "Team Lead",
+        "rudra_role": "Team Lead & Stage Pitch Lead",
         "members": [
           "Rudra Sharma (Lead)",
           "Raj Khatri",
           "Sahaj Choukhani",
           "Tripti Kaushik"
-        ]
+        ],
+        "role": "Team Lead & Stage Pitch Lead"
       },
       "deliverables": [
         "Market research dossier on telephone product positioning",
-        "Promotional video reel directed by Rudra",
-        "Live stage commercial skit featuring Bollywood character mimicry"
+        "Live commercial stage pitch lead",
+        "Promotional video reel (team deliverable)"
       ],
       "story": {
         "setup": "A national marketing fest challenge with ~700 registered teams where squads had to sell a telephone using Bollywood-inspired characters.",
-        "key_decision": "Led \"Team Big 4\" as a first-year undergrad Team Lead—coordinating market research, directing the promotional reel, and anchoring Sahaj's character mimicry act with our commercial pitch.",
-        "result": "Cleared screening rounds to finish in the Top 3 National Finalists, ranking in the top 3 of ~700 teams, most of them postgraduate B-school cohorts.",
+        "key_decision": "Led \"Team Big 4\" as a first-year undergrad Team Lead—coordinating telephone market research, leading the live stage commercial pitch, and supporting the team's promotional video reel alongside Sahaj's character mimicry act.",
+        "result": "Cleared screening rounds to finish in the Top 10 National Finalists, ranking in the top 10 of ~700 teams, most of them postgraduate B-school cohorts.",
         "takeaway": "TBD"
       },
       "telemetry": [
@@ -286,7 +289,8 @@
         "members": [
           "Rudra Sharma",
           "TBD"
-        ]
+        ],
+        "role": "Venture Builder & Pitch Presenter"
       },
       "deliverables": [
         "Functional startup web prototype built from scratch within 7 days",
@@ -365,7 +369,8 @@
           "Raj Khatri",
           "Sahaj Choukhani",
           "Tripti Kaushik"
-        ]
+        ],
+        "role": "Pitch Presenter & Campaign Strategist"
       },
       "deliverables": [
         "Promotional campaign poster",
@@ -408,6 +413,245 @@
         ]
       },
       "evidence_url": "assets/dcrust-podium-team.jpg"
+    },
+    {
+      "id": "venture-varsity",
+      "title": "Venture Varsity (Field Pivot Run)",
+      "host": "Ashoka University",
+      "event": "Venture Varsity '26",
+      "beacon": "Ashoka University · Venture Varsity '26",
+      "date": "October 2026",
+      "category": "participation",
+      "placement": "Participation",
+      "trophy_pill": "Participation",
+      "tags": [
+        "Ashoka University",
+        "R1 Elimination",
+        "₹0 → ₹1,500 in 2 hrs",
+        "Park-Bench Pivot",
+        "Participation"
+      ],
+      "field_context": "Collegiate startup elimination sprint. Eliminated in Round 1 on deck evaluation.",
+      "financials": {
+        "starting_capital_inr": 0,
+        "ending_fund_inr": 1500,
+        "multiplier": "Field Pivot",
+        "time_window_minutes": 120,
+        "total_costs_inr": 0,
+        "cost_items": "zero inventory / park bench services",
+        "total_service_revenue_inr": 1500,
+        "cash_prize_inr": 0,
+        "services_sold_count": 1,
+        "service_breakdown": [
+          {
+            "name": "Live on-campus service pivot",
+            "revenue_inr": 1500,
+            "mechanism": "Direct customer acquisition on campus lawn after R1 deck elimination"
+          }
+        ]
+      },
+      "team": {
+        "squad_name": "TBD",
+        "size": 1,
+        "rudra_role": "Solo Field Runner",
+        "members": [
+          "Rudra Sharma"
+        ],
+        "role": "Solo Field Runner"
+      },
+      "deliverables": [
+        "Live on-campus service pivot",
+        "₹0 to ₹1,500 revenue generation in 120 minutes",
+        "Direct customer acquisition on campus lawns"
+      ],
+      "story": {
+        "setup": "Entered Venture Varsity at Ashoka University and suffered an early Round 1 deck elimination on theoretical metrics.",
+        "key_decision": "Rather than packing up after elimination, walked out to the campus lawn with ₹0 and set up on a park bench to test real-world willingness to pay under a 2-hour window.",
+        "result": "Generated ₹1,500 in 2 hours through rapid live service execution. The elimination and immediate field pivot proved that real customer transactions teach faster than deck slides.",
+        "takeaway": "Rejection is field data. When a deck fails, test demand directly on the pavement."
+      },
+      "telemetry": [
+        {
+          "label": "Starting Capital",
+          "value": "₹0",
+          "accent": false
+        },
+        {
+          "label": "Field Pivot",
+          "value": "₹1,500 in 2 hrs",
+          "accent": true
+        },
+        {
+          "label": "Outcome",
+          "value": "R1 Exit → Field Pivot",
+          "accent": false
+        }
+      ],
+      "proof": {
+        "status": "unlinked",
+        "url": "assets/cash-rush-ashoka.jpg",
+        "alt": "Ashoka University Campus Field Record",
+        "caption": "Ashoka University · Field Pivot Run",
+        "stamp": "Field Record // Oct 2026",
+        "additional_assets": []
+      },
+      "evidence_url": null
+    },
+    {
+      "id": "dcrust-business-pitching",
+      "title": "Business Pitching — Iris Camera",
+      "host": "DCRUST Murthal",
+      "event": "E-Summit '26",
+      "beacon": "DCRUST Murthal · E-Summit '26",
+      "date": "September 2026",
+      "category": "participation",
+      "placement": "Participation",
+      "trophy_pill": "Participation",
+      "tags": [
+        "DCRUST E-Summit",
+        "Iris Camera Concept",
+        "3-Member Squad",
+        "Participation"
+      ],
+      "field_context": "Collegiate product pitching challenge.",
+      "financials": {
+        "starting_capital_inr": "TBD",
+        "ending_fund_inr": "TBD",
+        "multiplier": "TBD",
+        "time_window_minutes": "TBD",
+        "total_costs_inr": "TBD",
+        "cost_items": "TBD",
+        "total_service_revenue_inr": "TBD",
+        "cash_prize_inr": 0,
+        "services_sold_count": "TBD",
+        "service_breakdown": []
+      },
+      "team": {
+        "squad_name": "TBD",
+        "size": 3,
+        "rudra_role": "Co-Presenter & Concept Strategist",
+        "members": [
+          "Rudra Sharma",
+          "Raj Khatri",
+          "Tripti Kaushik"
+        ],
+        "role": "Co-Presenter & Concept Strategist"
+      },
+      "deliverables": [
+        "Iris Camera hardware concept development",
+        "Carry Less. Create More. tagline & campaign brief",
+        "Collaborative pitch deck presentation"
+      ],
+      "story": {
+        "setup": "Competed at DCRUST E-Summit '26 in the collegiate Business Pitching track.",
+        "key_decision": "Engineered the 'Iris Camera' concept under the tagline 'Carry Less. Create More.' in a 3-member team with Tripti Kaushik and Raj Khatri.",
+        "result": "Delivered the collaborative product presentation to the judging panel in the competition rounds.",
+        "takeaway": "Rapid hardware concept positioning requires instant clarity of core user value."
+      },
+      "telemetry": [
+        {
+          "label": "Concept",
+          "value": "Iris Camera",
+          "accent": false
+        },
+        {
+          "label": "Tagline",
+          "value": "Carry Less. Create More.",
+          "accent": true
+        },
+        {
+          "label": "Status",
+          "value": "Participation",
+          "accent": false
+        }
+      ],
+      "proof": {
+        "status": "unlinked",
+        "url": "assets/dcrust-stage-pitch.jpg",
+        "alt": "DCRUST E-Summit Stage Pitch Presentation",
+        "caption": "DCRUST E-Summit · Business Pitching Stage",
+        "stamp": "Field Record // Sept 2026",
+        "additional_assets": []
+      },
+      "evidence_url": null
+    },
+    {
+      "id": "dcrust-turn-the-court",
+      "title": "Turn the Court (Impromptu Debate)",
+      "host": "DCRUST Murthal",
+      "event": "E-Summit '26",
+      "beacon": "DCRUST Murthal · E-Summit '26",
+      "date": "September 2026",
+      "category": "participation",
+      "placement": "Participation",
+      "trophy_pill": "Participation",
+      "tags": [
+        "DCRUST E-Summit",
+        "Impromptu Debate",
+        "Judges' Clap Switch",
+        "Participation"
+      ],
+      "field_context": "Collegiate dynamic impromptu debate where speakers must switch argumentation sides when judges clap.",
+      "financials": {
+        "starting_capital_inr": "TBD",
+        "ending_fund_inr": "TBD",
+        "multiplier": "TBD",
+        "time_window_minutes": "TBD",
+        "total_costs_inr": "TBD",
+        "cost_items": "TBD",
+        "total_service_revenue_inr": "TBD",
+        "cash_prize_inr": 0,
+        "services_sold_count": "TBD",
+        "service_breakdown": []
+      },
+      "team": {
+        "squad_name": "TBD",
+        "size": 3,
+        "rudra_role": "Team Debater",
+        "members": [
+          "Rudra Sharma",
+          "Raj Khatri",
+          "Tripti Kaushik"
+        ],
+        "role": "Team Debater"
+      },
+      "deliverables": [
+        "Real-time argument counter-framing",
+        "Dynamic position reversal on judges' clap",
+        "Team parliamentary coordination"
+      ],
+      "story": {
+        "setup": "Entered the Turn the Court impromptu debate at DCRUST E-Summit '26 with teammates Tripti Kaushik and Raj Khatri.",
+        "key_decision": "Developed real-time adaptive framing to instantly pivot argumentative stance whenever the judges triggered side-swapping by clapping.",
+        "result": "Competed through rapid rounds demonstrating cognitive flexibility and verbal agility under strict time pressure.",
+        "takeaway": "Mastering conviction on either side of an issue is the fastest way to understand core trade-offs."
+      },
+      "telemetry": [
+        {
+          "label": "Format",
+          "value": "Switch on Clap",
+          "accent": false
+        },
+        {
+          "label": "Squad",
+          "value": "3 Members",
+          "accent": false
+        },
+        {
+          "label": "Status",
+          "value": "Participation",
+          "accent": true
+        }
+      ],
+      "proof": {
+        "status": "unlinked",
+        "url": "assets/dcrust-stage-pitch.jpg",
+        "alt": "DCRUST E-Summit Turn the Court Debate",
+        "caption": "DCRUST E-Summit · Impromptu Debate Arena",
+        "stamp": "Field Record // Sept 2026",
+        "additional_assets": []
+      },
+      "evidence_url": null
     }
   ],
   "ventures": [

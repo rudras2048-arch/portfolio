@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * TATHYA LLM FAILURE EXPLORER INTERACTIVE COMPONENT
+ * TATHYA LLM FAILURE EXPLORER LIVE COMPONENT
  * Author: Agent 4 (Demo)
  * Contract: tokens.md & interfaces.md
  * Source Data: /data/tathya.json (tathya-eval-preview v0.1.0)

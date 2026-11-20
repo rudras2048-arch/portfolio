@@ -108,7 +108,7 @@
     var p = data.personal || {};
 
     var ogTitle = (p.name || 'Rudra Sharma') + ' — ' + (p.headline || 'Builder · Rishihood \'30');
-    var ogDesc = p.bio_statement || 'Curiosity starts the work. Execution proves it.';
+    var ogDesc = p.bio_statement || 'First-year CS & Data Science undergraduate at Rishihood University (\'30). Builder of software tools, local utilities, and early venture prototypes, learning through live execution.';
     var defaultOgImg = canonicalUrl + 'assets/og/og-hero.png';
 
     setOrCreateMeta('name', 'description', ogDesc);

@@ -156,7 +156,7 @@ function renderRecruiterDrawer(content) {
         <div class="rm-kpi-sub">Ashoka University Shatranj '26 &amp; Rishihood Builders' Bootcamp #1 Top Team.</div>
       </div>
       <div class="rm-kpi-card">
-        <div class="rm-kpi-val">TOP 3</div>
+        <div class="rm-kpi-val">TOP 10</div>
         <div class="rm-kpi-label">National Finalist</div>
         <div class="rm-kpi-sub">IIM Amritsar CINE-SELL out of ~700 teams. First-year undergrad team against MBA cohorts.</div>
       </div>
@@ -185,18 +185,18 @@ function renderRecruiterDrawer(content) {
             </div>
             <div class="rm-proof-metrics">₹300 → ₹2,655 in 2 hrs · 8.85x Return · ₹7,000 Prize</div>
             <p class="rm-proof-desc">
-              Zero-inventory service business model: built interactive curiosity funnel, live campus quiz challenge, and on-the-spot caricatures. Total production cost: ₹45 against ₹2,400 revenue (&gt;98% margin).
+              Zero-inventory service model: designed curiosity-monetization thesis, ran live campus quiz challenge, and co-designed web funnel with team caricatures. Production cost: ₹45 against ₹2,400 revenue (&gt;98% margin).
             </p>
           </div>
 
           <div class="rm-proof-item">
             <div class="rm-proof-top">
               <span class="rm-proof-name">IIM Amritsar · CINE-SELL</span>
-              <span class="rm-proof-badge"><span aria-hidden="true">⚡</span> Top 3 National</span>
+              <span class="rm-proof-badge"><span aria-hidden="true">⚡</span> Top 10 National</span>
             </div>
             <div class="rm-proof-metrics">~700 National Teams · Lead of "Team Big 4"</div>
             <p class="rm-proof-desc">
-              National marketing fest challenge. Directed product positioning, filmed commercial reel, and live stage commercial skit; placed in top 3 against postgraduate B-school cohorts.
+              National marketing fest challenge. Coordinated product positioning and led live stage commercial pitch with team promotional reel; finished as Top 10 National Finalists against postgraduate MBA cohorts.
             </p>
           </div>
 
@@ -311,7 +311,7 @@ function renderAbout(content) {
         How I Got <span class="ab-serif">Here</span>
       </h2>
       <p class="ab-lead" id="ab-lead-text">
-        First-year CS &amp; Data Science undergraduate at Rishihood University ('30). Rather than waiting four years to validate hypotheses, I test software systems and commercial models in live competitive arenas under hard capital and clock constraints.
+        First-year CS &amp; Data Science undergraduate at Rishihood University ('30). Builder of software tools, local utilities, and early venture prototypes, learning through live execution. Rather than waiting four years to validate hypotheses, I test software systems and commercial models in live competitive arenas under hard capital and clock constraints.
       </p>
     </div>
 
@@ -325,11 +325,11 @@ function renderAbout(content) {
             <span class="ab-pulse-dot" aria-hidden="true"></span>
             <span>OPERATING THESIS</span>
           </div>
-          <blockquote class="ab-quote" id="ab-bio-statement">
-            “Curiosity starts the work. Execution proves it.”
-          </blockquote>
+          <p class="ab-bio-statement" id="ab-bio-statement">
+            Building software systems and stress-testing commercial models in live competitive arenas under clock and capital constraints.
+          </p>
           <p class="ab-thesis-desc">
-            Building software systems, stress-testing commercial models in competitive arenas, and developing ventures beyond the classroom.
+            Focusing on dialect NLP failure analysis, local-first utilities, and extreme-constraint economics beyond the classroom.
           </p>
 
           <!-- Focus Area Pillars -->
@@ -470,7 +470,7 @@ function renderAbout(content) {
               <h3 class="ab-milestone-title">Cash Rush Competition</h3>
               <div class="ab-milestone-venue">Ashoka University · Shatranj '26</div>
               <p class="ab-milestone-body">
-                Campus startup simulation with ₹300 seed capital and a 120-minute countdown. Deployed zero-inventory experience models: a web-based curiosity funnel hooked to LinkedIn, a paid campus quiz challenge, and live caricatures. Total costs were just ₹45 (paper and marker). Services generated ₹2,400 to end fund at ₹2,655 (8.85x multiplier), taking 1st place and the ₹7,000 prize.
+                Campus startup simulation with ₹300 seed capital and a 120-minute countdown. Deployed zero-inventory experience models: designed curiosity-monetization thesis with a web funnel hooked to LinkedIn, ran a paid live campus quiz, and coordinated team caricature keepsakes. Total costs were just ₹45 (paper and marker). Services generated ₹2,400 to end fund at ₹2,655 (8.85x multiplier), taking 1st place and the ₹7,000 prize.
               </p>
               <div class="ab-milestone-tags">
                 <span class="ab-pill ab-accent-pill">₹7,000 Cash Prize</span>
@@ -490,15 +490,15 @@ function renderAbout(content) {
             <article class="ab-milestone-card">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">OCT 2026 · NATIONAL ARENA</span>
-                <span class="ab-milestone-badge"><span aria-hidden="true">⚡</span> TOP 3 NATIONAL FINALIST</span>
+                <span class="ab-milestone-badge"><span aria-hidden="true">⚡</span> TOP 10 NATIONAL FINALIST</span>
               </div>
               <h3 class="ab-milestone-title">CINE-SELL Brand Challenge</h3>
               <div class="ab-milestone-venue">IIM Amritsar · Marketing Fest '26</div>
               <p class="ab-milestone-body">
-                National marketing fest challenge with ~700 registered teams, primarily postgraduate MBA cohorts from top B-schools across India. Led 4-member undergraduate "Team Big 4" as Team Lead: coordinated telephone market positioning, directed promotional video reel, and led live commercial stage pitch to finish in the Top 3 nationally.
+                National marketing fest challenge with ~700 registered teams, primarily postgraduate MBA cohorts from top B-schools across India. Led 4-member undergraduate "Team Big 4" as Team Lead: coordinated telephone market positioning, led live stage commercial pitch, and supported team promotional video reel to finish in the Top 10 nationally.
               </p>
               <div class="ab-milestone-tags">
-                <span class="ab-pill ab-accent-pill">Top 3 Nationally</span>
+                <span class="ab-pill ab-accent-pill">Top 10 Nationally</span>
                 <span class="ab-pill">~700 Team Registrations</span>
                 <span class="ab-pill">Team Lead · Team Big 4</span>
                 <span class="ab-pill">MBA &amp; UG Cohorts</span>
@@ -544,16 +544,17 @@ function renderCompetitions(content) {
         <span class="section-eyebrow reveal">01 // Competitive Field Record</span>
         <h2 class="section-title reveal">Top Finishes & Proof</h2>
         <p class="section-lead reveal">
-          Four competitions, Jun–Oct 2026: two 1st places, one top-3 national finish, one 3rd place. Filter by type below.
+          Seven verified collegiate arenas, Jun–Oct 2026: two 1st places, one top-10 national finish, one 3rd place, and three field participations. Filter by arena type below.
         </p>
       </div>
 
-      <!-- Interactive Filter Controls -->
+      <!-- Dynamic Filter Controls -->
       <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All Arenas (04)</button>
+        <button class="filter-btn active" data-filter="all">All Arenas (07)</button>
         <button class="filter-btn" data-filter="1st-place">1st Place Championships (02)</button>
         <button class="filter-btn" data-filter="national">National Finalist (IIM Amritsar)</button>
         <button class="filter-btn" data-filter="pitch">Offline Brand Pitch (DCRUST)</button>
+        <button class="filter-btn" data-filter="participation">Field Runs &amp; Participations (03)</button>
       </div>
 
       <div class="case-stack fr-case-stack">
@@ -628,6 +629,112 @@ ${comps.map(comp => {
               <span class="telemetry-lbl fr-telemetry-lbl">Deliverables</span>
               <span class="telemetry-val fr-telemetry-val ">4-Part Campaign Suite</span>
             </div>`;
+  } else if (comp.id === 'venture-varsity') {
+    telemetryChips = `
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Starting Fund</span>
+              <span class="telemetry-val fr-telemetry-val ">₹0 Seed</span>
+            </div>
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Field Pivot</span>
+              <span class="telemetry-val fr-telemetry-val accent">₹1,500 in 2 hrs</span>
+            </div>
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Outcome</span>
+              <span class="telemetry-val fr-telemetry-val ">R1 Exit → Field Pivot</span>
+            </div>`;
+  } else if (comp.id === 'dcrust-business-pitching') {
+    telemetryChips = `
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Concept</span>
+              <span class="telemetry-val fr-telemetry-val ">Iris Camera</span>
+            </div>
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Tagline</span>
+              <span class="telemetry-val fr-telemetry-val accent">Carry Less. Create More.</span>
+            </div>
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Status</span>
+              <span class="telemetry-val fr-telemetry-val ">Participation</span>
+            </div>`;
+  } else if (comp.id === 'dcrust-turn-the-court') {
+    telemetryChips = `
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Format</span>
+              <span class="telemetry-val fr-telemetry-val ">Switch on Clap</span>
+            </div>
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Squad</span>
+              <span class="telemetry-val fr-telemetry-val ">3 Members</span>
+            </div>
+            <div class="telemetry-cell fr-telemetry-chip">
+              <span class="telemetry-lbl fr-telemetry-lbl">Status</span>
+              <span class="telemetry-val fr-telemetry-val accent">Participation</span>
+            </div>`;
+  }
+
+  // Compact treatment for participation entries
+  if (comp.category === 'participation') {
+    return `      <!-- ========================================================================
+           COMPETITION CARD: ${escapeHtml(comp.title)} (${escapeHtml(comp.host)})
+           ID: ${comp.id} | CATEGORY: ${comp.category} (COMPACT TREATMENT)
+           ======================================================================== -->
+      <article class="case-card fr-card fr-compact-card reveal" data-category="${comp.category}" data-comp-id="${comp.id}" id="comp-${comp.id}">
+        <div class="fr-card-header">
+          <div class="beacon-row fr-beacon-row">
+            <span class="beacon-pulse fr-beacon-pulse" aria-hidden="true"></span>
+            <span>${escapeHtml(comp.host)} · ${escapeHtml(comp.event)}</span>
+          </div>
+
+          <div class="case-title-row fr-title-row">
+            <h3 class="case-title fr-title">${escapeHtml(comp.title)}</h3>
+            <span class="case-trophy-pill fr-trophy-pill fr-trophy-participation">Participation</span>
+          </div>
+
+          <div class="case-pills-row fr-pills-row">
+            ${tags.map(t => `<span class="case-tag fr-tag">${escapeHtml(typeof t === 'string' ? t : t.label)}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="fr-compact-grid">
+          <div class="fr-compact-col">
+            <div class="fr-pillar-header">
+              <span class="fr-pillar-title">THE ARENA &amp; ASSIGNMENT</span>
+            </div>
+            <p class="fr-narrative-text">${escapeHtml(comp.field_context)}</p>
+            <div class="fr-role-title-box" style="margin-top: 12px;">
+              <span class="fr-role-subtitle">Primary Assignment:</span>
+              <div class="fr-role-title" style="font-size: 14px;">${escapeHtml(comp.team.rudra_role || comp.team.role || 'Participant')}</div>
+            </div>
+            <div class="fr-deliverables-block" style="margin-top: 10px;">
+              <span class="fr-deliverables-lbl">Shipped Sprint Deliverables:</span>
+              <ul class="fr-deliverables-list">
+                ${(comp.deliverables || []).map(d => `<li class="fr-deliverable-item"><span class="fr-bullet">▸</span><span>${escapeHtml(d)}</span></li>`).join('\n              ')}
+              </ul>
+            </div>
+            ${validMembers.length > 0 ? `
+            <div class="fr-squad-row" style="margin-top: 10px;">
+              <span class="fr-squad-lbl">Personnel &amp; Teammates:</span>
+              <span class="fr-squad-names">${escapeHtml(validMembers.join(', '))}</span>
+            </div>` : ''}
+          </div>
+
+          <div class="fr-compact-col">
+            <div class="fr-pillar-header">
+              <span class="fr-pillar-title">FIELD EXECUTION &amp; OUTCOME</span>
+              <span class="fr-result-badge fr-badge-participation">PARTICIPATION</span>
+            </div>
+            <p class="fr-narrative-text">${escapeHtml(comp.story.execution || comp.story.result)}</p>
+            <div class="case-telemetry-grid fr-telemetry-matrix" style="margin-top: 14px;">
+              ${telemetryChips}
+            </div>
+            <div class="fr-compact-stamp-bar" style="margin-top: 16px;">
+              <span class="fr-photo-stamp mono">${escapeHtml(comp.proof.stamp)}</span>
+              <span class="fr-asset-badge"><span>FIELD ARTIFACT</span></span>
+            </div>
+          </div>
+        </div>
+      </article>`;
   }
 
   // Pillar 04 gallery thumbnails
@@ -711,7 +818,7 @@ ${comps.map(comp => {
           </div>
           <div class="fr-role-title-box">
             <span class="fr-role-subtitle">Primary Assignment:</span>
-            <div class="fr-role-title">${escapeHtml(comp.team.role)}</div>
+            <div class="fr-role-title">${escapeHtml(comp.team.rudra_role || comp.team.role || 'Lead')}</div>
           </div>
           <div class="fr-deliverables-block">
             <span class="fr-deliverables-lbl">Shipped Sprint Deliverables:</span>
@@ -974,7 +1081,7 @@ ${vens.map(ven => {
             ${ven.id === 'tathya' ? '<a href="#tathya-workbench" class="venture-explorer-link">🔬 Open Live Benchmark ↓</a>' : ''}
           </div>
 
-          <!-- Deep Dive Interactive Trigger Button -->
+          <!-- Deep Dive Dynamic Trigger Button -->
           <button class="cs-trigger" data-drawer-target="cs-drawer-${ven.id}" aria-expanded="false" aria-controls="cs-drawer-${ven.id}">
             <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
             <span class="cs-trigger__badge">AUDITED</span>
@@ -998,7 +1105,7 @@ ${vens.map(ven => {
 
       <div class="ventures-workbench-showcase reveal" id="tathya-workbench">
         <div class="vw-header">
-          <span class="section-eyebrow">Interactive AI Research Console</span>
+          <span class="section-eyebrow">Live AI Research Console</span>
           <h3 class="vw-title">Tathya · Dialect Token Fragmentation Explorer</h3>
           <p class="vw-lead">Live benchmark analyzing how Hindi LLMs fail on Punjabi, Haryanvi, and Bhojpuri colloquial syntax.</p>
         </div>
@@ -1303,6 +1410,13 @@ function main() {
   console.log(`  ✔ Synced:  index.html (${template.length.toLocaleString()} bytes)`);
   fs.writeFileSync(ROOT_INDEX_V2, template, 'utf-8');
   console.log(`  ✔ Synced:  index.v2.html (${template.length.toLocaleString()} bytes)`);
+
+  // Sync portfolio/index.html if tracked in repo
+  const PORTFOLIO_INDEX = path.join(ROOT_DIR, 'portfolio', 'index.html');
+  if (fs.existsSync(PORTFOLIO_INDEX)) {
+    fs.writeFileSync(PORTFOLIO_INDEX, template, 'utf-8');
+    console.log(`  ✔ Synced:  portfolio/index.html (${template.length.toLocaleString()} bytes)`);
+  }
 
   // Sync root content.json with content/content.json
   fs.writeFileSync(ROOT_CONTENT, JSON.stringify(content, null, 2), 'utf-8');

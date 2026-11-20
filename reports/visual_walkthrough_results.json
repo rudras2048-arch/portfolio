@@ -1,14 +1,14 @@
 {
-  "timestamp": "2026-11-19T06:22:28.731Z",
+  "timestamp": "2026-11-20T06:57:58.769Z",
   "viewports": {
     "320px": {
       "name": "Ultra-Narrow Mobile (320x568)",
       "width": 320,
       "height": 568,
       "metrics": {
-        "innerWidth": 320,
-        "scrollWidth": 320,
-        "bodyScrollWidth": 320,
+        "innerWidth": 351,
+        "scrollWidth": 351,
+        "bodyScrollWidth": 351,
         "hasOverflow": false,
         "overflowPx": 0,
         "overflowingElementsCount": 7,
@@ -19,43 +19,43 @@
             "className": null,
             "width": 580,
             "right": 450,
-            "overflowPx": 130,
+            "overflowPx": 99,
             "snippet": ""
           },
           {
             "tag": "code",
             "id": "fr-path-builders-bootcamp",
             "className": null,
-            "width": 233.1,
-            "right": 327.4,
-            "overflowPx": 7.4,
+            "width": 266.4,
+            "right": 353.6,
+            "overflowPx": 2.6,
             "snippet": "assets/builders-bootcamp-demo-day.jpg"
           },
           {
             "tag": "span",
             "id": null,
             "className": "fr-code-bracket",
-            "width": 6.3,
-            "right": 339.7,
-            "overflowPx": 19.7,
+            "width": 7.2,
+            "right": 366.8,
+            "overflowPx": 15.8,
             "snippet": "]"
           },
           {
             "tag": "span",
             "id": null,
             "className": "cm",
-            "width": 310.2,
-            "right": 364.2,
-            "overflowPx": 44.2,
+            "width": 338.4,
+            "right": 384.4,
+            "overflowPx": 33.4,
             "snippet": "$ tathya eval --lang haryanvi --set gov-"
           },
           {
             "tag": "span",
             "id": null,
             "className": "cm",
-            "width": 343.2,
-            "right": 397.2,
-            "overflowPx": 77.2,
+            "width": 374.4,
+            "right": 420.4,
+            "overflowPx": 69.4,
             "snippet": "$ stratum simulate --scenario \"cpm_volat"
           }
         ]
@@ -154,21 +154,21 @@
           "tagName": "A",
           "id": "",
           "className": "nav-action-pill",
-          "text": "GITHUB ↗",
-          "ariaLabel": null
-        },
-        {
-          "tagName": "A",
-          "id": "",
-          "className": "nav-action-pill",
           "text": "LINKEDIN ↗",
           "ariaLabel": null
         },
         {
           "tagName": "A",
           "id": "",
-          "className": "btn-solid",
+          "className": "btn-solid hero-btn-primary",
           "text": "VIEW FIELD RECORD\n↓",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "btn-outline hero-btn-secondary",
+          "text": "LINKEDIN NETWORK\n↗",
           "ariaLabel": null
         }
       ]

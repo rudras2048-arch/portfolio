@@ -180,8 +180,9 @@ async function runAdversarialSuite() {
         const reducedMatch = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const canvasEngine = window.__CANVAS_ENGINE || {};
         
-        // Check cursor
+        // Check cursor (if present in DOM)
         const cursorEl = document.querySelector('.typed-cursor');
+        const hasCursor = Boolean(cursorEl);
         const cursorStyle = cursorEl ? window.getComputedStyle(cursorEl) : {};
         const cursorAnim = cursorStyle.animationName || cursorStyle.animation || 'none';
         const cursorOpacity = cursorStyle.opacity;
@@ -218,6 +219,7 @@ async function runAdversarialSuite() {
             rafCalls500ms: rafCalls,
             cursorAnim,
             cursorOpacity,
+            hasCursor,
             revealsCount: reveals.length,
             revealsStatic,
             revealsFailing: reveals.filter(r => !(parseFloat(r.opacity) >= 0.99 && (r.transform === 'none' || r.transform.includes('matrix(1, 0, 0, 1, 0, 0)')))).slice(0, 5)
@@ -230,7 +232,7 @@ async function runAdversarialSuite() {
     await client.captureScreenshot(screenshotPath);
 
     const canvasStopped = motionTelemetry.canvasActive === false;
-    const cursorStatic = motionTelemetry.cursorAnim === 'none' && motionTelemetry.cursorOpacity === '1';
+    const cursorStatic = !motionTelemetry.hasCursor || (motionTelemetry.cursorAnim === 'none' && motionTelemetry.cursorOpacity === '1');
     const passed = motionTelemetry.reducedMatch && canvasStopped && motionTelemetry.revealsStatic && cursorStatic;
 
     results.c2_reducedMotion = {

@@ -63,7 +63,7 @@ function renderTathyaExplorer(tathyaData) {
                 </div>
               </div>
 
-              <!-- Interactive Dialect Switcher (Tabs) -->
+              <!-- Dynamic Dialect Switcher (Tabs) -->
               <div class="tfe-dialects" role="tablist" aria-label="Select Indic dialect test vector">
                 <button type="button" class="tfe-tab" role="tab" id="tfe-tab-haryanvi" aria-selected="true" aria-controls="tfe-panel" tabindex="0" data-dialect="haryanvi">
                   <span class="tfe-tab__num">01</span>

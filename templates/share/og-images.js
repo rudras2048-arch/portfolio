@@ -180,9 +180,9 @@ function renderHeroOg(content) {
     sectionNum: 'OVERVIEW // 00',
     kicker: p.headline || "First-Year B.Tech CS & Data Science · Builder · Rishihood '30",
     title: p.name || 'Rudra Sharma',
-    subtitle: p.bio_statement || 'Curiosity starts the work. Execution proves it.',
+    subtitle: p.bio_statement || 'First-year CS & Data Science undergraduate at Rishihood University (\'30). Builder of software tools, local utilities, and early venture prototypes, learning through live execution.',
     contentBody: cardsSvg,
-    footerTag: '2 CHAMPIONSHIPS · TOP 3 NATIONAL FINALIST · 4 VENTURES'
+    footerTag: '2 CHAMPIONSHIPS · TOP 10 NATIONAL FINALIST · 4 VENTURES'
   });
 }
 
@@ -190,13 +190,17 @@ function renderHeroOg(content) {
  * 2. Competitions Section OpenGraph Image
  */
 function renderCompetitionsOg(content) {
-  const comps = (content && content.competitions) || [];
+  const allComps = (content && content.competitions) || [];
+  // Select the 4 featured podium finishes to fit cleanly across 1200px canvas
+  const comps = allComps.slice(0, 4);
 
   const cardsSvg = comps.map((comp, idx) => {
     const x = idx * 274;
     const highlight = comp.tags && comp.tags[0] ? comp.tags[0] : (comp.placement || '');
     const dateHost = `${comp.host || ''} · ${comp.date || ''}`;
     const safePlacement = escapeXml(String(comp.placement || '').toUpperCase());
+    const hasEvidence = Boolean(comp.evidence_url && comp.evidence_url !== 'TBD');
+    const evidenceLabel = hasEvidence ? 'VERIFIED EVIDENCE' : 'FIELD ARTIFACT';
 
     return `
     <g transform="translate(${x}, 0)">
@@ -209,7 +213,7 @@ function renderCompetitionsOg(content) {
       <text x="30" y="158" class="font-mono" font-size="12" font-weight="600" fill="#BEE024">${escapeXml(highlight)}</text>
       <g transform="translate(20, 192)">
         <circle cx="6" cy="6" r="4" fill="#A5BA28" />
-        <text x="18" y="10" class="font-mono" font-size="10" fill="#5C5A53">VERIFIED EVIDENCE</text>
+        <text x="18" y="10" class="font-mono" font-size="10" fill="#5C5A53">${evidenceLabel}</text>
       </g>
     </g>`;
   }).join('');
@@ -220,7 +224,7 @@ function renderCompetitionsOg(content) {
     title: 'Championships & National Podiums',
     subtitle: 'Campus startup simulations, margin optimization, and venture sprints.',
     contentBody: cardsSvg,
-    footerTag: 'ASHOKA CASH RUSH #1 · IIM AMRITSAR TOP 3 · BOOTCAMP DEMO DAY #1'
+    footerTag: 'ASHOKA CASH RUSH #1 · IIM AMRITSAR TOP 10 · BOOTCAMP DEMO DAY #1'
   });
 }
 

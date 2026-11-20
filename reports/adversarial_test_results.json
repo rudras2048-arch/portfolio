@@ -2,9 +2,9 @@
   "c1_320px": {
     "passed": true,
     "metrics": {
-      "innerW": 435,
-      "scrollW": 435,
-      "bodyScrollW": 435,
+      "innerW": 351,
+      "scrollW": 351,
+      "bodyScrollW": 351,
       "overflowPx": 0,
       "overflowingElements": [
         {
@@ -13,61 +13,61 @@
           "className": null,
           "width": 580,
           "right": 450,
-          "overflowPx": 15,
+          "overflowPx": 99,
           "snippet": ""
         },
         {
-          "tag": "nav",
-          "id": "nav",
+          "tag": "code",
+          "id": "fr-path-builders-bootcamp",
           "className": null,
-          "width": 538.1,
-          "right": 486.5,
-          "overflowPx": 51.5,
-          "snippet": "RUDRA SHARMA\n      \n      \n        00Abo"
-        },
-        {
-          "tag": "button",
-          "id": "burger",
-          "className": null,
-          "width": 44,
-          "right": 461.5,
-          "overflowPx": 26.5,
-          "snippet": ""
+          "width": 266.4,
+          "right": 353.6,
+          "overflowPx": 2.6,
+          "snippet": "assets/builders-bootcamp-demo-day.jpg"
         },
         {
           "tag": "span",
           "id": null,
-          "className": null,
-          "width": 44,
-          "right": 461.5,
-          "overflowPx": 26.5,
-          "snippet": ""
-        },
-        {
-          "tag": "span",
-          "id": null,
-          "className": null,
-          "width": 44,
-          "right": 461.5,
-          "overflowPx": 26.5,
-          "snippet": ""
-        },
-        {
-          "tag": "span",
-          "id": null,
-          "className": null,
-          "width": 44,
-          "right": 461.5,
-          "overflowPx": 26.5,
-          "snippet": ""
+          "className": "fr-code-bracket",
+          "width": 7.2,
+          "right": 366.8,
+          "overflowPx": 15.8,
+          "snippet": "]"
         },
         {
           "tag": "span",
           "id": null,
           "className": "cm",
-          "width": 393.3,
-          "right": 467.3,
-          "overflowPx": 32.3,
+          "width": 338.4,
+          "right": 384.4,
+          "overflowPx": 33.4,
+          "snippet": "$ tathya eval --lang haryanvi --set gov-"
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "cm",
+          "width": 374.4,
+          "right": 420.4,
+          "overflowPx": 69.4,
+          "snippet": "$ stratum simulate --scenario \"cpm_volat"
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "cm",
+          "width": 374.4,
+          "right": 420.4,
+          "overflowPx": 69.4,
+          "snippet": "$ flowstate run --zero-oauth --audio pro"
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "cm",
+          "width": 410.4,
+          "right": 456.4,
+          "overflowPx": 105.4,
           "snippet": "$ krama analyze --timetable schedule.jso"
         }
       ],
@@ -89,8 +89,8 @@
       "canvasStaticClass": true,
       "rafCalls500ms": 0,
       "cursorAnim": "none",
-      "cursorOpacity": "1",
-      "revealsCount": 32,
+      "hasCursor": false,
+      "revealsCount": 35,
       "revealsStatic": true,
       "revealsFailing": []
     },
@@ -145,8 +145,8 @@
   "c4_slow3g": {
     "passed": true,
     "clsAndMetrics": {
-      "fcpMs": 656,
-      "domContentLoadedMs": 14699,
+      "fcpMs": 3204,
+      "domContentLoadedMs": 14457,
       "clsScore": 0,
       "shiftCount": 0,
       "structuralIntegrity": true
