@@ -1,17 +1,17 @@
 {
-  "timestamp": "2026-11-20T06:57:58.769Z",
+  "timestamp": "2026-11-25T11:08:31.578Z",
   "viewports": {
     "320px": {
       "name": "Ultra-Narrow Mobile (320x568)",
       "width": 320,
       "height": 568,
       "metrics": {
-        "innerWidth": 351,
-        "scrollWidth": 351,
-        "bodyScrollWidth": 351,
+        "innerWidth": 320,
+        "scrollWidth": 320,
+        "bodyScrollWidth": 320,
         "hasOverflow": false,
         "overflowPx": 0,
-        "overflowingElementsCount": 7,
+        "overflowingElementsCount": 5,
         "topOverflowing": [
           {
             "tag": "div",
@@ -19,26 +19,8 @@
             "className": null,
             "width": 580,
             "right": 450,
-            "overflowPx": 99,
+            "overflowPx": 130,
             "snippet": ""
-          },
-          {
-            "tag": "code",
-            "id": "fr-path-builders-bootcamp",
-            "className": null,
-            "width": 266.4,
-            "right": 353.6,
-            "overflowPx": 2.6,
-            "snippet": "assets/builders-bootcamp-demo-day.jpg"
-          },
-          {
-            "tag": "span",
-            "id": null,
-            "className": "fr-code-bracket",
-            "width": 7.2,
-            "right": 366.8,
-            "overflowPx": 15.8,
-            "snippet": "]"
           },
           {
             "tag": "span",
@@ -46,7 +28,7 @@
             "className": "cm",
             "width": 338.4,
             "right": 384.4,
-            "overflowPx": 33.4,
+            "overflowPx": 64.4,
             "snippet": "$ tathya eval --lang haryanvi --set gov-"
           },
           {
@@ -55,8 +37,26 @@
             "className": "cm",
             "width": 374.4,
             "right": 420.4,
-            "overflowPx": 69.4,
+            "overflowPx": 100.4,
             "snippet": "$ stratum simulate --scenario \"cpm_volat"
+          },
+          {
+            "tag": "span",
+            "id": null,
+            "className": "cm",
+            "width": 374.4,
+            "right": 420.4,
+            "overflowPx": 100.4,
+            "snippet": "$ flowstate run --zero-oauth --audio pro"
+          },
+          {
+            "tag": "span",
+            "id": null,
+            "className": "cm",
+            "width": 410.4,
+            "right": 456.4,
+            "overflowPx": 136.4,
+            "snippet": "$ krama analyze --timetable schedule.jso"
           }
         ]
       },
@@ -151,6 +151,13 @@
           "ariaLabel": null
         },
         {
+          "tagName": "BUTTON",
+          "id": "cmd-palette-trigger",
+          "className": "cmd-trigger-btn",
+          "text": "⌘K",
+          "ariaLabel": "⌘K Open Command Palette"
+        },
+        {
           "tagName": "A",
           "id": "",
           "className": "nav-action-pill",
@@ -161,14 +168,7 @@
           "tagName": "A",
           "id": "",
           "className": "btn-solid hero-btn-primary",
-          "text": "VIEW FIELD RECORD\n↓",
-          "ariaLabel": null
-        },
-        {
-          "tagName": "A",
-          "id": "",
-          "className": "btn-outline hero-btn-secondary",
-          "text": "LINKEDIN NETWORK\n↗",
+          "text": "VIEW RECORD\n↓",
           "ariaLabel": null
         }
       ]

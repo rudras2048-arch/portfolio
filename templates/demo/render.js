@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * TATHYA EXPLORER SERVER-SIDE RENDERER
- * Author: Agent 4 (Demo)
+ * Author: Agent 4 (Demo) / Upgraded v2.1
  * Contract: tokens.md & interfaces.md
  * Source: /data/tathya.json
  * ============================================================================
@@ -30,6 +30,15 @@ function getTathyaExplorerJS() {
   return fs.readFileSync(jsPath, 'utf8');
 }
 
+function formatUtf8BytesNode(str, maxBytes = 12) {
+  const buf = Buffer.from(String(str || ''), 'utf8');
+  const slice = buf.subarray(0, maxBytes);
+  const hex = Array.from(slice).map(b => b.toString(16).toUpperCase().padStart(2, '0')).join(' ');
+  return buf.length > slice.length
+    ? `${hex} … (${buf.length} UTF-8 bytes)`
+    : `${hex} (${buf.length} UTF-8 bytes)`;
+}
+
 /**
  * Renders the HTML markup for the Tathya LLM Failure Explorer
  * @param {Object} [tathyaData] Parsed content of data/tathya.json
@@ -50,8 +59,52 @@ function renderTathyaExplorer(tathyaData) {
   const haryanvi = samples.find(s => s.dialect === 'haryanvi') || samples[0] || {};
   const initialCategoryDisplay = (haryanvi.category || 'civic_schemes').replace(/_/g, ' ').toUpperCase();
 
+  const promptText = haryanvi.prompt || 'म्हारी सरकार की लाडो योजना के के फायदे सैं?';
+  const standardText = haryanvi.standard_hindi || 'हमारी सरकार की लाडो योजना के क्या लाभ हैं?';
+  const dialectByteLen = Buffer.byteLength(promptText, 'utf8');
+  const standardByteLen = Buffer.byteLength(standardText, 'utf8');
+
+  const initialDialectTokens = [
+    { t: 'म्', frag: true },
+    { t: 'हा', frag: true },
+    { t: 'री', frag: true },
+    { t: 'सरकार', frag: false },
+    { t: 'की', frag: false },
+    { t: 'ला', frag: true },
+    { t: 'डो', frag: true },
+    { t: 'योजना', frag: false },
+    { t: 'के', frag: false },
+    { t: 'के', frag: false },
+    { t: 'फाय', frag: true },
+    { t: 'दे', frag: true },
+    { t: 'सै', frag: true },
+    { t: 'ं', frag: true },
+    { t: '?', frag: false }
+  ];
+
+  const initialStandardTokens = [
+    { t: 'हमारी' },
+    { t: 'सरकार' },
+    { t: 'की' },
+    { t: 'लाडो' },
+    { t: 'योजना' },
+    { t: 'के' },
+    { t: 'क्या' },
+    { t: 'लाभ' },
+    { t: 'हैं' },
+    { t: '?' }
+  ];
+
+  const dialectChipsHtml = initialDialectTokens
+    .map(tok => `<span class="${tok.frag ? 'tfe-chip tfe-chip--frag' : 'tfe-chip tfe-chip--whole'}">[${escapeHtml(tok.t)}]</span>`)
+    .join('');
+
+  const standardChipsHtml = initialStandardTokens
+    .map(tok => `<span class="tfe-chip tfe-chip--clean">[${escapeHtml(tok.t)}]</span>`)
+    .join('');
+
   return `            <!-- TATHYA LLM FAILURE EXPLORER (templates/demo/) -->
-            <section class="tfe-explorer" role="region" aria-label="Tathya LLM Failure Explorer">
+            <div class="tfe-explorer" id="tfe-explorer" role="region" aria-label="Tathya LLM Failure Explorer">
               <!-- Explorer Top Bar -->
               <div class="tfe-top-bar">
                 <div class="tfe-top-bar__left">
@@ -108,7 +161,7 @@ function renderTathyaExplorer(tathyaData) {
                       <span class="tfe-col-hint" id="tfe-dialect-script-hint">Colloquial Devanagari Orthography</span>
                     </div>
                     <div class="tfe-prompt-box">
-                      <p class="tfe-prompt-text tfe-prompt-text--dialect" id="tfe-dialect-prompt">${escapeHtml(haryanvi.prompt)}</p>
+                      <p class="tfe-prompt-text tfe-prompt-text--dialect" id="tfe-dialect-prompt">${escapeHtml(promptText)}</p>
                     </div>
                   </div>
 
@@ -118,7 +171,39 @@ function renderTathyaExplorer(tathyaData) {
                       <span class="tfe-col-hint">Manak Hindi Target</span>
                     </div>
                     <div class="tfe-prompt-box">
-                      <p class="tfe-prompt-text tfe-prompt-text--standard" id="tfe-standard-prompt">${escapeHtml(haryanvi.standard_hindi)}</p>
+                      <p class="tfe-prompt-text tfe-prompt-text--standard" id="tfe-standard-prompt">${escapeHtml(standardText)}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Side-by-Side Token Fragmentation Visualizer -->
+                <div class="tfe-token-viz" id="tfe-token-viz">
+                  <div class="tfe-viz-header">
+                    <span class="tfe-viz-title">TOKEN FRAGMENTATION VISUALIZER</span>
+                    <div class="tfe-viz-spotlight" id="tfe-viz-spotlight">
+                      <span class="tfe-spot-clean">हमारी → <code>[हमारी]</code></span>
+                      <span class="tfe-spot-sep" aria-hidden="true">vs</span>
+                      <span class="tfe-spot-frag">म्हारी → <code>[म्][हा][री]</code></span>
+                    </div>
+                  </div>
+
+                  <div class="tfe-viz-grid">
+                    <div class="tfe-viz-col tfe-viz-col--frag">
+                      <div class="tfe-viz-col-head">
+                        <span class="tfe-viz-col-lbl">DIALECT SUBWORD FRAGMENTS</span>
+                        <span class="tfe-viz-count mono" id="tfe-frag-count">${initialDialectTokens.length} segments · ${dialectByteLen} UTF-8 bytes</span>
+                      </div>
+                      <div class="tfe-token-row" id="tfe-dialect-tokens">${dialectChipsHtml}</div>
+                      <div class="tfe-byte-seq" id="tfe-byte-seq"><strong>Marker UTF-8 Bytes (म्हारी):</strong> <code>${escapeHtml(formatUtf8BytesNode('म्हारी', 12))}</code></div>
+                    </div>
+
+                    <div class="tfe-viz-col tfe-viz-col--std">
+                      <div class="tfe-viz-col-head">
+                        <span class="tfe-viz-col-lbl">STANDARD HINDI TOKENS</span>
+                        <span class="tfe-viz-count mono" id="tfe-std-count">${initialStandardTokens.length} whole tokens · ${standardByteLen} UTF-8 bytes</span>
+                      </div>
+                      <div class="tfe-token-row" id="tfe-standard-tokens">${standardChipsHtml}</div>
+                      <p class="tfe-viz-note" id="tfe-viz-note">Colloquial markers "म्हारी" and "सैं" lack whole-word Manak Hindi entries and fracture across conjunct and matra boundaries.</p>
                     </div>
                   </div>
                 </div>
@@ -139,7 +224,7 @@ function renderTathyaExplorer(tathyaData) {
 
               <!-- Live Region for Screen Readers -->
               <div id="tfe-live" class="tfe-sr-only" aria-live="polite" aria-atomic="true"></div>
-            </section>`;
+            </div>`;
 }
 
 module.exports = {

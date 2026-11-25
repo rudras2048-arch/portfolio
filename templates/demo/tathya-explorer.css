@@ -1,7 +1,7 @@
 /* ==========================================================================
    TATHYA LLM FAILURE EXPLORER COMPONENT (.tfe-)
    Contract: tokens.md (Tokens v2.0) & interfaces.md
-   Author: Agent 4 (Demo)
+   Author: Agent 4 (Demo) / Upgraded v2.1
    Isolation Prefix: .tfe-
    Dataset: /data/tathya.json (tathya-eval-preview v0.1.0)
    ========================================================================== */
@@ -13,13 +13,16 @@
   background: var(--bg2);
   border: 1px solid var(--rule);
   border-radius: 12px;
-  padding: 14px 16px;
-  margin-top: 10px;
+  padding: 18px 20px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
+  width: 100%;
+  max-width: 100%;
   min-width: 0;
   box-sizing: border-box;
+  overflow: hidden;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -38,18 +41,21 @@
   gap: 8px;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--rule);
+  min-width: 0;
 }
 
 .tfe-top-bar__left {
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  min-width: 0;
 }
 
 .tfe-indicator {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .tfe-indicator .pulse-dot {
@@ -65,51 +71,50 @@
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--accent);
+  overflow-wrap: anywhere;
 }
 
 .tfe-top-bar__right {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
 }
 
 .tfe-badge {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-dim);
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--rule);
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 9999px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 /* --------------------------------------------------------------------------
    3. DIALECT SWITCHER (TABS)
    -------------------------------------------------------------------------- */
 .tfe-dialects {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 2px;
-}
-
-.tfe-dialects::-webkit-scrollbar {
-  display: none;
+  min-width: 0;
 }
 
 .tfe-tab {
-  flex: 1 1 auto;
   min-width: 0;
+  min-height: 38px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 6px;
   padding: 9px 12px;
   background: var(--bg3);
@@ -124,7 +129,6 @@
   cursor: pointer;
   transition: all 0.2s ease;
   outline: none;
-  white-space: nowrap;
   user-select: none;
   -webkit-user-select: none;
 }
@@ -172,12 +176,13 @@
    -------------------------------------------------------------------------- */
 .tfe-meta-bar {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
-  gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--rule);
   border-radius: 8px;
-  padding: 8px 12px;
+  padding: 10px 14px;
+  min-width: 0;
 }
 
 .tfe-meta-item {
@@ -201,9 +206,7 @@
   font-size: 12px;
   font-weight: 700;
   color: var(--text-bone);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  overflow-wrap: anywhere;
 }
 
 .tfe-category-val {
@@ -223,8 +226,8 @@
 
 .tfe-compare-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
   min-width: 0;
 }
 
@@ -232,7 +235,7 @@
   background: var(--bg3);
   border: 1px solid var(--rule);
   border-radius: 10px;
-  padding: 12px 14px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -259,9 +262,9 @@
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 2px 6px;
+  padding: 2px 7px;
   border-radius: 4px;
 }
 
@@ -289,7 +292,7 @@
 
 .tfe-prompt-text {
   font-family: var(--font-body);
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.55;
   color: var(--text-bone);
   margin: 0;
@@ -308,7 +311,190 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. TOKEN FRAGMENTATION ANALYSIS PANEL
+   6. TOKEN FRAGMENTATION VISUALIZER (#tfe-token-viz)
+   -------------------------------------------------------------------------- */
+.tfe-token-viz {
+  background: rgba(8, 8, 10, 0.72);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.tfe-viz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.tfe-viz-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.tfe-viz-spotlight {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 12.5px;
+  color: var(--text-bone);
+  min-width: 0;
+}
+
+.tfe-viz-spotlight code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.tfe-spot-clean code {
+  color: var(--accent-bright);
+  background: rgba(165, 186, 40, 0.12);
+  border: 1px solid rgba(165, 186, 40, 0.28);
+}
+
+.tfe-spot-frag code {
+  color: #FCD34D;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+}
+
+.tfe-spot-sep {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.tfe-viz-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+}
+
+.tfe-viz-col {
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.tfe-viz-col-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tfe-viz-col-lbl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-bone);
+}
+
+.tfe-viz-count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.tfe-token-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-width: 0;
+}
+
+.tfe-chip {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.35;
+  padding: 4px 8px;
+  border-radius: 6px;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.tfe-chip--frag {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.42);
+  color: #FCD34D;
+  font-weight: 600;
+}
+
+.tfe-chip--whole {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--rule);
+  color: var(--text-bone);
+}
+
+.tfe-chip--clean {
+  background: rgba(165, 186, 40, 0.12);
+  border: 1px solid rgba(165, 186, 40, 0.35);
+  color: var(--accent-bright);
+}
+
+.tfe-byte-seq {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  background: rgba(0, 0, 0, 0.36);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 7px 9px;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.tfe-byte-seq strong {
+  color: var(--text-bone);
+  font-weight: 600;
+}
+
+.tfe-byte-seq code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #FCD34D;
+}
+
+.tfe-viz-note {
+  font-family: var(--font-body);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------------------
+   7. TOKEN FRAGMENTATION ANALYSIS PANEL
    -------------------------------------------------------------------------- */
 .tfe-analysis-box {
   background: rgba(12, 12, 14, 0.65);
@@ -350,7 +536,7 @@
 
 .tfe-analysis-p {
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 12.5px;
   line-height: 1.55;
   color: var(--text-muted);
   margin: 0;
@@ -374,7 +560,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   7. ACCESSIBILITY UTILITIES
+   8. ACCESSIBILITY UTILITIES
    -------------------------------------------------------------------------- */
 .tfe-sr-only {
   position: absolute !important;
@@ -389,13 +575,14 @@
 }
 
 /* --------------------------------------------------------------------------
-   8. REDUCED MOTION SAFE
+   9. REDUCED MOTION SAFE
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   .tfe-explorer,
   .tfe-tab,
   .tfe-panel,
   .tfe-compare-col,
+  .tfe-chip,
   .tfe-indicator .pulse-dot {
     transition: none !important;
     animation: none !important;
@@ -403,17 +590,38 @@
 }
 
 /* --------------------------------------------------------------------------
-   9. RESPONSIVE REFINEMENTS
+   10. RESPONSIVE REFINEMENTS (<=768px / <=480px)
    -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .tfe-compare-grid,
+  .tfe-viz-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tfe-meta-bar {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .tfe-dialects {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 @media (max-width: 480px) {
   .tfe-explorer {
-    padding: 14px;
+    padding: 14px 12px;
   }
   .tfe-tab {
     padding: 8px 10px;
     font-size: 12px;
   }
   .tfe-meta-bar {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tfe-token-viz,
+  .tfe-compare-col,
+  .tfe-analysis-box {
+    padding: 12px;
   }
 }

@@ -13,7 +13,7 @@
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -21,13 +21,14 @@
       --bg2: #131317;
       --bg3: #1B1B22;
       --text-bone: #F5EFE6;
-      --text-muted: #9C988D;
-      --text-dim: #5C5A53;
+      --text-muted: #C0C5BF;
+      --text-dim: #A8B0A8;
       --accent: #A5BA28;
       --accent-bright: #BEE024;
       --accent-soft: rgba(165, 186, 40, 0.12);
       --rule: rgba(255, 255, 255, 0.08);
       --font-display: 'Syne', system-ui, sans-serif;
+      --font-serif: 'Instrument Serif', Georgia, serif;
       --font-body: 'DM Sans', system-ui, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
     }
@@ -67,7 +68,7 @@
       border: 1px solid rgba(239, 68, 68, 0.3);
       color: #F87171;
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -100,8 +101,12 @@
     }
 
     h1 span {
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--text-bone);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      color: var(--accent-bright);
+      letter-spacing: -0.01em;
     }
 
     /* Terminal Window */
@@ -132,7 +137,7 @@
 
     .terminal-title {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       color: var(--text-dim);
       margin-left: 6px;
     }
@@ -160,7 +165,7 @@
     /* Navigation Directory */
     .nav-label {
       font-family: var(--font-mono);
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.12em;
       color: var(--text-dim);
@@ -198,7 +203,7 @@
     }
 
     .nav-link .idx {
-      font-size: 10px;
+      font-size: 12px;
       color: var(--accent);
       font-weight: 700;
     }

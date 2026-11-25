@@ -2,9 +2,9 @@
   "c1_320px": {
     "passed": true,
     "metrics": {
-      "innerW": 351,
-      "scrollW": 351,
-      "bodyScrollW": 351,
+      "innerW": 320,
+      "scrollW": 320,
+      "bodyScrollW": 320,
       "overflowPx": 0,
       "overflowingElements": [
         {
@@ -13,26 +13,8 @@
           "className": null,
           "width": 580,
           "right": 450,
-          "overflowPx": 99,
+          "overflowPx": 130,
           "snippet": ""
-        },
-        {
-          "tag": "code",
-          "id": "fr-path-builders-bootcamp",
-          "className": null,
-          "width": 266.4,
-          "right": 353.6,
-          "overflowPx": 2.6,
-          "snippet": "assets/builders-bootcamp-demo-day.jpg"
-        },
-        {
-          "tag": "span",
-          "id": null,
-          "className": "fr-code-bracket",
-          "width": 7.2,
-          "right": 366.8,
-          "overflowPx": 15.8,
-          "snippet": "]"
         },
         {
           "tag": "span",
@@ -40,7 +22,7 @@
           "className": "cm",
           "width": 338.4,
           "right": 384.4,
-          "overflowPx": 33.4,
+          "overflowPx": 64.4,
           "snippet": "$ tathya eval --lang haryanvi --set gov-"
         },
         {
@@ -49,7 +31,7 @@
           "className": "cm",
           "width": 374.4,
           "right": 420.4,
-          "overflowPx": 69.4,
+          "overflowPx": 100.4,
           "snippet": "$ stratum simulate --scenario \"cpm_volat"
         },
         {
@@ -58,7 +40,7 @@
           "className": "cm",
           "width": 374.4,
           "right": 420.4,
-          "overflowPx": 69.4,
+          "overflowPx": 100.4,
           "snippet": "$ flowstate run --zero-oauth --audio pro"
         },
         {
@@ -67,13 +49,13 @@
           "className": "cm",
           "width": 410.4,
           "right": 456.4,
-          "overflowPx": 105.4,
+          "overflowPx": 136.4,
           "snippet": "$ krama analyze --timetable schedule.jso"
         }
       ],
       "illegibleTextCount": 0,
       "illegibleTextSamples": [],
-      "totalTouchTargets": 30,
+      "totalTouchTargets": 40,
       "tinyTargetsCount": 0,
       "tinyTargets": []
     },
@@ -89,8 +71,9 @@
       "canvasStaticClass": true,
       "rafCalls500ms": 0,
       "cursorAnim": "none",
-      "hasCursor": false,
-      "revealsCount": 35,
+      "cursorOpacity": "1",
+      "hasCursor": true,
+      "revealsCount": 36,
       "revealsStatic": true,
       "revealsFailing": []
     },
@@ -145,8 +128,8 @@
   "c4_slow3g": {
     "passed": true,
     "clsAndMetrics": {
-      "fcpMs": 3204,
-      "domContentLoadedMs": 14457,
+      "fcpMs": 3712,
+      "domContentLoadedMs": 15951,
       "clsScore": 0,
       "shiftCount": 0,
       "structuralIntegrity": true

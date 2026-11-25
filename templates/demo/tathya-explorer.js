@@ -1,7 +1,7 @@
 /**
  * ============================================================================
  * TATHYA LLM FAILURE EXPLORER LIVE COMPONENT
- * Author: Agent 4 (Demo)
+ * Author: Agent 4 (Demo) / Upgraded v2.1
  * Contract: tokens.md & interfaces.md
  * Source Data: /data/tathya.json (tathya-eval-preview v0.1.0)
  * ============================================================================
@@ -9,6 +9,39 @@
 
 (function () {
   'use strict';
+
+  function getUtf8Bytes(str) {
+    if (typeof TextEncoder !== 'undefined') {
+      return Array.from(new TextEncoder().encode(str));
+    }
+    var utf8 = unescape(encodeURIComponent(str));
+    var out = [];
+    for (var i = 0; i < utf8.length; i++) {
+      out.push(utf8.charCodeAt(i));
+    }
+    return out;
+  }
+
+  function formatUtf8Sequence(str, maxBytes) {
+    var bytes = getUtf8Bytes(str);
+    var limit = typeof maxBytes === 'number' ? maxBytes : bytes.length;
+    var slice = bytes.slice(0, limit);
+    var hex = slice.map(function (b) {
+      return (b < 16 ? '0' : '') + b.toString(16).toUpperCase();
+    }).join(' ');
+    if (bytes.length > slice.length) {
+      return hex + ' … (' + bytes.length + ' UTF-8 bytes)';
+    }
+    return hex + ' (' + bytes.length + ' UTF-8 bytes)';
+  }
+
+  function escapeText(str) {
+    return String(str || '')
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 
   // Grounded dataset test vectors strictly mapped from data/tathya.json
   var TATHYA_VECTORS = {
@@ -21,6 +54,40 @@
       categoryDisplay: 'CIVIC SCHEMES',
       prompt: 'म्हारी सरकार की लाडो योजना के के फायदे सैं?',
       standard_hindi: 'हमारी सरकार की लाडो योजना के क्या लाभ हैं?',
+      marker: 'म्हारी',
+      markerChunks: ['म्', 'हा', 'री'],
+      standardMarker: 'हमारी',
+      standardMarkerChunks: ['हमारी'],
+      dialectTokens: [
+        { t: 'म्', frag: true },
+        { t: 'हा', frag: true },
+        { t: 'री', frag: true },
+        { t: 'सरकार', frag: false },
+        { t: 'की', frag: false },
+        { t: 'ला', frag: true },
+        { t: 'डो', frag: true },
+        { t: 'योजना', frag: false },
+        { t: 'के', frag: false },
+        { t: 'के', frag: false },
+        { t: 'फाय', frag: true },
+        { t: 'दे', frag: true },
+        { t: 'सै', frag: true },
+        { t: 'ं', frag: true },
+        { t: '?', frag: false }
+      ],
+      standardTokens: [
+        { t: 'हमारी' },
+        { t: 'सरकार' },
+        { t: 'की' },
+        { t: 'लाडो' },
+        { t: 'योजना' },
+        { t: 'के' },
+        { t: 'क्या' },
+        { t: 'लाभ' },
+        { t: 'हैं' },
+        { t: '?' }
+      ],
+      vizNote: 'Colloquial markers "म्हारी" and "सैं" lack whole-word Manak Hindi entries and fracture across conjunct and matra boundaries.',
       analysis: [
         {
           label: 'Tokenizer Breakdown',
@@ -45,6 +112,44 @@
       categoryDisplay: 'HEALTHCARE',
       prompt: 'ਸਰਕਾਰੀ ਹਸਪਤਾਲ ਵਿਚ ਪਰਚੀ ਕਟਵਾਉਣ ਦਾ ਕੀ ਤਰੀਕਾ ਹੈ?',
       standard_hindi: 'सरकारी अस्पताल में पर्ची कटवाने का क्या तरीका है?',
+      marker: 'ਪਰਚੀ',
+      markerChunks: ['ਪਰ', 'ਚੀ'],
+      standardMarker: 'पर्ची',
+      standardMarkerChunks: ['पर्ची'],
+      dialectTokens: [
+        { t: 'ਸਰ', frag: true },
+        { t: 'ਕਾ', frag: true },
+        { t: 'ਰੀ', frag: true },
+        { t: 'ਹਸ', frag: true },
+        { t: 'ਪ', frag: true },
+        { t: 'ਤਾ', frag: true },
+        { t: 'ਲ', frag: true },
+        { t: 'ਵਿਚ', frag: false },
+        { t: 'ਪਰ', frag: true },
+        { t: 'ਚੀ', frag: true },
+        { t: 'ਕਟ', frag: true },
+        { t: 'ਵਾ', frag: true },
+        { t: 'ਉਣ', frag: true },
+        { t: 'ਦਾ', frag: false },
+        { t: 'ਕੀ', frag: false },
+        { t: 'ਤਰੀ', frag: true },
+        { t: 'ਕਾ', frag: true },
+        { t: 'ਹੈ', frag: false },
+        { t: '?', frag: false }
+      ],
+      standardTokens: [
+        { t: 'सरकारी' },
+        { t: 'अस्पताल' },
+        { t: 'में' },
+        { t: 'पर्ची' },
+        { t: 'कटवाने' },
+        { t: 'का' },
+        { t: 'क्या' },
+        { t: 'तरीका' },
+        { t: 'है' },
+        { t: '?' }
+      ],
+      vizNote: 'Cross-script Gurmukhi vocabulary under-representation splits clinical navigation terms ("ਪਰਚੀ", "ਕਟਵਾਉਣ") into short byte-level pieces.',
       analysis: [
         {
           label: 'Tokenizer Breakdown',
@@ -69,6 +174,42 @@
       categoryDisplay: 'GOVERNANCE',
       prompt: 'ई राशन कार्ड बनावे खातिर कवन कवन कागजात चाहीं?',
       standard_hindi: 'यह राशन कार्ड बनवाने के लिए कौन-कौन से दस्तावेज चाहिए?',
+      marker: 'खातिर',
+      markerChunks: ['खा', 'ति', 'र'],
+      standardMarker: 'के लिए',
+      standardMarkerChunks: ['के लिए'],
+      dialectTokens: [
+        { t: 'ई', frag: true },
+        { t: 'राशन', frag: false },
+        { t: 'कार्ड', frag: false },
+        { t: 'बना', frag: true },
+        { t: 'वे', frag: true },
+        { t: 'खा', frag: true },
+        { t: 'ति', frag: true },
+        { t: 'र', frag: true },
+        { t: 'क', frag: true },
+        { t: 'वन', frag: true },
+        { t: 'क', frag: true },
+        { t: 'वन', frag: true },
+        { t: 'काग', frag: true },
+        { t: 'जात', frag: true },
+        { t: 'चा', frag: true },
+        { t: 'हीं', frag: true },
+        { t: '?', frag: false }
+      ],
+      standardTokens: [
+        { t: 'यह' },
+        { t: 'राशन' },
+        { t: 'कार्ड' },
+        { t: 'बनवाने' },
+        { t: 'के लिए' },
+        { t: 'कौन-कौन' },
+        { t: 'से' },
+        { t: 'दस्तावेज' },
+        { t: 'चाहिए' },
+        { t: '?' }
+      ],
+      vizNote: 'Purvanchal markers ("ई", "खातिर", "कवन कवन", "चाहीं") lack standard token IDs and shatter across subword merges.',
       analysis: [
         {
           label: 'Tokenizer Breakdown',
@@ -103,10 +244,65 @@
     var scriptHintEl = container.querySelector('#tfe-dialect-script-hint');
     var dialectPromptEl = container.querySelector('#tfe-dialect-prompt');
     var standardPromptEl = container.querySelector('#tfe-standard-prompt');
+    var vizSpotlightEl = container.querySelector('#tfe-viz-spotlight');
+    var fragCountEl = container.querySelector('#tfe-frag-count');
+    var stdCountEl = container.querySelector('#tfe-std-count');
+    var dialectTokensEl = container.querySelector('#tfe-dialect-tokens');
+    var standardTokensEl = container.querySelector('#tfe-standard-tokens');
+    var byteSeqEl = container.querySelector('#tfe-byte-seq');
+    var vizNoteEl = container.querySelector('#tfe-viz-note');
     var analysisBodyEl = container.querySelector('#tfe-analysis-body');
     var liveEl = container.querySelector('#tfe-live');
 
     var currentDialect = 'haryanvi';
+
+    function renderTokenViz(data) {
+      var dialectBytes = getUtf8Bytes(data.prompt).length;
+      var standardBytes = getUtf8Bytes(data.standard_hindi).length;
+
+      if (vizSpotlightEl) {
+        var stdChunks = data.standardMarkerChunks.map(function (c) {
+          return '[' + escapeText(c) + ']';
+        }).join('');
+        var diaChunks = data.markerChunks.map(function (c) {
+          return '[' + escapeText(c) + ']';
+        }).join('');
+        vizSpotlightEl.innerHTML =
+          '<span class="tfe-spot-clean">' + escapeText(data.standardMarker) + ' → <code>' + stdChunks + '</code></span>' +
+          '<span class="tfe-spot-sep" aria-hidden="true">vs</span>' +
+          '<span class="tfe-spot-frag">' + escapeText(data.marker) + ' → <code>' + diaChunks + '</code></span>';
+      }
+
+      if (fragCountEl) {
+        fragCountEl.textContent = data.dialectTokens.length + ' segments · ' + dialectBytes + ' UTF-8 bytes';
+      }
+
+      if (stdCountEl) {
+        stdCountEl.textContent = data.standardTokens.length + ' whole tokens · ' + standardBytes + ' UTF-8 bytes';
+      }
+
+      if (dialectTokensEl) {
+        dialectTokensEl.innerHTML = data.dialectTokens.map(function (tok) {
+          var cls = tok.frag ? 'tfe-chip tfe-chip--frag' : 'tfe-chip tfe-chip--whole';
+          return '<span class="' + cls + '">[' + escapeText(tok.t) + ']</span>';
+        }).join('');
+      }
+
+      if (standardTokensEl) {
+        standardTokensEl.innerHTML = data.standardTokens.map(function (tok) {
+          return '<span class="tfe-chip tfe-chip--clean">[' + escapeText(tok.t) + ']</span>';
+        }).join('');
+      }
+
+      if (byteSeqEl) {
+        byteSeqEl.innerHTML = '<strong>Marker UTF-8 Bytes (' + escapeText(data.marker) + '):</strong> <code>' +
+          escapeText(formatUtf8Sequence(data.marker, 12)) + '</code>';
+      }
+
+      if (vizNoteEl) {
+        vizNoteEl.textContent = data.vizNote;
+      }
+    }
 
     function switchDialect(dialectId, updateFocus) {
       var data = TATHYA_VECTORS[dialectId];
@@ -124,7 +320,7 @@
         }
       });
 
-      // Update content
+      // Update metadata and prompt comparison
       if (categoryEl) {
         categoryEl.textContent = data.categoryDisplay;
       }
@@ -140,6 +336,9 @@
       if (standardPromptEl) {
         standardPromptEl.textContent = data.standard_hindi;
       }
+
+      // Update token fragmentation visualizer
+      renderTokenViz(data);
 
       // Update analysis points
       if (analysisBodyEl) {
@@ -185,6 +384,7 @@
       });
     });
 
+    renderTokenViz(TATHYA_VECTORS[currentDialect]);
     container.dataset.tfeInitialized = 'true';
 
     var instance = {

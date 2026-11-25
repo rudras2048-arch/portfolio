@@ -215,24 +215,24 @@
     }
 
     nav {
-      background: rgba(14, 14, 18, 0.82);
+      background: rgba(14, 14, 18, 0.84);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid var(--rule);
       border-radius: 9999px;
-      padding: 10px 24px;
+      padding: 8px 20px;
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 20px;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
       transition: all 0.3s ease;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
 
     nav.scrolled {
       background: rgba(12, 12, 15, 0.94);
       border-color: rgba(165, 186, 40, 0.25);
-      padding: 8px 22px;
+      padding: 7px 18px;
     }
 
     .nav-brand {
@@ -244,6 +244,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     .pulse-dot {
@@ -327,33 +329,73 @@
       transform: translateY(-1px);
     }
 
+    .cmd-trigger-btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 9999px;
+      padding: 6px 12px;
+      min-height: 36px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+      flex-shrink: 0;
+    }
+
+    .cmd-trigger-btn kbd {
+      font-family: inherit;
+      font-size: 12px;
+      color: inherit;
+      background: transparent;
+      border: none;
+      padding: 0;
+    }
+
+    .cmd-trigger-btn:hover,
+    .cmd-trigger-btn:focus-visible {
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
     /* Mobile Hamburger */
     #burger {
       display: none;
       background: none;
       border: 0;
       cursor: pointer;
-      width: 28px;
-      height: 20px;
+      width: 44px;
+      height: 44px;
+      padding: 0;
       position: relative;
+      flex-shrink: 0;
       z-index: 95;
     }
 
     #burger span {
       position: absolute;
-      left: 0;
-      width: 100%;
+      left: 10px;
+      width: 24px;
       height: 2px;
+      border-radius: 2px;
       background: var(--text-bone);
       transition: transform 0.3s, top 0.3s, opacity 0.3s;
     }
-    #burger span:nth-child(1) { top: 2px; }
-    #burger span:nth-child(2) { top: 9px; }
-    #burger span:nth-child(3) { top: 16px; }
+    #burger span:nth-child(1) { top: 14px; }
+    #burger span:nth-child(2) { top: 21px; }
+    #burger span:nth-child(3) { top: 28px; }
 
-    body.menu-open #burger span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+    body.menu-open #burger span:nth-child(1) { top: 21px; transform: rotate(45deg); }
     body.menu-open #burger span:nth-child(2) { opacity: 0; }
-    body.menu-open #burger span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+    body.menu-open #burger span:nth-child(3) { top: 21px; transform: rotate(-45deg); }
 
     #mobileMenu {
       position: fixed;
@@ -418,12 +460,12 @@
     }
 
     section {
-      padding: 56px 0 28px;
+      padding: 48px 0 24px;
       scroll-margin-top: 96px;
     }
 
     .section-header {
-      margin-bottom: 32px;
+      margin-bottom: 24px;
     }
 
     .section-eyebrow {
@@ -470,18 +512,20 @@
        HERO MONOLITH: SCULPTURAL EDITORIAL + PITCH PORTRAIT
        ========================================================================== */
     .hero-wrap {
-      padding-top: 76px;
-      padding-bottom: 36px;
+      padding-top: 112px;
+      padding-bottom: 28px;
       min-height: auto;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: center;
       scroll-margin-top: 96px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.35fr 1fr;
-      gap: 52px;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 36px;
       align-items: center;
       width: 100%;
     }
@@ -500,26 +544,26 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 18px;
     }
 
     .hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(54px, 7.6vw, 98px);
+      font-size: clamp(44px, 5.6vw, 76px);
       font-weight: 800;
-      line-height: 0.92;
-      letter-spacing: -0.04em;
+      line-height: 0.96;
+      letter-spacing: -0.03em;
       color: var(--text-bone);
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       user-select: none;
     }
 
     @media (max-width: 480px) {
       .hero-headline {
-        font-size: clamp(28px, 8vw, 36px);
-        letter-spacing: -0.01em;
-        line-height: 1.0;
+        font-size: clamp(34px, 9.2vw, 44px);
+        letter-spacing: -0.02em;
+        line-height: 1.02;
       }
       .page-spine {
         padding: 0 16px;
@@ -527,8 +571,14 @@
     }
 
     .hero-headline .stagger {
-      color: transparent;
-      -webkit-text-stroke: 1.5px var(--text-bone);
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: -0.02em;
+      font-size: 1.08em;
+      line-height: 1.0;
+      color: var(--accent-bright);
       display: block;
       transition: color 0.3s ease;
     }
@@ -538,10 +588,11 @@
 
     /* Live Typed Command Prompt */
     .hero-tagline-prompt {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
+      min-height: 26px;
       display: flex;
       align-items: baseline;
-      gap: 12px;
+      gap: 10px;
       flex-wrap: wrap;
       font-family: var(--font-mono);
     }
@@ -577,25 +628,27 @@
       font-style: normal;
       color: var(--text-bone);
       line-height: 1.5;
-      margin-bottom: 28px;
+      margin-bottom: 22px;
       max-width: 52ch;
     }
 
     /* Dynamic Count-Up Stats Row */
     .hero-stats-row {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin-bottom: 36px;
+      grid-template-columns: 0.92fr 1.24fr 0.86fr 0.98fr;
+      gap: 10px;
+      margin-bottom: 26px;
     }
 
     .stat-card {
+      position: relative;
+      overflow: hidden;
       background: var(--bg-card);
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       border: 1px solid var(--rule);
       border-radius: 14px;
-      padding: 16px 14px;
+      padding: 14px 12px;
       display: flex;
       flex-direction: column;
       gap: 4px;
@@ -609,17 +662,19 @@
 
     .stat-num {
       font-family: var(--font-display);
-      font-size: 40px;
+      font-size: clamp(18px, 1.48vw, 22px);
       font-weight: 800;
       color: var(--accent);
-      line-height: 1;
+      line-height: 1.05;
+      white-space: nowrap;
+      letter-spacing: -0.03em;
     }
 
     .stat-label {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-bone);
     }
@@ -724,10 +779,12 @@
       background: #060608;
     }
 
+    .hero-portrait-card .portrait-inner img,
     .portrait-inner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center 15%;
       transition: transform 0.5s ease;
     }
 
@@ -1203,6 +1260,8 @@
     }
 
     .venture-card {
+      position: relative;
+      overflow: hidden;
       background: var(--bg-card);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
@@ -1556,11 +1615,11 @@
     /* Responsive Queries */
     @media (max-width: 1200px) {
       nav {
-        gap: 16px;
-        padding: 8px 18px;
+        gap: 12px;
+        padding: 8px 16px;
       }
       .nav-links {
-        gap: 14px;
+        gap: 12px;
       }
       .rm-toggle-btn .rm-toggle-shortcut {
         display: none;
@@ -1569,24 +1628,29 @@
 
     @media (max-width: 960px) {
       section {
-        padding: 44px 0 24px;
-        scroll-margin-top: 84px;
+        padding: 40px 0 22px;
+        scroll-margin-top: 88px;
       }
       .ab-section {
-        padding: 44px 0 24px;
-        scroll-margin-top: 84px;
+        padding: 40px 0 22px;
+        scroll-margin-top: 88px;
       }
       .hero-wrap {
-        padding-top: 64px;
-        padding-bottom: 28px;
+        padding-top: 96px;
+        padding-bottom: 24px;
         min-height: auto;
+      }
+      .hero-portrait-card {
+        max-width: 460px;
+        width: 100%;
+        margin: 0 auto;
       }
       .case-card,
       .fr-card,
       .venture-card,
       [id^="comp-"],
       [id^="ven-"] {
-        scroll-margin-top: 84px;
+        scroll-margin-top: 88px;
       }
       .case-visual,
       .fr-media-frame,
@@ -1596,6 +1660,7 @@
       }
       .hero-grid {
         grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
       }
       .case-card {
         grid-template-columns: minmax(0, 1fr);
@@ -1608,6 +1673,9 @@
       }
       .hero-stats-row {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .stat-num {
+        font-size: 28px;
       }
       .nav-links {
         display: none;
@@ -1640,29 +1708,47 @@
         box-sizing: border-box;
       }
       nav {
-        gap: 10px;
-        padding: 10px 14px;
+        gap: 8px;
+        padding: 6px 12px;
         width: 100%;
         max-width: 100%;
         box-sizing: border-box;
         justify-content: space-between;
+        flex-wrap: nowrap;
       }
       .nav-brand {
         min-width: 0;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
+      .cmd-trigger-btn {
+        padding: 5px 10px;
+        min-height: 34px;
       }
       .nav-action-pill { display: none !important; }   /* LinkedIn already in mobile menu, hero actions, and contact */
       .rm-toggle-btn,
       #rm-toggle { display: none !important; }     /* moved into the mobile menu — see step 3 */
+      .hero-wrap {
+        padding-top: 88px;
+        padding-bottom: 20px;
+      }
+      .hero-tagline-prompt {
+        min-height: 44px;
+      }
       section {
-        padding: 36px 0 20px;
-        scroll-margin-top: 76px;
+        padding: 34px 0 18px;
+        scroll-margin-top: 88px;
       }
       .ab-section {
-        padding: 36px 0 20px;
-        scroll-margin-top: 76px;
+        padding: 34px 0 18px;
+        scroll-margin-top: 88px;
+      }
+      .rm-summary-drawer,
+      .rm-drawer-shell {
+        scroll-margin-top: 88px;
       }
       .case-visual,
       .fr-media-frame,
@@ -1953,6 +2039,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   margin: 32px auto 0 auto;
   position: relative;
   z-index: 25;
+  scroll-margin-top: 96px;
 }
 
 .rm-summary-drawer[hidden] {
@@ -1968,6 +2055,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   position: relative;
   overflow: hidden;
   animation: rm-drawerOpen 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  scroll-margin-top: 96px;
 }
 
 @keyframes rm-drawerOpen {
@@ -2523,7 +2611,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
        ========================================================================== */
 /* Section Mount Container */
   .ab-section {
-    padding: 56px 0 28px;
+    padding: 44px 0 24px;
     scroll-margin-top: 96px;
     position: relative;
     z-index: 10;
@@ -2537,7 +2625,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
 
   /* Section Header */
   .ab-header {
-    margin-bottom: 32px;
+    margin-bottom: 24px;
   }
 
   .ab-eyebrow {
@@ -2599,7 +2687,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   .ab-ethos-col {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     position: -webkit-sticky;
     position: sticky;
     top: 96px;
@@ -2618,7 +2706,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--rule);
     border-radius: var(--card-radius);
-    padding: 32px;
+    padding: 22px 24px;
     transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   }
 
@@ -2635,7 +2723,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     letter-spacing: 0.16em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -2655,40 +2743,41 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     50% { opacity: 0.35; transform: scale(0.85); }
   }
 
-  .ab-quote {
+  .ab-quote,
+  .ab-bio-statement {
     font-family: var(--font-serif);
-    font-size: clamp(22px, 2.5vw, 26px);
+    font-size: clamp(20px, 2.2vw, 24px);
     font-style: italic;
     color: var(--text-bone);
     line-height: 1.32;
-    margin: 0 0 14px 0;
+    margin: 0 0 10px 0;
     padding-left: 14px;
     border-left: 2px solid var(--accent);
   }
 
   .ab-thesis-desc {
     font-family: var(--font-body);
-    font-size: 14px;
+    font-size: 13.5px;
     color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 24px;
+    line-height: 1.55;
+    margin-bottom: 16px;
   }
 
   /* Pillar Breakdown */
   .ab-pillars-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
   }
 
   .ab-pillar-item {
     display: flex;
-    gap: 14px;
+    gap: 12px;
     align-items: flex-start;
-    padding: 12px 14px;
+    padding: 10px 12px;
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid var(--rule);
-    border-radius: 12px;
+    border-radius: 10px;
     transition: border-color 0.25s ease, background 0.25s ease;
   }
 
@@ -2806,10 +2895,10 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
 
   /* Right Column: Timeline Chronology */
   .ab-timeline-meta {
-    margin-bottom: 24px;
+    margin-bottom: 14px;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 3px;
   }
 
   .ab-timeline-heading {
@@ -2831,8 +2920,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding-left: 28px;
+    gap: 12px;
+    padding-left: 26px;
     list-style: none;
     margin: 0;
   }
@@ -2841,10 +2930,11 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     position: absolute;
     left: 8px;
     top: 12px;
-    bottom: 28px;
+    bottom: 24px;
     width: 2px;
     background: linear-gradient(180deg, var(--accent) 0%, rgba(165, 186, 40, 0.35) 75%, rgba(255, 255, 255, 0.06) 100%);
     pointer-events: none;
+    list-style: none;
   }
 
   /* Milestone Items */
@@ -2854,10 +2944,10 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
 
   .ab-milestone-marker {
     position: absolute;
-    left: -28px;
-    top: 24px;
-    width: 18px;
-    height: 18px;
+    left: -26px;
+    top: 20px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     background: var(--bg2);
     border: 2px solid var(--accent);
@@ -2875,23 +2965,26 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     background: var(--accent);
   }
 
-  .ab-milestone-card {
+  .ab-milestone-card,
+  .ab-milestone-compact {
     background: var(--bg-card);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid var(--rule);
-    border-radius: var(--card-radius);
-    padding: 24px 28px;
+    border-radius: 14px;
+    padding: 16px 20px;
     transition: border-color 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
   }
 
-  .ab-milestone-card:hover {
+  .ab-milestone-card:hover,
+  .ab-milestone-compact:hover {
     border-color: var(--rule-hover);
     transform: translateX(4px);
     box-shadow: 0 14px 32px rgba(0, 0, 0, 0.4), 0 0 16px rgba(165, 186, 40, 0.08);
   }
 
-  .ab-milestone-card.ab-active {
+  .ab-milestone-card.ab-active,
+  .ab-milestone-compact.ab-active {
     border-color: rgba(165, 186, 40, 0.35);
     background: linear-gradient(145deg, rgba(18, 18, 22, 0.92), rgba(27, 27, 34, 0.72));
   }
@@ -2901,8 +2994,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
+    gap: 8px;
+    margin-bottom: 6px;
   }
 
   .ab-milestone-date {
@@ -2919,7 +3012,7 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 4px 11px;
+    padding: 3px 10px;
     border-radius: 9999px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid var(--rule);
@@ -2941,10 +3034,10 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
 
   .ab-milestone-title {
     font-family: var(--font-display);
-    font-size: clamp(20px, 2.4vw, 24px);
+    font-size: clamp(17px, 2vw, 20px);
     font-weight: 700;
     color: var(--text-bone);
-    margin: 0 0 4px 0;
+    margin: 0 0 3px 0;
     letter-spacing: -0.02em;
   }
 
@@ -2952,15 +3045,49 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     font-family: var(--font-mono);
     font-size: 12px;
     color: var(--text-muted);
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .ab-milestone-body {
     font-family: var(--font-body);
-    font-size: 14px;
-    line-height: 1.6;
+    font-size: 13.5px;
+    line-height: 1.5;
     color: #C8C5BC;
-    margin: 0 0 16px 0;
+    margin: 0 0 10px 0;
+  }
+
+  .ab-milestone-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .ab-proof-link {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-bright);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 9999px;
+    background: var(--accent-soft);
+    border: 1px solid rgba(165, 186, 40, 0.3);
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .ab-proof-link:hover,
+  .ab-proof-link:focus-visible {
+    background: var(--accent);
+    color: #0C0C0E;
+    border-color: var(--accent);
   }
 
   .ab-milestone-tags {
@@ -3336,18 +3463,21 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
 }
 
 /* Pillar 02: My Specific Role & Deliverables */
-.fr-role-highlight {
+.fr-role-highlight,
+.fr-role-title-box {
   display: flex;
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
 }
 
-.fr-role-tag {
+.fr-role-tag,
+.fr-role-subtitle {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--text-dim);
 }
 
@@ -3372,7 +3502,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   border-radius: 4px;
 }
 
-.fr-deliverables-box {
+.fr-deliverables-box,
+.fr-deliverables-block {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -3382,7 +3513,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   padding: 12px 14px;
 }
 
-.fr-deliverables-title {
+.fr-deliverables-title,
+.fr-deliverables-lbl {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
@@ -3410,7 +3542,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   color: var(--text-bone);
 }
 
-.fr-check-icon {
+.fr-check-icon,
+.fr-bullet {
   color: var(--accent);
   font-family: var(--font-mono);
   font-weight: 700;
@@ -3423,7 +3556,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   flex: 1;
 }
 
-.fr-squad-meta {
+.fr-squad-meta,
+.fr-squad-row {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-dim);
@@ -3434,6 +3568,13 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   border-top: 1px dashed var(--rule);
   padding-top: 10px;
   margin-top: 2px;
+}
+
+.fr-squad-lbl {
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
 .fr-squad-names {
@@ -3598,7 +3739,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   padding-bottom: 10px;
 }
 
-.fr-proof-status-pill {
+.fr-proof-status-pill,
+.fr-asset-badge {
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 700;
@@ -3609,7 +3751,104 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  background: var(--accent-soft);
+  color: var(--accent-bright);
+  border: 1px solid rgba(165, 186, 40, 0.28);
 }
+
+/* Segmented ROI Breakdown Bar */
+.fr-roi-bar-wrap {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.fr-roi-bar-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.fr-roi-bar-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+}
+
+.fr-roi-bar-total {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--accent-bright);
+}
+
+.fr-roi-track {
+  height: 10px;
+  width: 100%;
+  border-radius: 9999px;
+  background: var(--bg3);
+  overflow: hidden;
+  display: flex;
+  gap: 2px;
+  padding: 1px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.fr-roi-seg--seed {
+  background: rgba(245, 239, 230, 0.45);
+  border-radius: 9999px 0 0 9999px;
+  min-width: 8px;
+}
+
+.fr-roi-seg--cost {
+  background: #F59E0B;
+  min-width: 4px;
+}
+
+.fr-roi-seg--yield {
+  background: linear-gradient(90deg, var(--accent), var(--accent-bright));
+  border-radius: 0 9999px 9999px 0;
+  min-width: 12px;
+}
+
+.fr-roi-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.fr-roi-leg-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.fr-roi-dot--seed,
+.fr-roi-dot--cost,
+.fr-roi-dot--yield {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.fr-roi-dot--seed { background: rgba(245, 239, 230, 0.65); }
+.fr-roi-dot--cost { background: #F59E0B; }
+.fr-roi-dot--yield { background: var(--accent-bright); }
 
 .fr-status-linked {
   background: var(--accent-soft);
@@ -3763,15 +4002,20 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 72%;
+  max-width: 100%;
 }
 
 .fr-asset-tag code {
   color: var(--accent);
   font-family: var(--font-mono);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .fr-direct-link {
@@ -3808,7 +4052,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   color: var(--text-dim);
 }
 
-.fr-gallery-row {
+.fr-gallery-row,
+.fr-gallery-switcher {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
@@ -3868,17 +4113,24 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   height: 100vh;
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 10010;
   display: flex;
   align-items: center;
   justify-content: center;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.25s ease;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.fr-lightbox:not([open]) {
+  display: none;
 }
 
 .fr-lightbox[open] {
+  display: flex;
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 
@@ -4148,7 +4400,6 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   }
 
   .cs-trigger[aria-expanded="true"] .cs-trigger-icon {
-    transform: rotate(180deg);
     color: var(--accent-bright);
   }
 
@@ -4158,10 +4409,14 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   .cs-drawer {
     display: grid;
     grid-template-rows: 0fr;
-    transition: grid-template-rows 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease, margin-top 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: grid-template-rows 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease, margin-top 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     opacity: 0;
     margin-top: 0;
     visibility: hidden;
+  }
+
+  .cs-drawer[hidden] {
+    display: none;
   }
 
   .cs-drawer.cs-open {
@@ -4171,7 +4426,8 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     visibility: visible;
   }
 
-  .cs-drawer-inner {
+  .cs-drawer-inner,
+  .cs-drawer__inner {
     overflow: hidden;
     min-height: 0;
   }
@@ -4188,6 +4444,55 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
     flex-direction: column;
     gap: 16px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  .cs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  @media (max-width: 640px) {
+    .cs-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+  }
+
+  .cs-panel {
+    background: var(--bg3);
+    border: 1px solid var(--rule);
+    border-radius: 10px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .cs-panel-full {
+    grid-column: 1 / -1;
+  }
+
+  .cs-panel h4 {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-bone);
+    margin: 0;
+  }
+
+  .cs-panel .cs-num {
+    color: var(--accent);
+    margin-right: 6px;
+  }
+
+  .cs-panel p {
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--text-muted);
+    margin: 0;
   }
 
   /* Status Banner */
@@ -4433,12 +4738,26 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   z-index: 9999;
 }
 
+.cs-modal:not([open]) {
+  display: none;
+}
+
 .cs-modal__window {
+  position: relative;
+  z-index: 10000;
+  background: var(--bg2);
+  border-radius: var(--card-radius);
   padding: 32px;
   max-height: 85vh;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--accent) var(--bg3);
+}
+
+@media (max-width: 640px) {
+  .cs-modal__window {
+    padding: 20px 16px;
+  }
 }
 
 .cs-modal__header {
@@ -4693,6 +5012,14 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
   border-radius: 4px;
 }
 
+.cs-modal-inspect-btn {
+  position: static !important;
+  flex-shrink: 0;
+  padding: 10px 18px;
+  font-size: 12px;
+  border-radius: 10px;
+}
+
 body.cs-modal-open {
   overflow: hidden !important;
 }
@@ -4864,11 +5191,24 @@ body.cs-modal-open {
   }
 }
 
-/* BRK-04: Allow hero meta pill to wrap on 320px screens */
+/* BRK-04: Clean wrapping hero meta pill on narrow screens without isolating dot */
 .hero-meta-pill {
-  flex-wrap: wrap !important;
+  flex-wrap: nowrap !important;
   max-width: 100% !important;
-  line-height: 1.5 !important;
+  line-height: 1.45 !important;
+}
+.hero-meta-pill .beacon-pulse {
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .hero-meta-pill {
+    border-radius: 12px !important;
+    padding: 8px 12px !important;
+    align-items: flex-start !important;
+  }
+  .hero-meta-pill .beacon-pulse {
+    margin-top: 5px;
+  }
 }
 
 /* BRK-05: Expand mobile burger touch target to >= 44x44px (WCAG 2.5.5) */
@@ -4876,11 +5216,10 @@ body.cs-modal-open {
   #burger, .nav-burger {
     min-width: 44px !important;
     min-height: 44px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: center !important;
-    align-items: center !important;
-    padding: 10px !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: inline-block !important;
+    padding: 0 !important;
   }
 }
 
@@ -4895,437 +5234,49 @@ body.cs-modal-open {
 
 
 
-/* TATHYA LLM FAILURE EXPLORER COMPONENT STYLES (.tfe-) */
-/* ==========================================================================
-   TATHYA LLM FAILURE EXPLORER COMPONENT (.tfe-)
-   Contract: tokens.md (Tokens v2.0) & interfaces.md
-   Author: Agent 4 (Demo)
-   Isolation Prefix: .tfe-
-   Dataset: /data/tathya.json (tathya-eval-preview v0.1.0)
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   1. MAIN CONTAINER & FRAME
-   -------------------------------------------------------------------------- */
-.tfe-explorer {
-  background: var(--bg2);
-  border: 1px solid var(--rule);
-  border-radius: 12px;
-  padding: 14px 16px;
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  min-width: 0;
-  box-sizing: border-box;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease;
-}
-
-.tfe-explorer:focus-within {
-  border-color: rgba(165, 186, 40, 0.4);
-}
-
-/* --------------------------------------------------------------------------
-   2. TOP BAR & BADGES
-   -------------------------------------------------------------------------- */
-.tfe-top-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--rule);
-}
-
-.tfe-top-bar__left {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.tfe-indicator {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.tfe-indicator .pulse-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent-glow);
-  display: inline-block;
-}
-
-.tfe-kicker {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
-.tfe-top-bar__right {
-  display: inline-flex;
-  align-items: center;
-}
-
-.tfe-badge {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid var(--rule);
-  padding: 3px 8px;
-  border-radius: 9999px;
-}
-
-/* --------------------------------------------------------------------------
-   3. DIALECT SWITCHER (TABS)
-   -------------------------------------------------------------------------- */
-.tfe-dialects {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 2px;
-}
-
-.tfe-dialects::-webkit-scrollbar {
-  display: none;
-}
-
-.tfe-tab {
-  flex: 1 1 auto;
-  min-width: 0;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 9px 12px;
-  background: var(--bg3);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  color: var(--text-muted);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  outline: none;
-  white-space: nowrap;
-  user-select: none;
-  -webkit-user-select: none;
-}
-
-.tfe-tab:hover {
-  background: var(--accent-soft);
-  border-color: var(--rule-hover);
-  color: var(--text-bone);
-}
-
-.tfe-tab:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-  border-color: var(--accent);
-}
-
-.tfe-tab[aria-selected="true"] {
-  background: rgba(165, 186, 40, 0.14);
-  border-color: var(--accent);
-  color: var(--accent-bright);
-  box-shadow: 0 0 14px rgba(165, 186, 40, 0.16);
-}
-
-.tfe-tab__num {
-  font-size: 12px;
-  color: var(--text-dim);
-  font-weight: 700;
-}
-
-.tfe-tab[aria-selected="true"] .tfe-tab__num {
-  color: var(--accent);
-}
-
-.tfe-tab__script {
-  font-family: var(--font-body);
-  font-size: 12px;
-  font-weight: 500;
-  opacity: 0.8;
-  letter-spacing: 0;
-  text-transform: none;
-}
-
-/* --------------------------------------------------------------------------
-   4. METADATA TELEMETRY BAR
-   -------------------------------------------------------------------------- */
-.tfe-meta-bar {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
-  gap: 8px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--rule);
-  border-radius: 8px;
-  padding: 8px 12px;
-}
-
-.tfe-meta-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.tfe-meta-lbl {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.tfe-meta-val {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-bone);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.tfe-category-val {
-  color: var(--accent);
-  letter-spacing: 0.04em;
-}
-
-/* --------------------------------------------------------------------------
-   5. COMPARISON GRID & PROMPT PANELS
-   -------------------------------------------------------------------------- */
-.tfe-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  min-width: 0;
-}
-
-.tfe-compare-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 10px;
-  min-width: 0;
-}
-
-.tfe-compare-col {
-  background: var(--bg3);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 12px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-}
-
-.tfe-compare-col--dialect {
-  border-left: 3px solid var(--accent);
-}
-
-.tfe-compare-col--standard {
-  border-left: 3px solid rgba(255, 255, 255, 0.3);
-}
-
-.tfe-col-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tfe-col-badge {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.tfe-col-badge--dialect {
-  color: var(--accent);
-  background: var(--accent-soft);
-  border: 1px solid rgba(165, 186, 40, 0.25);
-}
-
-.tfe-col-badge--standard {
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--rule);
-}
-
-.tfe-col-hint {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--text-dim);
-}
-
-.tfe-prompt-box {
-  min-width: 0;
-}
-
-.tfe-prompt-text {
-  font-family: var(--font-body);
-  font-size: 13.5px;
-  line-height: 1.55;
-  color: var(--text-bone);
-  margin: 0;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-
-.tfe-prompt-text--dialect {
-  font-weight: 500;
-  color: #FFFFFF;
-}
-
-.tfe-prompt-text--standard {
-  font-weight: 400;
-  color: var(--text-muted);
-}
-
-/* --------------------------------------------------------------------------
-   6. TOKEN FRAGMENTATION ANALYSIS PANEL
-   -------------------------------------------------------------------------- */
-.tfe-analysis-box {
-  background: rgba(12, 12, 14, 0.65);
-  border: 1px solid var(--rule);
-  border-radius: 10px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  min-width: 0;
-}
-
-.tfe-analysis-header {
-  display: flex;
-  align-items: center;
-  gap: 7px;
-}
-
-.tfe-analysis-icon {
-  font-size: 12px;
-  color: var(--accent);
-}
-
-.tfe-analysis-title {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--text-bone);
-}
-
-.tfe-analysis-body {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  min-width: 0;
-}
-
-.tfe-analysis-p {
-  font-family: var(--font-body);
-  font-size: 12px;
-  line-height: 1.55;
-  color: var(--text-muted);
-  margin: 0;
-  word-break: break-word;
-  overflow-wrap: anywhere;
-}
-
-.tfe-analysis-p strong {
-  color: var(--text-bone);
-  font-weight: 600;
-}
-
-.tfe-analysis-p code {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--accent);
-  background: rgba(165, 186, 40, 0.08);
-  padding: 1px 4px;
-  border-radius: 3px;
-  border: 1px solid rgba(165, 186, 40, 0.18);
-}
-
-/* --------------------------------------------------------------------------
-   7. ACCESSIBILITY UTILITIES
-   -------------------------------------------------------------------------- */
-.tfe-sr-only {
-  position: absolute !important;
-  width: 1px !important;
-  height: 1px !important;
-  padding: 0 !important;
-  margin: -1px !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-  white-space: nowrap !important;
-  border: 0 !important;
-}
-
-/* --------------------------------------------------------------------------
-   8. REDUCED MOTION SAFE
-   -------------------------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  .tfe-explorer,
-  .tfe-tab,
-  .tfe-panel,
-  .tfe-compare-col,
-  .tfe-indicator .pulse-dot {
-    transition: none !important;
-    animation: none !important;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   9. RESPONSIVE REFINEMENTS
-   -------------------------------------------------------------------------- */
-@media (max-width: 480px) {
-  .tfe-explorer {
-    padding: 14px;
-  }
-  .tfe-tab {
-    padding: 8px 10px;
-    font-size: 12px;
-  }
-  .tfe-meta-bar {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-  
-    /* Compact Cards Treatment for Participation Records */
+    /* Compact Cards & 3-Col Grid for Participation Records */
+    .fr-participation-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .fr-participation-grid.dimmed {
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+    }
+    .fr-participation-grid.hidden {
+      display: none !important;
+    }
     .fr-compact-card {
       padding: 24px 28px;
+    }
+    .fr-participation-grid .case-card.fr-card.fr-compact-card {
+      padding: 20px !important;
+      gap: 16px !important;
+      height: 100%;
+    }
+    .fr-participation-grid .fr-title {
+      font-size: clamp(19px, 1.75vw, 22px);
     }
     .fr-compact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 32px;
-      margin-top: 20px;
+      gap: 24px;
+      margin-top: 14px;
+    }
+    .fr-participation-grid .fr-compact-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 16px;
+      margin-top: 4px;
+    }
+    .fr-participation-grid .fr-telemetry-matrix {
+      grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)) !important;
+    }
+    .fr-participation-grid .fr-telemetry-val {
+      font-size: 14px;
     }
     .fr-compact-col {
       display: flex;
@@ -5345,38 +5296,634 @@ body.cs-modal-open {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
       padding-top: 12px;
       border-top: 1px solid var(--rule);
       font-size: 12px;
+      margin-top: auto !important;
+    }
+    @media (max-width: 1024px) {
+      .fr-participation-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
     }
     @media (max-width: 768px) {
       .fr-compact-grid {
         grid-template-columns: minmax(0, 1fr);
-        gap: 20px;
+        gap: 18px;
       }
       .fr-compact-card {
         padding: 20px 16px;
       }
     }
+    @media (max-width: 720px) {
+      .fr-participation-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
 
-    /* Hero CTA Hierarchy */
+    /* Venture Interactive Objects (.vn-sim, .vn-artifact, .vn-synth, #krama-calc) */
+    .venture-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .venture-sub-btn,
+    .venture-explorer-link,
+    .venture-repo-link,
+    .venture-demo-link {
+      min-height: 36px;
+      padding: 8px 14px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.03);
+      color: var(--text-bone);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+    .venture-sub-btn:hover,
+    .venture-explorer-link:hover,
+    .venture-repo-link:hover,
+    .venture-demo-link:hover {
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      background: var(--accent-soft);
+      transform: translateY(-1px);
+    }
+
+    .vn-sim-widget {
+      background: #08080A;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 6px;
+    }
+    .vn-sim-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .vn-sim-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .vn-sim-tabs {
+      display: inline-flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .vn-sim-tab {
+      min-height: 32px;
+      padding: 5px 11px;
+      border-radius: 7px;
+      border: 1px solid var(--rule);
+      background: var(--bg3);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .vn-sim-tab:hover {
+      border-color: var(--rule-hover);
+      color: var(--text-bone);
+    }
+    .vn-sim-tab.active,
+    .vn-sim-tab[aria-pressed="true"] {
+      background: var(--accent-soft);
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      font-weight: 700;
+    }
+    .vn-sim-chart {
+      background: rgba(18, 18, 22, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 8px 10px;
+      overflow: hidden;
+      color: var(--accent-bright);
+      transition: color 0.2s ease;
+    }
+    .vn-sim-chart.vn-sim-shock {
+      color: #F59E0B;
+    }
+    .vn-sim-chart svg,
+    .vn-sim-svg {
+      width: 100%;
+      height: 52px;
+      display: block;
+    }
+    .vn-sim-gridline {
+      stroke: rgba(255, 255, 255, 0.12);
+      stroke-dasharray: 4 4;
+      stroke-width: 1;
+    }
+    .vn-sim-scenario {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin: 0;
+    }
+    .vn-sim-readouts,
+    .vn-sim-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px;
+    }
+    .vn-sim-cell,
+    .vn-sim-stat {
+      background: var(--bg2);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .vn-sim-lbl {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .vn-sim-val {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--accent-bright);
+    }
+
+    /* Artifact Lightbox Button inside Ventures */
+    .vn-artifact-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .vn-artifact-btn {
+      width: 100%;
+      min-height: 44px;
+      background: #08080A;
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--text-bone);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+    .vn-artifact-btn:hover {
+      border-color: var(--accent);
+      background: rgba(165, 186, 40, 0.06);
+      transform: translateY(-1px);
+    }
+    .vn-artifact-btn img {
+      width: 84px;
+      height: 58px;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      flex-shrink: 0;
+      display: block;
+    }
+    .vn-artifact-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+      flex: 1;
+    }
+    .vn-artifact-kicker {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .vn-artifact-title {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-bone);
+      letter-spacing: 0.03em;
+    }
+    .vn-artifact-sub {
+      font-family: var(--font-body);
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+    .vn-artifact-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* Flow State Web Audio Synth Toggle */
+    .vn-synth-btn {
+      width: 100%;
+      min-height: 38px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: var(--bg3);
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .vn-synth-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      background: var(--accent-soft);
+    }
+    .vn-synth-btn[aria-pressed="true"],
+    .vn-synth-btn.vn-synth-active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent-bright);
+      box-shadow: 0 0 16px rgba(165, 186, 40, 0.2);
+    }
+    .vn-synth-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--text-dim);
+      flex-shrink: 0;
+    }
+    .vn-synth-btn[aria-pressed="true"] .vn-synth-dot,
+    .vn-synth-btn.vn-synth-active .vn-synth-dot {
+      background: var(--accent-bright);
+      box-shadow: 0 0 10px var(--accent-bright);
+      animation: pulseBlink 1.4s infinite ease-in-out;
+    }
+
+    /* Krama 75% Attendance Recovery Mini-Calculator */
+    #krama-calc-widget,
+    .vn-calc-widget {
+      background: #08080A;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .vn-calc-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .vn-calc-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .vn-calc-pct {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: #F59E0B;
+    }
+    .vn-calc-pct.vn-calc-safe {
+      color: var(--accent-bright);
+    }
+    .vn-calc-controls {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    @media (max-width: 480px) {
+      .vn-calc-controls {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .vn-sim-readouts,
+      .vn-sim-metrics {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    .vn-calc-group,
+    .vn-calc-stepper {
+      background: var(--bg2);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .vn-calc-lbl {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .vn-stepper-btns {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .vn-step-btn {
+      min-width: 32px;
+      min-height: 32px;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      background: var(--bg3);
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+    }
+    .vn-step-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent-bright);
+      background: var(--accent-soft);
+    }
+    .vn-step-val {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-bone);
+      min-width: 24px;
+      text-align: center;
+    }
+    .vn-calc-advice {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-bone);
+      background: rgba(165, 186, 40, 0.06);
+      border: 1px solid rgba(165, 186, 40, 0.22);
+      border-radius: 7px;
+      padding: 7px 10px;
+      line-height: 1.4;
+    }
+
+    /* Specular Cursor Spotlight (GPU-friendly CSS vars) */
+    @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+      .case-card,
+      .venture-card,
+      .stat-card {
+        --spot-x: 50%;
+        --spot-y: 50%;
+        --spot-opacity: 0;
+      }
+      .case-card::before,
+      .venture-card::before,
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        background: radial-gradient(420px circle at var(--spot-x) var(--spot-y), rgba(190, 224, 36, 0.085), transparent 60%);
+        opacity: var(--spot-opacity);
+        transition: opacity 0.25s ease;
+        z-index: 0;
+      }
+      .case-card > *,
+      .venture-card > *,
+      .stat-card > * {
+        position: relative;
+        z-index: 1;
+      }
+      .case-card:hover,
+      .venture-card:hover,
+      .stat-card:hover {
+        --spot-opacity: 1;
+      }
+    }
+
+    /* Signature ⌘K Command Palette Dialog (#cmd-palette) */
+    .cmd-palette {
+      border: none;
+      padding: 0;
+      background: transparent;
+      max-width: 100vw;
+      max-height: 100vh;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      inset: 0;
+      z-index: 10020;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: min(14vh, 110px);
+    }
+    .cmd-palette:not([open]) {
+      display: none;
+    }
+    .cmd-palette::backdrop,
+    .cmd-palette-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 8, 10, 0.82);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1;
+    }
+    .cmd-palette-window {
+      position: relative;
+      z-index: 2;
+      width: 92%;
+      max-width: 580px;
+      background: var(--bg2);
+      border: 1px solid var(--rule-hover);
+      border-radius: 16px;
+      box-shadow: 0 28px 72px rgba(0, 0, 0, 0.85), 0 0 36px rgba(165, 186, 40, 0.16);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .cmd-palette-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg3);
+    }
+    .cmd-palette-prompt {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+    .cmd-palette-input {
+      flex: 1;
+      min-width: 0;
+      background: transparent;
+      border: none;
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      outline: none;
+    }
+    .cmd-palette-input::placeholder {
+      color: var(--text-dim);
+    }
+    .cmd-palette-esc {
+      min-width: 40px;
+      min-height: 28px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--rule);
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .cmd-palette-esc:hover {
+      border-color: var(--accent);
+      color: var(--accent-bright);
+    }
+    .cmd-palette-list {
+      max-height: min(52vh, 380px);
+      overflow-y: auto;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cmd-palette-item {
+      width: 100%;
+      min-height: 40px;
+      padding: 9px 12px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text-bone);
+      font-family: var(--font-body);
+      font-size: 14px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      transition: background 0.15s ease, border-color 0.15s ease;
+    }
+    .cmd-palette-item:hover,
+    .cmd-palette-item.active {
+      background: var(--accent-soft);
+      border-color: rgba(165, 186, 40, 0.35);
+      color: var(--accent-bright);
+    }
+    .cmd-palette-item-title {
+      font-weight: 600;
+      min-width: 0;
+    }
+    .cmd-palette-group {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      flex-shrink: 0;
+    }
+    .cmd-palette-item.active .cmd-palette-group {
+      color: var(--accent);
+    }
+    .cmd-palette-empty {
+      padding: 24px 16px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+    }
+    .cmd-palette-foot {
+      padding: 8px 16px;
+      border-top: 1px solid var(--rule);
+      background: var(--bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Hero CTA Hierarchy (Compact Single-Row Desktop) */
     .hero-btn-primary {
       background: var(--accent);
       color: #0C0C0E;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 800;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 15px 28px;
+      padding: 13px 22px;
       border-radius: 12px;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       box-shadow: 0 0 24px var(--accent-glow);
       transition: all 0.25s ease;
       cursor: pointer;
-      min-height: 48px;
+      min-height: 44px;
+      white-space: nowrap;
     }
     .hero-btn-primary:hover {
       background: var(--accent-bright);
@@ -5394,13 +5941,14 @@ body.cs-modal-open {
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: 12px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       transition: all 0.25s ease;
       min-height: 44px;
+      white-space: nowrap;
     }
     .hero-btn-secondary:hover {
       border-color: var(--accent);
@@ -5417,13 +5965,14 @@ body.cs-modal-open {
       font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      padding: 12px 18px;
+      padding: 12px 16px;
       border-radius: 12px;
       display: inline-flex;
       align-items: center;
       gap: 8px;
       transition: all 0.25s ease;
       min-height: 44px;
+      white-space: nowrap;
     }
     .hero-btn-tertiary:hover {
       border-color: var(--text-bone);
@@ -5432,21 +5981,18 @@ body.cs-modal-open {
       transform: translateY(-2px);
     }
 
-    /* Footer & Conversion Path */
+    /* Streamlined 1-Row Editorial Colophon Footer */
     footer.site-footer {
       border-top: 1px solid var(--rule);
-      padding: 48px 24px 36px;
-      margin-top: 64px;
+      padding: 28px 24px;
+      margin-top: 48px;
       background: var(--bg2);
     }
     .footer-inner {
       max-width: var(--container-max);
       margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-dim);
     }
     .footer-top-strip {
@@ -5454,12 +6000,10 @@ body.cs-modal-open {
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
-      letter-spacing: 0.12em;
+      gap: 12px 20px;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      font-size: 12.5px;
-      border-bottom: 1px solid var(--rule);
-      padding-bottom: 20px;
+      font-size: 12px;
     }
     .footer-brand {
       color: var(--text-bone);
@@ -5469,60 +6013,59 @@ body.cs-modal-open {
       color: var(--accent);
       font-weight: 700;
     }
-    .footer-top-link {
-      color: var(--text-bone);
+    .footer-colophon-links {
+      display: inline-flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .footer-colophon-links a {
+      color: var(--text-muted);
+      min-height: 32px;
+      display: inline-flex;
+      align-items: center;
       transition: color 0.2s ease;
-      min-height: 44px;
+    }
+    .footer-colophon-links a:hover {
+      color: var(--accent-bright);
+    }
+    .footer-cmd-btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(165, 186, 40, 0.3);
+      border-radius: 9999px;
+      padding: 5px 12px;
+      min-height: 32px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.2s ease;
+    }
+    .footer-cmd-btn:hover {
+      background: var(--accent);
+      color: #0C0C0E;
+      border-color: var(--accent);
+    }
+    .footer-top-link {
+      color: var(--text-bone) !important;
+      font-weight: 700;
+      transition: color 0.2s ease;
+      min-height: 32px;
       display: inline-flex;
       align-items: center;
     }
     .footer-top-link:hover {
-      color: var(--accent);
+      color: var(--accent) !important;
     }
-    .footer-nav-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      align-items: center;
-    }
-    .footer-action-link {
-      min-height: 44px;
-      padding: 10px 18px;
-      background: var(--bg-card);
-      border: 1px solid var(--rule);
-      border-radius: 10px;
-      color: var(--text-bone);
-      font-size: 12.5px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s ease;
-      text-decoration: none;
-    }
-    .footer-action-link:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: var(--accent-soft);
-      transform: translateY(-2px);
-    }
-    .footer-action-icon {
-      color: var(--accent);
-      font-size: 14px;
-    }
-    @media (max-width: 640px) {
+    @media (max-width: 720px) {
       .footer-top-strip {
         flex-direction: column;
         align-items: flex-start;
-      }
-      .footer-nav-row {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .footer-action-link {
-        justify-content: center;
-        width: 100%;
       }
     }
 
@@ -5531,7 +6074,7 @@ body.cs-modal-open {
   <!-- BRK-03: Strict JS-Disabled Fallback Stylesheet -->
   <noscript>
     <style>
-      .reveal, .stat-card, .ab-milestone-card, .case-card, .venture-card, .ab-reveal, .ab-header, #ab-thesis-card, #ab-foundation-card, .ab-timeline-meta, .ab-milestone {
+      .reveal, .stat-card, .ab-milestone-card, .ab-milestone-compact, .case-card, .venture-card, .ab-reveal, .ab-header, #ab-thesis-card, #ab-foundation-card, .ab-timeline-meta, .ab-milestone {
         opacity: 1 !important;
         transform: none !important;
       }
@@ -5571,6 +6114,9 @@ body.cs-modal-open {
         <span class="rm-toggle-label">Recruiter Mode</span>
         <span class="rm-toggle-shortcut" aria-hidden="true">30s view</span>
       </button>
+      <button type="button" id="cmd-palette-trigger" class="cmd-trigger-btn" aria-label="⌘K Open Command Palette" title="Command Palette (⌘K)">
+        <kbd>⌘K</kbd>
+      </button>
       <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="nav-action-pill" target="_blank" rel="noopener">
         LinkedIn ↗
       </a>
@@ -5583,13 +6129,16 @@ body.cs-modal-open {
   <!-- Mobile Drawer -->
   <div id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation Menu">
     <a href="#about" class="ab-mobile-link"><span class="idx">00</span>About &amp; Trajectory</a>
-    <a href="#competitions"><span class="idx">01</span>Track Record & Proof</a>
-    <a href="#ventures"><span class="idx">02</span>Ventures & Systems</a>
+    <a href="#competitions"><span class="idx">01</span>Track Record &amp; Proof</a>
+    <a href="#ventures"><span class="idx">02</span>Ventures &amp; Systems</a>
     <a href="#contact"><span class="idx">03</span>Direct Contact</a>
     <a href="https://github.com/rudras2048-arch" target="_blank" rel="noopener"><span class="idx">↗</span>GitHub Profile</a>
     <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" target="_blank" rel="noopener"><span class="idx">↗</span>LinkedIn Profile</a>
     <button type="button" id="rm-toggle-mobile" class="rm-mobile-link" aria-controls="rm-summary-drawer" aria-expanded="false">
       <span class="idx">EXEC //</span>Recruiter Mode
+    </button>
+    <button type="button" id="cmd-palette-trigger-mobile" class="cmd-mobile-link">
+      <span class="idx">⌘K //</span>Command Palette
     </button>
   </div>
 
@@ -5603,13 +6152,19 @@ body.cs-modal-open {
         <div>
           <div class="hero-meta-pill reveal">
             <span class="beacon-pulse" aria-hidden="true"></span>
-            First-Year B.Tech CS & Data Science · Builder · Rishihood '30
+            <span>First-Year B.Tech CS &amp; Data Science · Builder · Rishihood '30</span>
           </div>
 
           <h1 class="hero-headline reveal">
             Rudra
             <span class="stagger">Sharma</span>
           </h1>
+
+          <div class="hero-tagline-prompt reveal">
+            <span class="prompt">~/whoami $</span>
+            <span class="typed-output" id="typedOutput">researching how llms fail on punjabi, haryanvi &amp; bhojpuri</span>
+            <span class="typed-cursor" aria-hidden="true"></span>
+          </div>
 
           <p class="hero-statement reveal">
             I build software systems and stress-test commercial models in live competitive arenas.
@@ -5620,15 +6175,15 @@ body.cs-modal-open {
 
           <div class="hero-actions reveal">
             <a href="#competitions" class="btn-solid hero-btn-primary">
-              <span>View Field Record</span>
+              <span>View Record</span>
               <span class="btn-arrow">↓</span>
             </a>
             <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="btn-outline hero-btn-secondary" target="_blank" rel="noopener">
-              <span>LinkedIn Network</span>
+              <span>LinkedIn</span>
               <span class="btn-arrow">↗</span>
             </a>
             <a href="assets/rudra-sharma-resume.pdf" class="btn-outline hero-btn-tertiary" target="_blank" rel="noopener">
-              <span>Official Résumé (PDF)</span>
+              <span>Résumé PDF</span>
               <span class="btn-arrow">↗</span>
             </a>
           </div>
@@ -5692,32 +6247,38 @@ body.cs-modal-open {
 
   <div class="seo-share-toast" role="status" aria-live="polite"><span class="seo-share-toast__beacon" aria-hidden="true"></span><span class="seo-share-toast__text"></span></div>
 
+  <!-- Signature ⌘K Command Palette -->
+  <dialog id="cmd-palette" class="cmd-palette" aria-labelledby="cmd-palette-title" aria-modal="true" aria-hidden="true">
+    <div class="cmd-palette-backdrop" id="cmd-palette-backdrop"></div>
+    <div class="cmd-palette-window" role="document">
+      <h2 id="cmd-palette-title" class="sr-only">Command Palette</h2>
+      <div class="cmd-palette-head">
+        <span class="cmd-palette-prompt" aria-hidden="true">&gt;_</span>
+        <input type="text" id="cmd-palette-input" class="cmd-palette-input" placeholder="Type a command or jump to section..." aria-label="Search commands" autocomplete="off" spellcheck="false">
+        <button type="button" id="cmd-palette-close" class="cmd-palette-esc" aria-label="Close Command Palette">ESC</button>
+      </div>
+      <div id="cmd-palette-list" class="cmd-palette-list" role="listbox" aria-label="Available commands"></div>
+      <div id="cmd-palette-empty" class="cmd-palette-empty" hidden>No matching commands found.</div>
+      <div class="cmd-palette-foot">
+        <span>↑↓ Navigate · ↵ Execute · Esc Close</span>
+        <span>RUDRA SHARMA // ⌘K</span>
+      </div>
+    </div>
+  </dialog>
+
   <!-- Footer -->
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-top-strip">
         <span class="footer-brand">RUDRA SHARMA // CLASS OF 2030</span>
         <span class="footer-ethos">EVIDENCE, NOT NOISE</span>
-        <a href="#hero" class="footer-top-link">TOP OF ARCHIVE ↑</a>
-      </div>
-
-      <div class="footer-nav-row" role="navigation" aria-label="Footer links">
-        <a href="mailto:rudra.s26042@csds.rishihood.edu.in" class="footer-action-link" >
-          <span class="footer-action-icon" aria-hidden="true">✉</span>
-          <span>rudra.s26042@csds.rishihood.edu.in</span>
-        </a>
-        <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="footer-action-link" target="_blank" rel="noopener noreferrer" >
-          <span class="footer-action-icon" aria-hidden="true">↗</span>
-          <span>LinkedIn Network</span>
-        </a>
-        <a href="https://github.com/rudras2048-arch" class="footer-action-link" target="_blank" rel="noopener noreferrer" >
-          <span class="footer-action-icon" aria-hidden="true">↗</span>
-          <span>GitHub Code</span>
-        </a>
-        <a href="assets/rudra-sharma-resume.pdf" class="footer-action-link" target="_blank" rel="noopener noreferrer" download="rudra-sharma-resume.pdf" >
-          <span class="footer-action-icon" aria-hidden="true">↓</span>
-          <span>Official Résumé (PDF)</span>
-        </a>
+        <div class="footer-colophon-links" role="navigation" aria-label="Footer quick links">
+          <a href="#about">About</a>
+          <a href="#competitions">Record</a>
+          <a href="#ventures">Ventures</a>
+          <button type="button" id="cmd-palette-trigger-footer" class="footer-cmd-btn" title="Open Command Palette (Cmd+K / Ctrl+K)">⌘K COMMANDS</button>
+          <a href="#hero" class="footer-top-link">TOP ↑</a>
+        </div>
       </div>
     </div>
   </footer>
@@ -5787,21 +6348,72 @@ body.cs-modal-open {
       });
     }
 
-    // 3. Live Typewriter Terminal
-    const typedPhrases = [
-      "researching how llms fail on punjabi, haryanvi & bhojpuri",
-      "1st place cash rush winner at ashoka university",
-      "top 10 national finalist at iim amritsar (~700 teams)",
-      "1st place winner at builders' bootcamp demo day",
-      "working on stratum, flow state and krama"
-    ];
-    let pIdx = 0, cIdx = 0, deleting = false;
+    // Shared Clipboard & Toast Helpers (Single Source of Truth)
+    window.__showPortfolioToast = function(message) {
+      const toast = document.getElementById('rm-toast');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.add('rm-toast-visible');
+      clearTimeout(toast._toastTimer);
+      toast._toastTimer = setTimeout(() => {
+        toast.classList.remove('rm-toast-visible');
+      }, 2800);
+    };
+
+    window.__copyPortfolioText = function(text, onSuccess, onError) {
+      function legacyCopy() {
+        try {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.top = '-9999px';
+          ta.style.left = '-9999px';
+          ta.style.opacity = '0';
+          ta.setAttribute('readonly', '');
+          document.body.appendChild(ta);
+          ta.focus({ preventScroll: true });
+          ta.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          document.body.removeChild(ta);
+          if (onSuccess) onSuccess();
+        } catch (err) {
+          if (onError) onError(err);
+          else if (onSuccess) onSuccess();
+        }
+      }
+      if (navigator.clipboard && window.isSecureContext && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          if (onSuccess) onSuccess();
+        }).catch(legacyCopy);
+      } else {
+        legacyCopy();
+      }
+    };
+
+    // 3. Live Typewriter Terminal (Synced to content.json)
+    const heroData = (window.__PORTFOLIO_CONTENT__ && window.__PORTFOLIO_CONTENT__.hero) || {};
+    const promptLabelEl = document.querySelector('.hero-tagline-prompt .prompt');
+    if (promptLabelEl && heroData.terminal_prompt) {
+      promptLabelEl.textContent = heroData.terminal_prompt;
+    }
+    const typedPhrases = (Array.isArray(heroData.typewriter_phrases) && heroData.typewriter_phrases.length > 0)
+      ? heroData.typewriter_phrases
+      : [
+          "researching how llms fail on punjabi, haryanvi & bhojpuri",
+          "1st place cash rush winner at ashoka university",
+          "top 10 national finalist at iim amritsar (~700 teams)",
+          "1st place winner at builders' bootcamp demo day",
+          "working on stratum, flow state and krama"
+        ];
+    let pIdx = 0;
+    let cIdx = typedPhrases[0].length;
+    let deleting = true;
     const typedEl = document.getElementById('typedOutput');
 
     function runTypewriter() {
       if (!typedEl) return;
-      const current = typedPhrases[pIdx];
-      cIdx = deleting ? cIdx - 1 : cIdx + 1;
+      const current = typedPhrases[pIdx] || '';
+      cIdx = deleting ? Math.max(0, cIdx - 1) : Math.min(current.length, cIdx + 1);
       typedEl.textContent = current.substring(0, cIdx);
 
       let speed = deleting ? 24 : 45;
@@ -5815,10 +6427,11 @@ body.cs-modal-open {
       }
       setTimeout(runTypewriter, speed);
     }
-    if (reduced) {
-      if (typedEl) typedEl.textContent = typedPhrases[0];
-    } else {
-      runTypewriter();
+    if (typedEl) {
+      typedEl.textContent = typedPhrases[0];
+      if (!reduced) {
+        setTimeout(runTypewriter, 2200);
+      }
     }
 
     // 4. Dynamic Count-Up Stat Numbers
@@ -5857,28 +6470,38 @@ body.cs-modal-open {
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // 6. Direct Institutional Email Copy with Instant Checkmark
-    const btnCopyEmail = document.getElementById('btnCopyEmail');
-    const copyTag = document.getElementById('copyTag');
-    if (btnCopyEmail && copyTag) {
-      btnCopyEmail.addEventListener('click', () => {
-        const email = (document.getElementById('emailVal')?.textContent || '').trim();
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(email).then(() => {
-            btnCopyEmail.classList.add('copied');
-            copyTag.textContent = '[COPIED ✓]';
-            setTimeout(() => {
-              btnCopyEmail.classList.remove('copied');
-              copyTag.textContent = '[COPY]';
-            }, 2400);
-          }).catch(() => {
-            window.location.href = 'mailto:' + email;
-          });
-        } else {
-          window.location.href = 'mailto:' + email;
+    // 6. Direct Institutional Email Copy (#copyBox) with Instant Checkmark & Toast
+    (function bindCopyBox() {
+      const copyBox = document.getElementById('copyBox');
+      const copyTag = document.getElementById('copyTag');
+      if (!copyBox || !copyTag) return;
+
+      let resetTimer = null;
+      function handleCopyEmail(e) {
+        if (e) e.preventDefault();
+        const valEl = copyBox.querySelector('.info-val');
+        const fallbackEmail = (window.__PORTFOLIO_CONTENT__ && window.__PORTFOLIO_CONTENT__.personal && window.__PORTFOLIO_CONTENT__.personal.email) || 'rudra.s26042@csds.rishihood.edu.in';
+        const email = ((valEl && valEl.textContent) || fallbackEmail).trim();
+
+        window.__copyPortfolioText(email, () => {
+          copyBox.classList.add('copied');
+          copyTag.textContent = '[COPIED ✓]';
+          window.__showPortfolioToast('Email copied to clipboard: ' + email);
+          clearTimeout(resetTimer);
+          resetTimer = setTimeout(() => {
+            copyBox.classList.remove('copied');
+            copyTag.textContent = '[COPY]';
+          }, 2400);
+        });
+      }
+
+      copyBox.addEventListener('click', handleCopyEmail);
+      copyBox.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          handleCopyEmail(e);
         }
       });
-    }
+    })();
 
   /* --- 2. SEO & Schema Engine --- */
 /**
@@ -6638,47 +7261,11 @@ body.cs-modal-open {
    * Helper to copy text to clipboard with fallback for non-secure / file:// origins
    */
   function copyTextToClipboard(text, onSuccess, onError) {
-    if (navigator.clipboard && window.isSecureContext) {
-      navigator.clipboard.writeText(text).then(onSuccess).catch(function() {
-        fallbackCopyText(text, onSuccess, onError);
-      });
-    } else {
-      fallbackCopyText(text, onSuccess, onError);
+    if (typeof window.__copyPortfolioText === 'function') {
+      window.__copyPortfolioText(text, onSuccess, onError);
+      return;
     }
-  }
-
-  function fallbackCopyText(text, onSuccess, onError) {
-    try {
-      // Try legacy execCommand first (works on older browsers, HTTP contexts)
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      textArea.style.position = 'fixed';
-      textArea.style.top = '-9999px';
-      textArea.style.left = '-9999px';
-      textArea.style.opacity = '0';
-      textArea.setAttribute('readonly', '');
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-      let successful = false;
-      try {
-        successful = document.execCommand('copy');
-      } catch (e) {
-        successful = false;
-      }
-      document.body.removeChild(textArea);
-      if (successful && onSuccess) {
-        onSuccess();
-      } else {
-        // Final fallback: open mailto: link (works everywhere, all browsers)
-        window.open('mailto:' + text, '_self');
-        if (onSuccess) onSuccess();
-      }
-    } catch (err) {
-      // Last resort: mailto: link
-      window.open('mailto:' + text, '_self');
-      if (onError) onError(err);
-    }
+    if (onSuccess) onSuccess();
   }
 
   /**
@@ -6845,21 +7432,23 @@ body.cs-modal-open {
         drawerEl.hidden = false;
         drawerEl.setAttribute('aria-hidden', 'false');
 
-        // Scroll to drawer unless reduced motion forbids animated scrolling
-        if (!reduced) {
-          try {
-            drawerEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          } catch (e) {
-            drawerEl.scrollIntoView();
-          }
-        } else {
-          drawerEl.scrollIntoView({ behavior: 'auto', block: 'start' });
+        // Scroll cleanly below fixed #nav pill using exact offset + scroll-margin-top
+        const navEl = document.getElementById('nav');
+        const navClearance = navEl ? Math.ceil(navEl.getBoundingClientRect().bottom + 14) : (window.innerWidth <= 640 ? 88 : 96);
+        const targetOffset = Math.max(window.innerWidth <= 640 ? 88 : 96, navClearance);
+        const targetTop = Math.max(0, drawerEl.getBoundingClientRect().top + window.scrollY - targetOffset);
+        try {
+          window.scrollTo({ top: targetTop, behavior: reduced ? 'auto' : 'smooth' });
+        } catch (e) {
+          drawerEl.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
         }
 
-        // Focus close button for intuitive keyboard navigation
+        // Focus close button without triggering browser focus scroll under #nav
         const closeBtn = drawerEl.querySelector('#rm-close-btn');
         if (closeBtn) {
-          setTimeout(function() { closeBtn.focus(); }, 50);
+          setTimeout(function() {
+            try { closeBtn.focus({ preventScroll: true }); } catch (e) { closeBtn.focus(); }
+          }, 50);
         }
       } else {
         drawerEl.hidden = true;
@@ -6913,6 +7502,13 @@ body.cs-modal-open {
       window.__RM_ESCAPE_BOUND = true;
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' || e.key === 'Esc') {
+          const cmdPal = document.getElementById('cmd-palette');
+          const csModal = document.getElementById('cs-modal');
+          const frLightbox = document.getElementById('fr-lightbox');
+          const mobileMenu = document.getElementById('mobileMenu');
+          if ((cmdPal && cmdPal.open) || (csModal && csModal.open) || (frLightbox && frLightbox.open) || (mobileMenu && mobileMenu.classList.contains('open'))) {
+            return;
+          }
           if (window.__RECRUITER_MODE && window.__RECRUITER_MODE.active) {
             setRecruiterState(false);
             if (toggleBtn && window.getComputedStyle(toggleBtn).display !== 'none') {
@@ -7241,15 +7837,15 @@ body.cs-modal-open {
       }
     });
 
-    // 2. Wire Up Proof Inspect Buttons
-    document.querySelectorAll('.fr-inspect-btn').forEach(btn => {
+    // 2. Wire Up Proof Inspect Buttons & Venture Artifact Lightbox Triggers
+    document.querySelectorAll('.fr-inspect-btn, .vn-artifact-btn').forEach(btn => {
       btn.onclick = function(e) {
         e.stopPropagation();
         const src = btn.getAttribute('data-asset-src');
         const caption = btn.getAttribute('data-asset-caption');
         const stamp = btn.getAttribute('data-asset-stamp');
         const compTitle = btn.getAttribute('data-comp-title');
-        openLightbox(src, caption, stamp, compTitle);
+        if (src) openLightbox(src, caption, stamp, compTitle);
       };
     });
 
@@ -7302,6 +7898,7 @@ body.cs-modal-open {
     // 4. Category Filtering & Deep-Link Hash Compatibility
     const filterButtons = document.querySelectorAll('.filter-btn');
     const caseCards = document.querySelectorAll('.case-card');
+    const participationGrids = document.querySelectorAll('.fr-participation-grid');
     const hideTimers = new WeakMap();
 
     function applyFilter(filterVal, updateUrlHash = true) {
@@ -7330,9 +7927,25 @@ body.cs-modal-open {
         }
       });
 
+      // Show/hide 3-col participation wrapper cleanly so hidden grids leave 0 gap
+      participationGrids.forEach(grid => {
+        const hasVisibleCard = filterVal === 'all' || filterVal === 'participation' ||
+          Array.from(grid.querySelectorAll('.case-card')).some(c => c.dataset.category === filterVal);
+        if (hasVisibleCard) {
+          if (hideTimers.has(grid)) {
+            clearTimeout(hideTimers.get(grid));
+            hideTimers.delete(grid);
+          }
+          grid.classList.remove('hidden');
+          requestAnimationFrame(() => grid.classList.remove('dimmed'));
+        } else {
+          grid.classList.add('dimmed');
+          hideTimers.set(grid, setTimeout(() => grid.classList.add('hidden'), 320));
+        }
+      });
+
       if (updateUrlHash && window.history && window.history.replaceState) {
         if (filterVal === 'all') {
-          // Do not rewrite hash to #all; point to valid #competitions anchor if coming from another category
           const currentHash = window.location.hash;
           if (currentHash === '#all' || currentHash === '#1st-place' || currentHash === '#national' || currentHash === '#pitch' || currentHash === '#participation') {
             window.history.replaceState(null, '', '#competitions');
@@ -7381,37 +7994,12 @@ body.cs-modal-open {
 (function() {
   'use strict';
 
-  // Global In-Memory State per interfaces.md contract
   window.__ACTIVE_CASE_STUDY = window.__ACTIVE_CASE_STUDY || {
     currentId: null,
     previousActiveElement: null
   };
 
-  /**
-   * Helper to retrieve portfolio content safely across offline file:// protocols
-   */
-  function resolvePortfolioContent(content) {
-    if (content && content.ventures) return content;
-    if (window.__PORTFOLIO_CONTENT__ && window.__PORTFOLIO_CONTENT__.ventures) {
-      return window.__PORTFOLIO_CONTENT__;
-    }
-    const dataScript = document.getElementById('portfolio-content-data');
-    if (dataScript) {
-      try {
-        const parsed = JSON.parse(dataScript.textContent);
-        if (parsed && parsed.ventures) return parsed;
-      } catch (err) {
-        console.warn('[CaseStudy] Unable to parse #portfolio-content-data JSON', err);
-      }
-    }
-    return null;
-  }
-
-  /**
-   * Global Init Function: window.initCaseStudyDeepDives(content)
-   * Mounts triggers and drawers into #ventures cards and binds accessible keyboard controls.
-   */
-  window.initCaseStudyDeepDives = function(content) {
+  window.initCaseStudyDeepDives = function() {
     const venturesSection = document.getElementById('ventures');
     if (!venturesSection) {
       return {
@@ -7426,7 +8014,6 @@ body.cs-modal-open {
     const cards = venturesSection.querySelectorAll('.venture-card');
     if (!cards || cards.length === 0) return;
 
-    // Supported venture mapping
     const ventureMapping = [
       { id: 'tathya', match: /tathya/i },
       { id: 'stratum', match: /stratum/i },
@@ -7434,151 +8021,54 @@ body.cs-modal-open {
       { id: 'krama', match: /krama/i }
     ];
 
-    /**
-     * Mount DOM elements for each card if not already mounted
-     */
-    cards.forEach(function(card, index) {
-      // Determine venture id
-      let ventureId = card.getAttribute('data-venture-id');
-      if (!ventureId) {
-        const titleEl = card.querySelector('.venture-name');
-        const titleText = titleEl ? titleEl.textContent : '';
-        for (let i = 0; i < ventureMapping.length; i++) {
-          if (ventureMapping[i].match.test(titleText)) {
-            ventureId = ventureMapping[i].id;
-            break;
-          }
-        }
-        if (!ventureId && index < ventureMapping.length) {
-          ventureId = ventureMapping[index].id;
-        }
-        if (ventureId) {
-          card.setAttribute('data-venture-id', ventureId);
-        }
-      }
-
-      if (!ventureId) return;
-
-      // Check if trigger is already present
-      let trigger = card.querySelector('#cs-trigger-' + ventureId);
-      let drawer = card.querySelector('#cs-drawer-' + ventureId);
-
-      if (!trigger || !drawer) {
-        // Clone from template
-        const template = document.getElementById('cs-template-' + ventureId);
-        if (template && template.content) {
-          const clone = template.content.cloneNode(true);
-          const contactBtn = card.querySelector('.venture-btn');
-          if (contactBtn) {
-            card.insertBefore(clone, contactBtn);
-          } else {
-            card.appendChild(clone);
-          }
-          trigger = card.querySelector('#cs-trigger-' + ventureId);
-          drawer = card.querySelector('#cs-drawer-' + ventureId);
-        }
-      }
-
-      if (!trigger || !drawer) return;
-
-      // Attach idempotent listeners if not already bound
-      if (!trigger._csBound) {
-        trigger._csBound = true;
-
-        trigger.addEventListener('click', function(e) {
-          e.preventDefault();
-          toggleDrawer(ventureId);
-        });
-
-        trigger.addEventListener('keydown', function(e) {
-          if (e.key === ' ' || e.key === 'Enter') {
-            e.preventDefault();
-            toggleDrawer(ventureId);
-          } else if (e.key === 'Escape') {
-            const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-            if (isExpanded) {
-              e.preventDefault();
-              closeDrawer(ventureId);
-            }
-          }
-        });
-      }
-
-      // Bottom collapse button listener
-      const closeBtn = drawer.querySelector('.cs-close-drawer-btn');
-      if (closeBtn && !closeBtn._csBound) {
-        closeBtn._csBound = true;
-        closeBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          closeDrawer(ventureId);
-          trigger.focus();
-        });
-      }
-
-      // Escape key listener inside drawer
-      if (!drawer._csBound) {
-        drawer._csBound = true;
-        drawer.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape') {
-            e.preventDefault();
-            closeDrawer(ventureId);
-            trigger.focus();
-          }
-        });
-      }
-    });
-
-    /**
-     * Opens a specific deep-dive drawer
-     */
-    function openDrawer(id) {
+    function getVenturePair(id) {
       const card = venturesSection.querySelector('[data-venture-id="' + id + '"]');
-      if (!card) return;
-      const trigger = card.querySelector('#cs-trigger-' + id);
-      const drawer = card.querySelector('#cs-drawer-' + id);
+      const trigger = document.getElementById('cs-trigger-' + id) || (card ? card.querySelector('.cs-trigger') : null);
+      const drawerId = trigger ? (trigger.getAttribute('data-drawer-target') || trigger.getAttribute('aria-controls')) : ('cs-drawer-' + id);
+      const drawer = (drawerId && document.getElementById(drawerId)) || document.getElementById('cs-drawer-' + id) || (card ? card.querySelector('.cs-drawer') : null);
+      return { card, trigger, drawer };
+    }
+
+    function openDrawer(id) {
+      const { trigger, drawer } = getVenturePair(id);
       if (!trigger || !drawer) return;
 
       const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      // Store previous active element for accessibility
       window.__ACTIVE_CASE_STUDY.previousActiveElement = document.activeElement;
       window.__ACTIVE_CASE_STUDY.currentId = id;
 
       trigger.setAttribute('aria-expanded', 'true');
+      const icon = trigger.querySelector('.cs-trigger-icon, .cs-trigger__icon');
+      if (icon) icon.textContent = '−';
       const label = trigger.querySelector('.cs-trigger-label');
       if (label) label.textContent = 'Collapse Deep-Dive';
 
       drawer.hidden = false;
+      drawer.removeAttribute('hidden');
 
       if (isReduced) {
         drawer.classList.add('cs-open');
       } else {
-        // Trigger reflow to ensure smooth grid animation
         void drawer.offsetHeight;
         drawer.classList.add('cs-open');
       }
 
-      // Dispatch state notification
       document.dispatchEvent(new CustomEvent('portfolio:case-study-toggle', {
         detail: { id: id, open: true }
       }));
     }
 
-    /**
-     * Closes a specific deep-dive drawer
-     */
-    function closeDrawer(id) {
-      const card = venturesSection.querySelector('[data-venture-id="' + id + '"]');
-      if (!card) return;
-      const trigger = card.querySelector('#cs-trigger-' + id);
-      const drawer = card.querySelector('#cs-drawer-' + id);
+    function closeDrawer(id, restoreFocus) {
+      const { trigger, drawer } = getVenturePair(id);
       if (!trigger || !drawer) return;
 
       const isReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       trigger.setAttribute('aria-expanded', 'false');
+      const icon = trigger.querySelector('.cs-trigger-icon, .cs-trigger__icon');
+      if (icon) icon.textContent = '+';
       const label = trigger.querySelector('.cs-trigger-label');
-      if (label) label.textContent = 'Architecture & Retrospective';
+      if (label) label.textContent = 'Deep Dive: Systems & Retrospective';
 
       drawer.classList.remove('cs-open');
 
@@ -7598,60 +8088,134 @@ body.cs-modal-open {
           }
         };
         drawer.addEventListener('transitionend', onEnd);
-        // Fallback timeout in case transitionend is cancelled
         setTimeout(function() {
           if (trigger.getAttribute('aria-expanded') === 'false') {
             drawer.hidden = true;
           }
-        }, 380);
+        }, 280);
       }
 
-      // Dispatch state notification
+      if (restoreFocus && trigger) {
+        trigger.focus();
+      }
+
       document.dispatchEvent(new CustomEvent('portfolio:case-study-toggle', {
         detail: { id: id, open: false }
       }));
     }
 
-    /**
-     * Toggles a drawer
-     */
     function toggleDrawer(id) {
-      const card = venturesSection.querySelector('[data-venture-id="' + id + '"]');
-      if (!card) return;
-      const trigger = card.querySelector('#cs-trigger-' + id);
+      const { trigger } = getVenturePair(id);
       if (!trigger) return;
       const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
       if (isExpanded) {
-        closeDrawer(id);
+        closeDrawer(id, false);
       } else {
         openDrawer(id);
       }
     }
 
-    /**
-     * Closes all drawers
-     */
-    function collapseAll() {
-      ventureMapping.forEach(function(item) {
-        closeDrawer(item.id);
+    function collapseAll(restoreFocus) {
+      let lastTrigger = null;
+      venturesSection.querySelectorAll('.cs-trigger[aria-expanded="true"]').forEach(function(trig) {
+        lastTrigger = trig;
+        const card = trig.closest('.venture-card');
+        const id = (card && card.getAttribute('data-venture-id')) || (trig.id || '').replace('cs-trigger-', '');
+        if (id) closeDrawer(id, false);
+      });
+      if (restoreFocus && lastTrigger) {
+        lastTrigger.focus();
+      }
+    }
+
+    cards.forEach(function(card, index) {
+      let ventureId = card.getAttribute('data-venture-id');
+      if (!ventureId) {
+        const titleEl = card.querySelector('.venture-name');
+        const titleText = titleEl ? titleEl.textContent : '';
+        for (let i = 0; i < ventureMapping.length; i++) {
+          if (ventureMapping[i].match.test(titleText)) {
+            ventureId = ventureMapping[i].id;
+            break;
+          }
+        }
+        if (!ventureId && index < ventureMapping.length) {
+          ventureId = ventureMapping[index].id;
+        }
+        if (ventureId) card.setAttribute('data-venture-id', ventureId);
+      }
+      if (!ventureId) return;
+
+      const { trigger, drawer } = getVenturePair(ventureId);
+      if (!trigger || !drawer) return;
+
+      if (!trigger._csBound) {
+        trigger._csBound = true;
+        trigger.addEventListener('click', function(e) {
+          e.preventDefault();
+          toggleDrawer(ventureId);
+        });
+        trigger.addEventListener('keydown', function(e) {
+          if (e.key === ' ' || e.key === 'Enter') {
+            e.preventDefault();
+            toggleDrawer(ventureId);
+          } else if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+            e.preventDefault();
+            e.stopPropagation();
+            closeDrawer(ventureId, true);
+          }
+        });
+      }
+
+      const closeBtn = drawer.querySelector('.cs-close-drawer-btn');
+      if (closeBtn && !closeBtn._csBound) {
+        closeBtn._csBound = true;
+        closeBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          closeDrawer(ventureId, true);
+        });
+      }
+
+      if (!drawer._csBound) {
+        drawer._csBound = true;
+        drawer.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape') {
+            e.preventDefault();
+            e.stopPropagation();
+            closeDrawer(ventureId, true);
+          }
+        });
+      }
+    });
+
+    if (!window.__CS_DRAWER_ESCAPE_BOUND) {
+      window.__CS_DRAWER_ESCAPE_BOUND = true;
+      document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape' && e.key !== 'Esc') return;
+        const cmdPal = document.getElementById('cmd-palette');
+        const csModal = document.getElementById('cs-modal');
+        const frLightbox = document.getElementById('fr-lightbox');
+        if ((cmdPal && cmdPal.open) || (csModal && csModal.open) || (frLightbox && frLightbox.open)) return;
+        const openTriggers = venturesSection.querySelectorAll('.cs-trigger[aria-expanded="true"]');
+        if (openTriggers.length > 0) {
+          collapseAll(true);
+        }
       });
     }
 
-    // Return public controller API
     return {
       open: openDrawer,
-      close: closeDrawer,
+      close: function(id) { closeDrawer(id, false); },
       toggle: toggleDrawer,
-      collapseAll: collapseAll,
+      collapseAll: function() { collapseAll(false); },
       getState: function(id) {
         if (!id) return window.__ACTIVE_CASE_STUDY.currentId;
-        const trigger = venturesSection.querySelector('#cs-trigger-' + id);
+        const { trigger } = getVenturePair(id);
         return trigger ? trigger.getAttribute('aria-expanded') === 'true' : false;
       }
     };
   };
 
-  // Safe auto-initialization when DOM is ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', function() {
       window.initCaseStudyDeepDives();
@@ -7662,10 +8226,6 @@ body.cs-modal-open {
 })();
 
   /* --- 8. Telemetry & Audited Unit Economics Modal Engine --- */
-  /**
-   * Component: Competition Unit Economics & Telemetry Modal (#cs-modal)
-   * Follows interfaces.md Component 4 contract.
-   */
   window.initTelemetryModal = function(content) {
     function getPortfolioDataSafe(c) {
       if (c && typeof c === 'object') return c;
@@ -7675,6 +8235,15 @@ body.cs-modal-open {
         try { return JSON.parse(el.textContent); } catch (e) {}
       }
       return null;
+    }
+
+    function formatINR(val) {
+      const n = Number(val);
+      return Number.isFinite(n) ? n.toLocaleString('en-IN') : String(val);
+    }
+
+    function isPresent(val) {
+      return val !== undefined && val !== null && val !== '' && val !== 'TBD';
     }
 
     const data = getPortfolioDataSafe(content);
@@ -7710,13 +8279,42 @@ body.cs-modal-open {
         html += '<div class="cs-modal-section">' +
           '<h4 class="cs-modal-heading">Audited Unit Economics & Financial Ledger</h4>' +
           '<div class="cs-telemetry-grid">' +
-            (fin.starting_capital_inr && fin.starting_capital_inr !== 'TBD' ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Starting Capital</span><span class="cs-telemetry-val">₹' + fin.starting_capital_inr + '</span></div>' : '') +
-            (fin.ending_fund_inr && fin.ending_fund_inr !== 'TBD' ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Ending Fund</span><span class="cs-telemetry-val cs-accent">₹' + fin.ending_fund_inr + '</span></div>' : '') +
-            (fin.multiplier && fin.multiplier !== 'TBD' ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Growth Multiplier</span><span class="cs-telemetry-val cs-accent">' + fin.multiplier + '</span></div>' : '') +
-            (fin.time_window_minutes && fin.time_window_minutes !== 'TBD' ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Time Window</span><span class="cs-telemetry-val">' + fin.time_window_minutes + ' mins</span></div>' : '') +
-            (fin.total_costs_inr && fin.total_costs_inr !== 'TBD' ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Total Costs</span><span class="cs-telemetry-val">₹' + fin.total_costs_inr + '</span></div>' : '') +
-            (fin.cash_prize_inr && fin.cash_prize_inr !== 'TBD' ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Cash Prize Won</span><span class="cs-telemetry-val cs-accent">' + fin.cash_prize_inr + '</span></div>' : '') +
+            (isPresent(fin.starting_capital_inr) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Starting Capital</span><span class="cs-telemetry-val">₹' + formatINR(fin.starting_capital_inr) + '</span></div>' : '') +
+            (isPresent(fin.ending_fund_inr) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Ending Fund</span><span class="cs-telemetry-val cs-accent">₹' + formatINR(fin.ending_fund_inr) + '</span></div>' : '') +
+            (isPresent(fin.multiplier) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Growth Multiplier</span><span class="cs-telemetry-val cs-accent">' + fin.multiplier + '</span></div>' : '') +
+            (isPresent(fin.time_window_minutes) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Time Window</span><span class="cs-telemetry-val">' + fin.time_window_minutes + ' mins</span></div>' : '') +
+            (isPresent(fin.total_costs_inr) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Total Costs</span><span class="cs-telemetry-val">₹' + formatINR(fin.total_costs_inr) + '</span></div>' : '') +
+            (isPresent(fin.cash_prize_inr) && Number(fin.cash_prize_inr) > 0 ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Cash Prize Won</span><span class="cs-telemetry-val cs-accent">₹' + formatINR(fin.cash_prize_inr) + '</span></div>' : '') +
           '</div>';
+
+        // Visual Proportional ROI Bar when ending_fund_inr is present
+        if (isPresent(fin.ending_fund_inr)) {
+          const seed = isPresent(fin.starting_capital_inr) ? Math.max(0, Number(fin.starting_capital_inr)) : 0;
+          const cost = isPresent(fin.total_costs_inr) ? Math.max(0, Number(fin.total_costs_inr)) : 0;
+          const yieldAmt = isPresent(fin.total_service_revenue_inr) ? Math.max(0, Number(fin.total_service_revenue_inr)) : Math.max(0, Number(fin.ending_fund_inr));
+          const totalScale = Math.max(1, seed + cost + yieldAmt);
+          const seedPct = seed > 0 ? Math.max(4, Math.round((seed / totalScale) * 100)) : 0;
+          const costPct = cost > 0 ? Math.max(2, Math.round((cost / totalScale) * 100)) : 0;
+          const yieldPct = Math.max(10, 100 - seedPct - costPct);
+          const multSuffix = isPresent(fin.multiplier) ? ' (' + fin.multiplier + ')' : '';
+
+          html += '<div class="fr-roi-bar-wrap" aria-label="Proportional unit economics flow">' +
+            '<div class="fr-roi-bar-head">' +
+              '<span class="fr-roi-bar-title">PROPORTIONAL CAPITAL FLOW</span>' +
+              '<span class="fr-roi-bar-total mono">₹' + formatINR(fin.ending_fund_inr) + ' Ending' + multSuffix + '</span>' +
+            '</div>' +
+            '<div class="fr-roi-track" role="img" aria-label="Seed, cost, and service yield proportions">' +
+              (seedPct > 0 ? '<span class="fr-roi-seg fr-roi-seg--seed" style="width:' + seedPct + '%" title="₹' + formatINR(seed) + ' Seed"></span>' : '') +
+              (costPct > 0 ? '<span class="fr-roi-seg fr-roi-seg--cost" style="width:' + costPct + '%" title="₹' + formatINR(cost) + ' Cost"></span>' : '') +
+              '<span class="fr-roi-seg fr-roi-seg--yield" style="width:' + yieldPct + '%" title="₹' + formatINR(yieldAmt) + ' Service Yield"></span>' +
+            '</div>' +
+            '<div class="fr-roi-legend">' +
+              '<span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--seed" aria-hidden="true"></i>₹' + formatINR(seed) + ' Seed</span>' +
+              '<span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--cost" aria-hidden="true"></i>₹' + formatINR(cost) + ' Cost</span>' +
+              '<span class="fr-roi-leg-item fr-roi-leg-accent"><i class="fr-roi-dot fr-roi-dot--yield" aria-hidden="true"></i>₹' + formatINR(yieldAmt) + ' Service Yield</span>' +
+            '</div>' +
+          '</div>';
+        }
 
         if (Array.isArray(fin.service_breakdown) && fin.service_breakdown.length > 0) {
           html += '<div class="cs-service-table-wrap">' +
@@ -7724,7 +8322,7 @@ body.cs-modal-open {
             '<table class="cs-service-table">' +
               '<thead><tr><th>Service / Offering</th><th>Revenue</th><th>Mechanism</th></tr></thead>' +
               '<tbody>' +
-                fin.service_breakdown.map(s => '<tr><td><strong>' + s.name + '</strong></td><td class="cs-accent">₹' + s.revenue_inr + '</td><td>' + s.mechanism + '</td></tr>').join('') +
+                fin.service_breakdown.map(s => '<tr><td><strong>' + s.name + '</strong></td><td class="cs-accent">₹' + formatINR(s.revenue_inr) + '</td><td>' + s.mechanism + '</td></tr>').join('') +
               '</tbody>' +
             '</table>' +
           '</div>';
@@ -7736,18 +8334,19 @@ body.cs-modal-open {
       if (comp.team || (comp.deliverables && comp.deliverables.length)) {
         html += '<div class="cs-modal-section"><div class="cs-modal-split">';
         if (comp.team) {
+          const validMembers = Array.isArray(comp.team.members) ? comp.team.members.filter(m => m && m !== 'TBD') : [];
           html += '<div>' +
             '<h4 class="cs-modal-heading">Squad & Role</h4>' +
-            '<p class="cs-modal-p"><strong>Rudra\'s Role:</strong> <span class="cs-accent">' + comp.team.rudra_role + '</span></p>' +
-            (comp.team.squad_name && comp.team.squad_name !== 'TBD' ? '<p class="cs-modal-p"><strong>Squad:</strong> ' + comp.team.squad_name + ' (' + comp.team.size + ' members)</p>' : '') +
-            '<p class="cs-modal-p"><strong>Personnel:</strong> ' + (Array.isArray(comp.team.members) ? comp.team.members.filter(m => m && m !== 'TBD').join(', ') : comp.team.members) + '</p>' +
+            '<p class="cs-modal-p"><strong>Rudra\'s Role:</strong> <span class="cs-accent">' + (comp.team.rudra_role || comp.team.role || 'Lead') + '</span></p>' +
+            (isPresent(comp.team.squad_name) ? '<p class="cs-modal-p"><strong>Squad:</strong> ' + comp.team.squad_name + (isPresent(comp.team.size) ? ' (' + comp.team.size + ' members)' : '') + '</p>' : '') +
+            (validMembers.length > 0 ? '<p class="cs-modal-p"><strong>Personnel:</strong> ' + validMembers.join(', ') + '</p>' : '') +
           '</div>';
         }
         if (comp.deliverables && comp.deliverables.length) {
           html += '<div>' +
             '<h4 class="cs-modal-heading">Deliverables Shipped</h4>' +
             '<ul class="cs-modal-list">' +
-              comp.deliverables.map(d => '<li>▸ ' + d + '</li>').join('') +
+              comp.deliverables.filter(d => d && d !== 'TBD').map(d => '<li>▸ ' + d + '</li>').join('') +
             '</ul>' +
           '</div>';
         }
@@ -7759,11 +8358,11 @@ body.cs-modal-open {
         html += '<div class="cs-modal-section">' +
           '<h4 class="cs-modal-heading">Field Protocol & Strategy</h4>' +
           '<div class="cs-modal-story">' +
-            '<p><strong>The Brief & Setup:</strong> ' + comp.story.setup + '</p>' +
-            '<p><strong>Key Execution Decision:</strong> ' + comp.story.key_decision + '</p>' +
-            '<p><strong>Audited Outcome:</strong> ' + comp.story.result + '</p>' +
+            (isPresent(comp.story.setup) ? '<p><strong>The Brief & Setup:</strong> ' + comp.story.setup + '</p>' : '') +
+            (isPresent(comp.story.key_decision) ? '<p><strong>Key Execution Decision:</strong> ' + comp.story.key_decision + '</p>' : '') +
+            (isPresent(comp.story.result) ? '<p><strong>Audited Outcome:</strong> ' + comp.story.result + '</p>' : '') +
           '</div>' +
-          (comp.story.takeaway && comp.story.takeaway !== 'TBD' ? (
+          (isPresent(comp.story.takeaway) ? (
             '<blockquote class="cs-modal-takeaway">' +
               '<span>Core Field Takeaway:</span>' +
               '“' + comp.story.takeaway + '”' +
@@ -7772,11 +8371,11 @@ body.cs-modal-open {
         '</div>';
       }
 
-      // Evidence Asset inspect link
-      if (comp.proof && comp.proof.url && comp.proof.url !== 'TBD') {
+      // Evidence Asset inspect link (inline button, NOT position: absolute)
+      if (comp.proof && isPresent(comp.proof.url)) {
         html += '<div class="cs-modal-section cs-modal-footer-proof">' +
           '<span>Evidence Artifact: <code>' + comp.proof.url + '</code></span>' +
-          '<button type="button" class="btn-solid fr-inspect-btn" data-asset-src="' + comp.proof.url + '" data-asset-caption="' + (comp.proof.caption || '') + '" data-asset-stamp="' + (comp.proof.stamp || '') + '" data-comp-title="' + comp.title + '">Inspect High-Res Artifact ↗</button>' +
+          '<button type="button" class="btn-solid cs-modal-inspect-btn" data-asset-src="' + comp.proof.url + '" data-asset-caption="' + (comp.proof.caption || '') + '" data-asset-stamp="' + (comp.proof.stamp || '') + '" data-comp-title="' + comp.title + '">Inspect High-Res Artifact ↗</button>' +
         '</div>';
       }
 
@@ -7791,12 +8390,20 @@ body.cs-modal-open {
       document.body.classList.add('cs-modal-open');
       if (closeBtn) closeBtn.focus();
 
-      const inspectBtn = modalBody.querySelector('.fr-inspect-btn');
+      const inspectBtn = modalBody.querySelector('.cs-modal-inspect-btn');
       if (inspectBtn) {
         inspectBtn.onclick = function() {
+          const src = inspectBtn.getAttribute('data-asset-src');
+          const caption = inspectBtn.getAttribute('data-asset-caption');
+          const stamp = inspectBtn.getAttribute('data-asset-stamp');
+          const compTitle = inspectBtn.getAttribute('data-comp-title');
           closeModal();
-          const mainInspect = document.querySelector('.fr-inspect-btn[data-comp-title="' + comp.title + '"]');
-          if (mainInspect) mainInspect.click();
+          if (window.__FIELD_RECORD_PROOF && typeof window.__FIELD_RECORD_PROOF.openProof === 'function') {
+            window.__FIELD_RECORD_PROOF.openProof(src, caption, stamp, compTitle);
+          } else {
+            const mainInspect = document.querySelector('.fr-inspect-btn[data-comp-title="' + comp.title + '"]');
+            if (mainInspect) mainInspect.click();
+          }
         };
       }
     }
@@ -7818,6 +8425,9 @@ body.cs-modal-open {
 
     if (closeBtn) closeBtn.onclick = closeModal;
     if (backdrop) backdrop.onclick = closeModal;
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) closeModal();
+    });
 
     modal.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
@@ -7852,8 +8462,403 @@ body.cs-modal-open {
     };
   };
 
-  /* --- 9. Orchestrated Bootstrap --- */
-// Master Runtime Bootstrap
+  /* --- 9. Venture Interactive Objects (Stratum Sim, Flow State Synth, Krama Calc) --- */
+  window.initVentureInteractives = function() {
+    // 9A. Stratum CPM Shock Micro-Simulator
+    const stratumWidget = document.querySelector('.vn-sim-widget[data-sim="stratum"]');
+    if (stratumWidget && !stratumWidget.dataset.bound) {
+      stratumWidget.dataset.bound = 'true';
+      const tabs = stratumWidget.querySelectorAll('.vn-sim-tab');
+      const sparkPath = document.getElementById('stratum-spark-path');
+      const chartWrap = stratumWidget.querySelector('.vn-sim-chart');
+      const scenarioEl = document.getElementById('stratum-sim-scenario');
+      const capEl = document.getElementById('stratum-readout-cap');
+      const marginEl = document.getElementById('stratum-readout-margin');
+
+      const modes = {
+        baseline: {
+          path: 'M 4 38 L 48 34 L 92 36 L 136 30 L 180 32 L 236 28',
+          shock: false,
+          scenario: 'Scenario: Baseline auction pace; tracking capital velocity and margin yield.',
+          cap: 'Steady Pace',
+          margin: 'Protected Baseline'
+        },
+        shock: {
+          path: 'M 4 38 L 48 35 L 92 14 L 136 10 L 180 24 L 236 18',
+          shock: true,
+          scenario: 'Ad CPMs spike 40% mid-quarter. Reallocate budget to protect margin.',
+          cap: 'Reallocate Budget',
+          margin: 'Margin Protected'
+        }
+      };
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const modeKey = tab.getAttribute('data-sim-mode') || 'baseline';
+          const cfg = modes[modeKey] || modes.baseline;
+          tabs.forEach(t => {
+            const active = t === tab;
+            t.classList.toggle('active', active);
+            t.setAttribute('aria-pressed', active ? 'true' : 'false');
+          });
+          if (sparkPath) sparkPath.setAttribute('d', cfg.path);
+          if (chartWrap) chartWrap.classList.toggle('vn-sim-shock', cfg.shock);
+          if (scenarioEl) scenarioEl.textContent = cfg.scenario;
+          if (capEl) capEl.textContent = cfg.cap;
+          if (marginEl) marginEl.textContent = cfg.margin;
+        });
+      });
+    }
+
+    // 9B. Flow State 432Hz + 216Hz Web Audio Procedural Sine Synth
+    const synthBtn = document.getElementById('flowstate-synth-btn');
+    const synthLabel = document.getElementById('flowstate-synth-label');
+    if (synthBtn && !synthBtn.dataset.bound) {
+      synthBtn.dataset.bound = 'true';
+      let audioCtx = null;
+      let masterGain = null;
+      let oscMain = null;
+      let oscSub = null;
+      let isPlaying = false;
+
+      function updateSynthUI(playing) {
+        synthBtn.setAttribute('aria-pressed', playing ? 'true' : 'false');
+        synthBtn.classList.toggle('vn-synth-active', playing);
+        if (synthLabel) {
+          synthLabel.textContent = playing ? '■ Stop 432Hz Sine Synth' : '▶ Test 432Hz Sine Synth';
+        }
+      }
+
+      function stopSynth() {
+        isPlaying = false;
+        updateSynthUI(false);
+        try {
+          if (audioCtx && masterGain) {
+            const now = audioCtx.currentTime;
+            masterGain.gain.cancelScheduledValues(now);
+            masterGain.gain.setValueAtTime(Math.max(0.0001, masterGain.gain.value), now);
+            masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.08);
+          }
+          const o1 = oscMain;
+          const o2 = oscSub;
+          oscMain = null;
+          oscSub = null;
+          setTimeout(() => {
+            try { if (o1) o1.stop(); } catch (e) {}
+            try { if (o2) o2.stop(); } catch (e) {}
+          }, 95);
+        } catch (e) {}
+      }
+
+      function startSynth() {
+        isPlaying = true;
+        updateSynthUI(true);
+        try {
+          const AudioCtor = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtor) {
+            window.__showPortfolioToast('Flow State 432Hz Synth toggled (Web Audio API unavailable)');
+            return;
+          }
+          if (!audioCtx) audioCtx = new AudioCtor();
+          if (audioCtx.state === 'suspended' && typeof audioCtx.resume === 'function') {
+            audioCtx.resume().catch(() => {});
+          }
+          const now = audioCtx.currentTime;
+          masterGain = audioCtx.createGain();
+          masterGain.gain.setValueAtTime(0.0001, now);
+          masterGain.gain.linearRampToValueAtTime(0.035, now + 0.14);
+          masterGain.connect(audioCtx.destination);
+
+          oscMain = audioCtx.createOscillator();
+          oscMain.type = 'sine';
+          oscMain.frequency.setValueAtTime(432, now);
+
+          oscSub = audioCtx.createOscillator();
+          oscSub.type = 'sine';
+          oscSub.frequency.setValueAtTime(216, now);
+
+          const subGain = audioCtx.createGain();
+          subGain.gain.setValueAtTime(0.45, now);
+
+          oscMain.connect(masterGain);
+          oscSub.connect(subGain);
+          subGain.connect(masterGain);
+
+          oscMain.start(now);
+          oscSub.start(now);
+        } catch (e) {
+          // Graceful fallback if AudioContext blocked by browser autoplay policy
+        }
+      }
+
+      window.__toggleFlowStateSynth = function() {
+        if (isPlaying) stopSynth();
+        else startSynth();
+        return isPlaying;
+      };
+
+      synthBtn.addEventListener('click', window.__toggleFlowStateSynth);
+    }
+
+    // 9C. Krama 75% Attendance Recovery Mini-Calculator
+    const kramaCalc = document.getElementById('krama-calc-widget');
+    if (kramaCalc && !kramaCalc.dataset.bound) {
+      kramaCalc.dataset.bound = 'true';
+      let attended = parseInt(kramaCalc.getAttribute('data-attended') || '17', 10);
+      let total = parseInt(kramaCalc.getAttribute('data-total') || '25', 10);
+
+      const attValEl = document.getElementById('krama-att-val');
+      const totValEl = document.getElementById('krama-tot-val');
+      const pctEl = document.getElementById('krama-pct-readout');
+      const adviceEl = document.getElementById('krama-advice-readout');
+
+      function renderKramaCalc() {
+        total = Math.max(1, total);
+        attended = Math.max(0, Math.min(attended, total));
+        kramaCalc.setAttribute('data-attended', String(attended));
+        kramaCalc.setAttribute('data-total', String(total));
+
+        const pct = (attended / total) * 100;
+        if (attValEl) attValEl.textContent = String(attended);
+        if (totValEl) totValEl.textContent = String(total);
+        if (pctEl) {
+          pctEl.textContent = pct.toFixed(1) + '%';
+          pctEl.classList.toggle('vn-calc-safe', pct >= 75);
+        }
+        if (adviceEl) {
+          if (pct < 75) {
+            const needed = Math.max(1, Math.ceil(3 * total - 4 * attended));
+            adviceEl.textContent = 'Attend next ' + needed + ' consecutive class' + (needed === 1 ? '' : 'es') + ' to recover 75.0%.';
+          } else {
+            const buffer = Math.max(0, Math.floor((4 * attended - 3 * total) / 3));
+            adviceEl.textContent = buffer > 0
+              ? ('Safe buffer: can skip ' + buffer + ' class' + (buffer === 1 ? '' : 'es') + ' while staying ≥75.0%.')
+              : 'On 75.0% threshold — attend next class to build margin.';
+          }
+        }
+      }
+
+      const attMinus = document.getElementById('krama-att-minus');
+      const attPlus = document.getElementById('krama-att-plus');
+      const totMinus = document.getElementById('krama-tot-minus');
+      const totPlus = document.getElementById('krama-tot-plus');
+
+      if (attMinus) attMinus.addEventListener('click', () => { attended = Math.max(0, attended - 1); renderKramaCalc(); });
+      if (attPlus) attPlus.addEventListener('click', () => {
+        attended += 1;
+        if (attended > total) total = attended;
+        renderKramaCalc();
+      });
+      if (totMinus) totMinus.addEventListener('click', () => {
+        total = Math.max(1, total - 1);
+        if (attended > total) attended = total;
+        renderKramaCalc();
+      });
+      if (totPlus) totPlus.addEventListener('click', () => { total += 1; renderKramaCalc(); });
+
+      renderKramaCalc();
+    }
+  };
+
+  /* --- 10. Signature ⌘K Command Palette Engine (#cmd-palette) --- */
+  window.initCommandPalette = function(content) {
+    const dialog = document.getElementById('cmd-palette');
+    const input = document.getElementById('cmd-palette-input');
+    const listEl = document.getElementById('cmd-palette-list');
+    const emptyEl = document.getElementById('cmd-palette-empty');
+    const closeBtn = document.getElementById('cmd-palette-close');
+    const backdrop = document.getElementById('cmd-palette-backdrop');
+    if (!dialog || !input || !listEl) return;
+
+    const p = (content && content.personal) || (window.__PORTFOLIO_CONTENT__ && window.__PORTFOLIO_CONTENT__.personal) || {};
+    const email = p.email || 'rudra.s26042@csds.rishihood.edu.in';
+    const resumeUrl = p.resume_url || 'assets/rudra-sharma-resume.pdf';
+    const githubUrl = p.github || 'https://github.com/rudras2048-arch';
+    const linkedinUrl = p.linkedin || 'https://www.linkedin.com/in/rudra-sharma-7bb78b410/';
+
+    const commands = [
+      { id: 'jump-about', title: 'Jump to 00 // About & Trajectory', group: 'Section', keywords: 'about trajectory ethos rishihood', run: () => document.getElementById('about')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-record', title: 'Jump to 01 // Competitive Field Record', group: 'Section', keywords: 'competitions record ashoka iim dcrust bootcamp', run: () => document.getElementById('competitions')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-ventures', title: 'Jump to 02 // Ventures & Systems', group: 'Section', keywords: 'ventures tathya stratum flow state krama', run: () => document.getElementById('ventures')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-tathya', title: 'Open Tathya Dialect Workbench', group: 'Lab', keywords: 'tathya dialect haryanvi punjabi bhojpuri token', run: () => document.getElementById('tathya-workbench')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-contact', title: 'Jump to 03 // Direct Contact', group: 'Section', keywords: 'contact email reach out', run: () => document.getElementById('contact')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'toggle-rm', title: 'Toggle Executive Recruiter Mode (30s View)', group: 'Action', keywords: 'recruiter mode executive brief dossier', run: () => document.getElementById('rm-toggle')?.click() },
+      { id: 'open-ashoka', title: 'Inspect Ashoka Cash Rush Telemetry (8.85x ROI)', group: 'Telemetry', keywords: 'ashoka cash rush modal telemetry ledger 8.85x', run: () => window.__TELEMETRY_MODAL && window.__TELEMETRY_MODAL.open('cash-rush') },
+      { id: 'toggle-synth', title: 'Toggle Flow State 432Hz Sine Synthesizer', group: 'Audio', keywords: 'flow state 432hz audio synth sine', run: () => window.__toggleFlowStateSynth ? window.__toggleFlowStateSynth() : document.getElementById('flowstate-synth-btn')?.click() },
+      { id: 'copy-email', title: 'Copy Institutional Email (' + email + ')', group: 'Action', keywords: 'copy email clipboard contact', run: () => {
+        window.__copyPortfolioText(email, () => window.__showPortfolioToast('Copied to clipboard: ' + email));
+      }},
+      { id: 'open-resume', title: 'Open Official Résumé (PDF)', group: 'Link', keywords: 'resume pdf cv download', run: () => window.open(resumeUrl, '_blank', 'noopener') },
+      { id: 'open-github', title: 'Open GitHub Profile (rudras2048-arch)', group: 'Link', keywords: 'github code repository', run: () => window.open(githubUrl, '_blank', 'noopener') },
+      { id: 'open-linkedin', title: 'Open LinkedIn Profile', group: 'Link', keywords: 'linkedin network profile', run: () => window.open(linkedinUrl, '_blank', 'noopener') }
+    ];
+
+    let filtered = commands.slice();
+    let activeIdx = 0;
+    let prevActive = null;
+
+    function renderList() {
+      const q = (input.value || '').trim().toLowerCase();
+      filtered = q
+        ? commands.filter(c => (c.title + ' ' + c.group + ' ' + c.keywords).toLowerCase().includes(q))
+        : commands.slice();
+      activeIdx = Math.min(activeIdx, Math.max(0, filtered.length - 1));
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = '';
+        if (emptyEl) emptyEl.hidden = false;
+        return;
+      }
+      if (emptyEl) emptyEl.hidden = true;
+
+      listEl.innerHTML = filtered.map((cmd, idx) =>
+        '<button type="button" class="cmd-palette-item' + (idx === activeIdx ? ' active' : '') + '" role="option" aria-selected="' + (idx === activeIdx ? 'true' : 'false') + '" data-cmd-idx="' + idx + '">' +
+          '<span class="cmd-palette-item-title">' + cmd.title + '</span>' +
+          '<span class="cmd-palette-group">' + cmd.group + '</span>' +
+        '</button>'
+      ).join('');
+
+      listEl.querySelectorAll('.cmd-palette-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const i = parseInt(btn.getAttribute('data-cmd-idx'), 10);
+          executeItem(i);
+        });
+      });
+    }
+
+    function executeItem(idx) {
+      const cmd = filtered[idx];
+      if (!cmd) return;
+      closePalette(false);
+      cmd.run();
+    }
+
+    function openPalette() {
+      if (dialog.hasAttribute('open')) return;
+      prevActive = document.activeElement;
+      document.body.classList.remove('menu-open');
+      const burger = document.getElementById('burger');
+      if (burger) burger.setAttribute('aria-expanded', 'false');
+
+      input.value = '';
+      activeIdx = 0;
+      renderList();
+
+      if (typeof dialog.showModal === 'function') {
+        dialog.showModal();
+      } else {
+        dialog.setAttribute('open', '');
+      }
+      dialog.setAttribute('aria-hidden', 'false');
+      input.focus();
+    }
+
+    function closePalette(restoreFocus) {
+      if (!dialog.hasAttribute('open')) return;
+      if (typeof dialog.close === 'function') {
+        dialog.close();
+      } else {
+        dialog.removeAttribute('open');
+      }
+      dialog.setAttribute('aria-hidden', 'true');
+      if (restoreFocus && prevActive && typeof prevActive.focus === 'function') {
+        prevActive.focus();
+      }
+    }
+
+    input.addEventListener('input', () => {
+      activeIdx = 0;
+      renderList();
+    });
+
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        closePalette(true);
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (filtered.length > 0) {
+          activeIdx = (activeIdx + 1) % filtered.length;
+          renderList();
+          listEl.querySelector('.cmd-palette-item.active')?.scrollIntoView({ block: 'nearest' });
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (filtered.length > 0) {
+          activeIdx = (activeIdx - 1 + filtered.length) % filtered.length;
+          renderList();
+          listEl.querySelector('.cmd-palette-item.active')?.scrollIntoView({ block: 'nearest' });
+        }
+      } else if (e.key === 'Enter') {
+        if (document.activeElement === closeBtn) return;
+        e.preventDefault();
+        executeItem(activeIdx);
+      }
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', () => closePalette(true));
+    if (backdrop) backdrop.addEventListener('click', () => closePalette(true));
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) closePalette(true);
+    });
+
+    ['cmd-palette-trigger', 'cmd-palette-trigger-mobile', 'cmd-palette-trigger-footer'].forEach(id => {
+      const trigger = document.getElementById(id);
+      if (trigger && !trigger.dataset.cmdBound) {
+        trigger.dataset.cmdBound = 'true';
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          openPalette();
+        });
+      }
+    });
+
+    if (!window.__CMD_PALETTE_KEY_BOUND) {
+      window.__CMD_PALETTE_KEY_BOUND = true;
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          if (dialog.hasAttribute('open')) closePalette(true);
+          else openPalette();
+        }
+      });
+    }
+
+    return { open: openPalette, close: () => closePalette(true) };
+  };
+
+  /* --- 11. Specular Cursor Spotlight Engine --- */
+  window.initSpecularSpotlight = function() {
+    const finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    const isReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!finePointer || isReduced) return;
+
+    const cards = document.querySelectorAll('.case-card, .venture-card, .stat-card');
+    cards.forEach(card => {
+      if (card.dataset.spotBound) return;
+      card.dataset.spotBound = 'true';
+      let rafPending = false;
+      let nextX = '50%';
+      let nextY = '50%';
+
+      card.addEventListener('pointermove', (e) => {
+        const rect = card.getBoundingClientRect();
+        nextX = (e.clientX - rect.left).toFixed(1) + 'px';
+        nextY = (e.clientY - rect.top).toFixed(1) + 'px';
+        if (!rafPending) {
+          rafPending = true;
+          requestAnimationFrame(() => {
+            card.style.setProperty('--spot-x', nextX);
+            card.style.setProperty('--spot-y', nextY);
+            rafPending = false;
+          });
+        }
+      }, { passive: true });
+    });
+  };
+
+  /* --- 12. Orchestrated Bootstrap --- */
 (function() {
   function bootstrapPortfolioV2() {
     const content = window.__PORTFOLIO_CONTENT__;
@@ -7870,13 +8875,22 @@ body.cs-modal-open {
       window.initAboutSection(content);
     }
     if (typeof window.initFieldRecordProof === 'function') {
-      window.initFieldRecordProof(content);
+      window.__FIELD_RECORD_PROOF = window.initFieldRecordProof(content);
     }
     if (typeof window.initCaseStudyDeepDives === 'function') {
       window.initCaseStudyDeepDives(content);
     }
     if (typeof window.initTelemetryModal === 'function') {
       window.__TELEMETRY_MODAL = window.initTelemetryModal(content);
+    }
+    if (typeof window.initVentureInteractives === 'function') {
+      window.initVentureInteractives(content);
+    }
+    if (typeof window.initCommandPalette === 'function') {
+      window.__CMD_PALETTE = window.initCommandPalette(content);
+    }
+    if (typeof window.initSpecularSpotlight === 'function') {
+      window.initSpecularSpotlight();
     }
     if (typeof window.initTathyaExplorer === 'function') {
       window.__TATHYA_EXPLORER = window.initTathyaExplorer();
@@ -7888,207 +8902,6 @@ body.cs-modal-open {
   } else {
     bootstrapPortfolioV2();
   }
-})();
-
-/* TATHYA LLM FAILURE EXPLORER LIVE COMPONENT */
-/**
- * ============================================================================
- * TATHYA LLM FAILURE EXPLORER LIVE COMPONENT
- * Author: Agent 4 (Demo)
- * Contract: tokens.md & interfaces.md
- * Source Data: /data/tathya.json (tathya-eval-preview v0.1.0)
- * ============================================================================
- */
-
-(function () {
-  'use strict';
-
-  // Grounded dataset test vectors strictly mapped from data/tathya.json
-  var TATHYA_VECTORS = {
-    haryanvi: {
-      dialect: 'haryanvi',
-      name: 'Haryanvi',
-      scriptLabel: 'हरियाणवी',
-      scriptHint: 'Colloquial Devanagari Orthography',
-      category: 'civic_schemes',
-      categoryDisplay: 'CIVIC SCHEMES',
-      prompt: 'म्हारी सरकार की लाडो योजना के के फायदे सैं?',
-      standard_hindi: 'हमारी सरकार की लाडो योजना के क्या लाभ हैं?',
-      analysis: [
-        {
-          label: 'Tokenizer Breakdown',
-          text: 'Standard Indic LLM tokenizers trained on formal web Hindi (Manak Hindi) lack vocabulary IDs for regional colloquial markers (<code>म्हारी</code>, <code>सैं</code>). Words are shattered into byte-level subword fragments, inflating token length.'
-        },
-        {
-          label: 'Downstream Failure Mode',
-          text: 'Attention weights dilute across inflated byte sequences, causing critical entity degradation over state welfare policy (<code>लाडो योजना</code>) and resulting in civic query hallucinations.'
-        },
-        {
-          label: 'Tathya Verification Layer',
-          text: 'Normalizes colloquial orthography and assertion boundaries against audited municipal scheme records before response generation.'
-        }
-      ]
-    },
-    punjabi: {
-      dialect: 'punjabi',
-      name: 'Punjabi',
-      scriptLabel: 'ਪੰਜਾਬੀ',
-      scriptHint: 'Gurmukhi Cross-Script Input',
-      category: 'healthcare',
-      categoryDisplay: 'HEALTHCARE',
-      prompt: 'ਸਰਕਾਰੀ ਹਸਪਤਾਲ ਵਿਚ ਪਰਚੀ ਕਟਵਾਉਣ ਦਾ ਕੀ ਤਰੀਕਾ ਹੈ?',
-      standard_hindi: 'सरकारी अस्पताल में पर्ची कटवाने का क्या तरीका है?',
-      analysis: [
-        {
-          label: 'Tokenizer Breakdown',
-          text: 'Indic LLM tokenizers frequently exhibit severe Gurmukhi vocabulary under-representation compared to Devanagari. Common clinical navigation verbs and nouns (<code>ਕਟਵਾਉਣ</code>, <code>ਪਰਚੀ</code>) fragment into byte-level substrings.'
-        },
-        {
-          label: 'Downstream Failure Mode',
-          text: 'High subword token explosion in clinical navigation workflows disrupts transformer attention, causing procedure hallucination when citizens query hospital OPD registration protocols.'
-        },
-        {
-          label: 'Tathya Verification Layer',
-          text: 'Acoustic and phonemic normalization bridges Gurmukhi dialect variants into official public health departmental schemas.'
-        }
-      ]
-    },
-    bhojpuri: {
-      dialect: 'bhojpuri',
-      name: 'Bhojpuri',
-      scriptLabel: 'भोजपुरी',
-      scriptHint: 'Purvanchal Dialect Syntax',
-      category: 'governance',
-      categoryDisplay: 'GOVERNANCE',
-      prompt: 'ई राशन कार्ड बनावे खातिर कवन कवन कागजात चाहीं?',
-      standard_hindi: 'यह राशन कार्ड बनवाने के लिए कौन-कौन से दस्तावेज चाहिए?',
-      analysis: [
-        {
-          label: 'Tokenizer Breakdown',
-          text: 'Purvanchal dialect markers (proximal demonstrative <code>ई</code>, purposive postposition <code>खातिर</code>, distributive <code>कवन कवन</code>, auxiliary <code>चाहीं</code>) have no whole-token entries in standard vocabularies and shatter into bytes.'
-        },
-        {
-          label: 'Downstream Failure Mode',
-          text: 'In public distribution (PDS ration card) queries, subword fragmentation dissolves semantic binding between required identity documentation (<code>कागजात</code>) and entitlement rules.'
-        },
-        {
-          label: 'Tathya Verification Layer',
-          text: 'Dual-pass evaluation pipeline parses colloquial morphosyntax and asserts boundary checks against audited civic entitlement checklists.'
-        }
-      ]
-    }
-  };
-
-  /**
-   * Initializes the Tathya LLM Failure Explorer
-   * @param {Object} [customData] Optional overrides from data/tathya.json
-   */
-  window.initTathyaExplorer = function (customData) {
-    var container = document.querySelector('.tfe-explorer');
-    if (!container) return null;
-    if (container.dataset.tfeInitialized === 'true') {
-      return window.__TATHYA_EXPLORER_INSTANCE || null;
-    }
-
-    var tabs = Array.prototype.slice.call(container.querySelectorAll('.tfe-tab'));
-    var categoryEl = container.querySelector('#tfe-category-val');
-    var dialectValEl = container.querySelector('#tfe-dialect-val');
-    var scriptHintEl = container.querySelector('#tfe-dialect-script-hint');
-    var dialectPromptEl = container.querySelector('#tfe-dialect-prompt');
-    var standardPromptEl = container.querySelector('#tfe-standard-prompt');
-    var analysisBodyEl = container.querySelector('#tfe-analysis-body');
-    var liveEl = container.querySelector('#tfe-live');
-
-    var currentDialect = 'haryanvi';
-
-    function switchDialect(dialectId, updateFocus) {
-      var data = TATHYA_VECTORS[dialectId];
-      if (!data) return;
-
-      currentDialect = dialectId;
-
-      // Update tabs state
-      tabs.forEach(function (tab) {
-        var isSelected = tab.getAttribute('data-dialect') === dialectId;
-        tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
-        tab.setAttribute('tabindex', isSelected ? '0' : '-1');
-        if (isSelected && updateFocus) {
-          tab.focus();
-        }
-      });
-
-      // Update content
-      if (categoryEl) {
-        categoryEl.textContent = data.categoryDisplay;
-      }
-      if (dialectValEl) {
-        dialectValEl.textContent = data.name + ' (' + data.dialect + ')';
-      }
-      if (scriptHintEl) {
-        scriptHintEl.textContent = data.scriptHint;
-      }
-      if (dialectPromptEl) {
-        dialectPromptEl.textContent = data.prompt;
-      }
-      if (standardPromptEl) {
-        standardPromptEl.textContent = data.standard_hindi;
-      }
-
-      // Update analysis points
-      if (analysisBodyEl) {
-        analysisBodyEl.innerHTML = data.analysis.map(function (item) {
-          return '<p class="tfe-analysis-p"><strong>' + item.label + ':</strong> ' + item.text + '</p>';
-        }).join('');
-      }
-
-      // Announce for screen readers
-      if (liveEl) {
-        liveEl.textContent = 'Switched to ' + data.name + ' ' + data.categoryDisplay + ' test vector.';
-      }
-    }
-
-    // Attach click and keyboard handlers
-    tabs.forEach(function (tab, index) {
-      tab.addEventListener('click', function () {
-        var dialectId = tab.getAttribute('data-dialect');
-        switchDialect(dialectId, false);
-      });
-
-      tab.addEventListener('keydown', function (e) {
-        var newIndex = -1;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
-          e.preventDefault();
-          newIndex = (index + 1) % tabs.length;
-        } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
-          e.preventDefault();
-          newIndex = (index - 1 + tabs.length) % tabs.length;
-        } else if (e.key === 'Home') {
-          e.preventDefault();
-          newIndex = 0;
-        } else if (e.key === 'End') {
-          e.preventDefault();
-          newIndex = tabs.length - 1;
-        }
-
-        if (newIndex >= 0) {
-          var targetTab = tabs[newIndex];
-          var dialectId = targetTab.getAttribute('data-dialect');
-          switchDialect(dialectId, true);
-        }
-      });
-    });
-
-    container.dataset.tfeInitialized = 'true';
-
-    var instance = {
-      switchDialect: function (id) { switchDialect(id, true); },
-      getActiveDialect: function () { return currentDialect; },
-      vectors: TATHYA_VECTORS
-    };
-
-    window.__TATHYA_EXPLORER_INSTANCE = instance;
-    return instance;
-  };
 })();
 
   </script>

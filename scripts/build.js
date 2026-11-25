@@ -311,7 +311,7 @@ function renderAbout(content) {
         How I Got <span class="ab-serif">Here</span>
       </h2>
       <p class="ab-lead" id="ab-lead-text">
-        First-year CS &amp; Data Science undergraduate at Rishihood University ('30). Builder of software tools, local utilities, and early venture prototypes, learning through live execution. Rather than waiting four years to validate hypotheses, I test software systems and commercial models in live competitive arenas under hard capital and clock constraints.
+        First-year CS &amp; Data Science undergraduate at Rishihood University ('30). Testing software tools and commercial models in live competitive arenas under hard capital and clock constraints.
       </p>
     </div>
 
@@ -319,34 +319,30 @@ function renderAbout(content) {
     <div class="ab-grid">
       <!-- Left Column: Operating Thesis & Institutional Credential -->
       <div class="ab-ethos-col">
-        <!-- Operating Thesis Card -->
         <div class="ab-card ab-reveal" id="ab-thesis-card">
           <div class="ab-card-label">
             <span class="ab-pulse-dot" aria-hidden="true"></span>
             <span>OPERATING THESIS</span>
           </div>
-          <p class="ab-bio-statement" id="ab-bio-statement">
-            Building software systems and stress-testing commercial models in live competitive arenas under clock and capital constraints.
-          </p>
-          <p class="ab-thesis-desc">
-            Focusing on dialect NLP failure analysis, local-first utilities, and extreme-constraint economics beyond the classroom.
+          <p class="ab-quote ab-bio-statement" id="ab-bio-statement">
+            “${escapeHtml(p.bio_statement)}”
           </p>
 
-          <!-- Focus Area Pillars -->
+          <!-- Compact Focus Pillars -->
           <div class="ab-pillars-list">
             <div class="ab-pillar-item">
               <span class="ab-pillar-num mono">01</span>
               <div class="ab-pillar-content">
                 <strong class="ab-pillar-title">Dialect NLP Failure Analysis</strong>
-                <p class="ab-pillar-text">Benchmarking token fragmentation and semantic degradation in non-standard Indic languages (Punjabi, Haryanvi, Bhojpuri) via Tathya.</p>
+                <p class="ab-pillar-text">Token fragmentation &amp; civic verification across Punjabi, Haryanvi, Bhojpuri (Tathya).</p>
               </div>
             </div>
 
             <div class="ab-pillar-item">
               <span class="ab-pillar-num mono">02</span>
               <div class="ab-pillar-content">
-                <strong class="ab-pillar-title">Local-First Desktop OS</strong>
-                <p class="ab-pillar-text">Zero cloud telemetry leaks, procedural 16-bit sine audio synthesis (Flow State), and offline recovery calculus (Krama).</p>
+                <strong class="ab-pillar-title">Local-First Desktop Utilities</strong>
+                <p class="ab-pillar-text">Zero-OAuth focus OS (Flow State) &amp; 75% attendance recovery calculus (Krama).</p>
               </div>
             </div>
 
@@ -354,7 +350,7 @@ function renderAbout(content) {
               <span class="ab-pillar-num mono">03</span>
               <div class="ab-pillar-content">
                 <strong class="ab-pillar-title">Extreme-Constraint Economics</strong>
-                <p class="ab-pillar-text">Turning ₹300 into ₹2,655 in 120 minutes with ₹45 costs (Ashoka) and delivering 4-part ad suites in 45 minutes (DCRUST).</p>
+                <p class="ab-pillar-text">₹300 → ₹2,655 in 120 mins (Ashoka) &amp; 4-part ad suite in 45 mins (DCRUST).</p>
               </div>
             </div>
           </div>
@@ -374,15 +370,14 @@ function renderAbout(content) {
             </div>
             <div class="ab-cred-row">
               <span class="ab-cred-label">Cohort</span>
-              <span class="ab-cred-val mono" id="ab-cred-cohort">Class of ${escapeHtml(p.class_year)} · First-Year</span>
+              <span class="ab-cred-val mono" id="ab-cred-cohort">Class of ${escapeHtml(p.class_year)} · ${escapeHtml(p.current_status)}</span>
             </div>
             <div class="ab-cred-row">
-              <span class="ab-cred-label">Verified Record</span>
+              <span class="ab-cred-label">Record</span>
               <span class="ab-cred-val mono">03 Podiums · 01 Nat'l Finalist</span>
             </div>
           </div>
 
-          <!-- Quantitative Telemetry Quick Strip -->
           <div class="ab-telemetry-strip">
             <div class="ab-telemetry-badge">
               <span class="ab-telemetry-val mono">02</span>
@@ -400,22 +395,22 @@ function renderAbout(content) {
         </div>
       </div>
 
-      <!-- Right Column: Chronological Sprint Arc -->
+      <!-- Right Column: Scannable Chronological Sprint Arc -->
       <div class="ab-timeline-col">
         <div class="ab-timeline-meta ab-reveal">
           <span class="ab-timeline-heading">FIELD EVIDENCE CHRONOLOGY (JUN – OCT 2026)</span>
-          <span class="ab-timeline-caption">Verified milestones from campus incubators to national finals</span>
+          <span class="ab-timeline-caption">Five milestones — jump directly to audited artifacts below</span>
         </div>
 
         <ol class="ab-timeline">
-          <div class="ab-timeline-spine" aria-hidden="true"></div>
+          <li class="ab-timeline-spine" aria-hidden="true"></li>
 
           <!-- Milestone 1: Builders' Bootcamp -->
           <li class="ab-milestone ab-reveal">
             <div class="ab-milestone-marker" aria-hidden="true">
               <span class="ab-marker-dot"></span>
             </div>
-            <article class="ab-milestone-card">
+            <article class="ab-milestone-card ab-milestone-compact">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">JUN 2026 · 7-DAY SPRINT</span>
                 <span class="ab-milestone-badge ab-gold"><span aria-hidden="true">🥇</span> #1 OVERALL TOP TEAM</span>
@@ -423,12 +418,14 @@ function renderAbout(content) {
               <h3 class="ab-milestone-title">Builders' Bootcamp (8th Edition)</h3>
               <div class="ab-milestone-venue">Rishihood University · Demo Day '26</div>
               <p class="ab-milestone-body">
-                Selected for an intensive 7-day pre-college incubator covering AI, product design, psychology, and startup fundamentals. Rather than stopping at pitch decks, engineered and shipped a functional startup web prototype from scratch within 7 days, pitching live on Demo Day to finish as the #1 Overall Winning Team across all cohorts.
+                Built and shipped a functional startup web prototype from scratch in 7 days and pitched live on Demo Day to place #1 overall.
               </p>
-              <div class="ab-milestone-tags">
-                <span class="ab-pill ab-accent-pill">Working Prototype Shipped</span>
-                <span class="ab-pill">Live Demo Day Pitch</span>
-                <span class="ab-pill">7-Day Venture Incubator</span>
+              <div class="ab-milestone-footer">
+                <div class="ab-milestone-tags">
+                  <span class="ab-pill ab-accent-pill">Working Prototype Shipped</span>
+                  <span class="ab-pill">Demo Day Jury</span>
+                </div>
+                <a href="#comp-builders-bootcamp" class="ab-proof-link">Inspect Proof ↗</a>
               </div>
             </article>
           </li>
@@ -438,7 +435,7 @@ function renderAbout(content) {
             <div class="ab-milestone-marker" aria-hidden="true">
               <span class="ab-marker-dot"></span>
             </div>
-            <article class="ab-milestone-card">
+            <article class="ab-milestone-card ab-milestone-compact">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">SEP 2026 · 45-MIN SPRINT</span>
                 <span class="ab-milestone-badge"><span aria-hidden="true">🥉</span> 3RD PLACE PODIUM</span>
@@ -446,13 +443,14 @@ function renderAbout(content) {
               <h3 class="ab-milestone-title">Advertising &amp; Brand Pitch</h3>
               <div class="ab-milestone-venue">DCRUST Murthal · E-Summit '26</div>
               <p class="ab-milestone-body">
-                Represented Rishihood University offline under a high-pressure 45-minute turnaround. Assigned a consumer soap brand and divided the sprint across four concrete deliverables—promotional poster, short filmed ad, live comedic skit, and stage product pitch—securing 3rd Position Podium overall and a ₹1,100 cash prize.
+                Delivered a 4-part campaign suite (poster, video ad, skit, stage pitch) in 45 minutes to win 3rd place and a ₹1,100 cash prize.
               </p>
-              <div class="ab-milestone-tags">
-                <span class="ab-pill ab-accent-pill">₹1,100 Cash Prize</span>
-                <span class="ab-pill">45-Minute Prep Sprint</span>
-                <span class="ab-pill">4-Part Campaign Suite</span>
-                <span class="ab-pill">Live Stage Round</span>
+              <div class="ab-milestone-footer">
+                <div class="ab-milestone-tags">
+                  <span class="ab-pill ab-accent-pill">₹1,100 Cash Prize</span>
+                  <span class="ab-pill">45-Min Prep Sprint</span>
+                </div>
+                <a href="#comp-dcrust-brand-pitch" class="ab-proof-link">Inspect Proof ↗</a>
               </div>
             </article>
           </li>
@@ -462,7 +460,7 @@ function renderAbout(content) {
             <div class="ab-milestone-marker" aria-hidden="true">
               <span class="ab-marker-dot"></span>
             </div>
-            <article class="ab-milestone-card">
+            <article class="ab-milestone-card ab-milestone-compact">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">OCT 2026 · 120-MIN SPRINT</span>
                 <span class="ab-milestone-badge ab-gold"><span aria-hidden="true">🏆</span> 1ST PLACE CHAMPION</span>
@@ -470,14 +468,14 @@ function renderAbout(content) {
               <h3 class="ab-milestone-title">Cash Rush Competition</h3>
               <div class="ab-milestone-venue">Ashoka University · Shatranj '26</div>
               <p class="ab-milestone-body">
-                Campus startup simulation with ₹300 seed capital and a 120-minute countdown. Deployed zero-inventory experience models: designed curiosity-monetization thesis with a web funnel hooked to LinkedIn, ran a paid live campus quiz, and coordinated team caricature keepsakes. Total costs were just ₹45 (paper and marker). Services generated ₹2,400 to end fund at ₹2,655 (8.85x multiplier), taking 1st place and the ₹7,000 prize.
+                Grew ₹300 seed capital to ₹2,655 (8.85x) in 120 minutes with ₹45 costs via zero-inventory experiences, winning 1st place and ₹7,000.
               </p>
-              <div class="ab-milestone-tags">
-                <span class="ab-pill ab-accent-pill">₹7,000 Cash Prize</span>
-                <span class="ab-pill ab-accent-pill">8.85x Fund Multiplier</span>
-                <span class="ab-pill">₹45 Total Costs</span>
-                <span class="ab-pill">120-Min Constraint</span>
-                <span class="ab-pill">#1 On Leaderboard</span>
+              <div class="ab-milestone-footer">
+                <div class="ab-milestone-tags">
+                  <span class="ab-pill ab-accent-pill">₹7,000 Cash Prize</span>
+                  <span class="ab-pill ab-accent-pill">8.85x Multiplier</span>
+                </div>
+                <a href="#comp-cash-rush" class="ab-proof-link">Inspect Proof ↗</a>
               </div>
             </article>
           </li>
@@ -487,7 +485,7 @@ function renderAbout(content) {
             <div class="ab-milestone-marker" aria-hidden="true">
               <span class="ab-marker-dot"></span>
             </div>
-            <article class="ab-milestone-card">
+            <article class="ab-milestone-card ab-milestone-compact">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">OCT 2026 · NATIONAL ARENA</span>
                 <span class="ab-milestone-badge"><span aria-hidden="true">⚡</span> TOP 10 NATIONAL FINALIST</span>
@@ -495,13 +493,14 @@ function renderAbout(content) {
               <h3 class="ab-milestone-title">CINE-SELL Brand Challenge</h3>
               <div class="ab-milestone-venue">IIM Amritsar · Marketing Fest '26</div>
               <p class="ab-milestone-body">
-                National marketing fest challenge with ~700 registered teams, primarily postgraduate MBA cohorts from top B-schools across India. Led 4-member undergraduate "Team Big 4" as Team Lead: coordinated telephone market positioning, led live stage commercial pitch, and supported team promotional video reel to finish in the Top 10 nationally.
+                Led undergraduate squad "Team Big 4" through screening and live stage pitching to place Top 10 out of ~700 registered teams.
               </p>
-              <div class="ab-milestone-tags">
-                <span class="ab-pill ab-accent-pill">Top 10 Nationally</span>
-                <span class="ab-pill">~700 Team Registrations</span>
-                <span class="ab-pill">Team Lead · Team Big 4</span>
-                <span class="ab-pill">MBA &amp; UG Cohorts</span>
+              <div class="ab-milestone-footer">
+                <div class="ab-milestone-tags">
+                  <span class="ab-pill ab-accent-pill">Top 10 Nationally</span>
+                  <span class="ab-pill">~700 Teams</span>
+                </div>
+                <a href="#comp-cinesell" class="ab-proof-link">Inspect Proof ↗</a>
               </div>
             </article>
           </li>
@@ -511,7 +510,7 @@ function renderAbout(content) {
             <div class="ab-milestone-marker" aria-hidden="true">
               <span class="ab-marker-dot"></span>
             </div>
-            <article class="ab-milestone-card ab-active">
+            <article class="ab-milestone-card ab-milestone-compact ab-active">
               <div class="ab-milestone-header">
                 <span class="ab-milestone-date mono">PRESENT · ACTIVE BUILDS</span>
                 <span class="ab-milestone-badge ab-active-badge"><span aria-hidden="true">⚙</span> ACTIVE SYSTEMS</span>
@@ -519,13 +518,16 @@ function renderAbout(content) {
               <h3 class="ab-milestone-title">Software Systems &amp; Dialect NLP</h3>
               <div class="ab-milestone-venue">Personal Lab &amp; Independent Engineering</div>
               <p class="ab-milestone-body">
-                Translating field sprint discipline into persistent software architectures. Currently building Tathya (Haryanvi/Punjabi/Bhojpuri dialect token fragmentation analysis), Stratum (live candidate market simulator), Flow State (zero-telemetry desktop environment), and Krama (academic recovery calculus).
+                Building Tathya (Indic dialect evals), Stratum (CPM shock sim), Flow State (local focus OS), and Krama (75% recovery utility).
               </p>
-              <div class="ab-milestone-tags">
-                <span class="ab-pill ab-accent-pill">Tathya (NLP Dialects)</span>
-                <span class="ab-pill">Stratum (Sim Engine)</span>
-                <span class="ab-pill">Flow State (Local OS)</span>
-                <span class="ab-pill">Krama (Academic OS)</span>
+              <div class="ab-milestone-footer">
+                <div class="ab-milestone-tags">
+                  <span class="ab-pill ab-accent-pill">Tathya</span>
+                  <span class="ab-pill">Stratum</span>
+                  <span class="ab-pill">Flow State</span>
+                  <span class="ab-pill">Krama</span>
+                </div>
+                <a href="#ventures" class="ab-proof-link">Explore Systems ↗</a>
               </div>
             </article>
           </li>
@@ -536,41 +538,60 @@ function renderAbout(content) {
 </section>`;
 }
 
+function renderCompTags(tags) {
+  return (tags || [])
+    .map(t => {
+      const rawLabel = typeof t === 'string' ? t : (t && t.label ? t.label : '');
+      const label = String(rawLabel || '').trim();
+      if (!label || label === 'TBD') return '';
+      const isGold = Boolean((typeof t === 'object' && t && t.accent) || /(#1|Top 10|3rd|₹|8\.85x)/i.test(label));
+      return `<span class="case-tag ${isGold ? 'gold ' : ''}fr-tag">${escapeHtml(label)}</span>`;
+    })
+    .filter(Boolean)
+    .join('');
+}
+
+function getCompArenaBrief(comp) {
+  if (typeof comp.field_context === 'string') return comp.field_context;
+  if (comp.field_context && typeof comp.field_context === 'object' && comp.field_context.brief) {
+    return comp.field_context.brief;
+  }
+  return '';
+}
+
+function getCompFieldSetup(comp) {
+  if (comp.story && comp.story.setup && comp.story.setup !== 'TBD') return comp.story.setup;
+  if (comp.field_context && typeof comp.field_context === 'object' && comp.field_context.setup) {
+    return comp.field_context.setup;
+  }
+  return '';
+}
+
+function getCompFieldResult(comp) {
+  if (!comp.story) return '';
+  return comp.story.execution || comp.story.result || '';
+}
+
 function renderCompetitions(content) {
   const comps = content.competitions || [];
+  const primaryComps = comps.filter(c => c.category !== 'participation');
+  const participationComps = comps.filter(c => c.category === 'participation');
 
-  return `    <section id="competitions">
-      <div class="section-header">
-        <span class="section-eyebrow reveal">01 // Competitive Field Record</span>
-        <h2 class="section-title reveal">Top Finishes & Proof</h2>
-        <p class="section-lead reveal">
-          Seven verified collegiate arenas, Jun–Oct 2026: two 1st places, one top-10 national finish, one 3rd place, and three field participations. Filter by arena type below.
-        </p>
-      </div>
+  function renderCompCard(comp) {
+    const hasEvidence = Boolean(comp.evidence_url && comp.evidence_url !== 'TBD');
+    const validMembers = (comp.team && Array.isArray(comp.team.members) ? comp.team.members : [])
+      .filter(m => m && m !== 'TBD');
 
-      <!-- Dynamic Filter Controls -->
-      <div class="filter-bar reveal">
-        <button class="filter-btn active" data-filter="all">All Arenas (07)</button>
-        <button class="filter-btn" data-filter="1st-place">1st Place Championships (02)</button>
-        <button class="filter-btn" data-filter="national">National Finalist (IIM Amritsar)</button>
-        <button class="filter-btn" data-filter="pitch">Offline Brand Pitch (DCRUST)</button>
-        <button class="filter-btn" data-filter="participation">Field Runs &amp; Participations (03)</button>
-      </div>
+    const trophyPill = comp.trophy_pill || comp.placement;
+    const tagsHtml = renderCompTags(comp.tags);
+    const arenaBrief = getCompArenaBrief(comp);
+    const fieldSetup = getCompFieldSetup(comp);
+    const fieldResult = getCompFieldResult(comp);
 
-      <div class="case-stack fr-case-stack">
-
-${comps.map(comp => {
-  const hasEvidence = Boolean(comp.evidence_url && comp.evidence_url !== 'TBD');
-  const validMembers = (comp.team && Array.isArray(comp.team.members) ? comp.team.members : [])
-    .filter(m => m && m !== 'TBD');
-
-  const trophyPill = comp.trophy_pill || comp.placement;
-  const tags = comp.tags || [];
-
-  // Pillar 03 telemetry chips
-  let telemetryChips = '';
-  if (comp.id === 'cash-rush') {
-    telemetryChips = `
+    // Pillar 03 telemetry chips
+    let telemetryChips = '';
+    if (comp.id === 'cash-rush') {
+      telemetryChips = `
             <div class="telemetry-cell fr-telemetry-chip">
               <span class="telemetry-lbl fr-telemetry-lbl">Seed Capital</span>
               <span class="telemetry-val fr-telemetry-val ">₹300</span>
@@ -587,8 +608,8 @@ ${comps.map(comp => {
               <span class="telemetry-lbl fr-telemetry-lbl">Service Yield</span>
               <span class="telemetry-val fr-telemetry-val ">₹2,400 Total</span>
             </div>`;
-  } else if (comp.id === 'cinesell') {
-    telemetryChips = `
+    } else if (comp.id === 'cinesell') {
+      telemetryChips = `
             <div class="telemetry-cell fr-telemetry-chip">
               <span class="telemetry-lbl fr-telemetry-lbl">Deliverables</span>
               <span class="telemetry-val fr-telemetry-val ">Reel &amp; Stage Skit</span>
@@ -601,8 +622,8 @@ ${comps.map(comp => {
               <span class="telemetry-lbl fr-telemetry-lbl">Field</span>
               <span class="telemetry-val fr-telemetry-val accent">MBA &amp; UG Cohorts</span>
             </div>`;
-  } else if (comp.id === 'builders-bootcamp') {
-    telemetryChips = `
+    } else if (comp.id === 'builders-bootcamp') {
+      telemetryChips = `
             <div class="telemetry-cell fr-telemetry-chip">
               <span class="telemetry-lbl fr-telemetry-lbl">Timeline</span>
               <span class="telemetry-val fr-telemetry-val ">7-Day Venture Incubator</span>
@@ -615,8 +636,8 @@ ${comps.map(comp => {
               <span class="telemetry-lbl fr-telemetry-lbl">Demo Day</span>
               <span class="telemetry-val fr-telemetry-val ">#1 Overall Winning Team</span>
             </div>`;
-  } else if (comp.id === 'dcrust-brand-pitch') {
-    telemetryChips = `
+    } else if (comp.id === 'dcrust-brand-pitch') {
+      telemetryChips = `
             <div class="telemetry-cell fr-telemetry-chip">
               <span class="telemetry-lbl fr-telemetry-lbl">Time Window</span>
               <span class="telemetry-val fr-telemetry-val ">45-Minute Prep Sprint</span>
@@ -629,8 +650,8 @@ ${comps.map(comp => {
               <span class="telemetry-lbl fr-telemetry-lbl">Deliverables</span>
               <span class="telemetry-val fr-telemetry-val ">4-Part Campaign Suite</span>
             </div>`;
-  } else if (comp.id === 'venture-varsity') {
-    telemetryChips = `
+    } else if (comp.id === 'venture-varsity') {
+      telemetryChips = `
             <div class="telemetry-cell fr-telemetry-chip">
               <span class="telemetry-lbl fr-telemetry-lbl">Starting Fund</span>
               <span class="telemetry-val fr-telemetry-val ">₹0 Seed</span>
@@ -643,8 +664,8 @@ ${comps.map(comp => {
               <span class="telemetry-lbl fr-telemetry-lbl">Outcome</span>
               <span class="telemetry-val fr-telemetry-val ">R1 Exit → Field Pivot</span>
             </div>`;
-  } else if (comp.id === 'dcrust-business-pitching') {
-    telemetryChips = `
+    } else if (comp.id === 'dcrust-business-pitching') {
+      telemetryChips = `
             <div class="telemetry-cell fr-telemetry-chip">
               <span class="telemetry-lbl fr-telemetry-lbl">Concept</span>
               <span class="telemetry-val fr-telemetry-val ">Iris Camera</span>
@@ -657,8 +678,8 @@ ${comps.map(comp => {
               <span class="telemetry-lbl fr-telemetry-lbl">Status</span>
               <span class="telemetry-val fr-telemetry-val ">Participation</span>
             </div>`;
-  } else if (comp.id === 'dcrust-turn-the-court') {
-    telemetryChips = `
+    } else if (comp.id === 'dcrust-turn-the-court') {
+      telemetryChips = `
             <div class="telemetry-cell fr-telemetry-chip">
               <span class="telemetry-lbl fr-telemetry-lbl">Format</span>
               <span class="telemetry-val fr-telemetry-val ">Switch on Clap</span>
@@ -671,11 +692,11 @@ ${comps.map(comp => {
               <span class="telemetry-lbl fr-telemetry-lbl">Status</span>
               <span class="telemetry-val fr-telemetry-val accent">Participation</span>
             </div>`;
-  }
+    }
 
-  // Compact treatment for participation entries
-  if (comp.category === 'participation') {
-    return `      <!-- ========================================================================
+    // Compact treatment for participation entries
+    if (comp.category === 'participation') {
+      return `      <!-- ========================================================================
            COMPETITION CARD: ${escapeHtml(comp.title)} (${escapeHtml(comp.host)})
            ID: ${comp.id} | CATEGORY: ${comp.category} (COMPACT TREATMENT)
            ======================================================================== -->
@@ -692,7 +713,7 @@ ${comps.map(comp => {
           </div>
 
           <div class="case-pills-row fr-pills-row">
-            ${tags.map(t => `<span class="case-tag fr-tag">${escapeHtml(typeof t === 'string' ? t : t.label)}</span>`).join('')}
+            ${tagsHtml}
           </div>
         </div>
 
@@ -701,20 +722,20 @@ ${comps.map(comp => {
             <div class="fr-pillar-header">
               <span class="fr-pillar-title">THE ARENA &amp; ASSIGNMENT</span>
             </div>
-            <p class="fr-narrative-text">${escapeHtml(comp.field_context)}</p>
-            <div class="fr-role-title-box" style="margin-top: 12px;">
-              <span class="fr-role-subtitle">Primary Assignment:</span>
-              <div class="fr-role-title" style="font-size: 14px;">${escapeHtml(comp.team.rudra_role || comp.team.role || 'Participant')}</div>
+            <p class="fr-narrative-text">${escapeHtml(arenaBrief)}</p>
+            <div class="fr-role-highlight">
+              <span class="fr-role-tag">ROLE:</span>
+              <span class="fr-role-title">${escapeHtml(comp.team.rudra_role || comp.team.role || 'Participant')}</span>
             </div>
-            <div class="fr-deliverables-block" style="margin-top: 10px;">
-              <span class="fr-deliverables-lbl">Shipped Sprint Deliverables:</span>
+            <div class="fr-deliverables-box">
+              <span class="fr-deliverables-title">Shipped Sprint Deliverables:</span>
               <ul class="fr-deliverables-list">
-                ${(comp.deliverables || []).map(d => `<li class="fr-deliverable-item"><span class="fr-bullet">▸</span><span>${escapeHtml(d)}</span></li>`).join('\n              ')}
+                ${(comp.deliverables || []).map(d => `<li class="fr-deliverable-item"><span class="fr-check-icon" aria-hidden="true">▸</span><span class="fr-deliverable-text">${escapeHtml(d)}</span></li>`).join('\n                ')}
               </ul>
             </div>
             ${validMembers.length > 0 ? `
-            <div class="fr-squad-row" style="margin-top: 10px;">
-              <span class="fr-squad-lbl">Personnel &amp; Teammates:</span>
+            <div class="fr-squad-meta">
+              <span>Squad:</span>
               <span class="fr-squad-names">${escapeHtml(validMembers.join(', '))}</span>
             </div>` : ''}
           </div>
@@ -724,44 +745,63 @@ ${comps.map(comp => {
               <span class="fr-pillar-title">FIELD EXECUTION &amp; OUTCOME</span>
               <span class="fr-result-badge fr-badge-participation">PARTICIPATION</span>
             </div>
-            <p class="fr-narrative-text">${escapeHtml(comp.story.execution || comp.story.result)}</p>
-            <div class="case-telemetry-grid fr-telemetry-matrix" style="margin-top: 14px;">
+            <p class="fr-narrative-text">${escapeHtml(fieldResult)}</p>
+            <div class="case-telemetry-grid fr-telemetry-matrix">
               ${telemetryChips}
             </div>
-            <div class="fr-compact-stamp-bar" style="margin-top: 16px;">
-              <span class="fr-photo-stamp mono">${escapeHtml(comp.proof.stamp)}</span>
+            <div class="fr-compact-stamp-bar">
+              <span class="fr-photo-stamp mono">${escapeHtml(comp.proof && comp.proof.stamp ? comp.proof.stamp : comp.date)}</span>
               <span class="fr-asset-badge"><span>FIELD ARTIFACT</span></span>
             </div>
           </div>
         </div>
       </article>`;
-  }
+    }
 
-  // Pillar 04 gallery thumbnails
-  const addAssets = comp.proof && comp.proof.additional_assets ? comp.proof.additional_assets : [];
-  let galleryHtml = '';
-  if (addAssets.length > 0) {
-    const allGallery = [comp.proof.url, ...addAssets];
-    galleryHtml = `
+    // Visual segmented ROI bar for Cash Rush inside Pillar 03
+    const roiBarHtml = comp.id === 'cash-rush' ? `
+          <div class="fr-roi-bar-wrap" aria-label="Cash Rush Unit Economics Breakdown: ₹300 Seed, ₹45 Cost, ₹2,400 Service Yield ending at ₹2,655 (8.85x)">
+            <div class="fr-roi-bar-head">
+              <span class="fr-roi-bar-title">120-MIN CAPITAL BREAKDOWN</span>
+              <span class="fr-roi-bar-total mono">₹2,655 Ending (8.85x)</span>
+            </div>
+            <div class="fr-roi-track" role="img" aria-label="Proportional breakdown of ₹300 Seed, ₹45 Cost, and ₹2,400 Service Yield">
+              <span class="fr-roi-seg fr-roi-seg--seed" style="width: 11%" title="₹300 Seed"></span>
+              <span class="fr-roi-seg fr-roi-seg--cost" style="width: 2%" title="₹45 Cost"></span>
+              <span class="fr-roi-seg fr-roi-seg--yield" style="width: 87%" title="₹2,400 Service Yield"></span>
+            </div>
+            <div class="fr-roi-legend">
+              <span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--seed" aria-hidden="true"></i>₹300 Seed</span>
+              <span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--cost" aria-hidden="true"></i>₹45 Cost</span>
+              <span class="fr-roi-leg-item fr-roi-leg-accent"><i class="fr-roi-dot fr-roi-dot--yield" aria-hidden="true"></i>₹2,400 Service Yield</span>
+            </div>
+          </div>` : '';
+
+    // Pillar 04 gallery thumbnails
+    const addAssets = comp.proof && comp.proof.additional_assets ? comp.proof.additional_assets : [];
+    let galleryHtml = '';
+    if (addAssets.length > 0) {
+      const allGallery = [comp.proof.url, ...addAssets];
+      galleryHtml = `
             <div class="fr-gallery-shelf">
               <span class="fr-gallery-heading">Verified Field Artifacts (${allGallery.length}):</span>
-              <div class="fr-gallery-switcher">
+              <div class="fr-gallery-row fr-gallery-switcher">
                 ${allGallery.map((assetPath, aIdx) => {
                   const artifactAlt = ARTIFACT_ALT_MAP[assetPath] || `${comp.title} - Artifact ${aIdx + 1}`;
                   return `
-                <button type="button" class="fr-thumb-btn fr-gallery-thumb${aIdx === 0 ? ' active' : ''}" 
-                        data-asset-src="${assetPath}" 
-                        data-asset-caption="${escapeHtml(comp.proof.caption)} [Artifact ${aIdx + 1}]" 
-                        data-asset-stamp="${escapeHtml(comp.proof.stamp)}" 
+                <button type="button" class="fr-thumb-btn fr-gallery-thumb${aIdx === 0 ? ' active' : ''}"
+                        data-asset-src="${assetPath}"
+                        data-asset-caption="${escapeHtml(comp.proof.caption)} [Artifact ${aIdx + 1}]"
+                        data-asset-stamp="${escapeHtml(comp.proof.stamp)}"
                         aria-label="View ${escapeHtml(artifactAlt)}">
                   <img src="${getThumbPath(assetPath)}" width="640" height="400" alt="${escapeHtml(artifactAlt)}" loading="lazy">
                 </button>`;
                 }).join('')}
               </div>
             </div>`;
-  }
+    }
 
-  return `      <!-- ========================================================================
+    return `      <!-- ========================================================================
            COMPETITION CARD: ${escapeHtml(comp.title)} (${escapeHtml(comp.host)})
            ID: ${comp.id} | CATEGORY: ${comp.category}
            ======================================================================== -->
@@ -778,13 +818,13 @@ ${comps.map(comp => {
           </div>
 
           <div class="case-pills-row fr-pills-row">
-            ${tags.map(t => `<span class="case-tag ${t.accent ? 'gold ' : ''}fr-tag">${escapeHtml(t.label)}</span>`).join('')}
+            ${tagsHtml}
           </div>
         </div>
 
         <div class="fr-proof-layer">
           <div class="fr-proof-column fr-proof-narrative">
-            
+
         <!-- PILLAR 01: THE ARENA & BRIEF -->
         <div class="fr-pillar fr-pillar-arena">
           <div class="fr-pillar-header">
@@ -794,19 +834,19 @@ ${comps.map(comp => {
             </div>
             <span class="fr-arena-badge-kicker">${escapeHtml(comp.host)}</span>
           </div>
-          <p class="fr-arena-lead">${escapeHtml(comp.field_context.brief)}</p>
+          <p class="fr-arena-lead">${escapeHtml(arenaBrief)}</p>
           <div class="fr-arena-meta-strip">
             <span class="fr-meta-chip"><strong>Host:</strong> ${escapeHtml(comp.host)}</span>
             <span class="fr-meta-chip"><strong>Event:</strong> ${escapeHtml(comp.event)}</span>
             <span class="fr-meta-chip"><strong>Date:</strong> ${escapeHtml(comp.date)}</span>
           </div>
+          ${fieldSetup ? `
           <div class="fr-context-narrative">
             <span class="fr-narrative-lbl">Field Dynamics &amp; Setup:</span>
-            <p class="fr-narrative-text">${escapeHtml(comp.field_context.setup)}</p>
-          </div>
+            <p class="fr-narrative-text">${escapeHtml(fieldSetup)}</p>
+          </div>` : ''}
         </div>
-    
-            
+
         <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
         <div class="fr-pillar fr-pillar-role">
           <div class="fr-pillar-header">
@@ -816,24 +856,23 @@ ${comps.map(comp => {
             </div>
             ${hasEvidence ? '<span class="fr-role-badge">VERIFIED CONTRIBUTION</span>' : '<span class="fr-role-badge">CONTRIBUTION RECORD</span>'}
           </div>
-          <div class="fr-role-title-box">
-            <span class="fr-role-subtitle">Primary Assignment:</span>
-            <div class="fr-role-title">${escapeHtml(comp.team.rudra_role || comp.team.role || 'Lead')}</div>
+          <div class="fr-role-highlight">
+            <span class="fr-role-tag">ASSIGNMENT:</span>
+            <span class="fr-role-title">${escapeHtml(comp.team.rudra_role || comp.team.role || 'Lead')}</span>
           </div>
-          <div class="fr-deliverables-block">
-            <span class="fr-deliverables-lbl">Shipped Sprint Deliverables:</span>
+          <div class="fr-deliverables-box">
+            <span class="fr-deliverables-title">Shipped Sprint Deliverables:</span>
             <ul class="fr-deliverables-list">
-              ${(comp.deliverables || []).map(d => `<li class="fr-deliverable-item"><span class="fr-bullet">▸</span><span>${escapeHtml(d)}</span></li>`).join('\n              ')}
+              ${(comp.deliverables || []).map(d => `<li class="fr-deliverable-item"><span class="fr-check-icon" aria-hidden="true">▸</span><span class="fr-deliverable-text">${escapeHtml(d)}</span></li>`).join('\n              ')}
             </ul>
           </div>
           ${validMembers.length > 0 ? `
-          <div class="fr-squad-row">
-            <span class="fr-squad-lbl">Personnel &amp; Teammates:</span>
+          <div class="fr-squad-meta">
+            <span>Personnel &amp; Teammates:</span>
             <span class="fr-squad-names">${escapeHtml(validMembers.join(', '))}</span>
           </div>` : ''}
         </div>
-    
-            
+
         <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
         <div class="fr-pillar fr-pillar-outcome">
           <div class="fr-pillar-header">
@@ -845,22 +884,23 @@ ${comps.map(comp => {
           </div>
           <div class="fr-context-narrative">
             <span class="fr-narrative-lbl">Verified Field Result:</span>
-            <p class="fr-narrative-text">${escapeHtml(comp.story.execution)}</p>
+            <p class="fr-narrative-text">${escapeHtml(fieldResult)}</p>
           </div>
           <div class="case-telemetry-grid fr-telemetry-matrix">
             ${telemetryChips}
           </div>
-          
+          ${roiBarHtml}
+
           <!-- Case Study Telemetry Deep Dive Anchor Button -->
-          <button class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="${comp.id}" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics &amp; telemetry for ${escapeHtml(comp.title)}">
+          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="${comp.id}" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics &amp; telemetry for ${escapeHtml(comp.title)}">
             <span>Examine Unit Economics &amp; Telemetry</span>
             <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
           </button>
         </div>
-    
+
           </div>
           <div class="fr-proof-column fr-proof-evidence">
-            
+
         <!-- PILLAR 04: PRIMARY FIELD PROOF & VISUAL ASSETS -->
         <div class="fr-pillar fr-pillar-visual">
           <div class="fr-pillar-header">
@@ -873,29 +913,30 @@ ${comps.map(comp => {
 
           <div class="fr-photo-frame" id="fr-visual-${comp.id}" data-zoom-target="${comp.proof.url}">
             <img class="case-photo fr-primary-photo fr-main-img" id="fr-main-img-${comp.id}"
-                 src="${getThumbPath(comp.proof.url)}" 
-                 width="640" 
-                 height="400" 
-                 alt="${escapeHtml(ARTIFACT_ALT_MAP[comp.proof.url] || comp.proof.caption)}" 
+                 src="${getThumbPath(comp.proof.url)}"
+                 width="640"
+                 height="400"
+                 alt="${escapeHtml(ARTIFACT_ALT_MAP[comp.proof.url] || comp.proof.caption)}"
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
               <span class="fr-overlay-zoom-pill">
                 <span class="fr-zoom-icon">🔍</span> Click to Inspect Full-Resolution Proof
               </span>
             </div>
-            <button class="fr-inspect-btn" 
-                    data-asset-src="${comp.proof.url}" 
-                    data-asset-caption="${escapeHtml(comp.proof.caption)}" 
-                    data-asset-stamp="${escapeHtml(comp.proof.stamp)}" 
-                    data-comp-title="${escapeHtml(comp.title)}" 
+            <button type="button" class="fr-inspect-btn"
+                    data-asset-src="${comp.proof.url}"
+                    data-asset-caption="${escapeHtml(comp.proof.caption)}"
+                    data-asset-stamp="${escapeHtml(comp.proof.stamp)}"
+                    data-comp-title="${escapeHtml(comp.title)}"
                     aria-label="Inspect ${escapeHtml(comp.title)} evidence full size">
+              <span>Inspect</span>
               <span aria-hidden="true">↗</span>
             </button>
           </div>
 
           <div class="fr-photo-meta-bar">
             <span class="fr-photo-stamp mono">${escapeHtml(comp.proof.stamp)}</span>
-            <span class="fr-asset-tag fr-asset-linked" title="Verified local filesystem asset path">
+            <span class="fr-asset-tag fr-asset-linked" title="Local filesystem asset path">
               <span class="fr-code-bracket">[</span><code id="fr-path-${comp.id}">${escapeHtml(comp.proof.url)}</code><span class="fr-code-bracket">]</span>
             </span>
           </div>
@@ -903,11 +944,37 @@ ${comps.map(comp => {
 
           ${galleryHtml}
         </div>
-    
+
           </div>
         </div>
       </article>`;
-}).join('\n\n')}
+  }
+
+  return `    <section id="competitions">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">01 // Competitive Field Record</span>
+        <h2 class="section-title reveal">Top Finishes &amp; Proof</h2>
+        <p class="section-lead reveal">
+          Seven collegiate arenas, Jun–Oct 2026: two 1st places, one top-10 national finish, one 3rd place, and three field participations. Filter by arena type below.
+        </p>
+      </div>
+
+      <!-- Dynamic Filter Controls -->
+      <div class="filter-bar reveal">
+        <button type="button" class="filter-btn active" data-filter="all">All Arenas (07)</button>
+        <button type="button" class="filter-btn" data-filter="1st-place">1st Place Championships (02)</button>
+        <button type="button" class="filter-btn" data-filter="national">National Finalist (IIM Amritsar)</button>
+        <button type="button" class="filter-btn" data-filter="pitch">Offline Brand Pitch (DCRUST)</button>
+        <button type="button" class="filter-btn" data-filter="participation">Field Runs &amp; Participations (03)</button>
+      </div>
+
+      <div class="case-stack fr-case-stack">
+
+${primaryComps.map(renderCompCard).join('\n\n')}
+
+${participationComps.length > 0 ? `      <div class="fr-participation-grid">
+${participationComps.map(renderCompCard).join('\n\n')}
+      </div>` : ''}
 
       </div>
     </section>`;
@@ -930,19 +997,53 @@ function renderVentures(content) {
   }
   tathyaExplorerHtml = renderTathyaExplorer(tathyaData);
 
+  const deepDiveMap = {
+    tathya: {
+      b1Title: 'Research Hypothesis &amp; Failure Modes',
+      b1Text: 'LLMs trained on standard web Hindi (Manak Hindi) suffer subword token fragmentation on dialectal inputs from Haryana, Punjab, and Bihar. Colloquial words split into multiple byte fragments, inflating sequence length and diluting attention over civic entities.',
+      b2Title: 'Verification Layer Architecture',
+      b2Text: 'Tathya pairs orthographic normalization with deterministic assertion boundary checks, grounding civic and public-health queries against audited municipal records prior to output generation.',
+      b3Title: 'Retrospective: Grounding in Authentic Speech',
+      b3Quote: 'Synthetically generated dialect prompts introduced artificial phrasing. Shifting to native voice notes and community radio transcripts grounded the evaluation set in real spoken syntax.'
+    },
+    stratum: {
+      b1Title: 'Simulation Engine Model',
+      b1Text: 'Stratum replaces static LLM-cheatable case studies with a deterministic finite-state market sandbox where candidates allocate capital across simulated ad auctions under exogenous CPM shocks.',
+      b2Title: 'Latency &amp; Capital Efficiency Audits',
+      b2Text: 'Every budget reallocation and pivot timestamp is logged to an immutable session ledger, scoring candidates on capital velocity, margin protection, and decision speed under uncertainty.',
+      b3Title: 'Retrospective: Headless Engine First',
+      b3Quote: 'Building canvas dashboards first slowed iteration on market invariants. Stripping down to a seeded headless state machine ensured identical scenario playback across candidate cohorts.'
+    },
+    'flow-state': {
+      b1Title: 'Local-First Zero-OAuth Architecture',
+      b1Text: 'Modern focus utilities leak behavioral telemetry and require broad OAuth scopes. Flow State enforces strict air-gap privacy by parsing local RFC 5545 calendar files with zero network handshakes.',
+      b2Title: '16-Bit Procedural Audio Engine',
+      b2Text: 'Replaced streaming audio loops and MP3 assets with real-time 44.1kHz procedural sine synthesis via math.sin, keeping audio generation deterministic and completely offline.',
+      b3Title: 'Retrospective: Discarding Electron Overhead',
+      b3Quote: 'Bundling Chromium consumed ~450MB of RAM—counterproductive for lightweight flow. Moving to native OS webview primitives kept memory footprints minimal and startup instant.'
+    },
+    krama: {
+      b1Title: '75% Eligibility Recovery Calculus',
+      b1Text: 'Indian undergraduate programs enforce strict 75% attendance cutoffs for exam eligibility. Krama models attendance trajectories explicitly so students know exact consecutive classes needed to recover.',
+      b2Title: 'Offline Timetable &amp; Edge Handling',
+      b2Text: 'Operates 100% on-device with local SQLite storage, handling lab blocks, campus holidays, and timetable swaps without requiring external portal credentials.',
+      b3Title: 'Retrospective: Modeling Irregular Weeks',
+      b3Quote: 'Rotational odd/even week cycles broke simple modulo parsers. Switching to day-by-day deterministic state transitions keyed to academic calendars eliminated schedule drift.'
+    }
+  };
+
   return `    <section id="ventures">
       <div class="section-header">
         <span class="section-eyebrow reveal">02 // Ventures &amp; Systems</span>
         <h2 class="section-title reveal">What I Am Building</h2>
         <p class="section-lead reveal">
-          Four projects at different stages, from an early concept to small tools I use myself.
+          Four projects at different stages, from early research to local-first tools I use myself.
         </p>
       </div>
 
       <div class="ventures-grid">
 
 ${vens.map(ven => {
-  const hasEvidence = Boolean(ven.evidence_url && ven.evidence_url !== 'TBD');
   const hasProofAsset = Boolean(ven.proof_asset && ven.proof_asset.url && ven.proof_asset.url !== 'TBD');
 
   let previewHtml = '';
@@ -955,96 +1056,163 @@ ${vens.map(ven => {
       if (line.type === 'comment') {
         return `<span class="cm">${escapeHtml(line.text)}</span>`;
       }
-      let lineText = escapeHtml(line.text);
+      const lineText = escapeHtml(line.text);
       if (line.prefix) {
         return `<span class="kw">${escapeHtml(line.prefix)}</span> ${lineText}`;
       }
       return lineText;
     }).join('\n');
 
+    const termTitle = ven.terminal_preview.filename || ven.terminal_preview.title || ven.id;
+    const termBadge = ven.terminal_preview.badge ? ` · ${ven.terminal_preview.badge}` : '';
+
     previewHtml = `
             <!-- Integrated Terminal Output -->
             <div class="term">
               <div class="term-bar">
                 <i></i><i></i><i></i>
-                <span>${escapeHtml(ven.terminal_preview.title)}</span>
+                <span>${escapeHtml(termTitle + termBadge)}</span>
               </div>
               <pre class="term-body" tabindex="0" role="region" aria-label="${escapeHtml(ven.name)} terminal output">${renderedLines}</pre>
             </div>`;
   } else if (hasProofAsset) {
     previewHtml = `
             <div class="venture-preview-box">
-              <img src="${ven.proof_asset.url}" alt="${escapeHtml(ven.proof_asset.alt)}" class="venture-preview-img" loading="lazy">
+              <img src="${ven.proof_asset.url}" width="320" height="220" alt="${escapeHtml(ven.proof_asset.alt)}" class="venture-preview-img" loading="lazy">
             </div>`;
   }
 
-  // Drawers for case study deep dives
-  let drawerContent = '';
-  if (ven.id === 'tathya') {
-    drawerContent = `
-              <div class="cs-grid">
-                <div class="cs-panel">
-                  <h4><span class="cs-num">01</span> Research Hypothesis &amp; Failure Modes</h4>
-                  <p>State-of-the-art LLMs trained on standard web Hindi (Manak Hindi) experience catastrophic token fragmentation when parsing dialectal inputs from Haryana, Punjab, and Bihar. A 6-token colloquial query often blows up into 34+ byte fragments, degrading attention weights and yielding hallucinations on critical civic information.</p>
+  // Per-venture tactile interactive object
+  let interactiveHtml = '';
+  if (ven.id === 'stratum') {
+    interactiveHtml = `
+            <div class="vn-sim-widget" data-sim="stratum">
+              <div class="vn-sim-head">
+                <span class="vn-sim-title">CPM SHOCK MICRO-SIM</span>
+                <div class="vn-sim-tabs" role="group" aria-label="Stratum CPM scenario toggle">
+                  <button type="button" class="vn-sim-tab active" data-sim-mode="baseline" aria-pressed="true">Baseline CPM</button>
+                  <button type="button" class="vn-sim-tab" data-sim-mode="shock" aria-pressed="false">+40% Shock</button>
                 </div>
-                <div class="cs-panel">
-                  <h4><span class="cs-num">02</span> Verification Layer Architecture</h4>
-                  <p>Tathya implements a dual-pass evaluation pipeline: an acoustic/orthographic normalizer paired with an assertion boundary checker. Civic and health queries are grounded against audited municipal tables before generating user responses.</p>
+              </div>
+              <div class="vn-sim-chart" aria-hidden="true">
+                <svg viewBox="0 0 240 52" width="240" height="52" class="vn-sim-svg" preserveAspectRatio="none">
+                  <line x1="0" y1="26" x2="240" y2="26" class="vn-sim-gridline" />
+                  <path id="stratum-spark-path" d="M 4 38 L 48 34 L 92 36 L 136 30 L 180 32 L 236 28" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <p class="vn-sim-scenario" id="stratum-sim-scenario">Scenario: Baseline auction pace; tracking capital velocity and margin yield.</p>
+              <div class="vn-sim-metrics">
+                <div class="vn-sim-stat">
+                  <span class="vn-sim-lbl">Capital Velocity</span>
+                  <span class="vn-sim-val" id="stratum-readout-cap">Steady Pace</span>
                 </div>
-                <div class="cs-panel cs-panel-full">
-                  <h4><span class="cs-num">03</span> Architectural Retrospective &amp; Failure Analysis</h4>
-                  <p><strong>What Broke:</strong> Relying purely on synthetically generated dialect evaluations produced synthetic hallucinations. <strong>Correction:</strong> Transitioned to collecting authentic local voice notes and community radio transcripts to construct an uncorrupted benchmark dataset.</p>
+                <div class="vn-sim-stat">
+                  <span class="vn-sim-lbl">Margin Yield</span>
+                  <span class="vn-sim-val" id="stratum-readout-margin">Protected Baseline</span>
                 </div>
-              </div>`;
-  } else if (ven.id === 'stratum') {
-    drawerContent = `
-              <div class="cs-grid">
-                <div class="cs-panel">
-                  <h4><span class="cs-num">01</span> Simulation Engine Model</h4>
-                  <p>Stratum models marketing and venture aptitude by discarding static case interviews in favor of a live deterministic finite-state machine. Candidates allocate capital across volatile simulated bidding channels (simulated Meta/Google ad auctions) subject to exogenous algorithmic shocks.</p>
-                </div>
-                <div class="cs-panel">
-                  <h4><span class="cs-num">02</span> Latency &amp; Capital Efficiency Audits</h4>
-                  <p>Every keystroke, budget allocation, and pivot timestamp is logged into an immutable session ledger. Candidates are evaluated on mathematical resilience, capital drawdowns, and recovery calculus rather than articulate retrospective rationalizations.</p>
-                </div>
-                <div class="cs-panel cs-panel-full">
-                  <h4><span class="cs-num">03</span> Retrospective: Headless vs Full UI</h4>
-                  <p><strong>Initial Pitfall:</strong> Attempted to build high-polish canvas dashboards prematurely. <strong>Pivot:</strong> Stripped the UI to engineer a headless, deterministic state machine with verifiable seeds first, ensuring identical scenario playback across interview cohorts.</p>
-                </div>
-              </div>`;
+              </div>
+            </div>`;
   } else if (ven.id === 'flow-state') {
-    drawerContent = `
-              <div class="cs-grid">
-                <div class="cs-panel">
-                  <h4><span class="cs-num">01</span> Local-First Philosophy &amp; Zero-OAuth Sync</h4>
-                  <p>Modern developer productivity tools are saturated with telemetry beacons, remote websocket heartbeats, and invasive analytics. Flow State enforces total air-gap capability: calendar events synchronize via direct RFC 5545 <code>.ics</code> parsing with zero external network handshakes.</p>
-                </div>
-                <div class="cs-panel">
-                  <h4><span class="cs-num">02</span> 16-Bit Procedural Sound Engine</h4>
-                  <p>Replaced bloated streaming audio players and compressed MP3 loops with a native 44.1kHz Web Audio procedural sine synthesizer. Generates custom brown and pink noise with mathematical purity at microscopic CPU usage (&lt;0.5%).</p>
-                </div>
-                <div class="cs-panel cs-panel-full">
-                  <h4><span class="cs-num">03</span> Retrospective: Discarding Electron</h4>
-                  <p><strong>Critical Lesson:</strong> Bundling Chromium for a productivity tool consumed 450MB of RAM—the antithesis of lightweight flow. Rebuilt the desktop shell around native OS webviews to maintain sub-40MB memory footprints.</p>
-                </div>
-              </div>`;
+    interactiveHtml = `
+            <div class="vn-artifact-stack">
+              <button type="button"
+                      class="vn-artifact-btn"
+                      data-asset-src="assets/flowstate-receipt.png"
+                      data-asset-caption="Flow State · Weekly Focus Telemetry Receipt"
+                      data-asset-stamp="Local Build // Receipt"
+                      data-comp-title="Flow State"
+                      aria-label="Inspect Flow State weekly focus telemetry receipt">
+                <img src="assets/flowstate-receipt.png" width="320" height="220" loading="lazy" alt="Flow State weekly focus telemetry receipt preview">
+                <span class="vn-artifact-meta">
+                  <span class="vn-artifact-kicker">LOCAL BUILD // RECEIPT</span>
+                  <span class="vn-artifact-title">Inspect Focus Receipt ↗</span>
+                </span>
+              </button>
+              <button type="button" class="vn-synth-btn" id="flowstate-synth-btn" aria-pressed="false">
+                <span class="vn-synth-dot" aria-hidden="true"></span>
+                <span id="flowstate-synth-label">▶ Test 432Hz Sine Synth</span>
+              </button>
+            </div>`;
   } else if (ven.id === 'krama') {
-    drawerContent = `
-              <div class="cs-grid">
-                <div class="cs-panel">
-                  <h4><span class="cs-num">01</span> The 75% Cutoff Recovery Calculus</h4>
-                  <p>Indian undergraduate regulations mandate strict 75% attendance for examination eligibility. Krama eliminates intuitive guesswork by modeling class attendance as a calculus curve, calculating the minimum mandatory presence required to recover from unexpected illness or collegiate competition travel.</p>
+    interactiveHtml = `
+            <div class="vn-artifact-stack">
+              <button type="button"
+                      class="vn-artifact-btn"
+                      data-asset-src="assets/krama-preview.jpg"
+                      data-asset-caption="Krama (क्रम) · Offline Attendance & Schedule Utility"
+                      data-asset-stamp="Student Utility // UI Preview"
+                      data-comp-title="Krama (क्रम)"
+                      aria-label="Inspect Krama mobile UI preview">
+                <img src="assets/krama-preview.jpg" width="320" height="220" loading="lazy" alt="Krama academic schedule and attendance recovery UI preview">
+                <span class="vn-artifact-meta">
+                  <span class="vn-artifact-kicker">STUDENT UTILITY // UI PREVIEW</span>
+                  <span class="vn-artifact-title">Inspect Mobile UI ↗</span>
+                </span>
+              </button>
+              <div class="vn-calc-widget" id="krama-calc-widget" data-attended="17" data-total="25">
+                <div class="vn-calc-head">
+                  <span class="vn-calc-title">75% RECOVERY CALCULUS</span>
+                  <span class="vn-calc-pct mono" id="krama-pct-readout">68.0%</span>
                 </div>
-                <div class="cs-panel">
-                  <h4><span class="cs-num">02</span> Offline Timetable Optimization</h4>
-                  <p>Operates 100% on-device using local indexed storage. Accommodates shifting lab slots, campus holiday calendars, and substitute sessions without requiring administrative portal credentials.</p>
+                <div class="vn-calc-controls">
+                  <div class="vn-calc-stepper">
+                    <span class="vn-calc-lbl">Attended</span>
+                    <div class="vn-stepper-btns">
+                      <button type="button" class="vn-step-btn" id="krama-att-minus" aria-label="Decrease attended classes">−</button>
+                      <span class="vn-step-val mono" id="krama-att-val">17</span>
+                      <button type="button" class="vn-step-btn" id="krama-att-plus" aria-label="Increase attended classes">+</button>
+                    </div>
+                  </div>
+                  <div class="vn-calc-stepper">
+                    <span class="vn-calc-lbl">Total</span>
+                    <div class="vn-stepper-btns">
+                      <button type="button" class="vn-step-btn" id="krama-tot-minus" aria-label="Decrease total classes">−</button>
+                      <span class="vn-step-val mono" id="krama-tot-val">25</span>
+                      <button type="button" class="vn-step-btn" id="krama-tot-plus" aria-label="Increase total classes">+</button>
+                    </div>
+                  </div>
                 </div>
-                <div class="cs-panel cs-panel-full">
-                  <h4><span class="cs-num">03</span> Retrospective: Handling Edge Schedules</h4>
-                  <p><strong>Edge Case Failure:</strong> Irregular university schedules with rotational odd/even week cycles broke simple modulo parsers. <strong>Fix:</strong> Implemented day-by-day deterministic state transitions keyed to official university academic calendars.</p>
-                </div>
-              </div>`;
+                <div class="vn-calc-advice" id="krama-advice-readout">Attend next 7 consecutive classes to recover 75.0%.</div>
+              </div>
+            </div>`;
   }
+
+  const dd = deepDiveMap[ven.id];
+  const statusHeadline = ven.status === 'building' ? 'Status: Building' : 'Status: Idea';
+  const indicatorClass = ven.status === 'building' ? 'cs-indicator-building' : 'cs-indicator-idea';
+
+  const drawerContent = dd ? `
+              <div class="cs-status-banner">
+                <div class="cs-status-left">
+                  <span class="cs-status-indicator ${indicatorClass}" aria-hidden="true"></span>
+                  <span class="cs-status-headline">${escapeHtml(statusHeadline)} // ${escapeHtml(ven.badge)}</span>
+                </div>
+                <span class="cs-status-detail-pill">${escapeHtml(ven.status_detail)}</span>
+              </div>
+
+              <div class="cs-block">
+                <div class="cs-block-header">
+                  <span class="cs-block-num">01</span>
+                  <span class="cs-block-title">${dd.b1Title}</span>
+                </div>
+                <p class="cs-block-text">${dd.b1Text}</p>
+              </div>
+
+              <div class="cs-block">
+                <div class="cs-block-header">
+                  <span class="cs-block-num">02</span>
+                  <span class="cs-block-title">${dd.b2Title}</span>
+                </div>
+                <p class="cs-block-text">${dd.b2Text}</p>
+              </div>
+
+              <div class="cs-block cs-retrospective-card">
+                <div class="cs-retrospective-title">
+                  <span class="cs-retrospective-icon" aria-hidden="true">✦</span>
+                  <span>${dd.b3Title}</span>
+                </div>
+                <blockquote class="cs-retrospective-quote">“${dd.b3Quote}”</blockquote>
+              </div>` : '';
 
   return `        <!-- VENTURE CARD: ${escapeHtml(ven.name)} -->
         <article class="venture-card reveal" data-venture-id="${ven.id}">
@@ -1057,6 +1225,7 @@ ${vens.map(ven => {
             <p class="venture-thesis">${escapeHtml(ven.thesis)}</p>
 
             ${previewHtml}
+            ${interactiveHtml}
           </div>
 
           <div class="venture-details">
@@ -1078,24 +1247,30 @@ ${vens.map(ven => {
             <a href="${escapeHtml(ven.action_cta.target)}" class="btn-solid">${escapeHtml(ven.action_cta.label)} <span class="btn-arrow">→</span></a>
             ${ven.repo_url && ven.repo_url !== 'TBD' ? `<a href="${escapeHtml(ven.repo_url)}" class="btn-ghost venture-repo-link" target="_blank" rel="noopener">Code ↗</a>` : ''}
             ${ven.demo_url && ven.demo_url !== 'TBD' ? `<a href="${escapeHtml(ven.demo_url)}" class="btn-ghost venture-demo-link" target="_blank" rel="noopener">Demo ↗</a>` : ''}
-            ${ven.id === 'tathya' ? '<a href="#tathya-workbench" class="venture-explorer-link">🔬 Open Live Benchmark ↓</a>' : ''}
+            ${ven.id === 'tathya' ? '<a href="#tathya-workbench" class="btn-outline venture-sub-btn">Open Dialect Lab ↓</a>' : ''}
           </div>
 
           <!-- Deep Dive Dynamic Trigger Button -->
-          <button class="cs-trigger" data-drawer-target="cs-drawer-${ven.id}" aria-expanded="false" aria-controls="cs-drawer-${ven.id}">
-            <span><span class="cs-trigger__icon" aria-hidden="true">+</span> Deep Dive: Systems &amp; Retrospective</span>
-            <span class="cs-trigger__badge">AUDITED</span>
+          <button type="button"
+                  id="cs-trigger-${ven.id}"
+                  class="cs-trigger"
+                  data-drawer-target="cs-drawer-${ven.id}"
+                  aria-expanded="false"
+                  aria-controls="cs-drawer-${ven.id}">
+            <span class="cs-trigger-left">
+              <span class="cs-trigger-icon" aria-hidden="true">+</span>
+              <span class="cs-trigger-label">Deep Dive: Systems &amp; Retrospective</span>
+            </span>
+            <span class="cs-trigger-badge">AUDITED</span>
           </button>
 
           <!-- Expandable Deep Dive Drawer Host -->
-          <div id="cs-drawer-${ven.id}" class="cs-drawer" hidden>
-            <div class="cs-drawer__inner">
-              <div class="cs-header-strip">
-                <span class="cs-eyebrow">ARCHITECTURAL DOSSIER // ${escapeHtml(ven.name).toUpperCase()}</span>
-                <span class="cs-badge">${escapeHtml(ven.badge)}</span>
+          <div id="cs-drawer-${ven.id}" class="cs-drawer" role="region" aria-labelledby="cs-trigger-${ven.id}" hidden>
+            <div class="cs-drawer-inner">
+              <div class="cs-deepdive-body">
+                ${drawerContent}
+                <button type="button" class="cs-close-drawer-btn" data-close-drawer="${ven.id}">↑ Collapse Deep-Dive</button>
               </div>
-
-              ${drawerContent}
             </div>
           </div>
         </article>`;
@@ -1371,12 +1546,20 @@ function main() {
   const tfeCss = getTathyaExplorerCSS();
   const tfeJs = getTathyaExplorerJS();
 
-  if (!template.includes('.tfe-explorer')) {
-    template = template.replace('</style>', `\n/* TATHYA LLM FAILURE EXPLORER STYLES (.tfe-) */\n${tfeCss}\n</style>`);
+  if (!template.includes('.tfe-viz-grid')) {
+    const firstStyleClose = template.indexOf('</style>');
+    if (firstStyleClose !== -1) {
+      template = template.slice(0, firstStyleClose) + `\n/* TATHYA LLM FAILURE EXPLORER STYLES (.tfe-) */\n${tfeCss}\n` + template.slice(firstStyleClose);
+    }
   }
-  if (!template.includes('initTathyaExplorer')) {
-    template = template.replace('bootstrapPortfolioV2();', `bootstrapPortfolioV2();\n    if (typeof window.initTathyaExplorer === 'function') {\n      window.__TATHYA_EXPLORER = window.initTathyaExplorer();\n    }`);
-    template = template.replace('</script>', `\n/* TATHYA LLM FAILURE EXPLORER SCRIPT */\n${tfeJs}\n</script>`);
+  if (!template.includes('window.initTathyaExplorer = function')) {
+    if (!template.includes('window.initTathyaExplorer()')) {
+      template = template.replace('bootstrapPortfolioV2();', `bootstrapPortfolioV2();\n    if (typeof window.initTathyaExplorer === 'function') {\n      window.__TATHYA_EXPLORER = window.initTathyaExplorer();\n    }`);
+    }
+    const lastScriptClose = template.lastIndexOf('</script>');
+    if (lastScriptClose !== -1) {
+      template = template.slice(0, lastScriptClose) + `\n/* TATHYA LLM FAILURE EXPLORER SCRIPT */\n${tfeJs}\n` + template.slice(lastScriptClose);
+    }
   }
 
   console.log('  ✔ Head metadata & canonical tags');
