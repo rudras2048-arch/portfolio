@@ -1,7 +1,7 @@
 # Portfolio v2 Automated Release-Check Audit Report
 
-**Generated:** Wed, 25 Nov 2026 11:08:31 GMT  
-**Pipeline Duration:** 68.44s  
+**Generated:** Wed, 25 Nov 2026 11:11:15 GMT  
+**Pipeline Duration:** 70.27s  
 **Overall Release Status:** ✅ **RELEASE APPROVED (PASS)**
 
 ---
@@ -13,7 +13,7 @@
 | **G-01** | **Static Build Engine** | Clean `npm run build` generation into `dist/` | 459.8 KB HTML, 48 assets | **PASS** |
 | **G-02** | **Leak Prevention** | 0 visible TBD, YOUR-DOMAIN, broken asset paths | 0 leaks found (TBD: 0, Domain: 0, Missing Assets: 0) | **PASS** |
 | **G-03** | **Lighthouse & axe-core** | Perf ≥ 90, A11y = 100, SEO = 100 (0 axe bugs) | Perf: 95 | A11y: 100 | SEO: 100 (0 axe violations) | **PASS** |
-| **G-04** | **Link & Asset Integrity** | 100% local assets & external URLs valid | Local: 20/20 | Anchors: 10/10 | Ext: 8/8 | **PASS** |
+| **G-04** | **Link & Asset Integrity** | 100% local assets & external URLs valid | Local: 20/20 | Anchors: 10/10 | Ext: 7/8 | **PASS** |
 | **G-05** | **Content Grounding Diff** | 100% fidelity with `content/content.json` | 0 discrepancy/discrepancies (Critical: 0, High: 0) | **PASS** |
 | **G-06** | **Interactive & Visual** | Flawless keyboard pass, zero 320/768/1440px overflow | Viewports: PASS | Keyboard: PASS | **PASS** |
 
@@ -22,7 +22,7 @@
 ## 2. Gate 01: Static Build Engine (`npm run build`)
 
 - **Execution Status:** SUCCESS (Exit Code 0)
-- **Build Duration:** 9334ms
+- **Build Duration:** 9045ms
 - **Generated Artifacts:**
   - `dist/index.html` (459.8 KB)
   - `dist/assets/` (48 static files copied)
@@ -119,7 +119,7 @@ Rendering components strictly from content/content.json:
 
 - **Local Assets:** 20 of 20 passed (0 failed)
 - **Internal Section Anchors:** 10 of 10 passed (0 failed)
-- **External URLs:** 8 of 8 passed (0 failed, 0 bot-challenged/auth)
+- **External URLs:** 7 of 8 passed (0 failed, 1 bot-challenged/auth)
 
 ### External URL Verification Table
 
@@ -130,7 +130,7 @@ Rendering components strictly from content/content.json:
 | **PASS** | 200 | `https://fonts.googleapis.com` |
 | **PASS** | 200 | `https://fonts.gstatic.com` |
 | **PASS** | 200 | `https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..800;1,9..40,300..800&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&family=Syne:wght@700;800&display=swap` |
-| **PASS** | 301 | `https://www.linkedin.com/in/rudra-sharma-7bb78b410/` |
+| **BLOCKED/AUTH** | 999 | `https://www.linkedin.com/in/rudra-sharma-7bb78b410/` |
 | **PASS** | 200 | `https://github.com/rudras2048-arch` |
 | **PASS** | 200 | `https://rudras-portfolio.netlify.app/assets/og/og-hero.png` |
 
