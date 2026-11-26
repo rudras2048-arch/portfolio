@@ -1627,10 +1627,11 @@ function main() {
     console.log(`  ✔ Copied:  data/ -> dist/data/ (${dataFiles.length} files)`);
   }
 
-  // Generate SEO, Share, Robots.txt, Sitemap.xml & OG Images
+  // Generate SEO, Share, Robots.txt, Sitemap.xml, llms.txt & OG Images
   const shareReport = shareEngine.generateShareArtifacts(content, DIST_DIR);
   console.log(`  ✔ Generated: dist/robots.txt (Sitemap -> ${shareReport.canonicalRoot}sitemap.xml)`);
   console.log(`  ✔ Generated: dist/sitemap.xml (${shareReport.artifacts.find(a => a.file === 'dist/sitemap.xml').bytes} bytes)`);
+  console.log(`  ✔ Generated: dist/llms.txt (${shareReport.artifacts.find(a => a.file === 'dist/llms.txt').bytes} bytes)`);
   const ogCount = shareReport.artifacts.filter(a => a.file.includes('assets/og')).length;
   console.log(`  ✔ Generated: dist/assets/og/ (${ogCount} section OG cards SVG + PNG)`);
 

@@ -17,16 +17,23 @@
 [[headers]]
   for = "/*"
   [headers.values]
+    # Explicit Crawler / AI Retrieval Opt-In
+    X-Robots-Tag = "all"
     # Security headers
     X-Frame-Options = "DENY"
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
     # Content Security Policy — inline styles/scripts needed for SSG output
     Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'none'; frame-ancestors 'none';"
     # HSTS (1 year, include subdomains)
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
+
+[[headers]]
+  for = "/404.html"
+  [headers.values]
+    X-Robots-Tag = "noindex, follow"
 
 # Long-term cache for versioned assets (images, fonts, PDF)
 [[headers]]
@@ -40,14 +47,24 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Sitemap and robots.txt — weekly cache
+# Sitemap, robots.txt, and llms.txt — explicit crawler-friendly headers
 [[headers]]
   for = "/sitemap.xml"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=3600"
     Content-Type = "application/xml; charset=utf-8"
+    Access-Control-Allow-Origin = "*"
 
 [[headers]]
   for = "/robots.txt"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "text/plain; charset=utf-8"
+    Access-Control-Allow-Origin = "*"
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+    Content-Type = "text/plain; charset=utf-8"
+    Access-Control-Allow-Origin = "*"

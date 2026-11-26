@@ -10,6 +10,7 @@ const path = require('path');
 const { getDeploymentDomain, getCanonicalUrl, DEFAULT_DOMAIN } = require('./config');
 const { generateRobotsTxt } = require('./robots');
 const { generateSitemapXml } = require('./sitemap');
+const { generateLlmsTxt } = require('./llms');
 const { buildSchemaGraph, renderJsonLd } = require('./schema');
 const { renderHeadMeta } = require('./meta');
 const {
@@ -49,6 +50,17 @@ function generateShareArtifacts(content, distDir) {
   fs.writeFileSync(sitemapPath, sitemapXml, 'utf-8');
   artifacts.push({ file: 'dist/sitemap.xml', bytes: Buffer.byteLength(sitemapXml), type: 'application/xml' });
 
+  // 2b. Generate dist/llms.txt
+  const llmsTxt = generateLlmsTxt(targetContent);
+  const llmsPath = path.join(targetDist, 'llms.txt');
+  fs.writeFileSync(llmsPath, llmsTxt, 'utf-8');
+  artifacts.push({ file: 'dist/llms.txt', bytes: Buffer.byteLength(llmsTxt), type: 'text/plain' });
+
+  // Mirror robots.txt, sitemap.xml, and llms.txt to repo root for root-served compatibility
+  fs.writeFileSync(path.join(rootDir, 'robots.txt'), robotsTxt, 'utf-8');
+  fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), sitemapXml, 'utf-8');
+  fs.writeFileSync(path.join(rootDir, 'llms.txt'), llmsTxt, 'utf-8');
+
   // 3. Generate section OG images in dist/assets/og/
   const ogDir = path.join(targetDist, 'assets', 'og');
   const ogFiles = generateOgImages(targetContent, ogDir);
@@ -78,6 +90,7 @@ module.exports = {
   getCanonicalUrl,
   generateRobotsTxt,
   generateSitemapXml,
+  generateLlmsTxt,
   buildSchemaGraph,
   renderJsonLd,
   renderHeadMeta,

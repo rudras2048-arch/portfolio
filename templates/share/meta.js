@@ -61,12 +61,14 @@ function renderHeadMeta(content, section = 'hero') {
   return `  <title>${title}</title>
   <meta name="description" content="${desc}">
   <meta name="author" content="${escapeHtml(p.name)}">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
   <meta name="theme-color" content="#0C0C0E">
   <meta name="color-scheme" content="dark">
 
-  <!-- Canonical Link (Centralized Domain) -->
+  <!-- Canonical Link & AI Context Summary -->
   <link rel="canonical" href="${domain}">
+  <link rel="alternate" type="text/plain" href="${domain}llms.txt" title="LLM Context Summary (llms.txt)">
 
   <!-- OpenGraph / Facebook Meta Tags -->
   <meta property="og:type" content="website">

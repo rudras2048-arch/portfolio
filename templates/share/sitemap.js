@@ -55,6 +55,14 @@ function generateSitemapXml(content) {
     });
   }
 
+  // Include AI-friendly llms.txt markdown index
+  urls.push({
+    loc: getCanonicalUrl(content, 'llms.txt'),
+    lastmod: lastMod,
+    changefreq: 'weekly',
+    priority: '0.8'
+  });
+
   const xmlEntries = urls.map(u => `  <url>
     <loc>${escapeXml(u.loc)}</loc>
     <lastmod>${escapeXml(u.lastmod)}</lastmod>

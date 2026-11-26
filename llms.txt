@@ -1,0 +1,69 @@
+# Rudra Sharma
+
+> First-Year B.Tech CS & Data Science · Builder · Rishihood '30
+
+First-year CS & Data Science undergraduate at Rishihood University ('30). Builder of software tools, local utilities, and early venture prototypes, learning through live execution.
+
+Thesis: I build software systems and stress-test commercial models in live competitive arenas.
+
+## Canonical & Contact Links
+- Portfolio: https://rudras-portfolio.netlify.app/
+- Official Résumé (PDF): https://rudras-portfolio.netlify.app/assets/rudra-sharma-resume.pdf
+- LinkedIn: https://www.linkedin.com/in/rudra-sharma-7bb78b410/
+- GitHub: https://github.com/rudras2048-arch
+- Email: rudra.s26042@csds.rishihood.edu.in
+- Sitemap: https://rudras-portfolio.netlify.app/sitemap.xml
+
+## Key Metrics
+- **02 Championships**: Ashoka & Builders' Bootcamp
+- **TOP 10 National Finalist**: IIM Amritsar · 700+ registrations
+- **03 Podiums**: Jun–Oct 2026
+- **04 Ventures**: Tathya · Stratum · Flow State · Krama
+
+## Competitive Field Record
+### Cash Rush Competition (Ashoka University · Shatranj '26, October 2026)
+- Placement: 1st Place Champion
+- Role: Curiosity Thesis & Live Quiz Lead
+- Outcome: Services brought in ₹2,400 (₹1,050 web funnel, ₹550 quiz, ₹800 caricatures). The fund ended at ₹2,655: 1st place and the ₹7,000 prize.
+### CINE-SELL Brand Challenge (IIM Amritsar · Marketing Fest '26, October 2026)
+- Placement: Top 10 National Finalist
+- Role: Team Lead & Stage Pitch Lead
+- Outcome: Cleared screening rounds to finish in the Top 10 National Finalists, ranking in the top 10 of ~700 teams, most of them postgraduate B-school cohorts.
+### Builders' Bootcamp (8th Edition) (Rishihood University · Demo Day '26, June 2026)
+- Placement: #1 Overall Top Team
+- Role: Venture Builder & Pitch Presenter
+- Outcome: Pitched live on Demo Day and finished as the #1 Overall Winning Team across all participating cohorts.
+### Advertising & Brand Pitch (DCRUST Murthal · E-Summit '26, September 2026)
+- Placement: 3rd Place Podium
+- Role: Pitch Presenter & Campaign Strategist
+- Outcome: Finished 3rd Position Podium overall and won the ₹1,100 cash prize.
+### Venture Varsity (Field Pivot Run) (Ashoka University · Venture Varsity '26, October 2026)
+- Placement: Participation
+- Role: Solo Field Runner
+- Outcome: Generated ₹1,500 in 2 hours through rapid live service execution. The elimination and immediate field pivot proved that real customer transactions teach faster than deck slides.
+### Business Pitching — Iris Camera (DCRUST Murthal · E-Summit '26, September 2026)
+- Placement: Participation
+- Role: Co-Presenter & Concept Strategist
+- Outcome: Delivered the collaborative product presentation to the judging panel in the competition rounds.
+### Turn the Court (Impromptu Debate) (DCRUST Murthal · E-Summit '26, September 2026)
+- Placement: Participation
+- Role: Team Debater
+- Outcome: Competed through rapid rounds demonstrating cognitive flexibility and verbal agility under strict time pressure.
+
+## Ventures & Software Systems
+### Tathya (तथ्य) (VENTURE // EARLY RESEARCH · RESEARCH PHASE)
+- Thesis: Research into how LLMs fail on non-standard Indian dialects (Punjabi, Haryanvi, Bhojpuri), and a verification layer to catch those failures.
+- Problem: LLMs perform poorly on regional dialects due to token fragmentation.
+- Status: Early research · eval set in progress
+### Stratum (SAAS PLATFORM // SIMULATION · CONCEPT STAGE)
+- Thesis: A live market simulation engine evaluating candidate decision speed and capital efficiency instead of static case studies.
+- Problem: Hiring case studies are easily generated using LLMs without testing live judgment.
+- Status: Concept and pitch stage · sandbox design in progress
+### Flow State (DESKTOP OS // FOCUS · LOCAL BUILD)
+- Thesis: A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.
+- Problem: Cloud telemetry leaks and context switching fragment developer focus.
+- Status: Local build · Zero-OAuth sync & 16-bit procedural audio synthesis
+### Krama (क्रम) (SYSTEM UTILITY // ACADEMIC OS · STUDENT UTILITY)
+- Thesis: An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.
+- Problem: Mandatory attendance cutoffs (75%) trigger sudden academic disqualifications without proactive recovery visibility.
+- Status: Student utility · offline-first recovery calculus
