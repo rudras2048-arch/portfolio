@@ -3856,6 +3856,97 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
 .fr-roi-dot--cost { background: #F59E0B; }
 .fr-roi-dot--yield { background: var(--accent-bright); }
 
+.fr-rev-mix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  padding-top: 8px;
+  margin-top: 2px;
+  border-top: 1px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.fr-rev-mix-lbl {
+  color: var(--text-dim);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.fr-rev-mix-item strong {
+  color: var(--accent-bright);
+  font-weight: 700;
+}
+
+.fr-static-economics {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-top: 8px;
+}
+
+.fr-static-economics summary {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 24px;
+}
+
+.fr-static-economics summary::-webkit-details-marker {
+  display: none;
+}
+
+.fr-static-economics summary::after {
+  content: '+';
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.fr-static-economics[open] summary::after {
+  content: '−';
+}
+
+.fr-static-economics-body {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.fr-static-economics-body p {
+  margin: 0;
+}
+
+.fr-static-economics-body strong {
+  color: var(--text-bone);
+}
+
+.fr-static-breakdown-list {
+  margin: 4px 0 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+
 .fr-status-linked {
   background: var(--accent-soft);
   color: var(--accent-bright);
@@ -6240,8 +6331,8 @@ body.cs-modal-open {
   <div class="cs-modal__window" role="document">
     <div class="cs-modal__header">
       <div>
-        <span class="cs-modal__badge" id="cs-modal-badge">Audited Unit Economics</span>
-        <h3 class="cs-modal__title" id="cs-modal-title">Competition Telemetry</h3>
+        <span class="cs-modal__badge" id="cs-modal-badge">Unit Economics</span>
+        <h3 class="cs-modal__title" id="cs-modal-title">Case Breakdown</h3>
         <p class="cs-modal__meta" id="cs-modal-meta"></p>
       </div>
       <button type="button" class="cs-modal__close" id="cs-modal-close" aria-label="Close Case Study Details">✕</button>
@@ -8284,7 +8375,7 @@ body.cs-modal-open {
       if (comp.financials) {
         const fin = comp.financials;
         html += '<div class="cs-modal-section">' +
-          '<h4 class="cs-modal-heading">Audited Unit Economics & Financial Ledger</h4>' +
+          '<h4 class="cs-modal-heading">Unit Economics & Financial Breakdown</h4>' +
           '<div class="cs-telemetry-grid">' +
             (isPresent(fin.starting_capital_inr) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Starting Capital</span><span class="cs-telemetry-val">₹' + formatINR(fin.starting_capital_inr) + '</span></div>' : '') +
             (isPresent(fin.ending_fund_inr) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Ending Fund</span><span class="cs-telemetry-val cs-accent">₹' + formatINR(fin.ending_fund_inr) + '</span></div>' : '') +

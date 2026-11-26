@@ -753,14 +753,14 @@
       "category": "DESKTOP OS // FOCUS",
       "badge": "LOCAL BUILD",
       "status": "building",
-      "status_detail": "Local build · Zero-OAuth sync & 16-bit procedural audio synthesis",
-      "thesis": "A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.",
+      "status_detail": "Local build · Python + native OS webview & 16-bit math.sin audio",
+      "thesis": "A Python-backed offline focus desktop utility built to eliminate cloud telemetry leaks and context switching.",
       "problem": "Cloud telemetry leaks and context switching fragment developer focus.",
       "features": [
+        "Python core with native OS webview UI (0 Electron overhead)",
         "Zero-OAuth RFC 5545 calendar synchronization",
         "16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files)",
-        "Weekly focus receipts with 30-day productivity telemetry",
-        "100% on-device local execution"
+        "Weekly local focus receipts with 30-day session summaries"
       ],
       "terminal_preview": {
         "filename": "flowstate-core.py",
@@ -779,14 +779,14 @@
           {
             "type": "sync",
             "prefix": "[SYNC]",
-            "text": "Cloud telemetry bypassed · 100% on-device"
+            "text": "Local storage only · 100% on-device"
           }
         ]
       },
       "proof_asset": {
         "status": "unlinked",
         "url": "assets/flowstate-receipt.png",
-        "alt": "Flow State productivity telemetry receipt"
+        "alt": "Flow State weekly local focus receipt"
       },
       "action_cta": {
         "label": "Connect With Builder",

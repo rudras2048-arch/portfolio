@@ -60,9 +60,9 @@ Thesis: I build software systems and stress-test commercial models in live compe
 - Problem: Hiring case studies are easily generated using LLMs without testing live judgment.
 - Status: Concept and pitch stage · sandbox design in progress
 ### Flow State (DESKTOP OS // FOCUS · LOCAL BUILD)
-- Thesis: A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.
+- Thesis: A Python-backed offline focus desktop utility built to eliminate cloud telemetry leaks and context switching.
 - Problem: Cloud telemetry leaks and context switching fragment developer focus.
-- Status: Local build · Zero-OAuth sync & 16-bit procedural audio synthesis
+- Status: Local build · Python + native OS webview & 16-bit math.sin audio
 ### Krama (क्रम) (SYSTEM UTILITY // ACADEMIC OS · STUDENT UTILITY)
 - Thesis: An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.
 - Problem: Mandatory attendance cutoffs (75%) trigger sudden academic disqualifications without proactive recovery visibility.

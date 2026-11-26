@@ -1,7 +1,7 @@
 # Portfolio v2 Automated Release-Check Audit Report
 
-**Generated:** Thu, 26 Nov 2026 02:57:56 GMT  
-**Pipeline Duration:** 75.07s  
+**Generated:** Thu, 26 Nov 2026 03:45:59 GMT  
+**Pipeline Duration:** 72.87s  
 **Overall Release Status:** ✅ **RELEASE APPROVED (PASS)**
 
 ---
@@ -10,7 +10,7 @@
 
 | Gate | Domain | Target | Measured Result | Status |
 | :---: | :--- | :--- | :--- | :---: |
-| **G-01** | **Static Build Engine** | Clean `npm run build` generation into `dist/` | 460.3 KB HTML, 48 assets | **PASS** |
+| **G-01** | **Static Build Engine** | Clean `npm run build` generation into `dist/` | 465.9 KB HTML, 48 assets | **PASS** |
 | **G-02** | **Leak Prevention** | 0 visible TBD, YOUR-DOMAIN, broken asset paths | 0 leaks found (TBD: 0, Domain: 0, Missing Assets: 0) | **PASS** |
 | **G-03** | **Lighthouse & axe-core** | Perf ≥ 90, A11y = 100, SEO = 100 (0 axe bugs) | Perf: 95 | A11y: 100 | SEO: 100 (0 axe violations) | **PASS** |
 | **G-04** | **Link & Asset Integrity** | 100% local assets & external URLs valid | Local: 20/20 | Anchors: 10/10 | Ext: 9/9 | **PASS** |
@@ -22,9 +22,9 @@
 ## 2. Gate 01: Static Build Engine (`npm run build`)
 
 - **Execution Status:** SUCCESS (Exit Code 0)
-- **Build Duration:** 12598ms
+- **Build Duration:** 11252ms
 - **Generated Artifacts:**
-  - `dist/index.html` (460.3 KB)
+  - `dist/index.html` (465.9 KB)
   - `dist/assets/` (48 static files copied)
 
 ```
@@ -56,17 +56,17 @@ Rendering components strictly from content/content.json:
 [32m✔ [GATE 4 PASSED][0m Recruiter Mode toggle and executive drawer verified.
 
 --- Synchronizing Distribution and Root Artifacts ---
-  ✔ Written: dist/index.html (468,770 bytes)
-  ✔ Synced:  index.html (468,770 bytes)
-  ✔ Synced:  index.v2.html (468,770 bytes)
-  ✔ Synced:  portfolio/index.html (468,770 bytes)
+  ✔ Written: dist/index.html (474,412 bytes)
+  ✔ Synced:  index.html (474,412 bytes)
+  ✔ Synced:  index.v2.html (474,412 bytes)
+  ✔ Synced:  portfolio/index.html (474,412 bytes)
   ✔ Synced:  content.json (root)
   ✔ Synced:  404.html -> dist/404.html
   ✔ Copied:  assets/ -> dist/assets/ (48 files)
   ✔ Copied:  data/ -> dist/data/ (1 files)
   ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)
   ✔ Generated: dist/sitemap.xml (656 bytes)
-  ✔ Generated: dist/llms.txt (4548 bytes)
+  ✔ Generated: dist/llms.txt (4519 bytes)
   ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)
 
 [32m============================================================[0m
@@ -106,7 +106,7 @@ Rendering components strictly from content/content.json:
 - **Serious Impact:** 0
 - **Moderate Impact:** 0
 - **Minor Impact:** 0
-- **Passed Rules Count:** 42
+- **Passed Rules Count:** 43
 
 ✔ Flawless zero-violation WCAG 2.1 AA/AAA compliance.
 

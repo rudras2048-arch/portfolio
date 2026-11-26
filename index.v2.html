@@ -257,7 +257,7 @@
           "item": {
             "@type": "SoftwareApplication",
             "name": "Flow State",
-            "description": "A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.",
+            "description": "A Python-backed offline focus desktop utility built to eliminate cloud telemetry leaks and context switching.",
             "url": "https://rudras-portfolio.netlify.app/#ventures",
             "applicationCategory": "DeveloperApplication",
             "operatingSystem": "Desktop OS"
@@ -4131,6 +4131,97 @@ body.rm-mode-active #rm-toggle .rm-toggle-shortcut {
 .fr-roi-dot--cost { background: #F59E0B; }
 .fr-roi-dot--yield { background: var(--accent-bright); }
 
+.fr-rev-mix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  padding-top: 8px;
+  margin-top: 2px;
+  border-top: 1px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.fr-rev-mix-lbl {
+  color: var(--text-dim);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.fr-rev-mix-item strong {
+  color: var(--accent-bright);
+  font-weight: 700;
+}
+
+.fr-static-economics {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  padding: 10px 14px;
+  margin-top: 8px;
+}
+
+.fr-static-economics summary {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 24px;
+}
+
+.fr-static-economics summary::-webkit-details-marker {
+  display: none;
+}
+
+.fr-static-economics summary::after {
+  content: '+';
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.fr-static-economics[open] summary::after {
+  content: '−';
+}
+
+.fr-static-economics-body {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.fr-static-economics-body p {
+  margin: 0;
+}
+
+.fr-static-economics-body strong {
+  color: var(--text-bone);
+}
+
+.fr-static-breakdown-list {
+  margin: 4px 0 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 13px;
+}
+
 .fr-status-linked {
   background: var(--accent-soft);
   color: var(--accent-bright);
@@ -7147,11 +7238,11 @@ body.cs-modal-open {
             <span class="rm-signal-dot" aria-hidden="true"></span>
             Executive Dossier // 30-Second View
           </span>
-          <span class="rm-header-kicker">Verified Candidate Brief</span>
+          <span class="rm-header-kicker">Candidate Brief</span>
         </div>
         <h2 class="rm-header-title">Rudra <span>Sharma</span></h2>
         <p class="rm-header-desc">
-          First-Year B.Tech CS &amp; Data Science at Rishihood University (Class of 2030). Builder of software tools, local utilities, and early venture prototypes with verified collegiate wins.
+          First-Year B.Tech CS &amp; Data Science at Rishihood University (Class of 2030). Builder of software tools, local utilities, and early venture prototypes with documented collegiate wins.
         </p>
       </div>
       <div class="rm-header-actions">
@@ -7193,7 +7284,7 @@ body.cs-modal-open {
       <div class="rm-panel">
         <div class="rm-panel-head">
           <h3 class="rm-panel-title">
-            <span>Verified Field Evidence &amp; Commercial ROI</span>
+            <span>Collegiate Track Record &amp; Unit Economics</span>
           </h3>
           <span class="rm-panel-count">7 Records</span>
         </div>
@@ -7634,7 +7725,7 @@ body.cs-modal-open {
               <span class="fr-pillar-idx">02</span>
               <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
             </div>
-            <span class="fr-role-badge">VERIFIED CONTRIBUTION</span>
+            <span class="fr-role-badge">ROLE &amp; OUTPUT</span>
           </div>
           <div class="fr-role-highlight">
             <span class="fr-role-tag">ASSIGNMENT:</span>
@@ -7651,22 +7742,22 @@ body.cs-modal-open {
           </div>
           
           <div class="fr-squad-meta">
-            <span>Personnel &amp; Teammates:</span>
+            <span>Squad:</span>
             <span class="fr-squad-names">Rudra Sharma, Raj Khatri, Hitisha, Sanjani</span>
           </div>
         </div>
 
-        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <!-- PILLAR 03: OUTCOME & NUMBERS -->
         <div class="fr-pillar fr-pillar-outcome">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">03</span>
-              <span class="fr-pillar-title">OUTCOME &amp; VERIFIED TELEMETRY</span>
+              <span class="fr-pillar-title">OUTCOME &amp; NUMBERS</span>
             </div>
             <span class="fr-result-badge">1st Place Champion</span>
           </div>
           <div class="fr-context-narrative">
-            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <span class="fr-narrative-lbl">Field Result:</span>
             <p class="fr-narrative-text">Services brought in ₹2,400 (₹1,050 web funnel, ₹550 quiz, ₹800 caricatures). The fund ended at ₹2,655: 1st place and the ₹7,000 prize.</p>
           </div>
           <div class="case-telemetry-grid fr-telemetry-matrix">
@@ -7704,13 +7795,34 @@ body.cs-modal-open {
               <span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--cost" aria-hidden="true"></i>₹45 Cost</span>
               <span class="fr-roi-leg-item fr-roi-leg-accent"><i class="fr-roi-dot fr-roi-dot--yield" aria-hidden="true"></i>₹2,400 Service Yield</span>
             </div>
+            <div class="fr-rev-mix">
+              <span class="fr-rev-mix-lbl">₹2,400 Service Mix:</span>
+              <span class="fr-rev-mix-item">Web Curiosity Hook (QR→LinkedIn): <strong>₹1,050 (44%)</strong></span>
+              <span class="fr-rev-mix-item">On-Spot Caricatures: <strong>₹800 (33%)</strong></span>
+              <span class="fr-rev-mix-item">Campus Quiz: <strong>₹550 (23%)</strong></span>
+            </div>
           </div>
 
-          <!-- Case Study Telemetry Deep Dive Anchor Button -->
-          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="cash-rush" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics &amp; telemetry for Cash Rush Competition">
-            <span>Examine Unit Economics &amp; Telemetry</span>
+          <!-- Interactive Modal Deep Dive + Static Crawler-Readable Fallback -->
+          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="cash-rush" aria-haspopup="dialog" aria-expanded="false" title="Unit economics and breakdown for Cash Rush Competition">
+            <span>Unit Economics &amp; Breakdown</span>
             <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
           </button>
+          
+          <details class="fr-static-economics">
+            <summary>Case Breakdown &amp; Key Numbers (Static Readout)</summary>
+            <div class="fr-static-economics-body">
+              <p><strong>Setup:</strong> Teams got ₹300 and 120 minutes to grow it on campus however they could.</p>
+              <p><strong>Key Move:</strong> We sold experiences, not goods: designed a curiosity-monetization thesis pairing a web funnel to LinkedIn with a live campus crowd quiz, alongside on-the-spot caricature keepsakes from our squad. Total costs were ₹45 (paper and marker).</p>
+              <p><strong>Outcome:</strong> Services brought in ₹2,400 (₹1,050 web funnel, ₹550 quiz, ₹800 caricatures). The fund ended at ₹2,655: 1st place and the ₹7,000 prize.</p>
+              <p><strong>Lesson:</strong> Sell what costs nothing to produce. With 120 minutes on the clock, experiences beat inventory.</p>
+              <ul class="fr-static-breakdown-list">
+                  <li><strong>Dynamic web curiosity funnel:</strong> ₹1050 (44%) — Web experience ending with QR code redirecting to LinkedIn as a curiosity hook</li>
+                  <li><strong>Campus quiz challenge:</strong> ₹550 (23%) — Winners got paid, losers paid the squad</li>
+                  <li><strong>On-the-spot caricatures:</strong> ₹800 (33%) — Zero-inventory live drawing service</li>
+                </ul>
+            </div>
+          </details>
         </div>
 
           </div>
@@ -7723,7 +7835,7 @@ body.cs-modal-open {
               <span class="fr-pillar-idx">04</span>
               <span class="fr-pillar-title">FIELD EVIDENCE &amp; PROOF</span>
             </div>
-            <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span></span>
+            <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>FIELD PHOTO</span></span>
           </div>
 
           <div class="fr-photo-frame" id="fr-visual-cash-rush" data-zoom-target="assets/cash-rush-ashoka.jpg">
@@ -7735,7 +7847,7 @@ body.cs-modal-open {
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
               <span class="fr-overlay-zoom-pill">
-                <span class="fr-zoom-icon">🔍</span> Click to Inspect Full-Resolution Proof
+                <span class="fr-zoom-icon">🔍</span> Inspect Full-Resolution Photo
               </span>
             </div>
             <button type="button" class="fr-inspect-btn"
@@ -7817,7 +7929,7 @@ body.cs-modal-open {
               <span class="fr-pillar-idx">02</span>
               <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
             </div>
-            <span class="fr-role-badge">VERIFIED CONTRIBUTION</span>
+            <span class="fr-role-badge">ROLE &amp; OUTPUT</span>
           </div>
           <div class="fr-role-highlight">
             <span class="fr-role-tag">ASSIGNMENT:</span>
@@ -7833,22 +7945,22 @@ body.cs-modal-open {
           </div>
           
           <div class="fr-squad-meta">
-            <span>Personnel &amp; Teammates:</span>
+            <span>Squad:</span>
             <span class="fr-squad-names">Rudra Sharma (Lead), Raj Khatri, Sahaj Choukhani, Tripti Kaushik</span>
           </div>
         </div>
 
-        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <!-- PILLAR 03: OUTCOME & NUMBERS -->
         <div class="fr-pillar fr-pillar-outcome">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">03</span>
-              <span class="fr-pillar-title">OUTCOME &amp; VERIFIED TELEMETRY</span>
+              <span class="fr-pillar-title">OUTCOME &amp; NUMBERS</span>
             </div>
             <span class="fr-result-badge">Top 10 National Finalist</span>
           </div>
           <div class="fr-context-narrative">
-            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <span class="fr-narrative-lbl">Field Result:</span>
             <p class="fr-narrative-text">Cleared screening rounds to finish in the Top 10 National Finalists, ranking in the top 10 of ~700 teams, most of them postgraduate B-school cohorts.</p>
           </div>
           <div class="case-telemetry-grid fr-telemetry-matrix">
@@ -7868,11 +7980,22 @@ body.cs-modal-open {
           </div>
           
 
-          <!-- Case Study Telemetry Deep Dive Anchor Button -->
-          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="cinesell" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics &amp; telemetry for CINE-SELL Brand Challenge">
-            <span>Examine Unit Economics &amp; Telemetry</span>
+          <!-- Interactive Modal Deep Dive + Static Crawler-Readable Fallback -->
+          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="cinesell" aria-haspopup="dialog" aria-expanded="false" title="Unit economics and breakdown for CINE-SELL Brand Challenge">
+            <span>Unit Economics &amp; Breakdown</span>
             <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
           </button>
+          
+          <details class="fr-static-economics">
+            <summary>Case Breakdown &amp; Key Numbers (Static Readout)</summary>
+            <div class="fr-static-economics-body">
+              <p><strong>Setup:</strong> A national marketing fest challenge with ~700 registered teams where squads had to sell a telephone using Bollywood-inspired characters.</p>
+              <p><strong>Key Move:</strong> Led &quot;Team Big 4&quot; as a first-year undergrad Team Lead—coordinating telephone market research, leading the live stage commercial pitch, and supporting the team&#39;s promotional video reel alongside Sahaj&#39;s character mimicry act.</p>
+              <p><strong>Outcome:</strong> Cleared screening rounds to finish in the Top 10 National Finalists, ranking in the top 10 of ~700 teams, most of them postgraduate B-school cohorts.</p>
+              
+              
+            </div>
+          </details>
         </div>
 
           </div>
@@ -7885,7 +8008,7 @@ body.cs-modal-open {
               <span class="fr-pillar-idx">04</span>
               <span class="fr-pillar-title">FIELD EVIDENCE &amp; PROOF</span>
             </div>
-            <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span></span>
+            <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>FIELD PHOTO</span></span>
           </div>
 
           <div class="fr-photo-frame" id="fr-visual-cinesell" data-zoom-target="assets/cinesell-iim-amritsar.jpg">
@@ -7897,7 +8020,7 @@ body.cs-modal-open {
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
               <span class="fr-overlay-zoom-pill">
-                <span class="fr-zoom-icon">🔍</span> Click to Inspect Full-Resolution Proof
+                <span class="fr-zoom-icon">🔍</span> Inspect Full-Resolution Photo
               </span>
             </div>
             <button type="button" class="fr-inspect-btn"
@@ -7921,7 +8044,7 @@ body.cs-modal-open {
 
           
             <div class="fr-gallery-shelf">
-              <span class="fr-gallery-heading">Verified Field Artifacts (2):</span>
+              <span class="fr-gallery-heading">Field Photos (2):</span>
               <div class="fr-gallery-row fr-gallery-switcher">
                 
                 <button type="button" class="fr-thumb-btn fr-gallery-thumb active"
@@ -7999,7 +8122,7 @@ body.cs-modal-open {
               <span class="fr-pillar-idx">02</span>
               <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
             </div>
-            <span class="fr-role-badge">VERIFIED CONTRIBUTION</span>
+            <span class="fr-role-badge">ROLE &amp; OUTPUT</span>
           </div>
           <div class="fr-role-highlight">
             <span class="fr-role-tag">ASSIGNMENT:</span>
@@ -8014,22 +8137,22 @@ body.cs-modal-open {
           </div>
           
           <div class="fr-squad-meta">
-            <span>Personnel &amp; Teammates:</span>
-            <span class="fr-squad-names">Rudra Sharma</span>
+            <span>Squad:</span>
+            <span class="fr-squad-names">Rudra Sharma + cohort teammates</span>
           </div>
         </div>
 
-        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <!-- PILLAR 03: OUTCOME & NUMBERS -->
         <div class="fr-pillar fr-pillar-outcome">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">03</span>
-              <span class="fr-pillar-title">OUTCOME &amp; VERIFIED TELEMETRY</span>
+              <span class="fr-pillar-title">OUTCOME &amp; NUMBERS</span>
             </div>
             <span class="fr-result-badge">#1 Overall Top Team</span>
           </div>
           <div class="fr-context-narrative">
-            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <span class="fr-narrative-lbl">Field Result:</span>
             <p class="fr-narrative-text">Pitched live on Demo Day and finished as the #1 Overall Winning Team across all participating cohorts.</p>
           </div>
           <div class="case-telemetry-grid fr-telemetry-matrix">
@@ -8049,11 +8172,22 @@ body.cs-modal-open {
           </div>
           
 
-          <!-- Case Study Telemetry Deep Dive Anchor Button -->
-          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="builders-bootcamp" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics &amp; telemetry for Builders&#39; Bootcamp (8th Edition)">
-            <span>Examine Unit Economics &amp; Telemetry</span>
+          <!-- Interactive Modal Deep Dive + Static Crawler-Readable Fallback -->
+          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="builders-bootcamp" aria-haspopup="dialog" aria-expanded="false" title="Unit economics and breakdown for Builders&#39; Bootcamp (8th Edition)">
+            <span>Unit Economics &amp; Breakdown</span>
             <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
           </button>
+          
+          <details class="fr-static-economics">
+            <summary>Case Breakdown &amp; Key Numbers (Static Readout)</summary>
+            <div class="fr-static-economics-body">
+              <p><strong>Setup:</strong> Selected for a 7-day pre-college venture sprint at Rishihood University covering AI, product design, psychology, and startup fundamentals.</p>
+              <p><strong>Key Move:</strong> Built a functional startup web prototype from scratch during the 7 days and put it in front of people rather than stopping at slide decks.</p>
+              <p><strong>Outcome:</strong> Pitched live on Demo Day and finished as the #1 Overall Winning Team across all participating cohorts.</p>
+              
+              
+            </div>
+          </details>
         </div>
 
           </div>
@@ -8066,7 +8200,7 @@ body.cs-modal-open {
               <span class="fr-pillar-idx">04</span>
               <span class="fr-pillar-title">FIELD EVIDENCE &amp; PROOF</span>
             </div>
-            <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span></span>
+            <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>FIELD PHOTO</span></span>
           </div>
 
           <div class="fr-photo-frame" id="fr-visual-builders-bootcamp" data-zoom-target="assets/builders-bootcamp-demo-day.jpg">
@@ -8078,7 +8212,7 @@ body.cs-modal-open {
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
               <span class="fr-overlay-zoom-pill">
-                <span class="fr-zoom-icon">🔍</span> Click to Inspect Full-Resolution Proof
+                <span class="fr-zoom-icon">🔍</span> Inspect Full-Resolution Photo
               </span>
             </div>
             <button type="button" class="fr-inspect-btn"
@@ -8102,7 +8236,7 @@ body.cs-modal-open {
 
           
             <div class="fr-gallery-shelf">
-              <span class="fr-gallery-heading">Verified Field Artifacts (2):</span>
+              <span class="fr-gallery-heading">Field Photos (2):</span>
               <div class="fr-gallery-row fr-gallery-switcher">
                 
                 <button type="button" class="fr-thumb-btn fr-gallery-thumb active"
@@ -8180,7 +8314,7 @@ body.cs-modal-open {
               <span class="fr-pillar-idx">02</span>
               <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
             </div>
-            <span class="fr-role-badge">VERIFIED CONTRIBUTION</span>
+            <span class="fr-role-badge">ROLE &amp; OUTPUT</span>
           </div>
           <div class="fr-role-highlight">
             <span class="fr-role-tag">ASSIGNMENT:</span>
@@ -8197,22 +8331,22 @@ body.cs-modal-open {
           </div>
           
           <div class="fr-squad-meta">
-            <span>Personnel &amp; Teammates:</span>
+            <span>Squad:</span>
             <span class="fr-squad-names">Rudra Sharma, Raj Khatri, Sahaj Choukhani, Tripti Kaushik</span>
           </div>
         </div>
 
-        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <!-- PILLAR 03: OUTCOME & NUMBERS -->
         <div class="fr-pillar fr-pillar-outcome">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">03</span>
-              <span class="fr-pillar-title">OUTCOME &amp; VERIFIED TELEMETRY</span>
+              <span class="fr-pillar-title">OUTCOME &amp; NUMBERS</span>
             </div>
             <span class="fr-result-badge">3rd Place Podium</span>
           </div>
           <div class="fr-context-narrative">
-            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <span class="fr-narrative-lbl">Field Result:</span>
             <p class="fr-narrative-text">Finished 3rd Position Podium overall and won the ₹1,100 cash prize.</p>
           </div>
           <div class="case-telemetry-grid fr-telemetry-matrix">
@@ -8232,11 +8366,22 @@ body.cs-modal-open {
           </div>
           
 
-          <!-- Case Study Telemetry Deep Dive Anchor Button -->
-          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="dcrust-brand-pitch" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics &amp; telemetry for Advertising &amp; Brand Pitch">
-            <span>Examine Unit Economics &amp; Telemetry</span>
+          <!-- Interactive Modal Deep Dive + Static Crawler-Readable Fallback -->
+          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="dcrust-brand-pitch" aria-haspopup="dialog" aria-expanded="false" title="Unit economics and breakdown for Advertising &amp; Brand Pitch">
+            <span>Unit Economics &amp; Breakdown</span>
             <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
           </button>
+          
+          <details class="fr-static-economics">
+            <summary>Case Breakdown &amp; Key Numbers (Static Readout)</summary>
+            <div class="fr-static-economics-body">
+              <p><strong>Setup:</strong> Represented Rishihood University offline at DCRUST E-Summit &#39;26. Teams were assigned a consumer soap brand and given 45 minutes to build a full campaign from scratch.</p>
+              <p><strong>Key Move:</strong> Divided the 45-minute window across four concrete deliverables—a promotional poster, a short filmed ad, a live skit, and a product pitch for the stage round.</p>
+              <p><strong>Outcome:</strong> Finished 3rd Position Podium overall and won the ₹1,100 cash prize.</p>
+              
+              
+            </div>
+          </details>
         </div>
 
           </div>
@@ -8249,7 +8394,7 @@ body.cs-modal-open {
               <span class="fr-pillar-idx">04</span>
               <span class="fr-pillar-title">FIELD EVIDENCE &amp; PROOF</span>
             </div>
-            <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span></span>
+            <span class="fr-asset-badge"><span class="pulse-dot" aria-hidden="true"></span><span>FIELD PHOTO</span></span>
           </div>
 
           <div class="fr-photo-frame" id="fr-visual-dcrust-brand-pitch" data-zoom-target="assets/dcrust-podium-team.jpg">
@@ -8261,7 +8406,7 @@ body.cs-modal-open {
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
               <span class="fr-overlay-zoom-pill">
-                <span class="fr-zoom-icon">🔍</span> Click to Inspect Full-Resolution Proof
+                <span class="fr-zoom-icon">🔍</span> Inspect Full-Resolution Photo
               </span>
             </div>
             <button type="button" class="fr-inspect-btn"
@@ -8285,7 +8430,7 @@ body.cs-modal-open {
 
           
             <div class="fr-gallery-shelf">
-              <span class="fr-gallery-heading">Verified Field Artifacts (3):</span>
+              <span class="fr-gallery-heading">Field Photos (3):</span>
               <div class="fr-gallery-row fr-gallery-switcher">
                 
                 <button type="button" class="fr-thumb-btn fr-gallery-thumb active"
@@ -8618,7 +8763,7 @@ body.cs-modal-open {
               <span class="cs-trigger-icon" aria-hidden="true">+</span>
               <span class="cs-trigger-label">Deep Dive: Systems &amp; Retrospective</span>
             </span>
-            <span class="cs-trigger-badge">AUDITED</span>
+            <span class="cs-trigger-badge">SPECS</span>
           </button>
 
           <!-- Expandable Deep Dive Drawer Host -->
@@ -8746,7 +8891,7 @@ body.cs-modal-open {
               <span class="cs-trigger-icon" aria-hidden="true">+</span>
               <span class="cs-trigger-label">Deep Dive: Systems &amp; Retrospective</span>
             </span>
-            <span class="cs-trigger-badge">AUDITED</span>
+            <span class="cs-trigger-badge">SPECS</span>
           </button>
 
           <!-- Expandable Deep Dive Drawer Host -->
@@ -8799,7 +8944,7 @@ body.cs-modal-open {
               <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>LOCAL BUILD</span>
             </div>
             <h3 class="venture-name">Flow State</h3>
-            <p class="venture-thesis">A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.</p>
+            <p class="venture-thesis">A Python-backed offline focus desktop utility built to eliminate cloud telemetry leaks and context switching.</p>
 
             
             <!-- Integrated Terminal Output -->
@@ -8810,18 +8955,18 @@ body.cs-modal-open {
               </div>
               <pre class="term-body" tabindex="0" role="region" aria-label="Flow State terminal output"><span class="cm">$ flowstate run --zero-oauth --audio procedural_sine</span>
 <span class="kw">[AUDIO]</span> 16-bit 44.1kHz synthesized via math.sin (0 MP3 files)
-<span class="kw">[SYNC]</span> Cloud telemetry bypassed · 100% on-device</pre>
+<span class="kw">[SYNC]</span> Local storage only · 100% on-device</pre>
             </div>
             
             <div class="vn-artifact-stack">
               <button type="button"
                       class="vn-artifact-btn"
                       data-asset-src="assets/flowstate-receipt.png"
-                      data-asset-caption="Flow State · Weekly Focus Telemetry Receipt"
+                      data-asset-caption="Flow State · Weekly Local Focus Receipt"
                       data-asset-stamp="Local Build // Receipt"
                       data-comp-title="Flow State"
-                      aria-label="Inspect Flow State weekly focus telemetry receipt">
-                <img src="assets/flowstate-receipt.png" width="320" height="220" loading="lazy" alt="Flow State weekly focus telemetry receipt preview">
+                      aria-label="Inspect Flow State weekly local focus receipt">
+                <img src="assets/flowstate-receipt.png" width="320" height="220" loading="lazy" alt="Flow State weekly local focus receipt preview">
                 <span class="vn-artifact-meta">
                   <span class="vn-artifact-kicker">LOCAL BUILD // RECEIPT</span>
                   <span class="vn-artifact-title">Inspect Focus Receipt ↗</span>
@@ -8841,11 +8986,11 @@ body.cs-modal-open {
             </div>
             <div class="venture-detail-row">
               <span class="lbl">Features</span>
-              <span class="val">Zero-OAuth RFC 5545 calendar synchronization · 16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files) · Weekly focus receipts with 30-day productivity telemetry · 100% on-device local execution</span>
+              <span class="val">Python core with native OS webview UI (0 Electron overhead) · Zero-OAuth RFC 5545 calendar synchronization · 16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files) · Weekly local focus receipts with 30-day session summaries</span>
             </div>
             <div class="venture-detail-row">
               <span class="lbl">Status</span>
-              <span class="val mono">Local build · Zero-OAuth sync &amp; 16-bit procedural audio synthesis</span>
+              <span class="val mono">Local build · Python + native OS webview &amp; 16-bit math.sin audio</span>
             </div>
           </div>
 
@@ -8867,7 +9012,7 @@ body.cs-modal-open {
               <span class="cs-trigger-icon" aria-hidden="true">+</span>
               <span class="cs-trigger-label">Deep Dive: Systems &amp; Retrospective</span>
             </span>
-            <span class="cs-trigger-badge">AUDITED</span>
+            <span class="cs-trigger-badge">SPECS</span>
           </button>
 
           <!-- Expandable Deep Dive Drawer Host -->
@@ -8880,15 +9025,15 @@ body.cs-modal-open {
                   <span class="cs-status-indicator cs-indicator-building" aria-hidden="true"></span>
                   <span class="cs-status-headline">Status: Building // LOCAL BUILD</span>
                 </div>
-                <span class="cs-status-detail-pill">Local build · Zero-OAuth sync &amp; 16-bit procedural audio synthesis</span>
+                <span class="cs-status-detail-pill">Local build · Python + native OS webview &amp; 16-bit math.sin audio</span>
               </div>
 
               <div class="cs-block">
                 <div class="cs-block-header">
                   <span class="cs-block-num">01</span>
-                  <span class="cs-block-title">Local-First Zero-OAuth Architecture</span>
+                  <span class="cs-block-title">Python + Local-First Zero-OAuth Architecture</span>
                 </div>
-                <p class="cs-block-text">Modern focus utilities leak behavioral telemetry and require broad OAuth scopes. Flow State enforces strict air-gap privacy by parsing local RFC 5545 calendar files with zero network handshakes.</p>
+                <p class="cs-block-text">Built with a Python backend and native OS webview UI, Flow State avoids cloud data leaks and broad OAuth scopes by parsing local RFC 5545 calendar files with zero network handshakes.</p>
               </div>
 
               <div class="cs-block">
@@ -8896,15 +9041,15 @@ body.cs-modal-open {
                   <span class="cs-block-num">02</span>
                   <span class="cs-block-title">16-Bit Procedural Audio Engine</span>
                 </div>
-                <p class="cs-block-text">Replaced streaming audio loops and MP3 assets with real-time 44.1kHz procedural sine synthesis via math.sin, keeping audio generation deterministic and completely offline.</p>
+                <p class="cs-block-text">Replaced streaming audio loops and MP3 assets with real-time 44.1kHz procedural sine synthesis via Python math.sin (plus live Web Audio preview here), keeping audio generation offline.</p>
               </div>
 
               <div class="cs-block cs-retrospective-card">
                 <div class="cs-retrospective-title">
                   <span class="cs-retrospective-icon" aria-hidden="true">✦</span>
-                  <span>Retrospective: Discarding Electron Overhead</span>
+                  <span>Retrospective: Python + Native Webview over Electron</span>
                 </div>
-                <blockquote class="cs-retrospective-quote">“Bundling Chromium consumed ~450MB of RAM—counterproductive for lightweight flow. Moving to native OS webview primitives kept memory footprints minimal and startup instant.”</blockquote>
+                <blockquote class="cs-retrospective-quote">“Bundling Chromium via Electron consumed ~450MB of RAM—counterproductive for lightweight focus. Pairing Python with native OS webview primitives kept memory minimal and startup instant.”</blockquote>
               </div>
                 <button type="button" class="cs-close-drawer-btn" data-close-drawer="flow-state">↑ Collapse Deep-Dive</button>
               </div>
@@ -9009,7 +9154,7 @@ body.cs-modal-open {
               <span class="cs-trigger-icon" aria-hidden="true">+</span>
               <span class="cs-trigger-label">Deep Dive: Systems &amp; Retrospective</span>
             </span>
-            <span class="cs-trigger-badge">AUDITED</span>
+            <span class="cs-trigger-badge">SPECS</span>
           </button>
 
           <!-- Expandable Deep Dive Drawer Host -->
@@ -9245,8 +9390,8 @@ body.cs-modal-open {
   <div class="cs-modal__window" role="document">
     <div class="cs-modal__header">
       <div>
-        <span class="cs-modal__badge" id="cs-modal-badge">Audited Unit Economics</span>
-        <h3 class="cs-modal__title" id="cs-modal-title">Competition Telemetry</h3>
+        <span class="cs-modal__badge" id="cs-modal-badge">Unit Economics</span>
+        <h3 class="cs-modal__title" id="cs-modal-title">Case Breakdown</h3>
         <p class="cs-modal__meta" id="cs-modal-meta"></p>
       </div>
       <button type="button" class="cs-modal__close" id="cs-modal-close" aria-label="Close Case Study Details">✕</button>
@@ -10057,14 +10202,14 @@ body.cs-modal-open {
       "category": "DESKTOP OS // FOCUS",
       "badge": "LOCAL BUILD",
       "status": "building",
-      "status_detail": "Local build · Zero-OAuth sync & 16-bit procedural audio synthesis",
-      "thesis": "A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.",
+      "status_detail": "Local build · Python + native OS webview & 16-bit math.sin audio",
+      "thesis": "A Python-backed offline focus desktop utility built to eliminate cloud telemetry leaks and context switching.",
       "problem": "Cloud telemetry leaks and context switching fragment developer focus.",
       "features": [
+        "Python core with native OS webview UI (0 Electron overhead)",
         "Zero-OAuth RFC 5545 calendar synchronization",
         "16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files)",
-        "Weekly focus receipts with 30-day productivity telemetry",
-        "100% on-device local execution"
+        "Weekly local focus receipts with 30-day session summaries"
       ],
       "terminal_preview": {
         "filename": "flowstate-core.py",
@@ -10083,14 +10228,14 @@ body.cs-modal-open {
           {
             "type": "sync",
             "prefix": "[SYNC]",
-            "text": "Cloud telemetry bypassed · 100% on-device"
+            "text": "Local storage only · 100% on-device"
           }
         ]
       },
       "proof_asset": {
         "status": "unlinked",
         "url": "assets/flowstate-receipt.png",
-        "alt": "Flow State productivity telemetry receipt"
+        "alt": "Flow State weekly local focus receipt"
       },
       "action_cta": {
         "label": "Connect With Builder",
@@ -10906,14 +11051,14 @@ window.__PORTFOLIO_CONTENT__ = {
       "category": "DESKTOP OS // FOCUS",
       "badge": "LOCAL BUILD",
       "status": "building",
-      "status_detail": "Local build · Zero-OAuth sync & 16-bit procedural audio synthesis",
-      "thesis": "A deep-work workflow and focus-session desktop environment built to eliminate cloud telemetry leaks and context switching for developers.",
+      "status_detail": "Local build · Python + native OS webview & 16-bit math.sin audio",
+      "thesis": "A Python-backed offline focus desktop utility built to eliminate cloud telemetry leaks and context switching.",
       "problem": "Cloud telemetry leaks and context switching fragment developer focus.",
       "features": [
+        "Python core with native OS webview UI (0 Electron overhead)",
         "Zero-OAuth RFC 5545 calendar synchronization",
         "16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files)",
-        "Weekly focus receipts with 30-day productivity telemetry",
-        "100% on-device local execution"
+        "Weekly local focus receipts with 30-day session summaries"
       ],
       "terminal_preview": {
         "filename": "flowstate-core.py",
@@ -10932,14 +11077,14 @@ window.__PORTFOLIO_CONTENT__ = {
           {
             "type": "sync",
             "prefix": "[SYNC]",
-            "text": "Cloud telemetry bypassed · 100% on-device"
+            "text": "Local storage only · 100% on-device"
           }
         ]
       },
       "proof_asset": {
         "status": "unlinked",
         "url": "assets/flowstate-receipt.png",
-        "alt": "Flow State productivity telemetry receipt"
+        "alt": "Flow State weekly local focus receipt"
       },
       "action_cta": {
         "label": "Connect With Builder",
@@ -12977,7 +13122,7 @@ window.__PORTFOLIO_CONTENT__ = {
       if (comp.financials) {
         const fin = comp.financials;
         html += '<div class="cs-modal-section">' +
-          '<h4 class="cs-modal-heading">Audited Unit Economics & Financial Ledger</h4>' +
+          '<h4 class="cs-modal-heading">Unit Economics & Financial Breakdown</h4>' +
           '<div class="cs-telemetry-grid">' +
             (isPresent(fin.starting_capital_inr) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Starting Capital</span><span class="cs-telemetry-val">₹' + formatINR(fin.starting_capital_inr) + '</span></div>' : '') +
             (isPresent(fin.ending_fund_inr) ? '<div class="cs-telemetry-cell"><span class="cs-telemetry-lbl">Ending Fund</span><span class="cs-telemetry-val cs-accent">₹' + formatINR(fin.ending_fund_inr) + '</span></div>' : '') +

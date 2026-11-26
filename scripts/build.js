@@ -127,11 +127,11 @@ function renderRecruiterDrawer(content) {
             <span class="rm-signal-dot" aria-hidden="true"></span>
             Executive Dossier // 30-Second View
           </span>
-          <span class="rm-header-kicker">Verified Candidate Brief</span>
+          <span class="rm-header-kicker">Candidate Brief</span>
         </div>
         <h2 class="rm-header-title">${escapeHtml(content.hero.headline_first)} <span>${escapeHtml(content.hero.headline_last)}</span></h2>
         <p class="rm-header-desc">
-          First-Year B.Tech CS &amp; Data Science at Rishihood University (Class of 2030). Builder of software tools, local utilities, and early venture prototypes with verified collegiate wins.
+          First-Year B.Tech CS &amp; Data Science at Rishihood University (Class of 2030). Builder of software tools, local utilities, and early venture prototypes with documented collegiate wins.
         </p>
       </div>
       <div class="rm-header-actions">
@@ -173,7 +173,7 @@ function renderRecruiterDrawer(content) {
       <div class="rm-panel">
         <div class="rm-panel-head">
           <h3 class="rm-panel-title">
-            <span>Verified Field Evidence &amp; Commercial ROI</span>
+            <span>Collegiate Track Record &amp; Unit Economics</span>
           </h3>
           <span class="rm-panel-count">${comps.length} Records</span>
         </div>
@@ -758,7 +758,7 @@ function renderCompetitions(content) {
       </article>`;
     }
 
-    // Visual segmented ROI bar for Cash Rush inside Pillar 03
+    // Visual segmented ROI bar + revenue mix for Cash Rush inside Pillar 03
     const roiBarHtml = comp.id === 'cash-rush' ? `
           <div class="fr-roi-bar-wrap" aria-label="Cash Rush Unit Economics Breakdown: ₹300 Seed, ₹45 Cost, ₹2,400 Service Yield ending at ₹2,655 (8.85x)">
             <div class="fr-roi-bar-head">
@@ -775,7 +775,34 @@ function renderCompetitions(content) {
               <span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--cost" aria-hidden="true"></i>₹45 Cost</span>
               <span class="fr-roi-leg-item fr-roi-leg-accent"><i class="fr-roi-dot fr-roi-dot--yield" aria-hidden="true"></i>₹2,400 Service Yield</span>
             </div>
+            <div class="fr-rev-mix">
+              <span class="fr-rev-mix-lbl">₹2,400 Service Mix:</span>
+              <span class="fr-rev-mix-item">Web Curiosity Hook (QR→LinkedIn): <strong>₹1,050 (44%)</strong></span>
+              <span class="fr-rev-mix-item">On-Spot Caricatures: <strong>₹800 (33%)</strong></span>
+              <span class="fr-rev-mix-item">Campus Quiz: <strong>₹550 (23%)</strong></span>
+            </div>
           </div>` : '';
+
+    // Static HTML breakdown inside <details> so crawlers and non-JS browsers read 100% of unit economics
+    const fin = comp.financials || {};
+    const breakdownRows = Array.isArray(fin.service_breakdown) && fin.service_breakdown.length > 0
+      ? fin.service_breakdown.map(s => {
+          const totalRev = Number(fin.total_service_revenue_inr) || 0;
+          const pct = totalRev > 0 ? Math.round((Number(s.revenue_inr) / totalRev) * 100) : null;
+          return `<li><strong>${escapeHtml(s.name)}:</strong> ₹${escapeHtml(s.revenue_inr)}${pct !== null ? ` (${pct}%)` : ''} — ${escapeHtml(s.mechanism)}</li>`;
+        }).join('\n                  ')
+      : '';
+    const staticBreakdownHtml = `
+          <details class="fr-static-economics">
+            <summary>Case Breakdown &amp; Key Numbers (Static Readout)</summary>
+            <div class="fr-static-economics-body">
+              ${comp.story && comp.story.setup && comp.story.setup !== 'TBD' ? `<p><strong>Setup:</strong> ${escapeHtml(comp.story.setup)}</p>` : ''}
+              ${comp.story && comp.story.key_decision && comp.story.key_decision !== 'TBD' ? `<p><strong>Key Move:</strong> ${escapeHtml(comp.story.key_decision)}</p>` : ''}
+              ${comp.story && comp.story.result && comp.story.result !== 'TBD' ? `<p><strong>Outcome:</strong> ${escapeHtml(comp.story.result)}</p>` : ''}
+              ${comp.story && comp.story.takeaway && comp.story.takeaway !== 'TBD' ? `<p><strong>Lesson:</strong> ${escapeHtml(comp.story.takeaway)}</p>` : ''}
+              ${breakdownRows ? `<ul class="fr-static-breakdown-list">\n                  ${breakdownRows}\n                </ul>` : ''}
+            </div>
+          </details>`;
 
     // Pillar 04 gallery thumbnails
     const addAssets = comp.proof && comp.proof.additional_assets ? comp.proof.additional_assets : [];
@@ -784,7 +811,7 @@ function renderCompetitions(content) {
       const allGallery = [comp.proof.url, ...addAssets];
       galleryHtml = `
             <div class="fr-gallery-shelf">
-              <span class="fr-gallery-heading">Verified Field Artifacts (${allGallery.length}):</span>
+              <span class="fr-gallery-heading">Field Photos (${allGallery.length}):</span>
               <div class="fr-gallery-row fr-gallery-switcher">
                 ${allGallery.map((assetPath, aIdx) => {
                   const artifactAlt = ARTIFACT_ALT_MAP[assetPath] || `${comp.title} - Artifact ${aIdx + 1}`;
@@ -854,7 +881,7 @@ function renderCompetitions(content) {
               <span class="fr-pillar-idx">02</span>
               <span class="fr-pillar-title">MY SPECIFIC ROLE</span>
             </div>
-            ${hasEvidence ? '<span class="fr-role-badge">VERIFIED CONTRIBUTION</span>' : '<span class="fr-role-badge">CONTRIBUTION RECORD</span>'}
+            <span class="fr-role-badge">ROLE &amp; OUTPUT</span>
           </div>
           <div class="fr-role-highlight">
             <span class="fr-role-tag">ASSIGNMENT:</span>
@@ -866,24 +893,28 @@ function renderCompetitions(content) {
               ${(comp.deliverables || []).map(d => `<li class="fr-deliverable-item"><span class="fr-check-icon" aria-hidden="true">▸</span><span class="fr-deliverable-text">${escapeHtml(d)}</span></li>`).join('\n              ')}
             </ul>
           </div>
-          ${validMembers.length > 0 ? `
+          ${validMembers.length > 1 ? `
           <div class="fr-squad-meta">
-            <span>Personnel &amp; Teammates:</span>
+            <span>Squad:</span>
             <span class="fr-squad-names">${escapeHtml(validMembers.join(', '))}</span>
-          </div>` : ''}
+          </div>` : (validMembers.length === 1 && comp.team && Array.isArray(comp.team.members) && comp.team.members.includes('TBD') ? `
+          <div class="fr-squad-meta">
+            <span>Squad:</span>
+            <span class="fr-squad-names">${escapeHtml(validMembers[0])} + cohort teammates</span>
+          </div>` : '')}
         </div>
 
-        <!-- PILLAR 03: OUTCOME & VERIFIED NUMBERS -->
+        <!-- PILLAR 03: OUTCOME & NUMBERS -->
         <div class="fr-pillar fr-pillar-outcome">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">03</span>
-              <span class="fr-pillar-title">${hasEvidence ? 'OUTCOME &amp; VERIFIED TELEMETRY' : 'OUTCOME &amp; TELEMETRY'}</span>
+              <span class="fr-pillar-title">OUTCOME &amp; NUMBERS</span>
             </div>
             <span class="fr-result-badge">${escapeHtml(comp.placement)}</span>
           </div>
           <div class="fr-context-narrative">
-            <span class="fr-narrative-lbl">Verified Field Result:</span>
+            <span class="fr-narrative-lbl">Field Result:</span>
             <p class="fr-narrative-text">${escapeHtml(fieldResult)}</p>
           </div>
           <div class="case-telemetry-grid fr-telemetry-matrix">
@@ -891,11 +922,12 @@ function renderCompetitions(content) {
           </div>
           ${roiBarHtml}
 
-          <!-- Case Study Telemetry Deep Dive Anchor Button -->
-          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="${comp.id}" aria-haspopup="dialog" aria-expanded="false" title="Examine detailed unit economics &amp; telemetry for ${escapeHtml(comp.title)}">
-            <span>Examine Unit Economics &amp; Telemetry</span>
+          <!-- Interactive Modal Deep Dive + Static Crawler-Readable Fallback -->
+          <button type="button" class="cs-deepdive-btn fr-deepdive-btn" data-comp-id="${comp.id}" aria-haspopup="dialog" aria-expanded="false" title="Unit economics and breakdown for ${escapeHtml(comp.title)}">
+            <span>Unit Economics &amp; Breakdown</span>
             <span class="cs-arrow fr-arrow" aria-hidden="true">↗</span>
           </button>
+          ${staticBreakdownHtml}
         </div>
 
           </div>
@@ -908,7 +940,7 @@ function renderCompetitions(content) {
               <span class="fr-pillar-idx">04</span>
               <span class="fr-pillar-title">FIELD EVIDENCE &amp; PROOF</span>
             </div>
-            <span class="fr-asset-badge">${hasEvidence ? '<span class="pulse-dot" aria-hidden="true"></span><span>VERIFIED FIELD ASSET</span>' : '<span>FIELD ARTIFACT</span>'}</span>
+            <span class="fr-asset-badge">${hasEvidence ? '<span class="pulse-dot" aria-hidden="true"></span><span>FIELD PHOTO</span>' : '<span>FIELD ARTIFACT</span>'}</span>
           </div>
 
           <div class="fr-photo-frame" id="fr-visual-${comp.id}" data-zoom-target="${comp.proof.url}">
@@ -920,7 +952,7 @@ function renderCompetitions(content) {
                  loading="lazy">
             <div class="fr-photo-overlay" aria-hidden="true">
               <span class="fr-overlay-zoom-pill">
-                <span class="fr-zoom-icon">🔍</span> Click to Inspect Full-Resolution Proof
+                <span class="fr-zoom-icon">🔍</span> Inspect Full-Resolution Photo
               </span>
             </div>
             <button type="button" class="fr-inspect-btn"
@@ -1015,12 +1047,12 @@ function renderVentures(content) {
       b3Quote: 'Building canvas dashboards first slowed iteration on market invariants. Stripping down to a seeded headless state machine ensured identical scenario playback across candidate cohorts.'
     },
     'flow-state': {
-      b1Title: 'Local-First Zero-OAuth Architecture',
-      b1Text: 'Modern focus utilities leak behavioral telemetry and require broad OAuth scopes. Flow State enforces strict air-gap privacy by parsing local RFC 5545 calendar files with zero network handshakes.',
+      b1Title: 'Python + Local-First Zero-OAuth Architecture',
+      b1Text: 'Built with a Python backend and native OS webview UI, Flow State avoids cloud data leaks and broad OAuth scopes by parsing local RFC 5545 calendar files with zero network handshakes.',
       b2Title: '16-Bit Procedural Audio Engine',
-      b2Text: 'Replaced streaming audio loops and MP3 assets with real-time 44.1kHz procedural sine synthesis via math.sin, keeping audio generation deterministic and completely offline.',
-      b3Title: 'Retrospective: Discarding Electron Overhead',
-      b3Quote: 'Bundling Chromium consumed ~450MB of RAM—counterproductive for lightweight flow. Moving to native OS webview primitives kept memory footprints minimal and startup instant.'
+      b2Text: 'Replaced streaming audio loops and MP3 assets with real-time 44.1kHz procedural sine synthesis via Python math.sin (plus live Web Audio preview here), keeping audio generation offline.',
+      b3Title: 'Retrospective: Python + Native Webview over Electron',
+      b3Quote: 'Bundling Chromium via Electron consumed ~450MB of RAM—counterproductive for lightweight focus. Pairing Python with native OS webview primitives kept memory minimal and startup instant.'
     },
     krama: {
       b1Title: '75% Eligibility Recovery Calculus',
@@ -1118,11 +1150,11 @@ ${vens.map(ven => {
               <button type="button"
                       class="vn-artifact-btn"
                       data-asset-src="assets/flowstate-receipt.png"
-                      data-asset-caption="Flow State · Weekly Focus Telemetry Receipt"
+                      data-asset-caption="Flow State · Weekly Local Focus Receipt"
                       data-asset-stamp="Local Build // Receipt"
                       data-comp-title="Flow State"
-                      aria-label="Inspect Flow State weekly focus telemetry receipt">
-                <img src="assets/flowstate-receipt.png" width="320" height="220" loading="lazy" alt="Flow State weekly focus telemetry receipt preview">
+                      aria-label="Inspect Flow State weekly local focus receipt">
+                <img src="assets/flowstate-receipt.png" width="320" height="220" loading="lazy" alt="Flow State weekly local focus receipt preview">
                 <span class="vn-artifact-meta">
                   <span class="vn-artifact-kicker">LOCAL BUILD // RECEIPT</span>
                   <span class="vn-artifact-title">Inspect Focus Receipt ↗</span>
@@ -1261,7 +1293,7 @@ ${vens.map(ven => {
               <span class="cs-trigger-icon" aria-hidden="true">+</span>
               <span class="cs-trigger-label">Deep Dive: Systems &amp; Retrospective</span>
             </span>
-            <span class="cs-trigger-badge">AUDITED</span>
+            <span class="cs-trigger-badge">SPECS</span>
           </button>
 
           <!-- Expandable Deep Dive Drawer Host -->
