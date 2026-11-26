@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-11-26T04:43:31.383Z",
-  "durationSeconds": 71.9,
+  "timestamp": "2026-11-26T12:43:13.813Z",
+  "durationSeconds": 68.62,
   "allPassed": true,
   "gates": [
     {
       "gate": "G-01",
       "name": "Static Build Engine",
       "target": "Clean npm run build generation into dist/",
-      "measured": "326.7 KB HTML, 30 assets",
+      "measured": "343.3 KB HTML, 30 assets",
       "passed": true,
       "data": {
         "gate": "G-01",
         "name": "Static Build Engine",
         "passed": true,
-        "durationMs": 10837,
-        "htmlSize": 334559,
+        "durationMs": 9009,
+        "htmlSize": 351532,
         "assetsCount": 30,
-        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Single-source JSON payload + shared domain engines\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Extracted: dist/app.js (127,934 bytes)\n  ✔ Written: dist/index.html (333,424 bytes)\n  ✔ Synced:  index.html (333,424 bytes)\n  ✔ Synced:  index.v2.html (333,424 bytes)\n  ✔ Synced:  portfolio/index.html (333,424 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  referenced assets -> dist/assets/ (29 files, raw unreferenced photos skipped)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (656 bytes)\n  ✔ Generated: dist/llms.txt (4518 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
+        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Single-source JSON payload + shared domain engines\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Extracted: dist/app.js (132,907 bytes)\n  ✔ Written: dist/index.html (350,370 bytes)\n  ✔ Synced:  index.html (350,370 bytes)\n  ✔ Synced:  index.v2.html (350,370 bytes)\n  ✔ Synced:  portfolio/index.html (350,370 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  referenced assets -> dist/assets/ (29 files, raw unreferenced photos skipped)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (656 bytes)\n  ✔ Generated: dist/llms.txt (4503 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
         "error": null
       }
     },
@@ -70,11 +70,11 @@
         },
         "perfMetrics": {
           "ttfb": 5,
-          "domContentLoaded": 287,
-          "loadEvent": 331,
-          "firstContentfulPaintMs": 348,
-          "domNodes": 1656,
-          "totalTransferBytes": 260976,
+          "domContentLoaded": 557,
+          "loadEvent": 646,
+          "firstContentfulPaintMs": 616,
+          "domNodes": 1717,
+          "totalTransferBytes": 265950,
           "largeResources": []
         },
         "perfIssues": [],
@@ -253,10 +253,10 @@
               "status": "PASS"
             },
             {
-              "reference": "app.js?v=9d4219d6",
+              "reference": "app.js?v=98143ece",
               "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/app.js",
               "exists": true,
-              "sizeBytes": 129050,
+              "sizeBytes": 134024,
               "status": "PASS"
             }
           ]
@@ -435,7 +435,7 @@
               "bodyScrollWidth": 320,
               "hasOverflow": false,
               "overflowPx": 0,
-              "overflowingElementsCount": 5,
+              "overflowingElementsCount": 7,
               "topOverflowing": [
                 {
                   "tag": "div",
@@ -444,6 +444,24 @@
                   "width": 580,
                   "right": 450,
                   "overflowPx": 130,
+                  "snippet": ""
+                },
+                {
+                  "tag": "span",
+                  "id": "typedOutput",
+                  "className": "typed-output",
+                  "width": 494.8,
+                  "right": 601.8,
+                  "overflowPx": 281.8,
+                  "snippet": "researching how llms fail on punjabi, ha"
+                },
+                {
+                  "tag": "span",
+                  "id": null,
+                  "className": "typed-cursor",
+                  "width": 8,
+                  "right": 615.8,
+                  "overflowPx": 295.8,
                   "snippet": ""
                 },
                 {
@@ -463,24 +481,6 @@
                   "right": 420.4,
                   "overflowPx": 100.4,
                   "snippet": "$ stratum simulate --scenario \"cpm_volat"
-                },
-                {
-                  "tag": "span",
-                  "id": null,
-                  "className": "cm",
-                  "width": 374.4,
-                  "right": 420.4,
-                  "overflowPx": 100.4,
-                  "snippet": "$ flowstate run --zero-oauth --audio pro"
-                },
-                {
-                  "tag": "span",
-                  "id": null,
-                  "className": "cm",
-                  "width": 410.4,
-                  "right": 456.4,
-                  "overflowPx": 136.4,
-                  "snippet": "$ krama analyze --timetable schedule.jso"
                 }
               ]
             },

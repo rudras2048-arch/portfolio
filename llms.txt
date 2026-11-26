@@ -15,10 +15,10 @@ Thesis: I build software systems and stress-test commercial models in live compe
 - Sitemap: https://rudras-portfolio.netlify.app/sitemap.xml
 
 ## Key Metrics
-- **02 Championships**: Ashoka & Builders' Bootcamp
+- **02 Championships**: Ashoka & Rishihood
 - **TOP 10 National Finalist**: IIM Amritsar · 700+ registrations
 - **03 Podiums**: Jun–Oct 2026
-- **04 Ventures**: Tathya · Stratum · Flow State · Krama
+- **04 Ventures**: Tathya, Stratum, Flow State, Krama
 
 ## Competitive Field Record
 ### Cash Rush Competition (Ashoka University · Shatranj '26, October 2026)

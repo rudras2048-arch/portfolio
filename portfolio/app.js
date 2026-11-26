@@ -2574,55 +2574,71 @@ window.__PORTFOLIO_CONTENT__ = (function() {
         }
       }, { passive: true });
     });
+
+    const portraitCard = document.querySelector('.hero-portrait-card');
+    if (portraitCard && !portraitCard.dataset.tiltBound) {
+      portraitCard.dataset.tiltBound = 'true';
+      portraitCard.addEventListener('pointermove', (e) => {
+        const rect = portraitCard.getBoundingClientRect();
+        const nx = ((e.clientX - rect.left) / Math.max(1, rect.width)) - 0.5;
+        const ny = ((e.clientY - rect.top) / Math.max(1, rect.height)) - 0.5;
+        portraitCard.style.setProperty('--pt-rx', (-ny * 6).toFixed(2) + 'deg');
+        portraitCard.style.setProperty('--pt-ry', (nx * 7).toFixed(2) + 'deg');
+        portraitCard.style.setProperty('--pt-gx', (50 + nx * 50).toFixed(1) + '%');
+        portraitCard.style.setProperty('--pt-gy', (50 + ny * 50).toFixed(1) + '%');
+      }, { passive: true });
+      portraitCard.addEventListener('pointerleave', () => {
+        portraitCard.style.setProperty('--pt-rx', '0deg');
+        portraitCard.style.setProperty('--pt-ry', '0deg');
+        portraitCard.style.setProperty('--pt-gx', '50%');
+        portraitCard.style.setProperty('--pt-gy', '30%');
+      });
+    }
   };
 
-  /* --- 12. Orchestrated Bootstrap --- */
-(function() {
-  function bootstrapPortfolioV2() {
-    const content = window.__PORTFOLIO_CONTENT__;
-    if (typeof window.initSEOAndSchema === 'function') {
-      window.initSEOAndSchema(content);
-    }
-    if (typeof window.initAdaptiveCanvas === 'function') {
-      window.__CANVAS_CONTROLLER = window.initAdaptiveCanvas();
-    }
-    if (typeof window.initRecruiterMode === 'function') {
-      window.initRecruiterMode(content);
-    }
-    if (typeof window.initAboutSection === 'function') {
-      window.initAboutSection(content);
-    }
-    if (typeof window.initFieldRecordProof === 'function') {
-      window.__FIELD_RECORD_PROOF = window.initFieldRecordProof(content);
-    }
-    if (typeof window.initCaseStudyDeepDives === 'function') {
-      window.initCaseStudyDeepDives(content);
-    }
-    if (typeof window.initTelemetryModal === 'function') {
-      window.__TELEMETRY_MODAL = window.initTelemetryModal(content);
-    }
-    if (typeof window.initVentureInteractives === 'function') {
-      window.initVentureInteractives(content);
-    }
-    if (typeof window.initCommandPalette === 'function') {
-      window.__CMD_PALETTE = window.initCommandPalette(content);
-    }
-    if (typeof window.initSpecularSpotlight === 'function') {
-      window.initSpecularSpotlight();
-    }
-    if (typeof window.initTathyaExplorer === 'function') {
-      window.__TATHYA_EXPLORER = window.initTathyaExplorer();
-    }
-  }
+  window.initInstrumentTabsAndPipeline = function() {
+    // Segmented Brief/Role Console Tabs inside primary competition cards
+    document.querySelectorAll('.fr-card').forEach(card => {
+      const tabBar = card.querySelector('.fr-pillar-tabs');
+      if (!tabBar || card.dataset.tabsBound) return;
+      card.dataset.tabsBound = 'true';
+      card.classList.add('fr-tabs-ready');
+      const tabs = tabBar.querySelectorAll('.fr-pillar-tab');
+      const panels = card.querySelectorAll('.fr-pillar[data-fr-panel]');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const target = tab.getAttribute('data-fr-tab');
+          tabs.forEach(t => {
+            const active = t.getAttribute('data-fr-tab') === target;
+            t.classList.toggle('is-active', active);
+            t.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          panels.forEach(p => {
+            p.classList.toggle('is-tab-active', p.getAttribute('data-fr-panel') === target);
+          });
+        });
+      });
+    });
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bootstrapPortfolioV2);
-  } else {
-    bootstrapPortfolioV2();
-  }
-})();
+    // Venture System Pipeline Strip quick-jump + spotlight pulse
+    const isReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.querySelectorAll('.vn-pipe-node[data-jump-venture]').forEach(btn => {
+      if (btn.dataset.pipeBound) return;
+      btn.dataset.pipeBound = 'true';
+      btn.addEventListener('click', () => {
+        const vid = btn.getAttribute('data-jump-venture');
+        const targetCard = document.querySelector('.venture-card[data-venture-id="' + vid + '"]');
+        if (!targetCard) return;
+        targetCard.scrollIntoView({ behavior: isReduced ? 'auto' : 'smooth', block: 'center' });
+        targetCard.classList.remove('is-highlighted');
+        void targetCard.offsetWidth;
+        targetCard.classList.add('is-highlighted');
+        setTimeout(() => targetCard.classList.remove('is-highlighted'), 1600);
+      });
+    });
+  };
 
-  
+
 /* SHARED DOMAIN ENGINES (KramaMath + TathyaTokenizer) */
 /**
  * ============================================================================
@@ -3154,6 +3170,15 @@ window.__PORTFOLIO_CONTENT__ = (function() {
         ratioValEl.textContent = diaEnc.tokenCount + ' vs ' + stdEnc.tokenCount + ' tokens (' + ratio + '×)';
       }
 
+      var dieSerialEl = document.getElementById('tfe-die-serial');
+      var dieRatioEl = document.getElementById('tfe-die-ratio');
+      var dieTokensEl = document.getElementById('tfe-die-tokens');
+      var dieBytesEl = document.getElementById('tfe-die-bytes');
+      if (dieSerialEl) dieSerialEl.textContent = 'SPEC // ' + currentDialect.toUpperCase();
+      if (dieRatioEl) dieRatioEl.textContent = (diaEnc.tokenCount / Math.max(1, stdEnc.tokenCount)).toFixed(2) + '×';
+      if (dieTokensEl) dieTokensEl.textContent = diaEnc.tokenCount + ' TOK';
+      if (dieBytesEl) dieBytesEl.textContent = diaEnc.utf8Bytes + ' B';
+
       if (fragCountEl) {
         fragCountEl.textContent = diaEnc.tokenCount + ' tokens · ' + diaEnc.byteFallbackCount + ' byte fallbacks · ' + diaEnc.utf8Bytes + ' B';
       }
@@ -3220,6 +3245,13 @@ window.__PORTFOLIO_CONTENT__ = (function() {
       if (stdInput) stdInput.value = preset.standard_hindi;
 
       runLiveTokenization();
+
+      var cartridge = document.getElementById('tfe-specimen-cartridge');
+      if (cartridge) {
+        cartridge.classList.remove('is-docking');
+        void cartridge.offsetWidth;
+        cartridge.classList.add('is-docking');
+      }
 
       if (liveEl) {
         liveEl.textContent = 'Loaded ' + preset.name + ' preset and updated client-side BPE token measurements.';
@@ -3302,6 +3334,22 @@ window.__PORTFOLIO_CONTENT__ = (function() {
     }
 
     runLiveTokenization();
+
+    var cartridgeEl = document.getElementById('tfe-specimen-cartridge');
+    if (cartridgeEl && window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cartridgeEl.addEventListener('pointermove', function (e) {
+        var rect = cartridgeEl.getBoundingClientRect();
+        var nx = ((e.clientX - rect.left) / Math.max(1, rect.width)) - 0.5;
+        var ny = ((e.clientY - rect.top) / Math.max(1, rect.height)) - 0.5;
+        cartridgeEl.style.setProperty('--die-rx', (-ny * 10).toFixed(2) + 'deg');
+        cartridgeEl.style.setProperty('--die-ry', (nx * 12).toFixed(2) + 'deg');
+      });
+      cartridgeEl.addEventListener('pointerleave', function () {
+        cartridgeEl.style.setProperty('--die-rx', '0deg');
+        cartridgeEl.style.setProperty('--die-ry', '0deg');
+      });
+    }
+
     container.dataset.tfeInitialized = 'true';
 
     var instance = {
@@ -3315,4 +3363,54 @@ window.__PORTFOLIO_CONTENT__ = (function() {
     window.__TATHYA_EXPLORER_INSTANCE = instance;
     return instance;
   };
+})();
+
+
+  /* --- 12. Orchestrated Bootstrap --- */
+(function() {
+  function bootstrapPortfolioV2() {
+    const content = window.__PORTFOLIO_CONTENT__;
+    if (typeof window.initSEOAndSchema === 'function') {
+      window.initSEOAndSchema(content);
+    }
+    if (typeof window.initAdaptiveCanvas === 'function') {
+      window.__CANVAS_CONTROLLER = window.initAdaptiveCanvas();
+    }
+    if (typeof window.initRecruiterMode === 'function') {
+      window.initRecruiterMode(content);
+    }
+    if (typeof window.initAboutSection === 'function') {
+      window.initAboutSection(content);
+    }
+    if (typeof window.initFieldRecordProof === 'function') {
+      window.__FIELD_RECORD_PROOF = window.initFieldRecordProof(content);
+    }
+    if (typeof window.initCaseStudyDeepDives === 'function') {
+      window.initCaseStudyDeepDives(content);
+    }
+    if (typeof window.initTelemetryModal === 'function') {
+      window.__TELEMETRY_MODAL = window.initTelemetryModal(content);
+    }
+    if (typeof window.initVentureInteractives === 'function') {
+      window.initVentureInteractives(content);
+    }
+    if (typeof window.initCommandPalette === 'function') {
+      window.__CMD_PALETTE = window.initCommandPalette(content);
+    }
+    if (typeof window.initSpecularSpotlight === 'function') {
+      window.initSpecularSpotlight();
+    }
+    if (typeof window.initInstrumentTabsAndPipeline === 'function') {
+      window.initInstrumentTabsAndPipeline();
+    }
+    if (typeof window.initTathyaExplorer === 'function') {
+      window.__TATHYA_EXPLORER = window.initTathyaExplorer();
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', bootstrapPortfolioV2);
+  } else {
+    bootstrapPortfolioV2();
+  }
 })();

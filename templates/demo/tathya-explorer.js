@@ -131,6 +131,15 @@
         ratioValEl.textContent = diaEnc.tokenCount + ' vs ' + stdEnc.tokenCount + ' tokens (' + ratio + '×)';
       }
 
+      var dieSerialEl = document.getElementById('tfe-die-serial');
+      var dieRatioEl = document.getElementById('tfe-die-ratio');
+      var dieTokensEl = document.getElementById('tfe-die-tokens');
+      var dieBytesEl = document.getElementById('tfe-die-bytes');
+      if (dieSerialEl) dieSerialEl.textContent = 'SPEC // ' + currentDialect.toUpperCase();
+      if (dieRatioEl) dieRatioEl.textContent = (diaEnc.tokenCount / Math.max(1, stdEnc.tokenCount)).toFixed(2) + '×';
+      if (dieTokensEl) dieTokensEl.textContent = diaEnc.tokenCount + ' TOK';
+      if (dieBytesEl) dieBytesEl.textContent = diaEnc.utf8Bytes + ' B';
+
       if (fragCountEl) {
         fragCountEl.textContent = diaEnc.tokenCount + ' tokens · ' + diaEnc.byteFallbackCount + ' byte fallbacks · ' + diaEnc.utf8Bytes + ' B';
       }
@@ -197,6 +206,13 @@
       if (stdInput) stdInput.value = preset.standard_hindi;
 
       runLiveTokenization();
+
+      var cartridge = document.getElementById('tfe-specimen-cartridge');
+      if (cartridge) {
+        cartridge.classList.remove('is-docking');
+        void cartridge.offsetWidth;
+        cartridge.classList.add('is-docking');
+      }
 
       if (liveEl) {
         liveEl.textContent = 'Loaded ' + preset.name + ' preset and updated client-side BPE token measurements.';
@@ -279,6 +295,22 @@
     }
 
     runLiveTokenization();
+
+    var cartridgeEl = document.getElementById('tfe-specimen-cartridge');
+    if (cartridgeEl && window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      cartridgeEl.addEventListener('pointermove', function (e) {
+        var rect = cartridgeEl.getBoundingClientRect();
+        var nx = ((e.clientX - rect.left) / Math.max(1, rect.width)) - 0.5;
+        var ny = ((e.clientY - rect.top) / Math.max(1, rect.height)) - 0.5;
+        cartridgeEl.style.setProperty('--die-rx', (-ny * 10).toFixed(2) + 'deg');
+        cartridgeEl.style.setProperty('--die-ry', (nx * 12).toFixed(2) + 'deg');
+      });
+      cartridgeEl.addEventListener('pointerleave', function () {
+        cartridgeEl.style.setProperty('--die-rx', '0deg');
+        cartridgeEl.style.setProperty('--die-ry', '0deg');
+      });
+    }
+
     container.dataset.tfeInitialized = 'true';
 
     var instance = {

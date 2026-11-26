@@ -90,7 +90,169 @@
   overflow-wrap: anywhere;
 }
 
-/* 2. Research Hypothesis Banner */
+/* 2. Research Hypothesis + Interactive 3D Silicon Specimen Cartridge */
+.tfe-workbench-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 256px;
+  gap: 14px;
+  align-items: stretch;
+}
+@media (max-width: 820px) {
+  .tfe-workbench-intro {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.tfe-cartridge {
+  perspective: 800px;
+  display: flex;
+  align-items: stretch;
+}
+
+.tfe-cartridge-shell {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(155deg, #1a1b22 0%, #0e0f13 60%, #14161c 100%);
+  border: 1px solid rgba(165, 186, 40, 0.32);
+  border-radius: 12px;
+  padding: 12px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--die-rx, 0deg)) rotateY(var(--die-ry, 0deg));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.tfe-cartridge.is-docking .tfe-cartridge-shell {
+  animation: tfeCartridgeDock 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 26px rgba(165, 186, 40, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+@keyframes tfeCartridgeDock {
+  0% { transform: translateY(-4px) scale(0.98); }
+  45% { transform: translateY(3px) scale(1.01); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.tfe-cartridge-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 4px;
+  border-radius: 0 0 4px 4px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.tfe-cartridge-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.tfe-cartridge-serial {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.tfe-cartridge-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  box-shadow: 0 0 10px var(--accent-bright);
+}
+
+.tfe-cartridge-die {
+  position: relative;
+  background: radial-gradient(circle at 30% 25%, rgba(165, 186, 40, 0.14), rgba(8, 9, 12, 0.94) 72%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.tfe-die-traces {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(165, 186, 40, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(165, 186, 40, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.tfe-die-readout {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tfe-die-lbl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.tfe-die-val {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent-bright);
+}
+
+.tfe-die-stats {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-bone);
+}
+
+.tfe-cartridge-pins {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+  padding-top: 2px;
+}
+
+.tfe-cartridge-pins i {
+  display: block;
+  height: 6px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, #D9E85C 0%, #839619 100%);
+  opacity: 0.78;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tfe-cartridge-shell {
+    transform: none !important;
+    transition: none !important;
+  }
+  .tfe-cartridge.is-docking .tfe-cartridge-shell {
+    animation: none !important;
+  }
+}
+
+/* Research Hypothesis Banner */
 .tfe-hypothesis-banner {
   background: rgba(165, 180, 252, 0.06);
   border: 1px solid rgba(165, 180, 252, 0.22);

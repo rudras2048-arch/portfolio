@@ -942,13 +942,14 @@
     }
 
     .stat-num {
-      font-family: var(--font-display);
-      font-size: clamp(18px, 1.48vw, 22px);
+      font-family: var(--font-mono);
+      font-size: clamp(20px, 1.75vw, 24px);
       font-weight: 800;
       color: var(--accent);
       line-height: 1.05;
       white-space: nowrap;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
     }
 
     .stat-label {
@@ -1035,21 +1036,50 @@
       transform: translate(3px, -3px);
     }
 
-    /* Hero Portrait (Luxury Frame) */
+    /* Hero Portrait (3D Optical Field Frame) */
     .hero-portrait-card {
       position: relative;
-      background: var(--bg-card);
+      background: linear-gradient(155deg, rgba(24, 25, 31, 0.92) 0%, rgba(14, 14, 18, 0.94) 100%);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--rule);
+      border: 1px solid rgba(255, 255, 255, 0.11);
       border-radius: var(--card-radius);
       padding: 14px;
-      box-shadow: 0 24px 56px rgba(0, 0, 0, 0.55);
-      transition: border-color 0.3s ease;
+      box-shadow: 0 28px 64px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(165, 186, 40, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transform: perspective(1000px) rotateX(var(--pt-rx, 0deg)) rotateY(var(--pt-ry, 0deg));
+      transition: border-color 0.3s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+
+    .hero-portrait-card::before,
+    .hero-portrait-card::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border-color: rgba(165, 186, 40, 0.55);
+      border-style: solid;
+      pointer-events: none;
+      z-index: 4;
+      transition: border-color 0.25s ease;
+    }
+
+    .hero-portrait-card::before {
+      top: 8px;
+      left: 8px;
+      border-width: 1.5px 0 0 1.5px;
+      border-radius: 4px 0 0 0;
+    }
+
+    .hero-portrait-card::after {
+      bottom: 8px;
+      right: 8px;
+      border-width: 0 1.5px 1.5px 0;
+      border-radius: 0 0 4px 0;
     }
 
     .hero-portrait-card:hover {
-      border-color: var(--rule-hover);
+      border-color: rgba(165, 186, 40, 0.42);
+      box-shadow: 0 34px 72px rgba(0, 0, 0, 0.72), 0 0 28px rgba(165, 186, 40, 0.14);
     }
 
     .portrait-inner {
@@ -1060,20 +1090,34 @@
       background: #060608;
     }
 
+    .portrait-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at var(--pt-gx, 50%) var(--pt-gy, 30%), rgba(190, 224, 36, 0.12) 0%, transparent 48%),
+        radial-gradient(ellipse at 50% 42%, transparent 46%, rgba(8, 8, 11, 0.72) 100%);
+      z-index: 2;
+    }
+
     .hero-portrait-card .portrait-inner img,
     .portrait-inner img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center 15%;
-      transition: transform 0.5s ease;
+      filter: contrast(1.06) saturate(0.84) brightness(0.96);
+      transition: transform 0.5s ease, filter 0.4s ease;
     }
 
     .hero-portrait-card:hover .portrait-inner img {
       transform: scale(1.03);
+      filter: contrast(1.08) saturate(0.9) brightness(1);
     }
 
     .portrait-caption-box {
+      z-index: 3;
       position: absolute;
       bottom: 0;
       left: 0;
@@ -2013,11 +2057,27 @@
       .rm-toggle-btn,
       #rm-toggle { display: none !important; }     /* moved into the mobile menu — see step 3 */
       .hero-wrap {
-        padding-top: 88px;
-        padding-bottom: 20px;
+        padding-top: 82px;
+        padding-bottom: 18px;
       }
       .hero-tagline-prompt {
-        min-height: 44px;
+        min-height: 22px;
+        margin-bottom: 10px;
+        flex-wrap: nowrap;
+        overflow: hidden;
+      }
+      .hero-tagline-prompt .prompt {
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+      .hero-tagline-prompt .typed-wrap {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+      }
+      .hero-statement {
+        margin-bottom: 18px;
       }
       section {
         padding: 34px 0 18px;
@@ -2041,10 +2101,21 @@
         padding: 18px 16px;
       }
       .hero-stats-row {
-        grid-template-columns: minmax(0, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+      .stat-card {
+        padding: 11px 10px;
       }
       .contact-card {
         padding: 28px 20px;
+      }
+    }
+
+    @media (max-width: 359px) {
+      .hero-stats-row {
+        grid-template-columns: minmax(0, 1fr);
       }
     }
 
@@ -2060,6 +2131,9 @@
       .reveal {
         opacity: 1;
         transform: none;
+      }
+      .hero-portrait-card {
+        transform: none !important;
       }
     }
 
@@ -2210,13 +2284,13 @@
     /* ==========================================================================
        4. DOMAIN: RECRUITER MODE & EXECUTIVE BRIEF (.rm-)
        ========================================================================== */
-/* --- Recruiter Mode CSS Reset & Root Scoping --- */
+/* --- Recruiter Mode CSS Reset & Machined Rocker Switch --- */
 .rm-toggle-btn {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid var(--rule);
+  background: linear-gradient(180deg, rgba(32, 34, 42, 0.92) 0%, rgba(19, 20, 25, 0.96) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   color: var(--text-bone);
-  border-radius: 9999px;
-  padding: 6px 14px;
+  border-radius: 12px;
+  padding: 6px 13px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -2226,7 +2300,8 @@
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  transition: border-color 0.25s ease, background 0.25s ease, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 3px 0 #070709, 0 6px 14px rgba(0, 0, 0, 0.45);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease;
   user-select: none;
   -webkit-user-select: none;
   position: relative;
@@ -2234,10 +2309,14 @@
 }
 
 .rm-toggle-btn:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--rule-hover);
+  background: linear-gradient(180deg, rgba(40, 43, 53, 0.96) 0%, rgba(23, 24, 30, 0.98) 100%);
+  border-color: rgba(165, 186, 40, 0.4);
   color: var(--text-bone);
-  transform: translateY(-1px);
+}
+
+.rm-toggle-btn:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 1px 0 #070709;
 }
 
 .rm-toggle-btn:focus-visible {
@@ -2248,10 +2327,11 @@
 .rm-toggle-btn[aria-pressed="true"],
 .rm-toggle-btn.rm-active,
 body.rm-mode-active #rm-toggle {
-  background: var(--accent-soft);
+  background: linear-gradient(180deg, rgba(165, 186, 40, 0.22) 0%, rgba(165, 186, 40, 0.1) 100%);
   border-color: var(--accent);
   color: var(--accent-bright);
-  box-shadow: 0 0 16px var(--accent-glow);
+  transform: translateY(1.5px);
+  box-shadow: inset 0 1px 0 rgba(190, 224, 36, 0.25), 0 1px 0 #070709, 0 0 18px var(--accent-glow);
 }
 
 .rm-toggle-beacon {
@@ -5696,6 +5776,169 @@ body.cs-modal-open {
       }
     }
 
+    /* Alternating Section Chapters, Hardware Instrument Tabs, Holographic Sheen & System Map */
+    section#competitions {
+      position: relative;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      background: linear-gradient(180deg, rgba(16, 17, 22, 0.72) 0%, rgba(12, 12, 14, 0.28) 100%);
+      padding: 56px 24px 38px;
+      margin: 18px -24px;
+      border-radius: 20px;
+    }
+
+    section#ventures {
+      position: relative;
+      padding-top: 52px;
+    }
+
+    .fr-card[data-category="1st-place"] {
+      background:
+        radial-gradient(480px circle at var(--spot-x, 50%) var(--spot-y, 10%), rgba(190, 224, 36, 0.085), transparent 55%),
+        var(--bg-card);
+      border-color: rgba(165, 186, 40, 0.26);
+    }
+    .fr-card[data-category="1st-place"]:hover {
+      border-color: rgba(190, 224, 36, 0.52);
+      box-shadow: 0 24px 52px rgba(0, 0, 0, 0.52), 0 0 32px rgba(165, 186, 40, 0.14);
+    }
+
+    /* Segmented Brief/Role Switcher (hidden until JS adds .fr-tabs-ready so noscript shows all) */
+    .fr-pillar-tabs {
+      display: none;
+      gap: 6px;
+      background: rgba(10, 10, 14, 0.75);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 4px;
+    }
+    .fr-tabs-ready .fr-pillar-tabs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .fr-pillar-tab {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 7px;
+      padding: 8px 12px;
+      min-height: 36px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .fr-pillar-tab:hover {
+      color: var(--text-bone);
+      background: rgba(255, 255, 255, 0.04);
+    }
+    .fr-pillar-tab.is-active {
+      color: var(--accent-bright);
+      background: var(--accent-soft);
+      border-color: rgba(165, 186, 40, 0.35);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+    .fr-tabs-ready .fr-pillar[data-fr-panel]:not(.is-tab-active) {
+      display: none;
+    }
+
+    /* Venture System Architecture Pipeline Strip */
+    .vn-pipeline-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    @media (max-width: 960px) {
+      .vn-pipeline-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      section#competitions {
+        margin: 12px -12px;
+        padding: 40px 12px 28px;
+        border-radius: 14px;
+      }
+    }
+    @media (max-width: 560px) {
+      .vn-pipeline-strip {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      section#competitions {
+        margin: 8px 0;
+        padding: 34px 12px 24px;
+      }
+    }
+    .vn-pipe-node {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(20, 21, 27, 0.85);
+      border: 1px solid var(--rule);
+      border-radius: 12px;
+      padding: 10px 14px;
+      text-align: left;
+      cursor: pointer;
+      min-height: 52px;
+      transition: border-color 0.22s ease, transform 0.22s ease, background 0.22s ease;
+    }
+    .vn-pipe-node:hover {
+      border-color: rgba(165, 186, 40, 0.48);
+      background: rgba(165, 186, 40, 0.08);
+      transform: translateY(-2px);
+    }
+    .vn-pipe-idx {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid rgba(165, 186, 40, 0.25);
+      border-radius: 6px;
+      padding: 4px 7px;
+      flex-shrink: 0;
+    }
+    .vn-pipe-main {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+      flex: 1;
+    }
+    .vn-pipe-name {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-bone);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vn-pipe-badge {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .vn-pipe-arrow {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+      transition: transform 0.2s ease, color 0.2s ease;
+    }
+    .vn-pipe-node:hover .vn-pipe-arrow {
+      color: var(--accent-bright);
+      transform: translateX(3px);
+    }
+    .venture-card.is-highlighted {
+      border-color: var(--accent-bright) !important;
+      box-shadow: 0 0 32px rgba(165, 186, 40, 0.22) !important;
+    }
+
     /* Venture Interactive Objects (.vn-sim, .vn-artifact, .vn-synth, #krama-calc) */
     .venture-actions {
       display: flex;
@@ -6537,7 +6780,169 @@ body.cs-modal-open {
   overflow-wrap: anywhere;
 }
 
-/* 2. Research Hypothesis Banner */
+/* 2. Research Hypothesis + Interactive 3D Silicon Specimen Cartridge */
+.tfe-workbench-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 256px;
+  gap: 14px;
+  align-items: stretch;
+}
+@media (max-width: 820px) {
+  .tfe-workbench-intro {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.tfe-cartridge {
+  perspective: 800px;
+  display: flex;
+  align-items: stretch;
+}
+
+.tfe-cartridge-shell {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(155deg, #1a1b22 0%, #0e0f13 60%, #14161c 100%);
+  border: 1px solid rgba(165, 186, 40, 0.32);
+  border-radius: 12px;
+  padding: 12px 14px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transform-style: preserve-3d;
+  transform: rotateX(var(--die-rx, 0deg)) rotateY(var(--die-ry, 0deg));
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  overflow: hidden;
+}
+
+.tfe-cartridge.is-docking .tfe-cartridge-shell {
+  animation: tfeCartridgeDock 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  border-color: var(--accent-bright);
+  box-shadow: 0 0 26px rgba(165, 186, 40, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+@keyframes tfeCartridgeDock {
+  0% { transform: translateY(-4px) scale(0.98); }
+  45% { transform: translateY(3px) scale(1.01); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.tfe-cartridge-notch {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 4px;
+  border-radius: 0 0 4px 4px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.tfe-cartridge-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+}
+
+.tfe-cartridge-serial {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+
+.tfe-cartridge-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent-bright);
+  box-shadow: 0 0 10px var(--accent-bright);
+}
+
+.tfe-cartridge-die {
+  position: relative;
+  background: radial-gradient(circle at 30% 25%, rgba(165, 186, 40, 0.14), rgba(8, 9, 12, 0.94) 72%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+}
+
+.tfe-die-traces {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(165, 186, 40, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(165, 186, 40, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+
+.tfe-die-readout {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.tfe-die-lbl {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+
+.tfe-die-val {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--accent-bright);
+}
+
+.tfe-die-stats {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-bone);
+}
+
+.tfe-cartridge-pins {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 5px;
+  padding-top: 2px;
+}
+
+.tfe-cartridge-pins i {
+  display: block;
+  height: 6px;
+  border-radius: 2px 2px 0 0;
+  background: linear-gradient(180deg, #D9E85C 0%, #839619 100%);
+  opacity: 0.78;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tfe-cartridge-shell {
+    transform: none !important;
+    transition: none !important;
+  }
+  .tfe-cartridge.is-docking .tfe-cartridge-shell {
+    animation: none !important;
+  }
+}
+
+/* Research Hypothesis Banner */
 .tfe-hypothesis-banner {
   background: rgba(165, 180, 252, 0.06);
   border: 1px solid rgba(165, 180, 252, 0.22);
@@ -7193,7 +7598,7 @@ body.cs-modal-open {
             <div class="stat-card">
               <span class="stat-num mono" data-count="2">02</span>
               <span class="stat-label">Championships</span>
-              <span class="stat-desc">Ashoka &amp; Builders&#39; Bootcamp</span>
+              <span class="stat-desc">Ashoka &amp; Rishihood</span>
             </div>
             <div class="stat-card">
               <span class="stat-num mono">TOP 10</span>
@@ -7208,7 +7613,7 @@ body.cs-modal-open {
             <div class="stat-card">
               <span class="stat-num mono" data-count="4">04</span>
               <span class="stat-label">Ventures</span>
-              <span class="stat-desc">Tathya · Stratum · Flow State · Krama</span>
+              <span class="stat-desc">Tathya, Stratum, Flow State, Krama</span>
             </div>
           </div>
 
@@ -7711,8 +8116,14 @@ body.cs-modal-open {
         <div class="fr-proof-layer">
           <div class="fr-proof-column fr-proof-narrative">
 
+        <!-- Segmented Console Switcher for Brief vs Role (enhances cleanly via JS; both panels stay readable under noscript) -->
+        <div class="fr-pillar-tabs" role="tablist" aria-label="Switch brief and role panels for Cash Rush Competition">
+          <button type="button" class="fr-pillar-tab is-active" role="tab" aria-selected="true" data-fr-tab="brief" data-comp-id="cash-rush">01 · Arena &amp; Brief</button>
+          <button type="button" class="fr-pillar-tab" role="tab" aria-selected="false" data-fr-tab="role" data-comp-id="cash-rush">02 · Role &amp; Output</button>
+        </div>
+
         <!-- PILLAR 01: THE ARENA & BRIEF -->
-        <div class="fr-pillar fr-pillar-arena">
+        <div class="fr-pillar fr-pillar-arena is-tab-active" data-fr-panel="brief">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">01</span>
@@ -7734,7 +8145,7 @@ body.cs-modal-open {
         </div>
 
         <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
-        <div class="fr-pillar fr-pillar-role">
+        <div class="fr-pillar fr-pillar-role" data-fr-panel="role">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">02</span>
@@ -7915,8 +8326,14 @@ body.cs-modal-open {
         <div class="fr-proof-layer">
           <div class="fr-proof-column fr-proof-narrative">
 
+        <!-- Segmented Console Switcher for Brief vs Role (enhances cleanly via JS; both panels stay readable under noscript) -->
+        <div class="fr-pillar-tabs" role="tablist" aria-label="Switch brief and role panels for CINE-SELL Brand Challenge">
+          <button type="button" class="fr-pillar-tab is-active" role="tab" aria-selected="true" data-fr-tab="brief" data-comp-id="cinesell">01 · Arena &amp; Brief</button>
+          <button type="button" class="fr-pillar-tab" role="tab" aria-selected="false" data-fr-tab="role" data-comp-id="cinesell">02 · Role &amp; Output</button>
+        </div>
+
         <!-- PILLAR 01: THE ARENA & BRIEF -->
-        <div class="fr-pillar fr-pillar-arena">
+        <div class="fr-pillar fr-pillar-arena is-tab-active" data-fr-panel="brief">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">01</span>
@@ -7938,7 +8355,7 @@ body.cs-modal-open {
         </div>
 
         <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
-        <div class="fr-pillar fr-pillar-role">
+        <div class="fr-pillar fr-pillar-role" data-fr-panel="role">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">02</span>
@@ -8108,8 +8525,14 @@ body.cs-modal-open {
         <div class="fr-proof-layer">
           <div class="fr-proof-column fr-proof-narrative">
 
+        <!-- Segmented Console Switcher for Brief vs Role (enhances cleanly via JS; both panels stay readable under noscript) -->
+        <div class="fr-pillar-tabs" role="tablist" aria-label="Switch brief and role panels for Builders&#39; Bootcamp (8th Edition)">
+          <button type="button" class="fr-pillar-tab is-active" role="tab" aria-selected="true" data-fr-tab="brief" data-comp-id="builders-bootcamp">01 · Arena &amp; Brief</button>
+          <button type="button" class="fr-pillar-tab" role="tab" aria-selected="false" data-fr-tab="role" data-comp-id="builders-bootcamp">02 · Role &amp; Output</button>
+        </div>
+
         <!-- PILLAR 01: THE ARENA & BRIEF -->
-        <div class="fr-pillar fr-pillar-arena">
+        <div class="fr-pillar fr-pillar-arena is-tab-active" data-fr-panel="brief">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">01</span>
@@ -8131,7 +8554,7 @@ body.cs-modal-open {
         </div>
 
         <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
-        <div class="fr-pillar fr-pillar-role">
+        <div class="fr-pillar fr-pillar-role" data-fr-panel="role">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">02</span>
@@ -8300,8 +8723,14 @@ body.cs-modal-open {
         <div class="fr-proof-layer">
           <div class="fr-proof-column fr-proof-narrative">
 
+        <!-- Segmented Console Switcher for Brief vs Role (enhances cleanly via JS; both panels stay readable under noscript) -->
+        <div class="fr-pillar-tabs" role="tablist" aria-label="Switch brief and role panels for Advertising &amp; Brand Pitch">
+          <button type="button" class="fr-pillar-tab is-active" role="tab" aria-selected="true" data-fr-tab="brief" data-comp-id="dcrust-brand-pitch">01 · Arena &amp; Brief</button>
+          <button type="button" class="fr-pillar-tab" role="tab" aria-selected="false" data-fr-tab="role" data-comp-id="dcrust-brand-pitch">02 · Role &amp; Output</button>
+        </div>
+
         <!-- PILLAR 01: THE ARENA & BRIEF -->
-        <div class="fr-pillar fr-pillar-arena">
+        <div class="fr-pillar fr-pillar-arena is-tab-active" data-fr-panel="brief">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">01</span>
@@ -8323,7 +8752,7 @@ body.cs-modal-open {
         </div>
 
         <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
-        <div class="fr-pillar fr-pillar-role">
+        <div class="fr-pillar fr-pillar-role" data-fr-panel="role">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">02</span>
@@ -8717,6 +9146,43 @@ body.cs-modal-open {
         <p class="section-lead reveal">
           Four projects at different stages, from early research to local-first tools I use myself.
         </p>
+      </div>
+
+      <!-- Architectural System Map Strip -->
+      <div class="vn-pipeline-strip reveal" role="navigation" aria-label="Systems architecture quick jump">
+        
+        <button type="button" class="vn-pipe-node" data-jump-venture="tathya">
+          <span class="vn-pipe-idx">01</span>
+          <span class="vn-pipe-main">
+            <span class="vn-pipe-name">Tathya (तथ्य)</span>
+            <span class="vn-pipe-badge">RESEARCH PHASE</span>
+          </span>
+          <span class="vn-pipe-arrow" aria-hidden="true">→</span>
+        </button>
+        <button type="button" class="vn-pipe-node" data-jump-venture="stratum">
+          <span class="vn-pipe-idx">02</span>
+          <span class="vn-pipe-main">
+            <span class="vn-pipe-name">Stratum</span>
+            <span class="vn-pipe-badge">CONCEPT STAGE</span>
+          </span>
+          <span class="vn-pipe-arrow" aria-hidden="true">→</span>
+        </button>
+        <button type="button" class="vn-pipe-node" data-jump-venture="flow-state">
+          <span class="vn-pipe-idx">03</span>
+          <span class="vn-pipe-main">
+            <span class="vn-pipe-name">Flow State</span>
+            <span class="vn-pipe-badge">LOCAL BUILD</span>
+          </span>
+          <span class="vn-pipe-arrow" aria-hidden="true">→</span>
+        </button>
+        <button type="button" class="vn-pipe-node" data-jump-venture="krama">
+          <span class="vn-pipe-idx">04</span>
+          <span class="vn-pipe-main">
+            <span class="vn-pipe-name">Krama (क्रम)</span>
+            <span class="vn-pipe-badge">STUDENT UTILITY</span>
+          </span>
+          <span class="vn-pipe-arrow" aria-hidden="true">→</span>
+        </button>
       </div>
 
       <div class="ventures-grid">
@@ -9235,12 +9701,38 @@ body.cs-modal-open {
                 </div>
               </div>
 
-              <!-- Explicit Scientific Research Hypothesis -->
-              <div class="tfe-hypothesis-banner">
-                <span class="tfe-hyp-tag">RESEARCH HYPOTHESIS</span>
-                <p class="tfe-hyp-text">
-                  Regional language variation may affect LLM reliability through lexical coverage gaps, non-standard orthography, and semantic shifts. Tathya separates <strong>BPE tokens</strong>, <strong>integer token IDs</strong>, <strong>grapheme clusters</strong>, and <strong>UTF-8 byte lengths</strong> rather than assuming causality prior to controlled eval completion.
-                </p>
+              <!-- Research Hypothesis + Interactive 3D Silicon Specimen Cartridge -->
+              <div class="tfe-workbench-intro">
+                <div class="tfe-hypothesis-banner">
+                  <span class="tfe-hyp-tag">RESEARCH HYPOTHESIS</span>
+                  <p class="tfe-hyp-text">
+                    Regional language variation may affect LLM reliability through lexical coverage gaps, non-standard orthography, and semantic shifts. Tathya separates <strong>BPE tokens</strong>, <strong>integer token IDs</strong>, <strong>grapheme clusters</strong>, and <strong>UTF-8 byte lengths</strong> rather than assuming causality prior to controlled eval completion.
+                  </p>
+                </div>
+
+                <div class="tfe-cartridge" id="tfe-specimen-cartridge" aria-hidden="true">
+                  <div class="tfe-cartridge-shell">
+                    <div class="tfe-cartridge-notch"></div>
+                    <div class="tfe-cartridge-head">
+                      <span class="tfe-cartridge-serial" id="tfe-die-serial">SPEC // HARYANVI</span>
+                      <span class="tfe-cartridge-led"></span>
+                    </div>
+                    <div class="tfe-cartridge-die">
+                      <div class="tfe-die-traces"></div>
+                      <div class="tfe-die-readout">
+                        <span class="tfe-die-lbl">BPE FRAG RATIO</span>
+                        <span class="tfe-die-val" id="tfe-die-ratio">1.39×</span>
+                      </div>
+                      <div class="tfe-die-stats">
+                        <span id="tfe-die-tokens">25 TOK</span>
+                        <span id="tfe-die-bytes">111 B</span>
+                      </div>
+                    </div>
+                    <div class="tfe-cartridge-pins">
+                      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- Preset Vector Selector (Tabs) -->
@@ -9545,7 +10037,7 @@ body.cs-modal-open {
         "value": "02",
         "count": 2,
         "label": "Championships",
-        "description": "Ashoka & Builders' Bootcamp",
+        "description": "Ashoka & Rishihood",
         "verified": true
       },
       {
@@ -9569,7 +10061,7 @@ body.cs-modal-open {
         "value": "04",
         "count": 4,
         "label": "Ventures",
-        "description": "Tathya · Stratum · Flow State · Krama",
+        "description": "Tathya, Stratum, Flow State, Krama",
         "verified": true
       }
     ]
@@ -10347,6 +10839,6 @@ body.cs-modal-open {
   <!-- ========================================================================
        UNIFIED APPLICATION ENGINE (All 6 Phases Consolidated)
        ======================================================================== -->
-  <script defer src="app.js?v=9d4219d6"></script>
+  <script defer src="app.js?v=98143ece"></script>
 </body>
 </html>

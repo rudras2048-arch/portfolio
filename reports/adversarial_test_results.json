@@ -18,6 +18,24 @@
         },
         {
           "tag": "span",
+          "id": "typedOutput",
+          "className": "typed-output",
+          "width": 494.8,
+          "right": 601.8,
+          "overflowPx": 281.8,
+          "snippet": "researching how llms fail on punjabi, ha"
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "typed-cursor",
+          "width": 8,
+          "right": 615.8,
+          "overflowPx": 295.8,
+          "snippet": ""
+        },
+        {
+          "tag": "span",
           "id": null,
           "className": "cm",
           "width": 338.4,
@@ -55,7 +73,7 @@
       ],
       "illegibleTextCount": 0,
       "illegibleTextSamples": [],
-      "totalTouchTargets": 47,
+      "totalTouchTargets": 59,
       "tinyTargetsCount": 0,
       "tinyTargets": []
     },
@@ -73,7 +91,7 @@
       "cursorAnim": "none",
       "cursorOpacity": "1",
       "hasCursor": true,
-      "revealsCount": 36,
+      "revealsCount": 37,
       "revealsStatic": true,
       "revealsFailing": []
     },
@@ -128,8 +146,8 @@
   "c4_slow3g": {
     "passed": true,
     "clsAndMetrics": {
-      "fcpMs": 3764,
-      "domContentLoadedMs": 16223,
+      "fcpMs": 3980,
+      "domContentLoadedMs": 16627,
       "clsScore": 0,
       "shiftCount": 0,
       "structuralIntegrity": true

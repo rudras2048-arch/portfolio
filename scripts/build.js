@@ -853,8 +853,14 @@ function renderCompetitions(content) {
         <div class="fr-proof-layer">
           <div class="fr-proof-column fr-proof-narrative">
 
+        <!-- Segmented Console Switcher for Brief vs Role (enhances cleanly via JS; both panels stay readable under noscript) -->
+        <div class="fr-pillar-tabs" role="tablist" aria-label="Switch brief and role panels for ${escapeHtml(comp.title)}">
+          <button type="button" class="fr-pillar-tab is-active" role="tab" aria-selected="true" data-fr-tab="brief" data-comp-id="${comp.id}">01 · Arena &amp; Brief</button>
+          <button type="button" class="fr-pillar-tab" role="tab" aria-selected="false" data-fr-tab="role" data-comp-id="${comp.id}">02 · Role &amp; Output</button>
+        </div>
+
         <!-- PILLAR 01: THE ARENA & BRIEF -->
-        <div class="fr-pillar fr-pillar-arena">
+        <div class="fr-pillar fr-pillar-arena is-tab-active" data-fr-panel="brief">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">01</span>
@@ -876,7 +882,7 @@ function renderCompetitions(content) {
         </div>
 
         <!-- PILLAR 02: MY ROLE & SHIPPED DELIVERABLES -->
-        <div class="fr-pillar fr-pillar-role">
+        <div class="fr-pillar fr-pillar-role" data-fr-panel="role">
           <div class="fr-pillar-header">
             <div class="fr-header-left">
               <span class="fr-pillar-idx">02</span>
@@ -1072,6 +1078,19 @@ function renderVentures(content) {
         <p class="section-lead reveal">
           Four projects at different stages, from early research to local-first tools I use myself.
         </p>
+      </div>
+
+      <!-- Architectural System Map Strip -->
+      <div class="vn-pipeline-strip reveal" role="navigation" aria-label="Systems architecture quick jump">
+        ${vens.map((ven, idx) => `
+        <button type="button" class="vn-pipe-node" data-jump-venture="${ven.id}">
+          <span class="vn-pipe-idx">0${idx + 1}</span>
+          <span class="vn-pipe-main">
+            <span class="vn-pipe-name">${escapeHtml(ven.name)}</span>
+            <span class="vn-pipe-badge">${escapeHtml(ven.badge)}</span>
+          </span>
+          <span class="vn-pipe-arrow" aria-hidden="true">→</span>
+        </button>`).join('')}
       </div>
 
       <div class="ventures-grid">
@@ -1598,9 +1617,15 @@ function main() {
     if (!template.includes('window.initTathyaExplorer()')) {
       template = template.replace('bootstrapPortfolioV2();', `bootstrapPortfolioV2();\n    if (typeof window.initTathyaExplorer === 'function') {\n      window.__TATHYA_EXPLORER = window.initTathyaExplorer();\n    }`);
     }
-    const lastScriptClose = template.lastIndexOf('</script>');
-    if (lastScriptClose !== -1) {
-      template = template.slice(0, lastScriptClose) + `\n/* SHARED DOMAIN ENGINES (KramaMath + TathyaTokenizer) */\n${kramaMathJs}\n${tfeTokJs}\n/* TATHYA LLM FAILURE EXPLORER SCRIPT */\n${tfeJs}\n` + template.slice(lastScriptClose);
+    const bootstrapAnchor = '  /* --- 12. Orchestrated Bootstrap --- */';
+    const engineBundle = `\n/* SHARED DOMAIN ENGINES (KramaMath + TathyaTokenizer) */\n${kramaMathJs}\n${tfeTokJs}\n/* TATHYA LLM FAILURE EXPLORER SCRIPT */\n${tfeJs}\n`;
+    if (template.includes(bootstrapAnchor)) {
+      template = template.replace(bootstrapAnchor, `${engineBundle}\n${bootstrapAnchor}`);
+    } else {
+      const lastScriptClose = template.lastIndexOf('</script>');
+      if (lastScriptClose !== -1) {
+        template = template.slice(0, lastScriptClose) + engineBundle + template.slice(lastScriptClose);
+      }
     }
   }
 

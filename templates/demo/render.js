@@ -89,12 +89,38 @@ function renderTathyaExplorer(tathyaData) {
                 </div>
               </div>
 
-              <!-- Explicit Scientific Research Hypothesis -->
-              <div class="tfe-hypothesis-banner">
-                <span class="tfe-hyp-tag">RESEARCH HYPOTHESIS</span>
-                <p class="tfe-hyp-text">
-                  Regional language variation may affect LLM reliability through lexical coverage gaps, non-standard orthography, and semantic shifts. Tathya separates <strong>BPE tokens</strong>, <strong>integer token IDs</strong>, <strong>grapheme clusters</strong>, and <strong>UTF-8 byte lengths</strong> rather than assuming causality prior to controlled eval completion.
-                </p>
+              <!-- Research Hypothesis + Interactive 3D Silicon Specimen Cartridge -->
+              <div class="tfe-workbench-intro">
+                <div class="tfe-hypothesis-banner">
+                  <span class="tfe-hyp-tag">RESEARCH HYPOTHESIS</span>
+                  <p class="tfe-hyp-text">
+                    Regional language variation may affect LLM reliability through lexical coverage gaps, non-standard orthography, and semantic shifts. Tathya separates <strong>BPE tokens</strong>, <strong>integer token IDs</strong>, <strong>grapheme clusters</strong>, and <strong>UTF-8 byte lengths</strong> rather than assuming causality prior to controlled eval completion.
+                  </p>
+                </div>
+
+                <div class="tfe-cartridge" id="tfe-specimen-cartridge" aria-hidden="true">
+                  <div class="tfe-cartridge-shell">
+                    <div class="tfe-cartridge-notch"></div>
+                    <div class="tfe-cartridge-head">
+                      <span class="tfe-cartridge-serial" id="tfe-die-serial">SPEC // HARYANVI</span>
+                      <span class="tfe-cartridge-led"></span>
+                    </div>
+                    <div class="tfe-cartridge-die">
+                      <div class="tfe-die-traces"></div>
+                      <div class="tfe-die-readout">
+                        <span class="tfe-die-lbl">BPE FRAG RATIO</span>
+                        <span class="tfe-die-val" id="tfe-die-ratio">${(diaEnc.tokenCount / Math.max(1, stdEnc.tokenCount)).toFixed(2)}×</span>
+                      </div>
+                      <div class="tfe-die-stats">
+                        <span id="tfe-die-tokens">${diaEnc.tokenCount} TOK</span>
+                        <span id="tfe-die-bytes">${diaEnc.utf8Bytes} B</span>
+                      </div>
+                    </div>
+                    <div class="tfe-cartridge-pins">
+                      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <!-- Preset Vector Selector (Tabs) -->

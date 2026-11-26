@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-26T04:43:31.382Z",
+  "timestamp": "2026-11-26T12:43:13.813Z",
   "viewports": {
     "320px": {
       "name": "Ultra-Narrow Mobile (320x568)",
@@ -11,7 +11,7 @@
         "bodyScrollWidth": 320,
         "hasOverflow": false,
         "overflowPx": 0,
-        "overflowingElementsCount": 5,
+        "overflowingElementsCount": 7,
         "topOverflowing": [
           {
             "tag": "div",
@@ -20,6 +20,24 @@
             "width": 580,
             "right": 450,
             "overflowPx": 130,
+            "snippet": ""
+          },
+          {
+            "tag": "span",
+            "id": "typedOutput",
+            "className": "typed-output",
+            "width": 494.8,
+            "right": 601.8,
+            "overflowPx": 281.8,
+            "snippet": "researching how llms fail on punjabi, ha"
+          },
+          {
+            "tag": "span",
+            "id": null,
+            "className": "typed-cursor",
+            "width": 8,
+            "right": 615.8,
+            "overflowPx": 295.8,
             "snippet": ""
           },
           {
@@ -39,24 +57,6 @@
             "right": 420.4,
             "overflowPx": 100.4,
             "snippet": "$ stratum simulate --scenario \"cpm_volat"
-          },
-          {
-            "tag": "span",
-            "id": null,
-            "className": "cm",
-            "width": 374.4,
-            "right": 420.4,
-            "overflowPx": 100.4,
-            "snippet": "$ flowstate run --zero-oauth --audio pro"
-          },
-          {
-            "tag": "span",
-            "id": null,
-            "className": "cm",
-            "width": 410.4,
-            "right": 456.4,
-            "overflowPx": 136.4,
-            "snippet": "$ krama analyze --timetable schedule.jso"
           }
         ]
       },
