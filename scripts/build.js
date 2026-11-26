@@ -30,6 +30,7 @@ const DIST_ASSETS = path.join(DIST_DIR, 'assets');
 const DATA_DIR = path.join(ROOT_DIR, 'data');
 const DIST_DATA = path.join(DIST_DIR, 'data');
 const shareEngine = require('../templates/share');
+const KramaMath = require('../templates/demo/krama-math.js');
 
 // Helper: Escape HTML special characters
 function escapeHtml(str) {
@@ -239,17 +240,7 @@ function renderRecruiterDrawer(content) {
               <span class="rm-project-status">Research Phase</span>
             </div>
             <p class="rm-project-thesis">
-              Evaluation benchmark investigating LLM token fragmentation and failure modes on non-standard Indian dialects (Punjabi, Haryanvi, Bhojpuri) with verification layer for civic queries.
-            </p>
-          </div>
-
-          <div class="rm-project-card">
-            <div class="rm-project-top">
-              <span class="rm-project-name">Stratum</span>
-              <span class="rm-project-status">Concept Stage</span>
-            </div>
-            <p class="rm-project-thesis">
-              High-velocity market simulation platform evaluating candidate decision speed and capital efficiency under CPM volatility shocks instead of static LLM-cheatable case studies.
+              Research console investigating LLM behavior across Haryanvi, Punjabi, and Bhojpuri with client-side BPE token boundary analysis and proposed civic claim verification.
             </p>
           </div>
 
@@ -259,7 +250,7 @@ function renderRecruiterDrawer(content) {
               <span class="rm-project-status rm-status-building">Local Build</span>
             </div>
             <p class="rm-project-thesis">
-              Privacy-first desktop focus environment: zero-OAuth RFC 5545 calendar synchronization and 16-bit 44.1kHz procedural sine wave audio synthesis (0 MP3 files, zero telemetry).
+              Local-first focus desktop utility (Python + native webview) featuring local Zero-OAuth RFC 5545 (.ics) import and 16-bit 44.1kHz math.sin procedural audio synthesis.
             </p>
           </div>
 
@@ -269,7 +260,17 @@ function renderRecruiterDrawer(content) {
               <span class="rm-project-status rm-status-building">Student Utility</span>
             </div>
             <p class="rm-project-thesis">
-              Offline-first academic schedule optimization and attendance recovery calculus utility to proactively prevent dipping below the mandatory 75% university eligibility cutoff.
+              Offline-first academic attendance recovery calculus (${KramaMath.analyzeAttendance(17, 25, 0.75).percentageFormatted} → ${KramaMath.classesToRecover(17, 25, 0.75)} classes) and local SQLite schedule tracking.
+            </p>
+          </div>
+
+          <div class="rm-project-card">
+            <div class="rm-project-top">
+              <span class="rm-project-name">Stratum</span>
+              <span class="rm-project-status">Concept Prototype</span>
+            </div>
+            <p class="rm-project-thesis">
+              Market simulation concept evaluating candidate decision latency and margin protection under exogenous CPM volatility shocks.
             </p>
           </div>
         </div>
@@ -306,62 +307,71 @@ function renderAbout(content) {
   <div class="ab-container">
     <!-- Section Header -->
     <div class="ab-header ab-reveal">
-      <span class="ab-eyebrow">00 // Trajectory &amp; Builder Ethos</span>
+      <span class="ab-eyebrow">04 // About &amp; Approach</span>
       <h2 id="ab-title" class="ab-title">
-        How I Got <span class="ab-serif">Here</span>
+        Building From <span class="ab-serif">First Principles</span>
       </h2>
       <p class="ab-lead" id="ab-lead-text">
-        First-year CS &amp; Data Science undergraduate at Rishihood University ('30). Testing software tools and commercial models in live competitive arenas under hard capital and clock constraints.
+        I am a first-year Computer Science &amp; Data Science undergraduate at Rishihood University ('30), interested in the gap between what software promises and how it holds up under real-world conditions.
       </p>
     </div>
 
     <!-- Main Architecture Grid -->
     <div class="ab-grid">
-      <!-- Left Column: Operating Thesis & Institutional Credential -->
+      <!-- Left Column: Human Narrative & Institutional Record -->
       <div class="ab-ethos-col">
         <div class="ab-card ab-reveal" id="ab-thesis-card">
           <div class="ab-card-label">
             <span class="ab-pulse-dot" aria-hidden="true"></span>
-            <span>OPERATING THESIS</span>
+            <span>CURRENTLY EXPLORING</span>
           </div>
           <p class="ab-quote ab-bio-statement" id="ab-bio-statement">
             “${escapeHtml(p.bio_statement)}”
           </p>
 
-          <!-- Compact Focus Pillars -->
+          <p class="ab-story-para">
+            I enjoy moving back and forth between research and execution — understanding a problem deeply, building a concrete tool or experiment, measuring what actually happens, and refining from evidence.
+          </p>
+
+          <!-- Compact Exploration Areas -->
           <div class="ab-pillars-list">
             <div class="ab-pillar-item">
               <span class="ab-pillar-num mono">01</span>
               <div class="ab-pillar-content">
-                <strong class="ab-pillar-title">Dialect NLP Failure Analysis</strong>
-                <p class="ab-pillar-text">Token fragmentation &amp; civic verification across Punjabi, Haryanvi, Bhojpuri (Tathya).</p>
+                <strong class="ab-pillar-title">Applied AI &amp; Indic Language NLP</strong>
+                <p class="ab-pillar-text">Evaluating subword token behavior and verification requirements across regional Indian speech (<a href="#tathya-workbench" class="ab-inline-link">Tathya Lab</a>).</p>
               </div>
             </div>
 
             <div class="ab-pillar-item">
               <span class="ab-pillar-num mono">02</span>
               <div class="ab-pillar-content">
-                <strong class="ab-pillar-title">Local-First Desktop Utilities</strong>
-                <p class="ab-pillar-text">Zero-OAuth focus OS (Flow State) &amp; 75% attendance recovery calculus (Krama).</p>
+                <strong class="ab-pillar-title">Local-First Software Architecture</strong>
+                <p class="ab-pillar-text">Writing distraction-free utilities (<a href="#ventures" class="ab-inline-link">Flow State</a> &amp; <a href="#ventures" class="ab-inline-link">Krama</a>) that stay offline and transparent.</p>
               </div>
             </div>
 
             <div class="ab-pillar-item">
               <span class="ab-pillar-num mono">03</span>
               <div class="ab-pillar-content">
-                <strong class="ab-pillar-title">Extreme-Constraint Economics</strong>
-                <p class="ab-pillar-text">₹300 → ₹2,655 in 120 mins (Ashoka) &amp; 4-part ad suite in 45 mins (DCRUST).</p>
+                <strong class="ab-pillar-title">Experiment Design &amp; Venture Execution</strong>
+                <p class="ab-pillar-text">Testing commercial theses against real people under hard clock and capital constraints (<a href="#competitions" class="ab-inline-link">Field Record</a>).</p>
               </div>
             </div>
           </div>
+
+          <div class="ab-collab-box">
+            <span class="ab-collab-lbl">WHO I WANT TO COLLABORATE WITH</span>
+            <p class="ab-collab-text">Engineers, AI researchers, and early-stage builders who question assumptions and ship working artifacts over slide decks.</p>
+          </div>
         </div>
 
-        <!-- Academic & Institutional Foundation Card -->
+        <!-- Academic Record Card -->
         <div class="ab-card ab-reveal" id="ab-foundation-card">
-          <div class="ab-card-label">ACADEMIC &amp; INSTITUTIONAL RECORD</div>
+          <div class="ab-card-label">ACADEMIC FOUNDATION</div>
           <div class="ab-cred-list">
             <div class="ab-cred-row">
-              <span class="ab-cred-label">Degree</span>
+              <span class="ab-cred-label">Program</span>
               <span class="ab-cred-val" id="ab-cred-degree">B.Tech CS &amp; Data Science</span>
             </div>
             <div class="ab-cred-row">
@@ -372,163 +382,122 @@ function renderAbout(content) {
               <span class="ab-cred-label">Cohort</span>
               <span class="ab-cred-val mono" id="ab-cred-cohort">Class of ${escapeHtml(p.class_year)} · ${escapeHtml(p.current_status)}</span>
             </div>
-            <div class="ab-cred-row">
-              <span class="ab-cred-label">Record</span>
-              <span class="ab-cred-val mono">03 Podiums · 01 Nat'l Finalist</span>
-            </div>
-          </div>
-
-          <div class="ab-telemetry-strip">
-            <div class="ab-telemetry-badge">
-              <span class="ab-telemetry-val mono">02</span>
-              <span class="ab-telemetry-lbl">Champs</span>
-            </div>
-            <div class="ab-telemetry-badge">
-              <span class="ab-telemetry-val mono">8.85x</span>
-              <span class="ab-telemetry-lbl">Fund Run</span>
-            </div>
-            <div class="ab-telemetry-badge">
-              <span class="ab-telemetry-val mono">~700</span>
-              <span class="ab-telemetry-lbl">Nat'l Teams</span>
-            </div>
           </div>
         </div>
       </div>
 
-      <!-- Right Column: Scannable Chronological Sprint Arc -->
+      <!-- Right Column: Interactive Builder Relationship Map & Compact Milestones -->
       <div class="ab-timeline-col">
+        <!-- Interactive Builder Relationship Map -->
+        <div class="ab-card ab-reveal ab-map-card" id="builder-map-card">
+          <div class="ab-card-label">
+            <span class="ab-pulse-dot" aria-hidden="true"></span>
+            <span>INTERACTIVE BUILDER MAP · CLICK NODE TO INSPECT</span>
+          </div>
+          <div class="bmap-wrap" id="builder-map" role="region" aria-label="Interactive relationship map connecting research, software systems, and field arenas">
+            <svg viewBox="0 0 460 216" class="bmap-svg" aria-hidden="true">
+              <!-- Relationship Edges -->
+              <g class="bmap-edges" stroke="rgba(165, 180, 252, 0.25)" stroke-width="1.5">
+                <line x1="230" y1="36" x2="90" y2="112" data-edge="indic" />
+                <line x1="230" y1="36" x2="230" y2="112" data-edge="local" />
+                <line x1="230" y1="36" x2="370" y2="112" data-edge="arenas" />
+                <line x1="90" y1="112" x2="60" y2="184" data-edge="tathya" />
+                <line x1="230" y1="112" x2="180" y2="184" data-edge="flow-state" />
+                <line x1="230" y1="112" x2="280" y2="184" data-edge="krama" />
+                <line x1="370" y1="112" x2="387" y2="184" data-edge="ashoka" />
+              </g>
+              <!-- Center Axis Node -->
+              <g class="bmap-node is-center">
+                <rect x="164" y="16" width="132" height="32" rx="16" />
+                <text x="230" y="36" text-anchor="middle">PERSONAL LAB</text>
+              </g>
+              <!-- Pillar Visual Nodes -->
+              <g class="bmap-node" data-node-id="indic">
+                <rect x="26" y="96" width="128" height="32" rx="8" />
+                <text x="90" y="116" text-anchor="middle">INDIC NLP</text>
+              </g>
+              <g class="bmap-node" data-node-id="local">
+                <rect x="166" y="96" width="128" height="32" rx="8" />
+                <text x="230" y="116" text-anchor="middle">LOCAL TOOLS</text>
+              </g>
+              <g class="bmap-node" data-node-id="arenas">
+                <rect x="306" y="96" width="128" height="32" rx="8" />
+                <text x="370" y="116" text-anchor="middle">FIELD ARENAS</text>
+              </g>
+              <!-- Leaf System/Proof Visual Nodes -->
+              <g class="bmap-node leaf" data-node-id="tathya">
+                <rect x="16" y="168" width="88" height="30" rx="6" />
+                <text x="60" y="187" text-anchor="middle">Tathya</text>
+              </g>
+              <g class="bmap-node leaf" data-node-id="flow-state">
+                <rect x="132" y="168" width="96" height="30" rx="6" />
+                <text x="180" y="187" text-anchor="middle">Flow State</text>
+              </g>
+              <g class="bmap-node leaf" data-node-id="krama">
+                <rect x="238" y="168" width="84" height="30" rx="6" />
+                <text x="280" y="187" text-anchor="middle">Krama</text>
+              </g>
+              <g class="bmap-node leaf accent" data-node-id="ashoka">
+                <rect x="330" y="168" width="114" height="30" rx="6" />
+                <text x="387" y="187" text-anchor="middle">Ashoka / IIM</text>
+              </g>
+            </svg>
+            <div class="bmap-controls" role="group" aria-label="Select lab node to inspect">
+              <button type="button" class="bmap-node-btn" data-node-id="indic" data-map-target="#tathya-workbench" data-map-label="Indic NLP Research" data-map-detail="Client-side BPE token boundary &amp; hypothesis testing across Haryanvi, Punjabi, Bhojpuri.">Indic NLP ↗</button>
+              <button type="button" class="bmap-node-btn" data-node-id="tathya" data-map-project="tathya" data-map-label="Tathya Lab" data-map-detail="Open full Tathya Case Study: dialect tokenization &amp; civic verification spec.">Tathya</button>
+              <button type="button" class="bmap-node-btn" data-node-id="flow-state" data-map-project="flow-state" data-map-label="Flow State" data-map-detail="Open full Flow State Case Study: Python + native webview + 432Hz audio synth.">Flow State</button>
+              <button type="button" class="bmap-node-btn" data-node-id="krama" data-map-project="krama" data-map-label="Krama" data-map-detail="Open full Krama Case Study: deterministic 75% recovery calculus &amp; SQLite utility.">Krama</button>
+              <button type="button" class="bmap-node-btn is-accent" data-node-id="ashoka" data-map-target="#comp-cash-rush" data-map-label="Ashoka / IIM Record" data-map-detail="₹300 → ₹2,655 in 120 mins (8.85× capital multiple) &amp; IIM Amritsar Top 10.">Ashoka / IIM ↓</button>
+            </div>
+            <div class="bmap-inspector" id="bmap-inspector">
+              <span class="bmap-inspector-title" id="bmap-inspector-title">Select any node to trace connections</span>
+              <p class="bmap-inspector-detail" id="bmap-inspector-detail">Every project ties an engineering question back to empirical evidence or field tests.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Compact Chronological Snapshot -->
         <div class="ab-timeline-meta ab-reveal">
-          <span class="ab-timeline-heading">FIELD EVIDENCE CHRONOLOGY (JUN – OCT 2026)</span>
-          <span class="ab-timeline-caption">Five milestones — jump directly to audited artifacts below</span>
+          <span class="ab-timeline-heading">MILESTONE JUMP INDEX (JUN – OCT 2026)</span>
+          <span class="ab-timeline-caption">Click any milestone to jump directly to its documentary record</span>
         </div>
 
         <ol class="ab-timeline">
           <li class="ab-timeline-spine" aria-hidden="true"></li>
 
-          <!-- Milestone 1: Builders' Bootcamp -->
           <li class="ab-milestone ab-reveal">
-            <div class="ab-milestone-marker" aria-hidden="true">
-              <span class="ab-marker-dot"></span>
-            </div>
+            <div class="ab-milestone-marker" aria-hidden="true"><span class="ab-marker-dot"></span></div>
             <article class="ab-milestone-card ab-milestone-compact">
               <div class="ab-milestone-header">
-                <span class="ab-milestone-date mono">JUN 2026 · 7-DAY SPRINT</span>
-                <span class="ab-milestone-badge ab-gold"><span aria-hidden="true">🥇</span> #1 OVERALL TOP TEAM</span>
+                <span class="ab-milestone-date mono">JUN 2026</span>
+                <span class="ab-milestone-badge ab-gold">#1 BUILDERS' BOOTCAMP</span>
               </div>
-              <h3 class="ab-milestone-title">Builders' Bootcamp (8th Edition)</h3>
-              <div class="ab-milestone-venue">Rishihood University · Demo Day '26</div>
-              <p class="ab-milestone-body">
-                Built and shipped a functional startup web prototype from scratch in 7 days and pitched live on Demo Day to place #1 overall.
-              </p>
-              <div class="ab-milestone-footer">
-                <div class="ab-milestone-tags">
-                  <span class="ab-pill ab-accent-pill">Working Prototype Shipped</span>
-                  <span class="ab-pill">Demo Day Jury</span>
-                </div>
-                <a href="#comp-builders-bootcamp" class="ab-proof-link">Inspect Proof ↗</a>
-              </div>
+              <p class="ab-milestone-body">Shipped working startup web prototype in 7 days at Rishihood Demo Day.</p>
+              <a href="#comp-builders-bootcamp" class="ab-proof-link">Jump to Proof ↗</a>
             </article>
           </li>
 
-          <!-- Milestone 2: DCRUST Murthal -->
           <li class="ab-milestone ab-reveal">
-            <div class="ab-milestone-marker" aria-hidden="true">
-              <span class="ab-marker-dot"></span>
-            </div>
+            <div class="ab-milestone-marker" aria-hidden="true"><span class="ab-marker-dot"></span></div>
             <article class="ab-milestone-card ab-milestone-compact">
               <div class="ab-milestone-header">
-                <span class="ab-milestone-date mono">SEP 2026 · 45-MIN SPRINT</span>
-                <span class="ab-milestone-badge"><span aria-hidden="true">🥉</span> 3RD PLACE PODIUM</span>
+                <span class="ab-milestone-date mono">SEP 2026</span>
+                <span class="ab-milestone-badge">3RD · DCRUST E-SUMMIT</span>
               </div>
-              <h3 class="ab-milestone-title">Advertising &amp; Brand Pitch</h3>
-              <div class="ab-milestone-venue">DCRUST Murthal · E-Summit '26</div>
-              <p class="ab-milestone-body">
-                Delivered a 4-part campaign suite (poster, video ad, skit, stage pitch) in 45 minutes to win 3rd place and a ₹1,100 cash prize.
-              </p>
-              <div class="ab-milestone-footer">
-                <div class="ab-milestone-tags">
-                  <span class="ab-pill ab-accent-pill">₹1,100 Cash Prize</span>
-                  <span class="ab-pill">45-Min Prep Sprint</span>
-                </div>
-                <a href="#comp-dcrust-brand-pitch" class="ab-proof-link">Inspect Proof ↗</a>
-              </div>
+              <p class="ab-milestone-body">4-part ad &amp; pitch campaign executed in 45 minutes (₹1,100 podium).</p>
+              <a href="#comp-dcrust-brand-pitch" class="ab-proof-link">Jump to Proof ↗</a>
             </article>
           </li>
 
-          <!-- Milestone 3: Ashoka Cash Rush -->
           <li class="ab-milestone ab-reveal">
-            <div class="ab-milestone-marker" aria-hidden="true">
-              <span class="ab-marker-dot"></span>
-            </div>
+            <div class="ab-milestone-marker" aria-hidden="true"><span class="ab-marker-dot"></span></div>
             <article class="ab-milestone-card ab-milestone-compact">
               <div class="ab-milestone-header">
-                <span class="ab-milestone-date mono">OCT 2026 · 120-MIN SPRINT</span>
-                <span class="ab-milestone-badge ab-gold"><span aria-hidden="true">🏆</span> 1ST PLACE CHAMPION</span>
+                <span class="ab-milestone-date mono">OCT 2026</span>
+                <span class="ab-milestone-badge ab-gold">1ST ASHOKA · TOP 10 IIM AMRITSAR</span>
               </div>
-              <h3 class="ab-milestone-title">Cash Rush Competition</h3>
-              <div class="ab-milestone-venue">Ashoka University · Shatranj '26</div>
-              <p class="ab-milestone-body">
-                Grew ₹300 seed capital to ₹2,655 (8.85x) in 120 minutes with ₹45 costs via zero-inventory experiences, winning 1st place and ₹7,000.
-              </p>
-              <div class="ab-milestone-footer">
-                <div class="ab-milestone-tags">
-                  <span class="ab-pill ab-accent-pill">₹7,000 Cash Prize</span>
-                  <span class="ab-pill ab-accent-pill">8.85x Multiplier</span>
-                </div>
-                <a href="#comp-cash-rush" class="ab-proof-link">Inspect Proof ↗</a>
-              </div>
-            </article>
-          </li>
-
-          <!-- Milestone 4: IIM Amritsar CINE-SELL -->
-          <li class="ab-milestone ab-reveal">
-            <div class="ab-milestone-marker" aria-hidden="true">
-              <span class="ab-marker-dot"></span>
-            </div>
-            <article class="ab-milestone-card ab-milestone-compact">
-              <div class="ab-milestone-header">
-                <span class="ab-milestone-date mono">OCT 2026 · NATIONAL ARENA</span>
-                <span class="ab-milestone-badge"><span aria-hidden="true">⚡</span> TOP 10 NATIONAL FINALIST</span>
-              </div>
-              <h3 class="ab-milestone-title">CINE-SELL Brand Challenge</h3>
-              <div class="ab-milestone-venue">IIM Amritsar · Marketing Fest '26</div>
-              <p class="ab-milestone-body">
-                Led undergraduate squad "Team Big 4" through screening and live stage pitching to place Top 10 out of ~700 registered teams.
-              </p>
-              <div class="ab-milestone-footer">
-                <div class="ab-milestone-tags">
-                  <span class="ab-pill ab-accent-pill">Top 10 Nationally</span>
-                  <span class="ab-pill">~700 Teams</span>
-                </div>
-                <a href="#comp-cinesell" class="ab-proof-link">Inspect Proof ↗</a>
-              </div>
-            </article>
-          </li>
-
-          <!-- Milestone 5: Active Systems & Research -->
-          <li class="ab-milestone ab-reveal">
-            <div class="ab-milestone-marker" aria-hidden="true">
-              <span class="ab-marker-dot"></span>
-            </div>
-            <article class="ab-milestone-card ab-milestone-compact ab-active">
-              <div class="ab-milestone-header">
-                <span class="ab-milestone-date mono">PRESENT · ACTIVE BUILDS</span>
-                <span class="ab-milestone-badge ab-active-badge"><span aria-hidden="true">⚙</span> ACTIVE SYSTEMS</span>
-              </div>
-              <h3 class="ab-milestone-title">Software Systems &amp; Dialect NLP</h3>
-              <div class="ab-milestone-venue">Personal Lab &amp; Independent Engineering</div>
-              <p class="ab-milestone-body">
-                Building Tathya (Indic dialect evals), Stratum (CPM shock sim), Flow State (local focus OS), and Krama (75% recovery utility).
-              </p>
-              <div class="ab-milestone-footer">
-                <div class="ab-milestone-tags">
-                  <span class="ab-pill ab-accent-pill">Tathya</span>
-                  <span class="ab-pill">Stratum</span>
-                  <span class="ab-pill">Flow State</span>
-                  <span class="ab-pill">Krama</span>
-                </div>
-                <a href="#ventures" class="ab-proof-link">Explore Systems ↗</a>
-              </div>
+              <p class="ab-milestone-body">Ashoka Cash Rush champion (8.85× capital run) &amp; IIM Amritsar Top 10 out of ~700 teams.</p>
+              <a href="#comp-cash-rush" class="ab-proof-link">Jump to Proof ↗</a>
             </article>
           </li>
         </ol>
@@ -758,12 +727,18 @@ function renderCompetitions(content) {
       </article>`;
     }
 
-    // Visual segmented ROI bar + revenue mix for Cash Rush inside Pillar 03
+    // Visual segmented ROI bar + explicit 4-row ledger & profit vs multiple distinction for Cash Rush
     const roiBarHtml = comp.id === 'cash-rush' ? `
-          <div class="fr-roi-bar-wrap" aria-label="Cash Rush Unit Economics Breakdown: ₹300 Seed, ₹45 Cost, ₹2,400 Service Yield ending at ₹2,655 (8.85x)">
+          <div class="fr-roi-bar-wrap" aria-label="Cash Rush Unit Economics Breakdown: ₹300 Starting Capital, ₹2,400 Service Revenue, ₹45 Operating Costs, ₹2,655 Ending Capital (8.85x Multiple / +785% Seed Profit), ₹7,000 Separate Team Prize">
             <div class="fr-roi-bar-head">
-              <span class="fr-roi-bar-title">120-MIN CAPITAL BREAKDOWN</span>
-              <span class="fr-roi-bar-total mono">₹2,655 Ending (8.85x)</span>
+              <span class="fr-roi-bar-title">120-MIN FINANCIAL LEDGER</span>
+              <span class="fr-roi-bar-total mono">₹2,655 Ending (8.85× Multiple · +785% Profit)</span>
+            </div>
+            <div class="fr-ledger-grid" role="region" aria-label="Ashoka Cash Rush Financial Summary">
+              <div class="fr-ledger-row"><span class="fr-ledger-item">Starting Capital</span><span class="fr-ledger-amt mono">₹300</span></div>
+              <div class="fr-ledger-row"><span class="fr-ledger-item">Service Revenue</span><span class="fr-ledger-amt mono">₹2,400</span></div>
+              <div class="fr-ledger-row"><span class="fr-ledger-item">Operating Costs</span><span class="fr-ledger-amt mono">−₹45</span></div>
+              <div class="fr-ledger-row is-total"><span class="fr-ledger-item">Ending Operating Fund</span><span class="fr-ledger-amt mono">₹2,655</span></div>
             </div>
             <div class="fr-roi-track" role="img" aria-label="Proportional breakdown of ₹300 Seed, ₹45 Cost, and ₹2,400 Service Yield">
               <span class="fr-roi-seg fr-roi-seg--seed" style="width: 11%" title="₹300 Seed"></span>
@@ -771,9 +746,9 @@ function renderCompetitions(content) {
               <span class="fr-roi-seg fr-roi-seg--yield" style="width: 87%" title="₹2,400 Service Yield"></span>
             </div>
             <div class="fr-roi-legend">
-              <span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--seed" aria-hidden="true"></i>₹300 Seed</span>
-              <span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--cost" aria-hidden="true"></i>₹45 Cost</span>
-              <span class="fr-roi-leg-item fr-roi-leg-accent"><i class="fr-roi-dot fr-roi-dot--yield" aria-hidden="true"></i>₹2,400 Service Yield</span>
+              <span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--seed" aria-hidden="true"></i>8.85× Ending Multiple</span>
+              <span class="fr-roi-leg-item"><i class="fr-roi-dot fr-roi-dot--cost" aria-hidden="true"></i>+785% Net Profit</span>
+              <span class="fr-roi-leg-item fr-roi-leg-accent"><i class="fr-roi-dot fr-roi-dot--yield" aria-hidden="true"></i>₹7,000 Separate Team Prize</span>
             </div>
             <div class="fr-rev-mix">
               <span class="fr-rev-mix-lbl">₹2,400 Service Mix:</span>
@@ -984,11 +959,17 @@ function renderCompetitions(content) {
 
   return `    <section id="competitions">
       <div class="section-header">
-        <span class="section-eyebrow reveal">01 // Competitive Field Record</span>
-        <h2 class="section-title reveal">Top Finishes &amp; Proof</h2>
+        <span class="section-eyebrow reveal">03 // Field Record</span>
+        <h2 class="section-title reveal">Built Under Pressure. Measured by Outcomes.</h2>
         <p class="section-lead reveal">
-          Seven collegiate arenas, Jun–Oct 2026: two 1st places, one top-10 national finish, one 3rd place, and three field participations. Filter by arena type below.
+          A documentary log of seven collegiate arenas (Jun–Oct 2026). Full team rosters and financial breakdowns open cleanly on inspection rather than repeating across the page.
         </p>
+        <div class="fr-summary-strip reveal">
+          <div class="fr-sum-pill"><span class="fr-sum-val mono">02</span><span class="fr-sum-lbl">First Places</span></div>
+          <div class="fr-sum-pill"><span class="fr-sum-val mono">TOP 10</span><span class="fr-sum-lbl">National Finalist</span></div>
+          <div class="fr-sum-pill"><span class="fr-sum-val mono">03</span><span class="fr-sum-lbl">Podium Finishes</span></div>
+          <div class="fr-sum-pill"><span class="fr-sum-val mono">03</span><span class="fr-sum-lbl">Field Participations</span></div>
+        </div>
       </div>
 
       <!-- Dynamic Filter Controls -->
@@ -1014,92 +995,27 @@ ${participationComps.map(renderCompCard).join('\n\n')}
 
 function renderVentures(content) {
   const vens = content.ventures || [];
+  const p = content.personal || {};
+  const kramaDefault = KramaMath.analyzeAttendance(17, 25, 0.75);
 
-  // Generate Tathya Explorer for the dedicated full-width workbench
-  let tathyaExplorerHtml = '';
-  const { renderTathyaExplorer } = require('../templates/demo/render.js');
-  const tathyaJsonPath = path.join(DATA_DIR, 'tathya.json');
-  let tathyaData = null;
-  if (fs.existsSync(tathyaJsonPath)) {
-    try {
-      tathyaData = JSON.parse(fs.readFileSync(tathyaJsonPath, 'utf8'));
-    } catch (e) {
-      console.warn('[Build] Warning reading data/tathya.json:', e);
-    }
-  }
-  tathyaExplorerHtml = renderTathyaExplorer(tathyaData);
+  const featured = vens.find(v => v.id === 'tathya') || vens[0];
+  const secondaryIds = ['flow-state', 'krama', 'stratum'];
+  const secondaryVens = secondaryIds.map(id => vens.find(v => v.id === id)).filter(Boolean);
 
-  const deepDiveMap = {
-    tathya: {
-      b1Title: 'Research Hypothesis &amp; Failure Modes',
-      b1Text: 'LLMs trained on standard web Hindi (Manak Hindi) suffer subword token fragmentation on dialectal inputs from Haryana, Punjab, and Bihar. Colloquial words split into multiple byte fragments, inflating sequence length and diluting attention over civic entities.',
-      b2Title: 'Verification Layer Architecture',
-      b2Text: 'Tathya pairs orthographic normalization with deterministic assertion boundary checks, grounding civic and public-health queries against audited municipal records prior to output generation.',
-      b3Title: 'Retrospective: Grounding in Authentic Speech',
-      b3Quote: 'Synthetically generated dialect prompts introduced artificial phrasing. Shifting to native voice notes and community radio transcripts grounded the evaluation set in real spoken syntax.'
-    },
-    stratum: {
-      b1Title: 'Simulation Engine Model',
-      b1Text: 'Stratum replaces static LLM-cheatable case studies with a deterministic finite-state market sandbox where candidates allocate capital across simulated ad auctions under exogenous CPM shocks.',
-      b2Title: 'Latency &amp; Capital Efficiency Audits',
-      b2Text: 'Every budget reallocation and pivot timestamp is logged to an immutable session ledger, scoring candidates on capital velocity, margin protection, and decision speed under uncertainty.',
-      b3Title: 'Retrospective: Headless Engine First',
-      b3Quote: 'Building canvas dashboards first slowed iteration on market invariants. Stripping down to a seeded headless state machine ensured identical scenario playback across candidate cohorts.'
-    },
-    'flow-state': {
-      b1Title: 'Python + Local-First Zero-OAuth Architecture',
-      b1Text: 'Built with a Python backend and native OS webview UI, Flow State avoids cloud data leaks and broad OAuth scopes by parsing local RFC 5545 calendar files with zero network handshakes.',
-      b2Title: '16-Bit Procedural Audio Engine',
-      b2Text: 'Replaced streaming audio loops and MP3 assets with real-time 44.1kHz procedural sine synthesis via Python math.sin (plus live Web Audio preview here), keeping audio generation offline.',
-      b3Title: 'Retrospective: Python + Native Webview over Electron',
-      b3Quote: 'Bundling Chromium via Electron consumed ~450MB of RAM—counterproductive for lightweight focus. Pairing Python with native OS webview primitives kept memory minimal and startup instant.'
-    },
-    krama: {
-      b1Title: '75% Eligibility Recovery Calculus',
-      b1Text: 'Indian undergraduate programs enforce strict 75% attendance cutoffs for exam eligibility. Krama models attendance trajectories explicitly so students know exact consecutive classes needed to recover.',
-      b2Title: 'Offline Timetable &amp; Edge Handling',
-      b2Text: 'Operates 100% on-device with local SQLite storage, handling lab blocks, campus holidays, and timetable swaps without requiring external portal credentials.',
-      b3Title: 'Retrospective: Modeling Irregular Weeks',
-      b3Quote: 'Rotational odd/even week cycles broke simple modulo parsers. Switching to day-by-day deterministic state transitions keyed to academic calendars eliminated schedule drift.'
-    }
-  };
-
-  return `    <section id="ventures">
-      <div class="section-header">
-        <span class="section-eyebrow reveal">02 // Ventures &amp; Systems</span>
-        <h2 class="section-title reveal">What I Am Building</h2>
-        <p class="section-lead reveal">
-          Four projects at different stages, from early research to local-first tools I use myself.
-        </p>
-      </div>
-
-      <div class="ventures-grid">
-
-${vens.map(ven => {
-  const hasProofAsset = Boolean(ven.proof_asset && ven.proof_asset.url && ven.proof_asset.url !== 'TBD');
-
-  let previewHtml = '';
-  if (ven.terminal_preview) {
+  function renderTerminalBlock(ven) {
+    if (!ven.terminal_preview) return '';
     const lines = ven.terminal_preview.lines || [];
     const renderedLines = lines.map(line => {
-      if (typeof line === 'string') {
-        return escapeHtml(line);
-      }
-      if (line.type === 'comment') {
-        return `<span class="cm">${escapeHtml(line.text)}</span>`;
-      }
+      if (typeof line === 'string') return escapeHtml(line);
+      if (line.type === 'comment') return `<span class="cm">${escapeHtml(line.text)}</span>`;
       const lineText = escapeHtml(line.text);
-      if (line.prefix) {
-        return `<span class="kw">${escapeHtml(line.prefix)}</span> ${lineText}`;
-      }
-      return lineText;
+      return line.prefix ? `<span class="kw">${escapeHtml(line.prefix)}</span> ${lineText}` : lineText;
     }).join('\n');
 
     const termTitle = ven.terminal_preview.filename || ven.terminal_preview.title || ven.id;
     const termBadge = ven.terminal_preview.badge ? ` · ${ven.terminal_preview.badge}` : '';
 
-    previewHtml = `
-            <!-- Integrated Terminal Output -->
+    return `
             <div class="term">
               <div class="term-bar">
                 <i></i><i></i><i></i>
@@ -1107,22 +1023,30 @@ ${vens.map(ven => {
               </div>
               <pre class="term-body" tabindex="0" role="region" aria-label="${escapeHtml(ven.name)} terminal output">${renderedLines}</pre>
             </div>`;
-  } else if (hasProofAsset) {
-    previewHtml = `
-            <div class="venture-preview-box">
-              <img src="${ven.proof_asset.url}" width="320" height="220" alt="${escapeHtml(ven.proof_asset.alt)}" class="venture-preview-img" loading="lazy">
-            </div>`;
   }
 
-  // Per-venture tactile interactive object
-  let interactiveHtml = '';
-  if (ven.id === 'stratum') {
-    interactiveHtml = `
+  function renderInteractiveWidget(ven) {
+    if (ven.id === 'tathya') {
+      return `
+            <div class="vn-tathya-teaser">
+              <div class="vn-teaser-row">
+                <span class="vn-teaser-lbl">MANAK HINDI</span>
+                <div class="vn-teaser-chips"><span class="tfe-chip tfe-chip--clean">[हमारी]</span><span class="tfe-chip tfe-chip--clean">[सरकार]</span></div>
+              </div>
+              <div class="vn-teaser-row">
+                <span class="vn-teaser-lbl">HARYANVI INPUT</span>
+                <div class="vn-teaser-chips"><span class="tfe-chip tfe-chip--frag">[म]</span><span class="tfe-chip tfe-chip--frag">[्]</span><span class="tfe-chip tfe-chip--frag">[ह]</span><span class="tfe-chip tfe-chip--frag">[ा]</span><span class="tfe-chip tfe-chip--frag">[र]</span><span class="tfe-chip tfe-chip--frag">[ी]</span></div>
+              </div>
+              <p class="vn-teaser-note">Inspect live BPE tokens, UTF-8 byte lengths, and scientific hypothesis below in 02 // Research Lab.</p>
+            </div>`;
+    }
+    if (ven.id === 'stratum') {
+      return `
             <div class="vn-sim-widget" data-sim="stratum">
               <div class="vn-sim-head">
                 <span class="vn-sim-title">CPM SHOCK MICRO-SIM</span>
                 <div class="vn-sim-tabs" role="group" aria-label="Stratum CPM scenario toggle">
-                  <button type="button" class="vn-sim-tab active" data-sim-mode="baseline" aria-pressed="true">Baseline CPM</button>
+                  <button type="button" class="vn-sim-tab active" data-sim-mode="baseline" aria-pressed="true">Baseline</button>
                   <button type="button" class="vn-sim-tab" data-sim-mode="shock" aria-pressed="false">+40% Shock</button>
                 </div>
               </div>
@@ -1144,8 +1068,9 @@ ${vens.map(ven => {
                 </div>
               </div>
             </div>`;
-  } else if (ven.id === 'flow-state') {
-    interactiveHtml = `
+    }
+    if (ven.id === 'flow-state') {
+      return `
             <div class="vn-artifact-stack">
               <button type="button"
                       class="vn-artifact-btn"
@@ -1165,8 +1090,9 @@ ${vens.map(ven => {
                 <span id="flowstate-synth-label">▶ Test 432Hz Sine Synth</span>
               </button>
             </div>`;
-  } else if (ven.id === 'krama') {
-    interactiveHtml = `
+    }
+    if (ven.id === 'krama') {
+      return `
             <div class="vn-artifact-stack">
               <button type="button"
                       class="vn-artifact-btn"
@@ -1181,17 +1107,17 @@ ${vens.map(ven => {
                   <span class="vn-artifact-title">Inspect Mobile UI ↗</span>
                 </span>
               </button>
-              <div class="vn-calc-widget" id="krama-calc-widget" data-attended="17" data-total="25">
+              <div class="vn-calc-widget" id="krama-calc-widget" data-attended="${kramaDefault.attended}" data-total="${kramaDefault.total}">
                 <div class="vn-calc-head">
                   <span class="vn-calc-title">75% RECOVERY CALCULUS</span>
-                  <span class="vn-calc-pct mono" id="krama-pct-readout">68.0%</span>
+                  <span class="vn-calc-pct mono" id="krama-pct-readout">${escapeHtml(kramaDefault.percentageFormatted)}</span>
                 </div>
                 <div class="vn-calc-controls">
                   <div class="vn-calc-stepper">
                     <span class="vn-calc-lbl">Attended</span>
                     <div class="vn-stepper-btns">
                       <button type="button" class="vn-step-btn" id="krama-att-minus" aria-label="Decrease attended classes">−</button>
-                      <span class="vn-step-val mono" id="krama-att-val">17</span>
+                      <span class="vn-step-val mono" id="krama-att-val">${kramaDefault.attended}</span>
                       <button type="button" class="vn-step-btn" id="krama-att-plus" aria-label="Increase attended classes">+</button>
                     </div>
                   </div>
@@ -1199,123 +1125,133 @@ ${vens.map(ven => {
                     <span class="vn-calc-lbl">Total</span>
                     <div class="vn-stepper-btns">
                       <button type="button" class="vn-step-btn" id="krama-tot-minus" aria-label="Decrease total classes">−</button>
-                      <span class="vn-step-val mono" id="krama-tot-val">25</span>
+                      <span class="vn-step-val mono" id="krama-tot-val">${kramaDefault.total}</span>
                       <button type="button" class="vn-step-btn" id="krama-tot-plus" aria-label="Increase total classes">+</button>
                     </div>
                   </div>
                 </div>
-                <div class="vn-calc-advice" id="krama-advice-readout">Attend next 7 consecutive classes to recover 75.0%.</div>
+                <div class="vn-calc-advice" id="krama-advice-readout">${escapeHtml(kramaDefault.advice)}</div>
               </div>
             </div>`;
+    }
+    return '';
   }
 
-  const dd = deepDiveMap[ven.id];
-  const statusHeadline = ven.status === 'building' ? 'Status: Building' : 'Status: Idea';
-  const indicatorClass = ven.status === 'building' ? 'cs-indicator-building' : 'cs-indicator-idea';
+  function renderProjectCard(ven, isFeatured) {
+    const stackChips = {
+      tathya: ['Python', 'Indic NLP', 'BPE Analysis', 'Research Phase'],
+      'flow-state': ['Python', 'Native Webview', 'RFC 5545', '16-Bit Audio'],
+      krama: ['Local SQLite', 'Shared Math', 'Student Utility'],
+      stratum: ['Decision Sim', 'Spec Stage', 'Telemetry']
+    }[ven.id] || [];
 
-  const drawerContent = dd ? `
-              <div class="cs-status-banner">
-                <div class="cs-status-left">
-                  <span class="cs-status-indicator ${indicatorClass}" aria-hidden="true"></span>
-                  <span class="cs-status-headline">${escapeHtml(statusHeadline)} // ${escapeHtml(ven.badge)}</span>
-                </div>
-                <span class="cs-status-detail-pill">${escapeHtml(ven.status_detail)}</span>
+    if (isFeatured) {
+      return `        <!-- FEATURED RESEARCH CARD: ${escapeHtml(ven.name)} -->
+        <article class="venture-card venture-featured reveal" data-venture-id="${ven.id}">
+          <div class="vf-split">
+            <div class="vf-main">
+              <div class="venture-meta">
+                <span class="vf-eyebrow">01 // FEATURED RESEARCH · ${escapeHtml(ven.category)}</span>
+                <span class="venture-status v-status-badge mono"><i class="pulse-dot" style="display:inline-block; margin-right:6px;"></i>${escapeHtml(ven.badge)} (${escapeHtml(ven.status)})</span>
               </div>
-
-              <div class="cs-block">
-                <div class="cs-block-header">
-                  <span class="cs-block-num">01</span>
-                  <span class="cs-block-title">${dd.b1Title}</span>
-                </div>
-                <p class="cs-block-text">${dd.b1Text}</p>
+              <h3 class="venture-name vf-title">${escapeHtml(ven.name)} — Indic Dialect Evaluation</h3>
+              <p class="venture-thesis vf-thesis">${escapeHtml(ven.thesis)}</p>
+              <p class="vf-problem"><strong>Research Question:</strong> ${escapeHtml(ven.problem)}</p>
+              <div class="vf-stack-chips">
+                ${stackChips.map(c => `<span class="vf-chip">${escapeHtml(c)}</span>`).join('')}
               </div>
-
-              <div class="cs-block">
-                <div class="cs-block-header">
-                  <span class="cs-block-num">02</span>
-                  <span class="cs-block-title">${dd.b2Title}</span>
-                </div>
-                <p class="cs-block-text">${dd.b2Text}</p>
+              <div class="venture-actions">
+                <button type="button" class="btn-solid project-case-btn" data-project-id="${ven.id}">Full Case Study →</button>
+                <a href="#tathya-workbench" class="btn-outline venture-sub-btn">Run Dialect Tokenizer ↓</a>
               </div>
+            </div>
+            <div class="vf-side">
+              ${renderTerminalBlock(ven)}
+              ${renderInteractiveWidget(ven)}
+            </div>
+          </div>
+        </article>`;
+    }
 
-              <div class="cs-block cs-retrospective-card">
-                <div class="cs-retrospective-title">
-                  <span class="cs-retrospective-icon" aria-hidden="true">✦</span>
-                  <span>${dd.b3Title}</span>
-                </div>
-                <blockquote class="cs-retrospective-quote">“${dd.b3Quote}”</blockquote>
-              </div>` : '';
-
-  return `        <!-- VENTURE CARD: ${escapeHtml(ven.name)} -->
+    return `        <!-- PROJECT CARD: ${escapeHtml(ven.name)} -->
         <article class="venture-card reveal" data-venture-id="${ven.id}">
           <div class="venture-top">
             <div class="venture-meta">
               <span>${escapeHtml(ven.category)}</span>
-              <span class="mono" style="color: var(--accent);"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>${escapeHtml(ven.badge)}</span>
+              <span class="venture-status v-status-badge mono"><i class="pulse-dot" style="display:inline-block; margin-right:4px;"></i>${escapeHtml(ven.badge)} · ${escapeHtml(ven.status)}</span>
             </div>
             <h3 class="venture-name">${escapeHtml(ven.name)}</h3>
             <p class="venture-thesis">${escapeHtml(ven.thesis)}</p>
 
-            ${previewHtml}
-            ${interactiveHtml}
+            ${renderTerminalBlock(ven)}
+            ${renderInteractiveWidget(ven)}
           </div>
 
           <div class="venture-details">
             <div class="venture-detail-row">
-              <span class="lbl">Problem</span>
-              <span class="val">${escapeHtml(ven.problem)}</span>
+              <span class="lbl">Focus</span>
+              <span class="val">${(ven.features || []).slice(0, 2).join(' · ')}</span>
             </div>
             <div class="venture-detail-row">
-              <span class="lbl">Features</span>
-              <span class="val">${(ven.features || []).join(' · ')}</span>
-            </div>
-            <div class="venture-detail-row">
-              <span class="lbl">Status</span>
+              <span class="lbl">Stage</span>
               <span class="val mono">${escapeHtml(ven.status_detail)}</span>
             </div>
           </div>
 
           <div class="venture-actions">
-            <a href="${escapeHtml(ven.action_cta.target)}" class="btn-solid">${escapeHtml(ven.action_cta.label)} <span class="btn-arrow">→</span></a>
+            <button type="button" class="btn-solid project-case-btn" data-project-id="${ven.id}">Full Case Study →</button>
             ${ven.repo_url && ven.repo_url !== 'TBD' ? `<a href="${escapeHtml(ven.repo_url)}" class="btn-ghost venture-repo-link" target="_blank" rel="noopener">Code ↗</a>` : ''}
-            ${ven.demo_url && ven.demo_url !== 'TBD' ? `<a href="${escapeHtml(ven.demo_url)}" class="btn-ghost venture-demo-link" target="_blank" rel="noopener">Demo ↗</a>` : ''}
-            ${ven.id === 'tathya' ? '<a href="#tathya-workbench" class="btn-outline venture-sub-btn">Open Dialect Lab ↓</a>' : ''}
-          </div>
-
-          <!-- Deep Dive Dynamic Trigger Button -->
-          <button type="button"
-                  id="cs-trigger-${ven.id}"
-                  class="cs-trigger"
-                  data-drawer-target="cs-drawer-${ven.id}"
-                  aria-expanded="false"
-                  aria-controls="cs-drawer-${ven.id}">
-            <span class="cs-trigger-left">
-              <span class="cs-trigger-icon" aria-hidden="true">+</span>
-              <span class="cs-trigger-label">Deep Dive: Systems &amp; Retrospective</span>
-            </span>
-            <span class="cs-trigger-badge">SPECS</span>
-          </button>
-
-          <!-- Expandable Deep Dive Drawer Host -->
-          <div id="cs-drawer-${ven.id}" class="cs-drawer" role="region" aria-labelledby="cs-trigger-${ven.id}" hidden>
-            <div class="cs-drawer-inner">
-              <div class="cs-deepdive-body">
-                ${drawerContent}
-                <button type="button" class="cs-close-drawer-btn" data-close-drawer="${ven.id}">↑ Collapse Deep-Dive</button>
-              </div>
-            </div>
           </div>
         </article>`;
-}).join('\n\n')}
+  }
 
+  return `    <section id="ventures">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">01 // Selected Work</span>
+        <h2 class="section-title reveal">Engineering Systems &amp; Research</h2>
+        <p class="section-lead reveal">
+          What I am building and investigating: flagship dialect NLP research paired with local-first tools and simulation prototypes. Click any card for problem statement, architecture, and limitations.
+        </p>
       </div>
 
-      <div class="ventures-workbench-showcase reveal" id="tathya-workbench">
-        <div class="vw-header">
-          <span class="section-eyebrow">Live AI Research Console</span>
-          <h3 class="vw-title">Tathya · Dialect Token Fragmentation Explorer</h3>
-          <p class="vw-lead">Live benchmark analyzing how Hindi LLMs fail on Punjabi, Haryanvi, and Bhojpuri colloquial syntax.</p>
+      ${featured ? renderProjectCard(featured, true) : ''}
+
+      <div class="ventures-grid ventures-subgrid">
+${secondaryVens.map(v => renderProjectCard(v, false)).join('\n\n')}
+      </div>
+
+      <div class="more-experiments-strip reveal">
+        <div class="me-text">
+          <span class="me-kicker mono">OPEN REPOSITORIES &amp; EXPERIMENTS</span>
+          <p class="me-desc">More prototypes, code experiments, and technical writeups live on GitHub.</p>
         </div>
+        <a href="${escapeHtml(p.github || 'https://github.com/rudras2048-arch')}" class="btn-outline" target="_blank" rel="noopener">GitHub (rudras2048-arch) ↗</a>
+      </div>
+    </section>`;
+}
+
+function renderResearchLab() {
+  const { renderTathyaExplorer } = require('../templates/demo/render.js');
+  const tathyaJsonPath = path.join(DATA_DIR, 'tathya.json');
+  let tathyaData = null;
+  if (fs.existsSync(tathyaJsonPath)) {
+    try {
+      tathyaData = JSON.parse(fs.readFileSync(tathyaJsonPath, 'utf8'));
+    } catch (e) {
+      console.warn('[Build] Warning reading data/tathya.json:', e);
+    }
+  }
+  const tathyaExplorerHtml = renderTathyaExplorer(tathyaData);
+
+  return `    <section id="tathya-workbench" class="lab-section" aria-labelledby="tw-title">
+      <div class="section-header">
+        <span class="section-eyebrow reveal">02 // Research Lab · Signature Console</span>
+        <h2 id="tw-title" class="section-title reveal">Does the Model Understand the Dialect?</h2>
+        <p class="section-lead reveal">
+          Compare regional-language text against Manak Hindi live in the browser. Inspect algorithmic BPE token IDs, grapheme clusters, and UTF-8 bytes separately—zero hardcoded mock splits.
+        </p>
+      </div>
+      <div class="ventures-workbench-showcase reveal">
         ${tathyaExplorerHtml}
       </div>
     </section>`;
@@ -1557,6 +1493,7 @@ function main() {
   const aboutSection = renderAbout(content);
   const competitionsSection = renderCompetitions(content);
   const venturesSection = renderVentures(content);
+  const researchLabSection = renderResearchLab();
   const contactSection = renderContact(content);
   const portfolioContentData = renderPortfolioContentData(content);
   const windowPortfolioContent = renderWindowPortfolioContent(content);
@@ -1569,28 +1506,28 @@ function main() {
     .replace('<!-- {{INJECT_ABOUT_SECTION}} -->', aboutSection)
     .replace('<!-- {{INJECT_COMPETITIONS_SECTION}} -->', competitionsSection)
     .replace('<!-- {{INJECT_VENTURES_SECTION}} -->', venturesSection)
+    .replace('<!-- {{INJECT_RESEARCH_LAB_SECTION}} -->', researchLabSection)
     .replace('<!-- {{INJECT_CONTACT_SECTION}} -->', contactSection)
     .replace('<!-- {{INJECT_PORTFOLIO_CONTENT_DATA}} -->', portfolioContentData)
     .replace('<!-- {{INJECT_WINDOW_PORTFOLIO_CONTENT}} -->', windowPortfolioContent);
 
-  // Ensure Tathya LLM Failure Explorer styles and script are bundled
-  const { getTathyaExplorerCSS, getTathyaExplorerJS } = require('../templates/demo/render.js');
+  // Ensure Tathya CSS and Shared Domain Modules (KramaMath + TathyaTokenizer + TathyaExplorer) are bundled
+  const { getTathyaExplorerCSS, getTathyaTokenizerJS, getKramaMathJS, getTathyaExplorerJS } = require('../templates/demo/render.js');
   const tfeCss = getTathyaExplorerCSS();
-  const tfeJs = getTathyaExplorerJS();
+  const domainBundleJs = [getKramaMathJS(), getTathyaTokenizerJS(), getTathyaExplorerJS()].join('\n\n');
 
   if (!template.includes('.tfe-viz-grid')) {
     const firstStyleClose = template.indexOf('</style>');
     if (firstStyleClose !== -1) {
-      template = template.slice(0, firstStyleClose) + `\n/* TATHYA LLM FAILURE EXPLORER STYLES (.tfe-) */\n${tfeCss}\n` + template.slice(firstStyleClose);
+      template = template.slice(0, firstStyleClose) + `\n/* TATHYA RESEARCH CONSOLE STYLES (.tfe-) */\n${tfeCss}\n` + template.slice(firstStyleClose);
     }
   }
-  if (!template.includes('window.initTathyaExplorer = function')) {
-    if (!template.includes('window.initTathyaExplorer()')) {
-      template = template.replace('bootstrapPortfolioV2();', `bootstrapPortfolioV2();\n    if (typeof window.initTathyaExplorer === 'function') {\n      window.__TATHYA_EXPLORER = window.initTathyaExplorer();\n    }`);
-    }
+  if (template.includes('<!-- {{INJECT_DOMAIN_SCRIPTS}} -->')) {
+    template = template.replace('<!-- {{INJECT_DOMAIN_SCRIPTS}} -->', domainBundleJs);
+  } else if (!template.includes('window.initTathyaExplorer = function')) {
     const lastScriptClose = template.lastIndexOf('</script>');
     if (lastScriptClose !== -1) {
-      template = template.slice(0, lastScriptClose) + `\n/* TATHYA LLM FAILURE EXPLORER SCRIPT */\n${tfeJs}\n` + template.slice(lastScriptClose);
+      template = template.slice(0, lastScriptClose) + `\n/* DOMAIN MODULES & TATHYA CONSOLE */\n${domainBundleJs}\n` + template.slice(lastScriptClose);
     }
   }
 

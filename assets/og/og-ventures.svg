@@ -84,7 +84,7 @@
       <text x="20" y="38" class="font-mono" font-size="11" font-weight="600" fill="#A5BA28">RESEARCH PHASE</text>
       <text x="20" y="75" class="font-display" font-size="19" fill="#F5EFE6">Tathya (तथ्य)</text>
       <text x="20" y="110" class="font-body" font-size="12" fill="#9C988D">
-        <tspan x="20" dy="0">Research into how LLMs fail on</tspan><tspan x="20" dy="18">non-standard Indian dialects</tspan><tspan x="20" dy="18">(Punjabi, Haryanvi, Bhojpuri),</tspan><tspan x="20" dy="18">and</tspan>
+        <tspan x="20" dy="0">Research investigating how</tspan><tspan x="20" dy="18">LLMs perform on non-standard</tspan><tspan x="20" dy="18">Indian dialects (Haryanvi,</tspan><tspan x="20" dy="18">Punjabi,</tspan>
       </text>
       <g transform="translate(20, 192)">
         <rect width="110" height="22" rx="11" fill="#1B1B22" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
@@ -94,10 +94,10 @@
     <g transform="translate(274, 0)">
       <rect width="254" height="235" rx="14" fill="#131317" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
       <rect x="0" y="0" width="254" height="4" fill="url(#accentGrad)" opacity="0.8" rx="2" />
-      <text x="20" y="38" class="font-mono" font-size="11" font-weight="600" fill="#A5BA28">CONCEPT STAGE</text>
+      <text x="20" y="38" class="font-mono" font-size="11" font-weight="600" fill="#A5BA28">CONCEPT PROTOTYPE</text>
       <text x="20" y="75" class="font-display" font-size="19" fill="#F5EFE6">Stratum</text>
       <text x="20" y="110" class="font-body" font-size="12" fill="#9C988D">
-        <tspan x="20" dy="0">A live market simulation</tspan><tspan x="20" dy="18">engine evaluating candidate</tspan><tspan x="20" dy="18">decision speed and capital</tspan><tspan x="20" dy="18">efficiency</tspan>
+        <tspan x="20" dy="0">A market simulation concept</tspan><tspan x="20" dy="18">evaluating candidate decision</tspan><tspan x="20" dy="18">speed and capital efficiency</tspan><tspan x="20" dy="18">under</tspan>
       </text>
       <g transform="translate(20, 192)">
         <rect width="110" height="22" rx="11" fill="#1B1B22" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />
@@ -110,7 +110,7 @@
       <text x="20" y="38" class="font-mono" font-size="11" font-weight="600" fill="#A5BA28">LOCAL BUILD</text>
       <text x="20" y="75" class="font-display" font-size="19" fill="#F5EFE6">Flow State</text>
       <text x="20" y="110" class="font-body" font-size="12" fill="#9C988D">
-        <tspan x="20" dy="0">A Python-backed offline focus</tspan><tspan x="20" dy="18">desktop utility built to</tspan><tspan x="20" dy="18">eliminate cloud telemetry</tspan><tspan x="20" dy="18">leaks</tspan>
+        <tspan x="20" dy="0">A Python-backed offline focus</tspan><tspan x="20" dy="18">desktop utility built to</tspan><tspan x="20" dy="18">eliminate telemetry clutter,</tspan><tspan x="20" dy="18">accounts,</tspan>
       </text>
       <g transform="translate(20, 192)">
         <rect width="110" height="22" rx="11" fill="#1B1B22" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="1" />

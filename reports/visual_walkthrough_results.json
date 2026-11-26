@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-26T03:45:59.676Z",
+  "timestamp": "2026-11-26T04:08:16.955Z",
   "viewports": {
     "320px": {
       "name": "Ultra-Narrow Mobile (320x568)",
@@ -11,54 +11,8 @@
         "bodyScrollWidth": 320,
         "hasOverflow": false,
         "overflowPx": 0,
-        "overflowingElementsCount": 5,
-        "topOverflowing": [
-          {
-            "tag": "div",
-            "id": "glow",
-            "className": null,
-            "width": 580,
-            "right": 450,
-            "overflowPx": 130,
-            "snippet": ""
-          },
-          {
-            "tag": "span",
-            "id": null,
-            "className": "cm",
-            "width": 338.4,
-            "right": 384.4,
-            "overflowPx": 64.4,
-            "snippet": "$ tathya eval --lang haryanvi --set gov-"
-          },
-          {
-            "tag": "span",
-            "id": null,
-            "className": "cm",
-            "width": 374.4,
-            "right": 420.4,
-            "overflowPx": 100.4,
-            "snippet": "$ stratum simulate --scenario \"cpm_volat"
-          },
-          {
-            "tag": "span",
-            "id": null,
-            "className": "cm",
-            "width": 374.4,
-            "right": 420.4,
-            "overflowPx": 100.4,
-            "snippet": "$ flowstate run --zero-oauth --audio pro"
-          },
-          {
-            "tag": "span",
-            "id": null,
-            "className": "cm",
-            "width": 410.4,
-            "right": 456.4,
-            "overflowPx": 136.4,
-            "snippet": "$ krama analyze --timetable schedule.jso"
-          }
-        ]
+        "overflowingElementsCount": 0,
+        "topOverflowing": []
       },
       "screenshot": "viewport-320px.png",
       "passed": true
@@ -112,35 +66,42 @@
           "tagName": "A",
           "id": "",
           "className": "nav-brand",
-          "text": "RUDRA SHARMA",
+          "text": "RUDRA.SHARMA",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "",
+          "text": "01WORK",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "",
+          "text": "02LAB",
+          "ariaLabel": null
+        },
+        {
+          "tagName": "A",
+          "id": "",
+          "className": "",
+          "text": "03RECORD",
           "ariaLabel": null
         },
         {
           "tagName": "A",
           "id": "",
           "className": "ab-nav-link",
-          "text": "00ABOUT",
+          "text": "04ABOUT",
           "ariaLabel": null
         },
         {
           "tagName": "A",
           "id": "",
           "className": "",
-          "text": "01RECORD",
-          "ariaLabel": null
-        },
-        {
-          "tagName": "A",
-          "id": "",
-          "className": "",
-          "text": "02VENTURES",
-          "ariaLabel": null
-        },
-        {
-          "tagName": "A",
-          "id": "",
-          "className": "",
-          "text": "03CONTACT",
+          "text": "05CONTACT",
           "ariaLabel": null
         },
         {
@@ -152,24 +113,17 @@
         },
         {
           "tagName": "BUTTON",
+          "id": "cli-trigger",
+          "className": "cmd-trigger-btn",
+          "text": ">_",
+          "ariaLabel": "Open Interactive Lab CLI"
+        },
+        {
+          "tagName": "BUTTON",
           "id": "cmd-palette-trigger",
           "className": "cmd-trigger-btn",
           "text": "⌘K",
           "ariaLabel": "⌘K Open Command Palette"
-        },
-        {
-          "tagName": "A",
-          "id": "",
-          "className": "nav-action-pill",
-          "text": "LINKEDIN ↗",
-          "ariaLabel": null
-        },
-        {
-          "tagName": "A",
-          "id": "",
-          "className": "btn-solid hero-btn-primary",
-          "text": "VIEW RECORD\n↓",
-          "ariaLabel": null
         }
       ]
     },

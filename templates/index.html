@@ -27,23 +27,28 @@
        DESIGN SYSTEM TOKENS — HIGH-IMPACT LUXURY EDITORIAL
        ========================================================================== */
     :root {
-      --bg: #0C0C0E;
-      --bg2: #131317;
-      --bg3: #1B1B22;
-      --bg-card: rgba(18, 18, 22, 0.84);
+      --bg: #101216;
+      --bg2: #161920;
+      --bg3: #1E222B;
+      --bg-card: rgba(22, 25, 32, 0.88);
       
-      --text-bone: #F5EFE6;
-      --text-muted: #C0C5BF;
-      --text-dim: #A8B0A8;
+      --text-bone: #F4F4F5;
+      --text-muted: #A3AAB7;
+      --text-dim: #9CA4B3;
       
-      --accent: #A5BA28;
-      --accent-bright: #BEE024;
-      --accent-soft: rgba(165, 186, 40, 0.12);
-      --accent-glow: rgba(165, 186, 40, 0.28);
-      --rule: rgba(255, 255, 255, 0.08);
-      --rule-hover: rgba(165, 186, 40, 0.35);
+      --accent: #C4F06A;
+      --accent-bright: #D6F888;
+      --accent-soft: rgba(196, 240, 106, 0.13);
+      --accent-glow: rgba(196, 240, 106, 0.30);
+
+      --lab-accent: #A5B4FC;
+      --lab-bright: #C7D2FE;
+      --lab-soft: rgba(165, 180, 252, 0.13);
+
+      --rule: rgba(255, 255, 255, 0.09);
+      --rule-hover: rgba(165, 180, 252, 0.42);
       
-      --card-radius: 18px;
+      --card-radius: 14px;
       
       --font-display: 'Syne', system-ui, -apple-system, sans-serif;
       --font-serif: 'Instrument Serif', Georgia, serif;
@@ -66,13 +71,16 @@
       font-size: 16px;
       line-height: 1.6;
       scroll-behavior: smooth;
+      overflow-x: clip;
+      max-width: 100%;
       -webkit-font-smoothing: antialiased;
     }
 
     body {
       background-color: var(--bg);
       color: var(--text-bone);
-      overflow-x: hidden;
+      overflow-x: clip;
+      max-width: 100%;
       min-height: 100vh;
       position: relative;
     }
@@ -139,12 +147,12 @@
 
     #glow {
       position: fixed;
-      width: 580px;
-      height: 580px;
+      width: min(580px, 100vw);
+      height: min(580px, 100vh);
       border-radius: 50%;
       pointer-events: none;
       z-index: 2;
-      background: radial-gradient(circle, rgba(165, 186, 40, 0.08) 0%, transparent 65%);
+      background: radial-gradient(circle, rgba(165, 180, 252, 0.08) 0%, transparent 65%);
       transform: translate(-50%, -50%);
       left: 50vw;
       top: 50vh;
@@ -536,13 +544,13 @@
       gap: 8px;
       padding: 6px 14px;
       border-radius: 9999px;
-      background: var(--accent-soft);
-      border: 1px solid rgba(165, 186, 40, 0.3);
-      color: var(--accent);
+      background: var(--lab-soft);
+      border: 1px solid rgba(165, 180, 252, 0.35);
+      color: var(--lab-accent);
       font-family: var(--font-mono);
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       margin-bottom: 18px;
     }
@@ -578,12 +586,12 @@
       letter-spacing: -0.02em;
       font-size: 1.08em;
       line-height: 1.0;
-      color: var(--accent-bright);
+      color: var(--lab-accent);
       display: block;
       transition: color 0.3s ease;
     }
     .hero-headline .stagger:hover {
-      color: var(--text-bone);
+      color: var(--accent);
     }
 
     /* Live Typed Command Prompt */
@@ -599,7 +607,7 @@
 
     .hero-tagline-prompt .prompt {
       font-size: 13.5px;
-      color: #A5BA28;
+      color: var(--lab-accent);
     }
 
     .typed-wrap {
@@ -6004,6 +6012,650 @@ body.cs-modal-open {
       border: 0;
     }
 
+    /* ==========================================================================
+       9. PERSONAL LAB V3 ELEVATIONS: ASYMMETRIC WORK, LEDGER, CASE MODAL, CLI, BMAP
+       ========================================================================== */
+    .hero-topic-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 18px 0;
+    }
+    .hero-topic-chip {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 4px 10px;
+    }
+    .hero-cli-btn {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--lab-accent);
+      background: var(--lab-soft);
+      border: 1px solid rgba(165, 180, 252, 0.3);
+      border-radius: 8px;
+      padding: 4px 10px;
+      min-height: 28px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .hero-cli-btn:hover {
+      background: var(--lab-accent);
+      color: #101216;
+    }
+
+    /* Asymmetric Featured Work (Tathya Hero Card + 3-Col System Cards) */
+    .venture-featured {
+      margin-bottom: 20px;
+      border-color: rgba(165, 180, 252, 0.28);
+      background: linear-gradient(155deg, rgba(22, 25, 32, 0.96), rgba(29, 33, 44, 0.88));
+    }
+    .vf-split {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .vf-main {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+    .vf-side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+    }
+    .vf-eyebrow {
+      color: var(--lab-accent);
+      font-weight: 700;
+    }
+    .vf-title {
+      font-size: clamp(22px, 2.8vw, 30px);
+      line-height: 1.15;
+    }
+    .vf-thesis {
+      font-size: 15px;
+      color: var(--text-bone);
+    }
+    .vf-problem {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .vf-problem strong {
+      color: var(--lab-accent);
+    }
+    .vf-stack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .vf-chip {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--bg3);
+      border: 1px solid var(--rule);
+      color: var(--text-bone);
+    }
+    .vn-tathya-teaser {
+      background: rgba(16, 18, 22, 0.78);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .vn-teaser-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .vn-teaser-lbl {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-dim);
+    }
+    .vn-teaser-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .vn-teaser-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin: 2px 0 0 0;
+      line-height: 1.45;
+    }
+    .ventures-grid.ventures-subgrid {
+      grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+      gap: 20px !important;
+    }
+    @media (max-width: 1040px) {
+      .vf-split {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .ventures-grid.ventures-subgrid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
+    }
+    @media (max-width: 720px) {
+      .ventures-grid.ventures-subgrid {
+        grid-template-columns: minmax(0, 1fr) !important;
+      }
+    }
+    .venture-status.v-status-badge {
+      color: var(--accent);
+      font-size: 12px;
+    }
+    .more-experiments-strip {
+      margin-top: 20px;
+      background: var(--bg2);
+      border: 1px solid var(--rule);
+      border-radius: 14px;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+    .me-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--lab-accent);
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .me-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    /* Field Record Summary Strip & Ashoka 4-Row Financial Clarity Ledger */
+    .fr-summary-strip {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+    @media (max-width: 720px) {
+      .fr-summary-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+    .fr-sum-pill {
+      background: var(--bg2);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .fr-sum-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .fr-sum-lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-family: var(--font-mono);
+    }
+    .fr-ledger-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 6px;
+      margin: 8px 0 10px;
+    }
+    @media (max-width: 480px) {
+      .fr-ledger-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+    .fr-ledger-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 6px;
+      background: rgba(16, 18, 22, 0.72);
+      border: 1px solid var(--rule);
+      font-size: 12px;
+      gap: 8px;
+    }
+    .fr-ledger-row.is-total {
+      border-color: rgba(196, 240, 106, 0.35);
+      background: rgba(196, 240, 106, 0.08);
+    }
+    .fr-ledger-item {
+      color: var(--text-muted);
+    }
+    .fr-ledger-amt {
+      font-weight: 700;
+      color: var(--text-bone);
+    }
+    .fr-ledger-row.is-total .fr-ledger-amt {
+      color: var(--accent-bright);
+    }
+
+    /* Interactive Builder Relationship Map (#builder-map) */
+    .ab-story-para {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .ab-inline-link {
+      color: var(--lab-accent);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .ab-inline-link:hover {
+      color: var(--accent);
+    }
+    .ab-collab-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: var(--lab-soft);
+      border: 1px solid rgba(165, 180, 252, 0.25);
+    }
+    .ab-collab-lbl {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--lab-accent);
+      margin-bottom: 4px;
+    }
+    .ab-collab-text {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--text-bone);
+      margin: 0;
+    }
+    .ab-map-card {
+      margin-bottom: 16px;
+    }
+    .bmap-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .bmap-svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: rgba(10, 12, 16, 0.65);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 6px;
+    }
+    .bmap-node {
+      cursor: pointer;
+    }
+    .bmap-node rect {
+      fill: var(--bg3);
+      stroke: rgba(165, 180, 252, 0.35);
+      stroke-width: 1.2;
+      transition: all 0.2s ease;
+    }
+    .bmap-node.is-center rect {
+      fill: rgba(165, 180, 252, 0.16);
+      stroke: var(--lab-accent);
+    }
+    .bmap-node.accent rect {
+      stroke: rgba(196, 240, 106, 0.45);
+    }
+    .bmap-node text {
+      fill: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      pointer-events: none;
+    }
+    .bmap-node:hover rect,
+    .bmap-node:focus-visible rect,
+    .bmap-node.is-selected rect {
+      fill: rgba(196, 240, 106, 0.16);
+      stroke: var(--accent);
+      stroke-width: 1.8;
+    }
+    .bmap-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .bmap-node-btn {
+      min-height: 36px;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      background: var(--bg3);
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .bmap-node-btn:hover,
+    .bmap-node-btn.is-selected {
+      border-color: var(--accent);
+      background: rgba(196, 240, 106, 0.14);
+      color: var(--accent-bright);
+    }
+    .bmap-node-btn.is-accent {
+      border-color: rgba(165, 180, 252, 0.35);
+      color: var(--lab-accent);
+    }
+    .bmap-inspector {
+      padding: 10px 12px;
+      border-radius: 8px;
+      background: var(--bg3);
+      border: 1px solid var(--rule);
+    }
+    .bmap-inspector-title {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--lab-accent);
+      margin-bottom: 3px;
+    }
+    .bmap-inspector-detail {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    /* Full-Screen Case Study Reader Modal (#project-case-modal) & Lab CLI Dialog */
+    .pcase-modal,
+    .labcli-modal {
+      border: none;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      max-width: 100vw;
+      max-height: 100vh;
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      inset: 0;
+      z-index: 10030;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pcase-modal:not([open]),
+    .labcli-modal:not([open]) {
+      display: none;
+    }
+    .pcase-modal::backdrop,
+    .labcli-modal::backdrop,
+    .pcase-backdrop,
+    .labcli-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 10, 14, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1;
+    }
+    .pcase-window {
+      position: relative;
+      z-index: 2;
+      width: min(94vw, 880px);
+      max-height: 88vh;
+      background: var(--bg2);
+      border: 1px solid rgba(165, 180, 252, 0.35);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.85);
+    }
+    .pcase-head {
+      padding: 18px 24px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg3);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .pcase-kicker {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--lab-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .pcase-title {
+      font-family: var(--font-display);
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 800;
+      color: var(--text-bone);
+      margin: 0;
+    }
+    .pcase-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .pcase-close {
+      min-width: 40px;
+      min-height: 40px;
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+      background: var(--bg2);
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .pcase-close:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .pcase-body {
+      padding: 22px 24px;
+      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    @media (max-width: 720px) {
+      .pcase-body {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 16px;
+      }
+      .pcase-head {
+        padding: 14px 16px;
+      }
+    }
+    .pcase-card {
+      background: var(--bg3);
+      border: 1px solid var(--rule);
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .pcase-card.full {
+      grid-column: 1 / -1;
+    }
+    .pcase-card-lbl {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--lab-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+      display: block;
+    }
+    .pcase-card.is-limitation .pcase-card-lbl {
+      color: #FCD34D;
+    }
+    .pcase-card-txt {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text-bone);
+      margin: 0;
+    }
+    .pcase-foot {
+      padding: 12px 24px;
+      border-top: 1px solid var(--rule);
+      background: var(--bg3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .pcase-nav-group {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Lab CLI Terminal Modal (#lab-cli-dialog) */
+    .labcli-window {
+      position: relative;
+      z-index: 2;
+      width: min(92vw, 640px);
+      background: #0D0F13;
+      border: 1px solid rgba(196, 240, 106, 0.35);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85);
+    }
+    .labcli-bar {
+      padding: 10px 14px;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-bone);
+    }
+    .labcli-output {
+      padding: 14px;
+      height: min(46vh, 320px);
+      overflow-y: auto;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: var(--text-bone);
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+    .labcli-line {
+      margin-bottom: 6px;
+    }
+    .labcli-line.cmd {
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .labcli-line.muted {
+      color: var(--text-muted);
+    }
+    .labcli-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-top: 1px solid var(--rule);
+      background: var(--bg2);
+    }
+    .labcli-prompt {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--lab-accent);
+    }
+    .labcli-input {
+      flex: 1;
+      min-width: 0;
+      background: transparent;
+      border: none;
+      color: var(--text-bone);
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      outline: none;
+    }
+
+    @media (max-width: 1120px) {
+      .nav-links {
+        gap: 14px;
+      }
+      .nav-action-pill {
+        display: none;
+      }
+    }
+    @media (max-width: 960px) {
+      .nav-links, .nav-action-pill, .rm-toggle-btn {
+        display: none !important;
+      }
+    }
+    @media (max-width: 768px) {
+      .term-body,
+      .term-body .cm,
+      .cm {
+        white-space: pre-wrap !important;
+        overflow-wrap: anywhere !important;
+        word-break: break-word !important;
+      }
+    }
+    @media (max-width: 640px) {
+      .section-title {
+        font-size: clamp(23px, 6.6vw, 32px);
+        line-height: 1.12;
+        overflow-wrap: break-word;
+      }
+      #cli-trigger {
+        display: none !important;
+      }
+      .nav-wrap {
+        max-width: 100vw !important;
+        overflow: hidden !important;
+      }
+      #nav {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+      }
+    }
+
     /* Hero CTA Hierarchy (Compact Single-Row Desktop) */
     .hero-btn-primary {
       background: var(--accent);
@@ -6199,13 +6851,14 @@ body.cs-modal-open {
     <nav id="nav" role="navigation" aria-label="Main Navigation">
       <a href="#hero" class="nav-brand">
         <span class="pulse-dot"></span>
-        <span>RUDRA SHARMA</span>
+        <span>RUDRA.SHARMA</span>
       </a>
       <ul class="nav-links">
-        <li><a href="#about" class="ab-nav-link"><span class="idx">00</span>About</a></li>
-        <li><a href="#competitions"><span class="idx">01</span>Record</a></li>
-        <li><a href="#ventures"><span class="idx">02</span>Ventures</a></li>
-        <li><a href="#contact"><span class="idx">03</span>Contact</a></li>
+        <li><a href="#ventures"><span class="idx">01</span>Work</a></li>
+        <li><a href="#tathya-workbench"><span class="idx">02</span>Lab</a></li>
+        <li><a href="#competitions"><span class="idx">03</span>Record</a></li>
+        <li><a href="#about" class="ab-nav-link"><span class="idx">04</span>About</a></li>
+        <li><a href="#contact"><span class="idx">05</span>Contact</a></li>
       </ul>
       <button id="rm-toggle" class="rm-toggle-btn" aria-pressed="false" aria-expanded="false" aria-controls="rm-summary-drawer" type="button">
         <span class="rm-toggle-beacon" aria-hidden="true"></span>
@@ -6213,7 +6866,10 @@ body.cs-modal-open {
         <span class="rm-toggle-label">Recruiter Mode</span>
         <span class="rm-toggle-shortcut" aria-hidden="true">30s view</span>
       </button>
-      <button type="button" id="cmd-palette-trigger" class="cmd-trigger-btn" aria-label="⌘K Open Command Palette" title="Command Palette (⌘K)">
+      <button type="button" id="cli-trigger" class="cmd-trigger-btn" aria-label="Open Interactive Lab CLI" title="Lab Terminal CLI">
+        <kbd>&gt;_</kbd>
+      </button>
+      <button type="button" id="cmd-palette-trigger" class="cmd-trigger-btn" aria-label="⌘K Open Command Palette" title="Command Palette (⌘K or /)">
         <kbd>⌘K</kbd>
       </button>
       <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="nav-action-pill" target="_blank" rel="noopener">
@@ -6227,14 +6883,18 @@ body.cs-modal-open {
 
   <!-- Mobile Drawer -->
   <div id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation Menu">
-    <a href="#about" class="ab-mobile-link"><span class="idx">00</span>About &amp; Trajectory</a>
-    <a href="#competitions"><span class="idx">01</span>Track Record &amp; Proof</a>
-    <a href="#ventures"><span class="idx">02</span>Ventures &amp; Systems</a>
-    <a href="#contact"><span class="idx">03</span>Direct Contact</a>
+    <a href="#ventures"><span class="idx">01</span>Selected Work &amp; Systems</a>
+    <a href="#tathya-workbench"><span class="idx">02</span>Tathya Research Lab</a>
+    <a href="#competitions"><span class="idx">03</span>Competitive Field Record</a>
+    <a href="#about" class="ab-mobile-link"><span class="idx">04</span>About &amp; Approach</a>
+    <a href="#contact"><span class="idx">05</span>Direct Contact</a>
     <a href="https://github.com/rudras2048-arch" target="_blank" rel="noopener"><span class="idx">↗</span>GitHub Profile</a>
     <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" target="_blank" rel="noopener"><span class="idx">↗</span>LinkedIn Profile</a>
     <button type="button" id="rm-toggle-mobile" class="rm-mobile-link" aria-controls="rm-summary-drawer" aria-expanded="false">
       <span class="idx">EXEC //</span>Recruiter Mode
+    </button>
+    <button type="button" id="cli-trigger-mobile" class="cmd-mobile-link">
+      <span class="idx">&gt;_ //</span>Interactive Lab CLI
     </button>
     <button type="button" id="cmd-palette-trigger-mobile" class="cmd-mobile-link">
       <span class="idx">⌘K //</span>Command Palette
@@ -6251,7 +6911,7 @@ body.cs-modal-open {
         <div>
           <div class="hero-meta-pill reveal">
             <span class="beacon-pulse" aria-hidden="true"></span>
-            <span>First-Year B.Tech CS &amp; Data Science · Builder · Rishihood '30</span>
+            <span>RUDRA SHARMA / PERSONAL LAB · RISHIHOOD '30 · OPEN TO OPPORTUNITIES</span>
           </div>
 
           <h1 class="hero-headline reveal">
@@ -6260,29 +6920,36 @@ body.cs-modal-open {
           </h1>
 
           <div class="hero-tagline-prompt reveal">
-            <span class="prompt">~/whoami $</span>
+            <span class="prompt">~/lab $</span>
             <span class="typed-wrap"><span class="typed-output" id="typedOutput">researching how llms fail on punjabi, haryanvi &amp; bhojpuri</span><span class="typed-cursor" aria-hidden="true"></span></span>
+            <button type="button" id="cli-open-hero" class="hero-cli-btn" aria-label="Launch interactive lab CLI">&gt;_ CLI</button>
           </div>
 
           <p class="hero-statement reveal">
-            I build software systems and stress-test commercial models in live competitive arenas.
+            Building practical software utilities, investigating LLM behavior on Indian dialects, and executing under real-world constraints.
           </p>
+
+          <div class="hero-topic-chips reveal">
+            <span class="hero-topic-chip">Software Engineering</span>
+            <span class="hero-topic-chip">Indic AI / NLP Research</span>
+            <span class="hero-topic-chip">Execution Under Constraints</span>
+          </div>
 
           <!-- Dynamic Count-Up Stats -->
 <!-- {{INJECT_HERO_STATS}} -->
 
           <div class="hero-actions reveal">
-            <a href="#competitions" class="btn-solid hero-btn-primary">
-              <span>View Record</span>
+            <a href="#ventures" class="btn-solid hero-btn-primary">
+              <span>Explore Selected Work</span>
               <span class="btn-arrow">↓</span>
             </a>
-            <a href="https://www.linkedin.com/in/rudra-sharma-7bb78b410/" class="btn-outline hero-btn-secondary" target="_blank" rel="noopener">
-              <span>LinkedIn</span>
-              <span class="btn-arrow">↗</span>
-            </a>
-            <a href="assets/rudra-sharma-resume.pdf" class="btn-outline hero-btn-tertiary" target="_blank" rel="noopener">
+            <a href="assets/rudra-sharma-resume.pdf" class="btn-outline hero-btn-secondary" target="_blank" rel="noopener">
               <span>Résumé PDF</span>
               <span class="btn-arrow">↗</span>
+            </a>
+            <a href="#contact" class="btn-outline hero-btn-tertiary">
+              <span>Get in Touch</span>
+              <span class="btn-arrow">↓</span>
             </a>
           </div>
         </div>
@@ -6292,8 +6959,8 @@ body.cs-modal-open {
           <div class="portrait-inner">
             <img src="assets/rudra-pitch-portrait.jpg" width="810" height="1440" fetchpriority="high" loading="eager" alt="Rudra Sharma pitching venture strategy in auditorium">
             <div class="portrait-caption-box">
-              <span class="portrait-tag">Live Field Record // 2026</span>
-              <span class="portrait-name">Rudra Sharma pitching venture strategy</span>
+              <span class="portrait-tag">Personal Lab // 2026 Field Frame</span>
+              <span class="portrait-name">Rudra Sharma · Rishihood CS &amp; DS</span>
             </div>
           </div>
         </div>
@@ -6304,26 +6971,70 @@ body.cs-modal-open {
     </section>
 
     <!-- ========================================================================
-         SECTION 00: ABOUT & BUILDER JOURNEY
-         ======================================================================== -->
-<!-- {{INJECT_ABOUT_SECTION}} -->
-
-    <!-- ========================================================================
-         SECTION 01: COMPETITIVE FIELD RECORD (WITH DYNAMIC FILTERING)
-         ======================================================================== -->
-<!-- {{INJECT_COMPETITIONS_SECTION}} -->
-
-    <!-- ========================================================================
-         SECTION 02: VENTURES & SYSTEMS (WITH LIVE CODE TERMINALS)
+         SECTION 01: SELECTED WORK (ASYMMETRIC FEATURED + CASE STUDIES)
          ======================================================================== -->
 <!-- {{INJECT_VENTURES_SECTION}} -->
 
     <!-- ========================================================================
-         SECTION 03: TRANSMISSION (CONTACT & NETWORK)
+         SECTION 02: TATHYA RESEARCH LAB (CLIENT-SIDE BPE MICROSCOPE)
+         ======================================================================== -->
+<!-- {{INJECT_RESEARCH_LAB_SECTION}} -->
+
+    <!-- ========================================================================
+         SECTION 03: FIELD RECORD (DOCUMENTARY ACHIEVEMENTS & PROOF)
+         ======================================================================== -->
+<!-- {{INJECT_COMPETITIONS_SECTION}} -->
+
+    <!-- ========================================================================
+         SECTION 04: ABOUT, APPROACH & BUILDER RELATIONSHIP MAP
+         ======================================================================== -->
+<!-- {{INJECT_ABOUT_SECTION}} -->
+
+    <!-- ========================================================================
+         SECTION 05: TRANSMISSION (CONTACT & NETWORK)
          ======================================================================== -->
 <!-- {{INJECT_CONTACT_SECTION}} -->
 
   </main>
+
+  <!-- Full-Screen Selected Work Case Study Reader Modal -->
+  <dialog id="project-case-modal" class="pcase-modal" aria-labelledby="pcase-title" aria-modal="true" aria-hidden="true">
+    <div class="pcase-backdrop" id="pcase-backdrop"></div>
+    <div class="pcase-window" role="document">
+      <div class="pcase-head">
+        <div>
+          <span class="pcase-kicker" id="pcase-kicker">01 // CASE STUDY</span>
+          <h3 class="pcase-title" id="pcase-title">Project Title</h3>
+          <p class="pcase-sub" id="pcase-sub"></p>
+        </div>
+        <button type="button" class="pcase-close" id="pcase-close" aria-label="Close Case Study">✕</button>
+      </div>
+      <div class="pcase-body" id="pcase-body"></div>
+      <div class="pcase-foot">
+        <div class="pcase-nav-group">
+          <button type="button" class="btn-outline" id="pcase-prev">← Prev Project</button>
+          <button type="button" class="btn-outline" id="pcase-next">Next Project →</button>
+        </div>
+        <div class="pcase-nav-group" id="pcase-actions"></div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Optional Real-Data Interactive Lab CLI Dialog -->
+  <dialog id="lab-cli-dialog" class="labcli-modal" aria-labelledby="labcli-title" aria-modal="true" aria-hidden="true">
+    <div class="labcli-backdrop" id="labcli-backdrop"></div>
+    <div class="labcli-window" role="document">
+      <div class="labcli-bar">
+        <span id="labcli-title">RUDRA.SHARMA // INTERACTIVE LAB CLI (REAL PORTFOLIO QUERIES)</span>
+        <button type="button" class="cmd-palette-esc" id="labcli-close" aria-label="Close Lab CLI">ESC</button>
+      </div>
+      <div id="labcli-output" class="labcli-output" role="log" aria-live="polite"></div>
+      <div class="labcli-input-row">
+        <span class="labcli-prompt" aria-hidden="true">lab $</span>
+        <input type="text" id="labcli-input" class="labcli-input" placeholder="Try: help, projects, research, krama 17 25, record, resume..." aria-label="Interactive Lab CLI command input" autocomplete="off" spellcheck="false">
+      </div>
+    </div>
+  </dialog>
 
   <!-- Audited Telemetry & Unit Economics Modal Dialog -->
 <dialog id="cs-modal" class="cs-modal" aria-labelledby="cs-modal-title" aria-modal="true" aria-hidden="true">
@@ -6345,21 +7056,21 @@ body.cs-modal-open {
 
   <div class="seo-share-toast" role="status" aria-live="polite"><span class="seo-share-toast__beacon" aria-hidden="true"></span><span class="seo-share-toast__text"></span></div>
 
-  <!-- Signature ⌘K Command Palette -->
+  <!-- Signature ⌘K / Command Palette -->
   <dialog id="cmd-palette" class="cmd-palette" aria-labelledby="cmd-palette-title" aria-modal="true" aria-hidden="true">
     <div class="cmd-palette-backdrop" id="cmd-palette-backdrop"></div>
     <div class="cmd-palette-window" role="document">
       <h2 id="cmd-palette-title" class="sr-only">Command Palette</h2>
       <div class="cmd-palette-head">
         <span class="cmd-palette-prompt" aria-hidden="true">&gt;_</span>
-        <input type="text" id="cmd-palette-input" class="cmd-palette-input" placeholder="Type a command or jump to section..." aria-label="Search commands" autocomplete="off" spellcheck="false">
+        <input type="text" id="cmd-palette-input" class="cmd-palette-input" placeholder="Search projects, lab, record, or type command..." aria-label="Search commands" autocomplete="off" spellcheck="false">
         <button type="button" id="cmd-palette-close" class="cmd-palette-esc" aria-label="Close Command Palette">ESC</button>
       </div>
       <div id="cmd-palette-list" class="cmd-palette-list" role="listbox" aria-label="Available commands"></div>
       <div id="cmd-palette-empty" class="cmd-palette-empty" hidden>No matching commands found.</div>
       <div class="cmd-palette-foot">
-        <span>↑↓ Navigate · ↵ Execute · Esc Close</span>
-        <span>RUDRA SHARMA // ⌘K</span>
+        <span>↑↓ Navigate · ↵ Execute · / or ⌘K Toggle · Esc Close</span>
+        <span>PERSONAL LAB // ⌘K</span>
       </div>
     </div>
   </dialog>
@@ -6368,13 +7079,14 @@ body.cs-modal-open {
   <footer class="site-footer">
     <div class="footer-inner">
       <div class="footer-top-strip">
-        <span class="footer-brand">RUDRA SHARMA // CLASS OF 2030</span>
+        <span class="footer-brand">RUDRA SHARMA // PERSONAL LAB</span>
         <span class="footer-ethos">EVIDENCE, NOT NOISE</span>
         <div class="footer-colophon-links" role="navigation" aria-label="Footer quick links">
-          <a href="#about">About</a>
+          <a href="#ventures">Work</a>
+          <a href="#tathya-workbench">Lab</a>
           <a href="#competitions">Record</a>
-          <a href="#ventures">Ventures</a>
-          <button type="button" id="cmd-palette-trigger-footer" class="footer-cmd-btn" title="Open Command Palette (Cmd+K / Ctrl+K)">⌘K COMMANDS</button>
+          <a href="#about">About</a>
+          <button type="button" id="cmd-palette-trigger-footer" class="footer-cmd-btn" title="Open Command Palette (Cmd+K or /)">⌘K COMMANDS</button>
           <a href="#hero" class="footer-top-link">TOP ↑</a>
         </div>
       </div>
@@ -7601,10 +8313,12 @@ body.cs-modal-open {
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' || e.key === 'Esc') {
           const cmdPal = document.getElementById('cmd-palette');
+          const pcaseModal = document.getElementById('project-case-modal');
+          const labCli = document.getElementById('lab-cli-dialog');
           const csModal = document.getElementById('cs-modal');
           const frLightbox = document.getElementById('fr-lightbox');
           const mobileMenu = document.getElementById('mobileMenu');
-          if ((cmdPal && cmdPal.open) || (csModal && csModal.open) || (frLightbox && frLightbox.open) || (mobileMenu && mobileMenu.classList.contains('open'))) {
+          if ((cmdPal && cmdPal.open) || (pcaseModal && pcaseModal.open) || (labCli && labCli.open) || (csModal && csModal.open) || (frLightbox && frLightbox.open) || (mobileMenu && mobileMenu.classList.contains('open'))) {
             return;
           }
           if (window.__RECRUITER_MODE && window.__RECRUITER_MODE.active) {
@@ -7670,74 +8384,8 @@ body.cs-modal-open {
     const data = getPortfolioData(content);
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    // 1. Ensure DOM Section Mount (Inserted between #hero and #competitions)
-    let section = document.getElementById('about');
-    if (!section) {
-      // Find template or create element
-      const template = document.querySelector('section#about.ab-section');
-      if (template) {
-        section = template;
-      }
-    }
-
-    if (section) {
-      const competitions = document.getElementById('competitions');
-      const hero = document.getElementById('hero');
-      if (competitions && competitions.parentNode) {
-        // Guarantee insertion immediately BEFORE #competitions
-        if (section.nextElementSibling !== competitions) {
-          competitions.parentNode.insertBefore(section, competitions);
-        }
-      } else if (hero && hero.parentNode) {
-        // Or immediately AFTER #hero
-        if (hero.nextElementSibling !== section) {
-          hero.parentNode.insertBefore(section, hero.nextSibling);
-        }
-      }
-    }
-
-    // 2. Hook Nav Item into .nav-links without breaking existing order
-    const navLinks = document.querySelector('.nav-links');
-    if (navLinks) {
-      let aboutNavLi = navLinks.querySelector('a[href="#about"]')?.parentElement;
-      if (!aboutNavLi) {
-        aboutNavLi = document.createElement('li');
-        aboutNavLi.innerHTML = '<a href="#about" class="ab-nav-link"><span class="idx">00</span>About</a>';
-        
-        const compLi = navLinks.querySelector('a[href="#competitions"]')?.parentElement;
-        if (compLi) {
-          navLinks.insertBefore(aboutNavLi, compLi);
-        } else {
-          navLinks.insertBefore(aboutNavLi, navLinks.firstChild);
-        }
-      }
-    }
-
-    // 3. Hook Nav Item into #mobileMenu without breaking existing order
-    const mobileMenu = document.getElementById('mobileMenu');
-    if (mobileMenu) {
-      let aboutMobileA = mobileMenu.querySelector('a[href="#about"]');
-      if (!aboutMobileA) {
-        aboutMobileA = document.createElement('a');
-        aboutMobileA.href = '#about';
-        aboutMobileA.className = 'ab-mobile-link';
-        aboutMobileA.innerHTML = '<span class="idx">00</span>About &amp; Trajectory';
-
-        // Ensure clicking closes mobile drawer
-        aboutMobileA.addEventListener('click', function() {
-          document.body.classList.remove('menu-open');
-          const burger = document.getElementById('burger');
-          if (burger) burger.setAttribute('aria-expanded', 'false');
-        });
-
-        const compMobileA = mobileMenu.querySelector('a[href="#competitions"]');
-        if (compMobileA) {
-          mobileMenu.insertBefore(aboutMobileA, compMobileA);
-        } else {
-          mobileMenu.insertBefore(aboutMobileA, mobileMenu.firstChild);
-        }
-      }
-    }
+    // Respect natural DOM ordering (#about sits at Section 04 before #contact)
+    let section = document.getElementById('about') || document.querySelector('section#about.ab-section');
 
     // 4. Hydrate Verified Facts from content.json if available
     if (data && data.personal) {
@@ -8698,7 +9346,7 @@ body.cs-modal-open {
       synthBtn.addEventListener('click', window.__toggleFlowStateSynth);
     }
 
-    // 9C. Krama 75% Attendance Recovery Mini-Calculator
+    // 9C. Krama 75% Attendance Recovery Mini-Calculator (backed by shared window.KramaMath)
     const kramaCalc = document.getElementById('krama-calc-widget');
     if (kramaCalc && !kramaCalc.dataset.bound) {
       kramaCalc.dataset.bound = 'true';
@@ -8716,24 +9364,29 @@ body.cs-modal-open {
         kramaCalc.setAttribute('data-attended', String(attended));
         kramaCalc.setAttribute('data-total', String(total));
 
-        const pct = (attended / total) * 100;
+        let analysis;
+        if (window.KramaMath && typeof window.KramaMath.analyzeAttendance === 'function') {
+          analysis = window.KramaMath.analyzeAttendance(attended, total, 0.75);
+        } else {
+          const pct = (attended / total) * 100;
+          const needed = pct < 75 ? Math.ceil((0.75 * total - attended - 1e-12) / 0.25) : 0;
+          analysis = {
+            percentage: pct,
+            percentageFormatted: pct.toFixed(1) + '%',
+            isEligible: pct >= 75,
+            advice: needed > 0
+              ? ('Attend next ' + needed + ' consecutive class' + (needed === 1 ? '' : 'es') + ' to recover 75.0%.')
+              : 'On/above 75.0% eligibility threshold.'
+          };
+        }
+
         if (attValEl) attValEl.textContent = String(attended);
         if (totValEl) totValEl.textContent = String(total);
         if (pctEl) {
-          pctEl.textContent = pct.toFixed(1) + '%';
-          pctEl.classList.toggle('vn-calc-safe', pct >= 75);
+          pctEl.textContent = analysis.percentageFormatted;
+          pctEl.classList.toggle('vn-calc-safe', analysis.isEligible);
         }
-        if (adviceEl) {
-          if (pct < 75) {
-            const needed = Math.max(1, Math.ceil(3 * total - 4 * attended));
-            adviceEl.textContent = 'Attend next ' + needed + ' consecutive class' + (needed === 1 ? '' : 'es') + ' to recover 75.0%.';
-          } else {
-            const buffer = Math.max(0, Math.floor((4 * attended - 3 * total) / 3));
-            adviceEl.textContent = buffer > 0
-              ? ('Safe buffer: can skip ' + buffer + ' class' + (buffer === 1 ? '' : 'es') + ' while staying ≥75.0%.')
-              : 'On 75.0% threshold — attend next class to build margin.';
-          }
-        }
+        if (adviceEl) adviceEl.textContent = analysis.advice;
       }
 
       const attMinus = document.getElementById('krama-att-minus');
@@ -8758,7 +9411,7 @@ body.cs-modal-open {
     }
   };
 
-  /* --- 10. Signature ⌘K Command Palette Engine (#cmd-palette) --- */
+  /* --- 10. Signature ⌘K / '/' Command Palette Engine (#cmd-palette) --- */
   window.initCommandPalette = function(content) {
     const dialog = document.getElementById('cmd-palette');
     const input = document.getElementById('cmd-palette-input');
@@ -8775,18 +9428,23 @@ body.cs-modal-open {
     const linkedinUrl = p.linkedin || 'https://www.linkedin.com/in/rudra-sharma-7bb78b410/';
 
     const commands = [
-      { id: 'jump-about', title: 'Jump to 00 // About & Trajectory', group: 'Section', keywords: 'about trajectory ethos rishihood', run: () => document.getElementById('about')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
-      { id: 'jump-record', title: 'Jump to 01 // Competitive Field Record', group: 'Section', keywords: 'competitions record ashoka iim dcrust bootcamp', run: () => document.getElementById('competitions')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
-      { id: 'jump-ventures', title: 'Jump to 02 // Ventures & Systems', group: 'Section', keywords: 'ventures tathya stratum flow state krama', run: () => document.getElementById('ventures')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
-      { id: 'jump-tathya', title: 'Open Tathya Dialect Workbench', group: 'Lab', keywords: 'tathya dialect haryanvi punjabi bhojpuri token', run: () => document.getElementById('tathya-workbench')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
-      { id: 'jump-contact', title: 'Jump to 03 // Direct Contact', group: 'Section', keywords: 'contact email reach out', run: () => document.getElementById('contact')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-work', title: 'Jump to 01 // Selected Work & Systems', group: 'Section', keywords: 'selected work projects ventures tathya flow state krama stratum', run: () => document.getElementById('ventures')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-lab', title: 'Open 02 // Tathya Research Lab Console', group: 'Lab', keywords: 'tathya dialect haryanvi punjabi bhojpuri tokenizer', run: () => document.getElementById('tathya-workbench')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-record', title: 'Jump to 03 // Field Record & Competitions', group: 'Section', keywords: 'competitions record ashoka iim dcrust bootcamp', run: () => document.getElementById('competitions')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-about', title: 'Jump to 04 // About & Builder Map', group: 'Section', keywords: 'about approach rishihood map trajectory', run: () => document.getElementById('about')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'jump-contact', title: 'Jump to 05 // Direct Contact', group: 'Section', keywords: 'contact email reach out', run: () => document.getElementById('contact')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' }) },
+      { id: 'case-tathya', title: 'Case Study: Tathya (Indic Dialect Evaluation)', group: 'Case Study', keywords: 'case tathya nlp dialect bpe research', run: () => window.__PROJECT_CASE_STUDY && window.__PROJECT_CASE_STUDY.open('tathya') },
+      { id: 'case-flowstate', title: 'Case Study: Flow State (Local Focus OS)', group: 'Case Study', keywords: 'case flow state python ics audio synth', run: () => window.__PROJECT_CASE_STUDY && window.__PROJECT_CASE_STUDY.open('flow-state') },
+      { id: 'case-krama', title: 'Case Study: Krama (75% Recovery Utility)', group: 'Case Study', keywords: 'case krama attendance recovery math sqlite', run: () => window.__PROJECT_CASE_STUDY && window.__PROJECT_CASE_STUDY.open('krama') },
+      { id: 'case-stratum', title: 'Case Study: Stratum (CPM Shock Simulation)', group: 'Case Study', keywords: 'case stratum simulation market prototype', run: () => window.__PROJECT_CASE_STUDY && window.__PROJECT_CASE_STUDY.open('stratum') },
+      { id: 'open-cli', title: 'Launch Interactive Lab CLI Terminal (> _)', group: 'Tool', keywords: 'cli terminal commands shell', run: () => window.__LAB_CLI && window.__LAB_CLI.open() },
       { id: 'toggle-rm', title: 'Toggle Executive Recruiter Mode (30s View)', group: 'Action', keywords: 'recruiter mode executive brief dossier', run: () => document.getElementById('rm-toggle')?.click() },
-      { id: 'open-ashoka', title: 'Inspect Ashoka Cash Rush Telemetry (8.85x ROI)', group: 'Telemetry', keywords: 'ashoka cash rush modal telemetry ledger 8.85x', run: () => window.__TELEMETRY_MODAL && window.__TELEMETRY_MODAL.open('cash-rush') },
+      { id: 'open-ashoka', title: 'Inspect Ashoka Cash Rush Telemetry (8.85x ROI)', group: 'Telemetry', keywords: 'ashoka cash rush modal telemetry ledger 8.85x 785%', run: () => window.__TELEMETRY_MODAL && window.__TELEMETRY_MODAL.open('cash-rush') },
       { id: 'toggle-synth', title: 'Toggle Flow State 432Hz Sine Synthesizer', group: 'Audio', keywords: 'flow state 432hz audio synth sine', run: () => window.__toggleFlowStateSynth ? window.__toggleFlowStateSynth() : document.getElementById('flowstate-synth-btn')?.click() },
       { id: 'copy-email', title: 'Copy Institutional Email (' + email + ')', group: 'Action', keywords: 'copy email clipboard contact', run: () => {
         window.__copyPortfolioText(email, () => window.__showPortfolioToast('Copied to clipboard: ' + email));
       }},
-      { id: 'open-resume', title: 'Open Official Résumé (PDF)', group: 'Link', keywords: 'resume pdf cv download', run: () => window.open(resumeUrl, '_blank', 'noopener') },
+      { id: 'open-resume', title: 'Download / Open Official Résumé (PDF)', group: 'Link', keywords: 'resume pdf cv download', run: () => window.open(resumeUrl, '_blank', 'noopener') },
       { id: 'open-github', title: 'Open GitHub Profile (rudras2048-arch)', group: 'Link', keywords: 'github code repository', run: () => window.open(githubUrl, '_blank', 'noopener') },
       { id: 'open-linkedin', title: 'Open LinkedIn Profile', group: 'Link', keywords: 'linkedin network profile', run: () => window.open(linkedinUrl, '_blank', 'noopener') }
     ];
@@ -8915,15 +9573,388 @@ body.cs-modal-open {
     if (!window.__CMD_PALETTE_KEY_BOUND) {
       window.__CMD_PALETTE_KEY_BOUND = true;
       document.addEventListener('keydown', (e) => {
+        const tag = (document.activeElement && document.activeElement.tagName || '').toLowerCase();
+        const isTyping = tag === 'input' || tag === 'textarea' || (document.activeElement && document.activeElement.isContentEditable);
         if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
           e.preventDefault();
           if (dialog.hasAttribute('open')) closePalette(true);
           else openPalette();
+        } else if (e.key === '/' && !isTyping && !e.metaKey && !e.ctrlKey && !e.altKey) {
+          e.preventDefault();
+          if (!dialog.hasAttribute('open')) openPalette();
         }
       });
     }
 
     return { open: openPalette, close: () => closePalette(true) };
+  };
+
+  /* --- 10B. Rich Full-Screen Selected Work Case Study Engine (#project-case-modal) --- */
+  window.initProjectCaseStudies = function(content) {
+    const dialog = document.getElementById('project-case-modal');
+    const titleEl = document.getElementById('pcase-title');
+    const kickerEl = document.getElementById('pcase-kicker');
+    const subEl = document.getElementById('pcase-sub');
+    const bodyEl = document.getElementById('pcase-body');
+    const actionsEl = document.getElementById('pcase-actions');
+    const closeBtn = document.getElementById('pcase-close');
+    const backdrop = document.getElementById('pcase-backdrop');
+    const prevBtn = document.getElementById('pcase-prev');
+    const nextBtn = document.getElementById('pcase-next');
+    if (!dialog || !bodyEl) return null;
+
+    const kramaSample = window.KramaMath ? window.KramaMath.analyzeAttendance(17, 25, 0.75) : { percentageFormatted: '68.0%', recoveryNeeded: 7 };
+
+    const PROJECT_ORDER = ['tathya', 'flow-state', 'krama', 'stratum'];
+    const CASE_SPECS = {
+      tathya: {
+        kicker: '01 / RESEARCH CASE STUDY · EARLY RESEARCH',
+        title: 'Tathya (तथ्य) — Indic Dialect Evaluation',
+        sub: 'Python · Indic NLP · Byte-Level BPE & Civic Verification Architecture',
+        problem: 'Language models trained heavily on formal web Hindi (Manak Hindi) frequently receive queries in regional varieties such as Haryanvi, Punjabi, and Bhojpuri in healthcare and civic-scheme contexts.',
+        why: 'If a model misreads colloquial kinship/entitlement markers in public-benefit questions, citizens receive fabricated eligibility rules or broken navigation guidance.',
+        role: 'Principal investigator designing the dialect contrast vector set, client-side BPE tokenizer microscope, and civic claim verification protocol.',
+        architecture: '1) Client-side Hindi-biased BPE merge analyzer separating Token IDs, Token Strings, Grapheme Clusters, and UTF-8 Bytes. 2) Retrieval-first claim check schema anchored to canonical scheme PDFs.',
+        demoLabel: 'Live Interactive Tokenizer Console (02 // Research Lab)',
+        demoAction: () => {
+          closeModal(false);
+          document.getElementById('tathya-workbench')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+        },
+        demoBtnText: 'Jump to Live Console ↓',
+        measurements: 'Client-side v0.2 BPE engine verifies Gurmukhi Punjabi prompts expand to 108 raw UTF-8 byte-fallback tokens vs 0 on equivalent Manak Hindi sentences; Haryanvi splits colloquial stems into sub-character pieces.',
+        limitations: 'This portfolio includes a reference client-side BPE engine and interactive UI prototype. Full multi-LLM downstream accuracy benchmarks are still in collection; causal mechanisms remain a testable hypothesis.',
+        nextSteps: 'Expand annotated evaluation pairs with native speaker verification and publish reproducible benchmark scores & code on GitHub.'
+      },
+      'flow-state': {
+        kicker: '02 / SYSTEMS CASE STUDY · LOCAL BUILD',
+        title: 'Flow State — Local Focus Utility',
+        sub: 'Python Core · Native OS Webview · Zero-OAuth .ics Import & 16-Bit Sine Synth',
+        problem: 'Existing productivity and focus timers bundle mandatory accounts, cloud telemetry dashboards, and heavy Chromium wrappers that interrupt concentration.',
+        why: 'Developers working offline or in academic environments need an instant desktop focus session manager that stays lightweight and keeps local habits on one machine.',
+        role: 'Solo designer and developer building the Python backend core, native webview interface, local .ics parser, and procedural audio generator.',
+        architecture: 'Python runtime paired with native OS webview primitives (avoiding ~450MB Electron RAM footprint), RFC 5545 (.ics) file ingestion from local storage, and math.sin 44.1kHz procedural audio synthesis with zero static MP3 files.',
+        demoLabel: 'Interactive 432Hz Web Audio Preview + Weekly Focus Receipt Specimen',
+        demoAction: () => {
+          closeModal(false);
+          if (window.__FIELD_RECORD_PROOF && typeof window.__FIELD_RECORD_PROOF.openLightbox === 'function') {
+            window.__FIELD_RECORD_PROOF.openLightbox('assets/flowstate-receipt.png', 'Flow State · Weekly Local Focus Receipt', 'Local Build // Receipt');
+          }
+        },
+        demoBtnText: 'Inspect Focus Receipt ↗',
+        measurements: 'Generates deterministic 16-bit 44.1kHz binaural/sine synthesis cleanly in pure Python (or live browser AudioContext here) with 30-day session summary receipts.',
+        limitations: 'Current scheduling integrates local exported RFC 5545 (.ics) calendar files rather than live bi-directional Google/CalDAV OAuth sync; cross-platform OS packaging is an active WIP.',
+        nextSteps: 'Finalize public repository cleanup under github.com/rudras2048-arch and publish automated audio buffer tests.'
+      },
+      krama: {
+        kicker: '03 / UTILITY CASE STUDY · STUDENT UTILITY',
+        title: 'Krama (क्रम) — 75% Attendance Recovery Calculus',
+        sub: 'Shared Deterministic Formula · Timetable JSON Ingestion · Local SQLite',
+        problem: 'Indian university regulations enforce rigid 75% eligibility thresholds, yet portals typically show lagging totals without modeling how many consecutive sessions a student needs to recover safely.',
+        why: 'Proactive recovery visibility prevents sudden exam disqualifications by translating percentages into exact attend/skip day budgets.',
+        role: 'Author of the recovery math formulation, timetable JSON ingestion flow, SQLite local schema, and interactive mobile/web interface.',
+        architecture: 'Single pure deterministic recovery module: ceil((target * total - attended) / (1 - target)) coupled with safe skip buffer calculations and holiday-aware timetable calendar stepping.',
+        demoLabel: 'Shared Formula Output: 17/25 = ' + kramaSample.percentageFormatted + ' → Attend Next ' + kramaSample.recoveryNeeded + ' Consecutive Classes',
+        demoAction: () => {
+          closeModal(false);
+          document.getElementById('krama-calc-widget')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+        },
+        demoBtnText: 'Use Live Krama Calculator ↓',
+        measurements: 'Unified `KramaMath.classesToRecover()` tested via automated Node test assertions (17/25 → 7 classes, 15/20 → 0 classes, 20/25 → 1-class safe skip buffer). Zero discrepancy across UI widgets.',
+        limitations: 'Does not automatically scrape authenticated university ERP portals (deliberately avoids storing third-party institutional passwords). Relies on manual entry or exported schedule JSON.',
+        nextSteps: 'Add semester course-weight templates and publish the full MIT-licensed source repository on GitHub.'
+      },
+      stratum: {
+        kicker: '04 / CONCEPT PROTOTYPE · SIMULATION DESIGN',
+        title: 'Stratum — Market Volatility Decision Sandbox',
+        sub: 'Seeded State Machine Spec · CPM Shock Telemetry · Decision Latency',
+        problem: 'Take-home hiring case studies are now trivially drafted by LLMs in minutes, failing to show how candidates reallocate capital when market inputs shift unexpectedly.',
+        why: 'Real growth and commercial roles require calm judgment and speed under changing unit economics—not polished hindsight slides.',
+        role: 'Creator defining the seeded ad-auction simulation invariant rules, CPM volatility shock curve, and scoring ledger specification.',
+        architecture: 'Designed around a deterministic headless finite-state auction loop before UI layers, ensuring cohorts face identical exogenous CPM spikes while logging timestamped budget shifts.',
+        demoLabel: 'Tactile +40% CPM Shock Micro-Simulator (Selected Work Card)',
+        demoAction: () => {
+          closeModal(false);
+          document.querySelector('[data-venture-id="stratum"]')?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'center' });
+        },
+        demoBtnText: 'Try Shock Micro-Sim ↓',
+        measurements: 'Early specification & interactive UI prototype complete; stateful cohort benchmark sessions and multi-round replay logging are planned for implementation.',
+        limitations: 'Important honesty boundary: Stratum is a concept & simulation prototype in active architecture design—not yet a live multi-user SaaS product.',
+        nextSteps: 'Build deterministic TypeScript/Python simulation engine v0.1 with replayable JSON event logs.'
+      }
+    };
+
+    let activeId = 'tathya';
+    let prevFocus = null;
+
+    function renderCase(id) {
+      const spec = CASE_SPECS[id] || CASE_SPECS.tathya;
+      activeId = id;
+      if (kickerEl) kickerEl.textContent = spec.kicker;
+      if (titleEl) titleEl.textContent = spec.title;
+      if (subEl) subEl.textContent = spec.sub;
+
+      bodyEl.innerHTML =
+        '<div class="pcase-card"><span class="pcase-card-lbl">01 // PROBLEM</span><p class="pcase-card-txt">' + spec.problem + '</p></div>' +
+        '<div class="pcase-card"><span class="pcase-card-lbl">02 // WHY IT MATTERS</span><p class="pcase-card-txt">' + spec.why + '</p></div>' +
+        '<div class="pcase-card"><span class="pcase-card-lbl">03 // MY ROLE</span><p class="pcase-card-txt">' + spec.role + '</p></div>' +
+        '<div class="pcase-card"><span class="pcase-card-lbl">04 // TECHNICAL ARCHITECTURE</span><p class="pcase-card-txt">' + spec.architecture + '</p></div>' +
+        '<div class="pcase-card full"><span class="pcase-card-lbl">05 // WORKING DEMONSTRATION &amp; MEASUREMENTS</span><p class="pcase-card-txt">' + spec.measurements + '</p></div>' +
+        '<div class="pcase-card is-limitation"><span class="pcase-card-lbl">06 // HONEST LIMITATIONS</span><p class="pcase-card-txt">' + spec.limitations + '</p></div>' +
+        '<div class="pcase-card"><span class="pcase-card-lbl">07 // NEXT STEPS &amp; REPO STATUS</span><p class="pcase-card-txt">' + spec.nextSteps + '</p></div>';
+
+      if (actionsEl) {
+        actionsEl.innerHTML = '';
+        const demoBtn = document.createElement('button');
+        demoBtn.type = 'button';
+        demoBtn.className = 'btn-solid';
+        demoBtn.textContent = spec.demoBtnText;
+        demoBtn.addEventListener('click', spec.demoAction);
+        actionsEl.appendChild(demoBtn);
+      }
+    }
+
+    function openModal(id) {
+      prevFocus = document.activeElement;
+      renderCase(id);
+      if (typeof dialog.showModal === 'function' && !dialog.open) dialog.showModal();
+      else dialog.setAttribute('open', '');
+      dialog.setAttribute('aria-hidden', 'false');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal(restore) {
+      if (!dialog.hasAttribute('open')) return;
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
+      dialog.setAttribute('aria-hidden', 'true');
+      if (restore && prevFocus && typeof prevFocus.focus === 'function') prevFocus.focus();
+    }
+
+    document.querySelectorAll('.project-case-btn').forEach(btn => {
+      if (btn.dataset.pcaseBound) return;
+      btn.dataset.pcaseBound = 'true';
+      btn.addEventListener('click', () => {
+        openModal(btn.getAttribute('data-project-id') || 'tathya');
+      });
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        const idx = PROJECT_ORDER.indexOf(activeId);
+        renderCase(PROJECT_ORDER[(idx - 1 + PROJECT_ORDER.length) % PROJECT_ORDER.length]);
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const idx = PROJECT_ORDER.indexOf(activeId);
+        renderCase(PROJECT_ORDER[(idx + 1) % PROJECT_ORDER.length]);
+      });
+    }
+    if (closeBtn) closeBtn.addEventListener('click', () => closeModal(true));
+    if (backdrop) backdrop.addEventListener('click', () => closeModal(true));
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal(true);
+      }
+    });
+
+    return { open: openModal, close: () => closeModal(true) };
+  };
+
+  /* --- 10C. Interactive Real-Query Lab CLI Engine (#lab-cli-dialog) --- */
+  window.initLabCli = function(content) {
+    const dialog = document.getElementById('lab-cli-dialog');
+    const outEl = document.getElementById('labcli-output');
+    const inEl = document.getElementById('labcli-input');
+    const closeBtn = document.getElementById('labcli-close');
+    const backdrop = document.getElementById('labcli-backdrop');
+    if (!dialog || !outEl || !inEl) return null;
+
+    const p = (content && content.personal) || {};
+    const vens = (content && content.ventures) || [];
+    const comps = (content && content.competitions) || [];
+    let prevFocus = null;
+    const history = [];
+    let histIdx = -1;
+
+    function printLine(txt, cls) {
+      const div = document.createElement('div');
+      div.className = 'labcli-line' + (cls ? ' ' + cls : '');
+      div.textContent = txt;
+      outEl.appendChild(div);
+      outEl.scrollTop = outEl.scrollHeight;
+    }
+
+    function runCommand(raw) {
+      const trimmed = (raw || '').trim();
+      if (!trimmed) return;
+      history.unshift(trimmed);
+      histIdx = -1;
+      printLine('lab $ ' + trimmed, 'cmd');
+
+      const parts = trimmed.split(/\s+/);
+      const cmd = parts[0].toLowerCase();
+
+      if (cmd === 'help' || cmd === '?') {
+        printLine('Available real-data commands:');
+        printLine('  projects              List active systems & stages from content.json');
+        printLine('  project <id>          Open Case Study (tathya | flow-state | krama | stratum)');
+        printLine('  research              Show Tathya live dialect vectors & engine metrics');
+        printLine('  krama <att> <tot>     Compute live 75% recovery math via KramaMath');
+        printLine('  record                List verified competitive track record finishes');
+        printLine('  about | resume | contact | clear');
+      } else if (cmd === 'projects' || cmd === 'ls') {
+        vens.forEach(v => printLine('  [' + v.id + '] ' + v.name + ' (' + v.badge + ') — ' + v.status_detail));
+      } else if (cmd === 'project' || cmd === 'open') {
+        const target = (parts[1] || 'tathya').toLowerCase();
+        if (window.__PROJECT_CASE_STUDY && ['tathya', 'flow-state', 'krama', 'stratum'].includes(target)) {
+          closeCli(false);
+          window.__PROJECT_CASE_STUDY.open(target);
+        } else {
+          printLine('Usage: project <tathya|flow-state|krama|stratum>', 'muted');
+        }
+      } else if (cmd === 'research') {
+        const inst = window.__TATHYA_EXPLORER;
+        const latest = inst && inst.getLatest ? inst.getLatest() : null;
+        if (latest) {
+          printLine('Active Dialect: ' + latest.preset + ' (' + latest.engine + ')');
+          printLine('  Dialect: ' + latest.dialect.tokenCount + ' tokens | ' + latest.dialect.graphemeCount + ' graphemes | ' + latest.dialect.utf8Bytes + ' UTF-8 bytes');
+          printLine('  Manak:   ' + latest.standardHindi.tokenCount + ' tokens | ' + latest.standardHindi.graphemeCount + ' graphemes | ' + latest.standardHindi.utf8Bytes + ' UTF-8 bytes');
+        } else {
+          printLine('Tathya BPE console initialized at #tathya-workbench.');
+        }
+      } else if (cmd === 'krama') {
+        const att = parseInt(parts[1], 10);
+        const tot = parseInt(parts[2], 10);
+        if (Number.isNaN(att) || Number.isNaN(tot)) {
+          printLine('Usage: krama <attended> <total>   e.g. krama 17 25', 'muted');
+          return;
+        }
+        try {
+          const res = window.KramaMath.analyzeAttendance(att, tot, 0.75);
+          printLine('Attendance: ' + res.attended + '/' + res.total + ' (' + res.percentageFormatted + ')');
+          printLine('Calculus:   ' + res.advice);
+        } catch (err) {
+          printLine('Math Error: ' + err.message, 'muted');
+        }
+      } else if (cmd === 'record') {
+        comps.forEach(c => printLine('  [' + c.host + '] ' + c.title + ' -> ' + c.placement));
+      } else if (cmd === 'about') {
+        printLine(p.headline || 'Rudra Sharma · First-Year B.Tech CS & Data Science · Rishihood University');
+        printLine(p.bio_statement || '');
+      } else if (cmd === 'resume') {
+        printLine('Opening Résumé PDF: ' + (p.resume_url || 'assets/rudra-sharma-resume.pdf'));
+        window.open(p.resume_url || 'assets/rudra-sharma-resume.pdf', '_blank', 'noopener');
+      } else if (cmd === 'contact') {
+        printLine('Email:    ' + (p.email || 'rudra.s26042@csds.rishihood.edu.in'));
+        printLine('GitHub:   ' + (p.github || 'https://github.com/rudras2048-arch'));
+        printLine('LinkedIn: ' + (p.linkedin || ''));
+      } else if (cmd === 'clear') {
+        outEl.innerHTML = '';
+      } else {
+        printLine('Unknown command "' + cmd + '". Type "help" to list valid commands.', 'muted');
+      }
+    }
+
+    function openCli() {
+      prevFocus = document.activeElement;
+      document.body.classList.remove('menu-open');
+      if (outEl.children.length === 0) {
+        printLine('Rudra Sharma Personal Lab CLI (real static portfolio data & KramaMath engine).', 'muted');
+        printLine('Type "help" for commands — try "krama 17 25" or "projects".', 'muted');
+      }
+      if (typeof dialog.showModal === 'function' && !dialog.open) dialog.showModal();
+      else dialog.setAttribute('open', '');
+      dialog.setAttribute('aria-hidden', 'false');
+      inEl.focus();
+    }
+
+    function closeCli(restore) {
+      if (!dialog.hasAttribute('open')) return;
+      if (typeof dialog.close === 'function') dialog.close();
+      else dialog.removeAttribute('open');
+      dialog.setAttribute('aria-hidden', 'true');
+      if (restore && prevFocus && typeof prevFocus.focus === 'function') prevFocus.focus();
+    }
+
+    inEl.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        runCommand(inEl.value);
+        inEl.value = '';
+      } else if (e.key === 'ArrowUp' && history.length > 0) {
+        e.preventDefault();
+        histIdx = Math.min(history.length - 1, histIdx + 1);
+        inEl.value = history[histIdx];
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        histIdx = Math.max(-1, histIdx - 1);
+        inEl.value = histIdx === -1 ? '' : history[histIdx];
+      }
+    });
+
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        e.stopPropagation();
+        closeCli(true);
+      }
+    });
+
+    ['cli-trigger', 'cli-trigger-mobile', 'cli-open-hero'].forEach(id => {
+      const btn = document.getElementById(id);
+      if (btn && !btn.dataset.cliBound) {
+        btn.dataset.cliBound = 'true';
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openCli();
+        });
+      }
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', () => closeCli(true));
+    if (backdrop) backdrop.addEventListener('click', () => closeCli(true));
+
+    return { open: openCli, close: () => closeCli(true) };
+  };
+
+  /* --- 10D. Interactive Builder Relationship Map (#builder-map) --- */
+  window.initBuilderMap = function() {
+    const mapWrap = document.getElementById('builder-map');
+    const titleEl = document.getElementById('bmap-inspector-title');
+    const detailEl = document.getElementById('bmap-inspector-detail');
+    if (!mapWrap || !titleEl || !detailEl) return;
+
+    const btns = mapWrap.querySelectorAll('.bmap-node-btn');
+    const svgNodes = mapWrap.querySelectorAll('.bmap-node[data-node-id]');
+    btns.forEach(btn => {
+      function activate(jump) {
+        const nid = btn.getAttribute('data-node-id');
+        btns.forEach(b => b.classList.remove('is-selected'));
+        svgNodes.forEach(n => n.classList.remove('is-selected'));
+        btn.classList.add('is-selected');
+        mapWrap.querySelectorAll('.bmap-node[data-node-id="' + nid + '"]').forEach(n => n.classList.add('is-selected'));
+
+        titleEl.textContent = btn.getAttribute('data-map-label') || 'Node';
+        detailEl.textContent = btn.getAttribute('data-map-detail') || '';
+
+        if (jump) {
+          const projectId = btn.getAttribute('data-map-project');
+          const targetSel = btn.getAttribute('data-map-target');
+          if (projectId && window.__PROJECT_CASE_STUDY) {
+            window.__PROJECT_CASE_STUDY.open(projectId);
+          } else if (targetSel) {
+            document.querySelector(targetSel)?.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth' });
+          }
+        }
+      }
+
+      btn.addEventListener('mouseenter', () => activate(false));
+      btn.addEventListener('focus', () => activate(false));
+      btn.addEventListener('click', () => activate(true));
+    });
   };
 
   /* --- 11. Specular Cursor Spotlight Engine --- */
@@ -8956,6 +9987,8 @@ body.cs-modal-open {
     });
   };
 
+<!-- {{INJECT_DOMAIN_SCRIPTS}} -->
+
   /* --- 12. Orchestrated Bootstrap --- */
 (function() {
   function bootstrapPortfolioV2() {
@@ -8983,6 +10016,15 @@ body.cs-modal-open {
     }
     if (typeof window.initVentureInteractives === 'function') {
       window.initVentureInteractives(content);
+    }
+    if (typeof window.initProjectCaseStudies === 'function') {
+      window.__PROJECT_CASE_STUDY = window.initProjectCaseStudies(content);
+    }
+    if (typeof window.initLabCli === 'function') {
+      window.__LAB_CLI = window.initLabCli(content);
+    }
+    if (typeof window.initBuilderMap === 'function') {
+      window.initBuilderMap();
     }
     if (typeof window.initCommandPalette === 'function') {
       window.__CMD_PALETTE = window.initCommandPalette(content);

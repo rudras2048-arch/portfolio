@@ -1,22 +1,22 @@
 {
-  "timestamp": "2026-11-26T03:45:59.678Z",
-  "durationSeconds": 72.87,
+  "timestamp": "2026-11-26T04:08:16.956Z",
+  "durationSeconds": 72.37,
   "allPassed": true,
   "gates": [
     {
       "gate": "G-01",
       "name": "Static Build Engine",
       "target": "Clean npm run build generation into dist/",
-      "measured": "465.9 KB HTML, 48 assets",
+      "measured": "511.7 KB HTML, 48 assets",
       "passed": true,
       "data": {
         "gate": "G-01",
         "name": "Static Build Engine",
         "passed": true,
-        "durationMs": 11252,
-        "htmlSize": 477043,
+        "durationMs": 11244,
+        "htmlSize": 524004,
         "assetsCount": 48,
-        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (474,412 bytes)\n  ✔ Synced:  index.html (474,412 bytes)\n  ✔ Synced:  index.v2.html (474,412 bytes)\n  ✔ Synced:  portfolio/index.html (474,412 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  assets/ -> dist/assets/ (48 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (656 bytes)\n  ✔ Generated: dist/llms.txt (4519 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
+        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (521,586 bytes)\n  ✔ Synced:  index.html (521,586 bytes)\n  ✔ Synced:  index.v2.html (521,586 bytes)\n  ✔ Synced:  portfolio/index.html (521,586 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  assets/ -> dist/assets/ (48 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (656 bytes)\n  ✔ Generated: dist/llms.txt (4757 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
         "error": null
       }
     },
@@ -66,14 +66,14 @@
             "minor": 0
           },
           "violations": [],
-          "passesCount": 43
+          "passesCount": 47
         },
         "perfMetrics": {
-          "ttfb": 3,
-          "domContentLoaded": 526,
-          "loadEvent": 708,
-          "firstContentfulPaintMs": 560,
-          "domNodes": 1572,
+          "ttfb": 5,
+          "domContentLoaded": 323,
+          "loadEvent": 351,
+          "firstContentfulPaintMs": 356,
+          "domNodes": 1601,
           "totalTransferBytes": 131626,
           "largeResources": []
         },
@@ -101,7 +101,7 @@
       "gate": "G-04",
       "name": "Link & Asset Integrity",
       "target": "100% local assets & external URLs valid (0 broken)",
-      "measured": "Local: 20/20 | Anchors: 10/10 | Ext: 9/9",
+      "measured": "Local: 20/20 | Anchors: 9/9 | Ext: 9/9",
       "passed": true,
       "data": {
         "gate": "G-04",
@@ -124,6 +124,20 @@
               "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/rudra-pitch-portrait.jpg",
               "exists": true,
               "sizeBytes": 128586,
+              "status": "PASS"
+            },
+            {
+              "reference": "assets/flowstate-receipt.png",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/flowstate-receipt.png",
+              "exists": true,
+              "sizeBytes": 71368,
+              "status": "PASS"
+            },
+            {
+              "reference": "assets/krama-preview.jpg",
+              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/krama-preview.jpg",
+              "exists": true,
+              "sizeBytes": 202602,
               "status": "PASS"
             },
             {
@@ -237,26 +251,12 @@
               "exists": true,
               "sizeBytes": 30142,
               "status": "PASS"
-            },
-            {
-              "reference": "assets/flowstate-receipt.png",
-              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/flowstate-receipt.png",
-              "exists": true,
-              "sizeBytes": 71368,
-              "status": "PASS"
-            },
-            {
-              "reference": "assets/krama-preview.jpg",
-              "resolvedPath": "/Users/rudrasharma/Desktop/portfolio\\/portfolio/dist/assets/krama-preview.jpg",
-              "exists": true,
-              "sizeBytes": 202602,
-              "status": "PASS"
             }
           ]
         },
         "internalAnchors": {
-          "total": 10,
-          "passed": 10,
+          "total": 9,
+          "passed": 9,
           "failed": 0,
           "items": [
             {
@@ -266,8 +266,14 @@
               "status": "PASS"
             },
             {
-              "anchor": "#about",
-              "targetId": "about",
+              "anchor": "#ventures",
+              "targetId": "ventures",
+              "exists": true,
+              "status": "PASS"
+            },
+            {
+              "anchor": "#tathya-workbench",
+              "targetId": "tathya-workbench",
               "exists": true,
               "status": "PASS"
             },
@@ -278,8 +284,8 @@
               "status": "PASS"
             },
             {
-              "anchor": "#ventures",
-              "targetId": "ventures",
+              "anchor": "#about",
+              "targetId": "about",
               "exists": true,
               "status": "PASS"
             },
@@ -304,18 +310,6 @@
             {
               "anchor": "#comp-cash-rush",
               "targetId": "comp-cash-rush",
-              "exists": true,
-              "status": "PASS"
-            },
-            {
-              "anchor": "#comp-cinesell",
-              "targetId": "comp-cinesell",
-              "exists": true,
-              "status": "PASS"
-            },
-            {
-              "anchor": "#tathya-workbench",
-              "targetId": "tathya-workbench",
               "exists": true,
               "status": "PASS"
             }
@@ -428,54 +422,8 @@
               "bodyScrollWidth": 320,
               "hasOverflow": false,
               "overflowPx": 0,
-              "overflowingElementsCount": 5,
-              "topOverflowing": [
-                {
-                  "tag": "div",
-                  "id": "glow",
-                  "className": null,
-                  "width": 580,
-                  "right": 450,
-                  "overflowPx": 130,
-                  "snippet": ""
-                },
-                {
-                  "tag": "span",
-                  "id": null,
-                  "className": "cm",
-                  "width": 338.4,
-                  "right": 384.4,
-                  "overflowPx": 64.4,
-                  "snippet": "$ tathya eval --lang haryanvi --set gov-"
-                },
-                {
-                  "tag": "span",
-                  "id": null,
-                  "className": "cm",
-                  "width": 374.4,
-                  "right": 420.4,
-                  "overflowPx": 100.4,
-                  "snippet": "$ stratum simulate --scenario \"cpm_volat"
-                },
-                {
-                  "tag": "span",
-                  "id": null,
-                  "className": "cm",
-                  "width": 374.4,
-                  "right": 420.4,
-                  "overflowPx": 100.4,
-                  "snippet": "$ flowstate run --zero-oauth --audio pro"
-                },
-                {
-                  "tag": "span",
-                  "id": null,
-                  "className": "cm",
-                  "width": 410.4,
-                  "right": 456.4,
-                  "overflowPx": 136.4,
-                  "snippet": "$ krama analyze --timetable schedule.jso"
-                }
-              ]
+              "overflowingElementsCount": 0,
+              "topOverflowing": []
             },
             "screenshot": "viewport-320px.png",
             "passed": true
@@ -529,35 +477,42 @@
                 "tagName": "A",
                 "id": "",
                 "className": "nav-brand",
-                "text": "RUDRA SHARMA",
+                "text": "RUDRA.SHARMA",
+                "ariaLabel": null
+              },
+              {
+                "tagName": "A",
+                "id": "",
+                "className": "",
+                "text": "01WORK",
+                "ariaLabel": null
+              },
+              {
+                "tagName": "A",
+                "id": "",
+                "className": "",
+                "text": "02LAB",
+                "ariaLabel": null
+              },
+              {
+                "tagName": "A",
+                "id": "",
+                "className": "",
+                "text": "03RECORD",
                 "ariaLabel": null
               },
               {
                 "tagName": "A",
                 "id": "",
                 "className": "ab-nav-link",
-                "text": "00ABOUT",
+                "text": "04ABOUT",
                 "ariaLabel": null
               },
               {
                 "tagName": "A",
                 "id": "",
                 "className": "",
-                "text": "01RECORD",
-                "ariaLabel": null
-              },
-              {
-                "tagName": "A",
-                "id": "",
-                "className": "",
-                "text": "02VENTURES",
-                "ariaLabel": null
-              },
-              {
-                "tagName": "A",
-                "id": "",
-                "className": "",
-                "text": "03CONTACT",
+                "text": "05CONTACT",
                 "ariaLabel": null
               },
               {
@@ -569,24 +524,17 @@
               },
               {
                 "tagName": "BUTTON",
+                "id": "cli-trigger",
+                "className": "cmd-trigger-btn",
+                "text": ">_",
+                "ariaLabel": "Open Interactive Lab CLI"
+              },
+              {
+                "tagName": "BUTTON",
                 "id": "cmd-palette-trigger",
                 "className": "cmd-trigger-btn",
                 "text": "⌘K",
                 "ariaLabel": "⌘K Open Command Palette"
-              },
-              {
-                "tagName": "A",
-                "id": "",
-                "className": "nav-action-pill",
-                "text": "LINKEDIN ↗",
-                "ariaLabel": null
-              },
-              {
-                "tagName": "A",
-                "id": "",
-                "className": "btn-solid hero-btn-primary",
-                "text": "VIEW RECORD\n↓",
-                "ariaLabel": null
               }
             ]
           },
