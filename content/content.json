@@ -34,7 +34,7 @@
       "1st place winner at builders' bootcamp demo day",
       "working on stratum, flow state and krama"
     ],
-    "statement": "Building practical software utilities, investigating LLM behavior on Indian dialects, and executing under real-world constraints.",
+    "statement": "I build software systems and stress-test commercial models in live competitive arenas.",
     "portrait": {
       "path": "assets/rudra-pitch-portrait.jpg",
       "alt": "Rudra Sharma pitching venture strategy",
@@ -69,8 +69,8 @@
         "id": "projects",
         "value": "04",
         "count": 4,
-        "label": "Active Systems",
-        "description": "Tathya · Flow State · Krama · Stratum",
+        "label": "Ventures",
+        "description": "Tathya · Stratum · Flow State · Krama",
         "verified": true
       }
     ]
@@ -663,32 +663,32 @@
       "category": "VENTURE // EARLY RESEARCH",
       "badge": "RESEARCH PHASE",
       "status": "idea",
-      "status_detail": "Early research · live client-side tokenizer microscope; eval set in progress",
-      "thesis": "Research investigating how LLMs perform on non-standard Indian dialects (Haryanvi, Punjabi, Bhojpuri), paired with a verification layer for civic queries.",
-      "problem": "Hypothesis: Lexical coverage gaps, orthographic variation, and subword splitting may degrade LLM reliability on regional Indian dialects.",
+      "status_detail": "Early research · eval set in progress",
+      "thesis": "Research into how LLMs fail on non-standard Indian dialects (Punjabi, Haryanvi, Bhojpuri), and a verification layer to catch those failures.",
+      "problem": "LLMs perform poorly on regional dialects due to token fragmentation.",
       "features": [
-        "Client-side BPE token boundary & UTF-8 byte microscope",
-        "Controlled evaluation protocol for Haryanvi, Punjabi, and Bhojpuri",
-        "Proposed verification layer for civic welfare queries"
+        "Dialect token fragmentation analysis",
+        "Custom evaluation benchmark for Haryanvi, Punjabi, and Bhojpuri",
+        "Verification layer for government schemes and regional queries"
       ],
       "terminal_preview": {
         "filename": "tathya-verify.sh",
-        "badge": "RESEARCH PROTOTYPE",
-        "command": "tathya tokenize --lang haryanvi --compare manak-hi",
+        "badge": "SIMULATED PREVIEW",
+        "command": "tathya eval --lang haryanvi --set gov-schemes",
         "lines": [
           {
             "type": "comment",
-            "text": "$ tathya tokenize --lang haryanvi --compare manak-hi"
+            "text": "$ tathya eval --lang haryanvi --set gov-schemes"
           },
           {
             "type": "status",
             "prefix": "[STATUS]",
-            "text": "v0.2 prototype · client-side BPE tokenizer + eval design in progress"
+            "text": "Research phase · building Haryanvi / Punjabi / Bhojpuri eval set"
           },
           {
             "type": "next",
             "prefix": "[NEXT]",
-            "text": "Publish controlled dialect benchmark & claim audit results"
+            "text": "Publish LLM failure analysis"
           }
         ]
       },
@@ -698,8 +698,8 @@
         "alt": "TBD"
       },
       "action_cta": {
-        "label": "Open Case Study",
-        "target": "#tathya-workbench"
+        "label": "Talk to me about Tathya",
+        "target": "#contact"
       },
       "evidence_url": null
     },
@@ -707,15 +707,15 @@
       "id": "stratum",
       "name": "Stratum",
       "category": "SAAS PLATFORM // SIMULATION",
-      "badge": "CONCEPT PROTOTYPE",
+      "badge": "CONCEPT STAGE",
       "status": "idea",
-      "status_detail": "Concept prototype · deterministic simulation spec in progress",
-      "thesis": "A market simulation concept evaluating candidate decision speed and capital efficiency under volatility shocks instead of static case studies.",
-      "problem": "Static hiring case studies are easily generated with LLMs without testing live trade-off judgment.",
+      "status_detail": "Concept and pitch stage · sandbox design in progress",
+      "thesis": "A live market simulation engine evaluating candidate decision speed and capital efficiency instead of static case studies.",
+      "problem": "Hiring case studies are easily generated using LLMs without testing live judgment.",
       "features": [
-        "Dynamic CPM volatility shock scenario spec",
-        "Capital velocity and margin yield scoring model",
-        "Deterministic decision latency logging prototype"
+        "Dynamic CPM volatility shock scenarios",
+        "Capital velocity and margin yield telemetry",
+        "Real-time decision latency scoring"
       ],
       "terminal_preview": {
         "filename": "stratum-engine.py",
@@ -744,7 +744,7 @@
         "alt": "Stratum simulation engine preview"
       },
       "action_cta": {
-        "label": "Open Case Study",
+        "label": "Talk to me about Stratum",
         "target": "#contact"
       },
       "evidence_url": "assets/stratum-preview.png"
@@ -756,22 +756,22 @@
       "badge": "LOCAL BUILD",
       "status": "building",
       "status_detail": "Local build · Python + native OS webview & 16-bit math.sin audio",
-      "thesis": "A Python-backed offline focus desktop utility built to eliminate telemetry clutter, accounts, and context switching.",
-      "problem": "Cloud focus suites add accounts, analytics overhead, and distractions directly inside deep-work sessions.",
+      "thesis": "A Python-backed offline focus desktop utility built to eliminate cloud telemetry leaks and context switching.",
+      "problem": "Cloud telemetry leaks and context switching fragment developer focus.",
       "features": [
         "Python core with native OS webview UI (0 Electron overhead)",
-        "Local Zero-OAuth RFC 5545 (.ics) calendar file import",
+        "Zero-OAuth RFC 5545 calendar synchronization",
         "16-bit 44.1kHz procedural audio synthesis via math.sin (0 MP3 files)",
         "Weekly local focus receipts with 30-day session summaries"
       ],
       "terminal_preview": {
         "filename": "flowstate-core.py",
-        "badge": "LOCAL BUILD PREVIEW",
-        "command": "flowstate run --ics local.ics --audio procedural_sine",
+        "badge": "SIMULATED PREVIEW",
+        "command": "flowstate run --zero-oauth --audio procedural_sine",
         "lines": [
           {
             "type": "comment",
-            "text": "$ flowstate run --ics local.ics --audio procedural_sine"
+            "text": "$ flowstate run --zero-oauth --audio procedural_sine"
           },
           {
             "type": "audio",
@@ -780,8 +780,8 @@
           },
           {
             "type": "sync",
-            "prefix": "[IMPORT]",
-            "text": "Local .ics calendar ingestion · local storage only"
+            "prefix": "[SYNC]",
+            "text": "Local storage only · 100% on-device"
           }
         ]
       },
@@ -791,7 +791,7 @@
         "alt": "Flow State weekly local focus receipt"
       },
       "action_cta": {
-        "label": "Open Case Study",
+        "label": "Connect With Builder",
         "target": "#contact"
       },
       "evidence_url": "assets/flowstate-receipt.png"
@@ -802,32 +802,32 @@
       "category": "SYSTEM UTILITY // ACADEMIC OS",
       "badge": "STUDENT UTILITY",
       "status": "building",
-      "status_detail": "Building · offline-first 75% recovery calculus",
-      "thesis": "An offline-first academic schedule optimization and attendance recovery calculus utility eliminating surprise shortages below the mandatory 75% threshold.",
+      "status_detail": "Student utility · offline-first recovery calculus",
+      "thesis": "An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.",
       "problem": "Mandatory attendance cutoffs (75%) trigger sudden academic disqualifications without proactive recovery visibility.",
       "features": [
         "Automated timetable JSON ingestion",
-        "Shared recovery calculus: ceil((target*total - attended) / (1 - target))",
+        "Safe leave buffer calculation and recovery calculus",
         "Encrypted local SQLite storage with zero account creation required"
       ],
       "terminal_preview": {
         "filename": "krama-calc.py",
-        "badge": "LIVE FORMULA SPEC",
-        "command": "krama analyze --attended 17 --total 25 --threshold 0.75",
+        "badge": "SIMULATED PREVIEW",
+        "command": "krama analyze --timetable schedule.json --threshold 75%",
         "lines": [
           {
             "type": "comment",
-            "text": "$ krama analyze --attended 17 --total 25 --threshold 0.75"
+            "text": "$ krama analyze --timetable schedule.json --threshold 75%"
           },
           {
             "type": "status",
             "prefix": "[STATUS]",
-            "text": "Current: 68.0% (17/25) | Target threshold: 75.0%"
+            "text": "Current: 68.4% | Target threshold: 75.0%"
           },
           {
             "type": "recovery",
             "prefix": "[RECOVERY]",
-            "text": "Attend next 7 consecutive classes to recover 75.0%."
+            "text": "Attend next 4 consecutive sessions to recover margin"
           }
         ]
       },
@@ -837,7 +837,7 @@
         "alt": "Krama schedule optimization preview"
       },
       "action_cta": {
-        "label": "Open Case Study",
+        "label": "Inquire About Krama",
         "target": "#contact"
       },
       "evidence_url": "assets/krama-preview.jpg"

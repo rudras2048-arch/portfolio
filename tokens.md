@@ -11,32 +11,29 @@ All subsequent agents must use CSS custom properties defined in `:root`. **Never
 
 ```css
 :root {
-  /* Surface & Background Hierarchy — Personal Lab Graphite */
-  --bg: #101216;                         /* Deep graphite canvas */
-  --bg2: #161920;                        /* Elevated card & container surface */
-  --bg3: #1E222B;                        /* Active states, sub-cards, nested surfaces */
-  --bg-card: rgba(22, 25, 32, 0.88);     /* Glassmorphic card fill */
+  /* Surface & Background Hierarchy */
+  --bg: #0C0C0E;                         /* Primary deep obsidian canvas */
+  --bg2: #131317;                        /* Elevated card & container surface */
+  --bg3: #1B1B22;                        /* Active states, sub-cards, nested surfaces */
+  --bg-card: rgba(18, 18, 22, 0.84);     /* Glassmorphic card fill (pair with backdrop-filter: blur(16px)) */
 
   /* Text & Editorial Hierarchy */
-  --text-bone: #F4F4F5;                  /* Warm white primary headline & editorial text */
-  --text-muted: #A3AAB7;                 /* Muted grey secondary body, subtitle copy */
-  --text-dim: #9CA4B3;                   /* Tertiary kickers, timestamps (AA contrast compliant) */
+  --text-bone: #F5EFE6;                  /* Primary headline & high-contrast editorial text */
+  --text-muted: #9C988D;                 /* Secondary body, descriptions, subtitle copy */
+  --text-dim: #5C5A53;                   /* Tertiary kickers, timestamps, subtle metadata */
 
-  /* Dual Technical + Execution Accents */
-  --accent: #C4F06A;                     /* Acid lime execution primary accent */
-  --accent-bright: #D6F888;              /* High-energy hover, active badges */
-  --accent-soft: rgba(196, 240, 106, 0.13);
-  --accent-glow: rgba(196, 240, 106, 0.30);
-  --lab-accent: #A5B4FC;                 /* Electric periwinkle engineering / research accent */
-  --lab-bright: #C7D2FE;
-  --lab-soft: rgba(165, 180, 252, 0.13);
+  /* Tactical Chartreuse / Lime Accent Palette */
+  --accent: #A5BA28;                     /* Signature tactical chartreuse (brand primary) */
+  --accent-bright: #BEE024;              /* High-energy hover, active badges, gradient endpoints */
+  --accent-soft: rgba(165, 186, 40, 0.12); /* Subtle pill backgrounds, badge backing */
+  --accent-glow: rgba(165, 186, 40, 0.28); /* Focus rings, card hover shadows, glow halos */
 
   /* Structural Rules & Borders */
-  --rule: rgba(255, 255, 255, 0.09);     /* Thin structural hairline border */
-  --rule-hover: rgba(165, 180, 252, 0.42); /* Interactive border accent */
+  --rule: rgba(255, 255, 255, 0.08);     /* Default structural hairline border */
+  --rule-hover: rgba(165, 186, 40, 0.35);/* Accentuated hover border state */
 
   /* Layout & Geometry */
-  --card-radius: 14px;                   /* Clean restrained card radius */
+  --card-radius: 18px;                   /* Standard rounded corner for main container cards */
   --container-max: 1220px;               /* Fixed maximum container width */
 
   /* Typography Stacks */

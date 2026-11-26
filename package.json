@@ -6,6 +6,7 @@
     "build": "node scripts/build.js",
     "build:share": "node -e \"require('./templates/share').generateShareArtifacts()\"",
     "validate": "node scripts/build.js --validate-only",
+    "test": "node --test scripts/tests/domain-logic.test.js",
     "release-check": "node scripts/gates/release-check.js"
   },
   "author": "Rudra Sharma",

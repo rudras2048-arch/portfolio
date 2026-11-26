@@ -4,7 +4,7 @@
 
 First-year CS & Data Science undergraduate at Rishihood University ('30). Builder of software tools, local utilities, and early venture prototypes, learning through live execution.
 
-Thesis: Building practical software utilities, investigating LLM behavior on Indian dialects, and executing under real-world constraints.
+Thesis: I build software systems and stress-test commercial models in live competitive arenas.
 
 ## Canonical & Contact Links
 - Portfolio: https://rudras-portfolio.netlify.app/
@@ -18,7 +18,7 @@ Thesis: Building practical software utilities, investigating LLM behavior on Ind
 - **02 Championships**: Ashoka & Builders' Bootcamp
 - **TOP 10 National Finalist**: IIM Amritsar · 700+ registrations
 - **03 Podiums**: Jun–Oct 2026
-- **04 Active Systems**: Tathya · Flow State · Krama · Stratum
+- **04 Ventures**: Tathya · Stratum · Flow State · Krama
 
 ## Competitive Field Record
 ### Cash Rush Competition (Ashoka University · Shatranj '26, October 2026)
@@ -52,18 +52,18 @@ Thesis: Building practical software utilities, investigating LLM behavior on Ind
 
 ## Ventures & Software Systems
 ### Tathya (तथ्य) (VENTURE // EARLY RESEARCH · RESEARCH PHASE)
-- Thesis: Research investigating how LLMs perform on non-standard Indian dialects (Haryanvi, Punjabi, Bhojpuri), paired with a verification layer for civic queries.
-- Problem: Hypothesis: Lexical coverage gaps, orthographic variation, and subword splitting may degrade LLM reliability on regional Indian dialects.
-- Status: Early research · live client-side tokenizer microscope; eval set in progress
-### Stratum (SAAS PLATFORM // SIMULATION · CONCEPT PROTOTYPE)
-- Thesis: A market simulation concept evaluating candidate decision speed and capital efficiency under volatility shocks instead of static case studies.
-- Problem: Static hiring case studies are easily generated with LLMs without testing live trade-off judgment.
-- Status: Concept prototype · deterministic simulation spec in progress
+- Thesis: Research into how LLMs fail on non-standard Indian dialects (Punjabi, Haryanvi, Bhojpuri), and a verification layer to catch those failures.
+- Problem: LLMs perform poorly on regional dialects due to token fragmentation.
+- Status: Early research · eval set in progress
+### Stratum (SAAS PLATFORM // SIMULATION · CONCEPT STAGE)
+- Thesis: A live market simulation engine evaluating candidate decision speed and capital efficiency instead of static case studies.
+- Problem: Hiring case studies are easily generated using LLMs without testing live judgment.
+- Status: Concept and pitch stage · sandbox design in progress
 ### Flow State (DESKTOP OS // FOCUS · LOCAL BUILD)
-- Thesis: A Python-backed offline focus desktop utility built to eliminate telemetry clutter, accounts, and context switching.
-- Problem: Cloud focus suites add accounts, analytics overhead, and distractions directly inside deep-work sessions.
+- Thesis: A Python-backed offline focus desktop utility built to eliminate cloud telemetry leaks and context switching.
+- Problem: Cloud telemetry leaks and context switching fragment developer focus.
 - Status: Local build · Python + native OS webview & 16-bit math.sin audio
 ### Krama (क्रम) (SYSTEM UTILITY // ACADEMIC OS · STUDENT UTILITY)
-- Thesis: An offline-first academic schedule optimization and attendance recovery calculus utility eliminating surprise shortages below the mandatory 75% threshold.
+- Thesis: An offline-first academic schedule optimization and attendance recovery calculus utility designed to eliminate surprise eligibility shortages below the mandatory 75% threshold.
 - Problem: Mandatory attendance cutoffs (75%) trigger sudden academic disqualifications without proactive recovery visibility.
-- Status: Building · offline-first 75% recovery calculus
+- Status: Student utility · offline-first recovery calculus

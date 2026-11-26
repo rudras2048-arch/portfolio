@@ -6,10 +6,56 @@
       "scrollW": 320,
       "bodyScrollW": 320,
       "overflowPx": 0,
-      "overflowingElements": [],
+      "overflowingElements": [
+        {
+          "tag": "div",
+          "id": "glow",
+          "className": null,
+          "width": 580,
+          "right": 450,
+          "overflowPx": 130,
+          "snippet": ""
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "cm",
+          "width": 338.4,
+          "right": 384.4,
+          "overflowPx": 64.4,
+          "snippet": "$ tathya eval --lang haryanvi --set gov-"
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "cm",
+          "width": 374.4,
+          "right": 420.4,
+          "overflowPx": 100.4,
+          "snippet": "$ stratum simulate --scenario \"cpm_volat"
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "cm",
+          "width": 374.4,
+          "right": 420.4,
+          "overflowPx": 100.4,
+          "snippet": "$ flowstate run --zero-oauth --audio pro"
+        },
+        {
+          "tag": "span",
+          "id": null,
+          "className": "cm",
+          "width": 410.4,
+          "right": 456.4,
+          "overflowPx": 136.4,
+          "snippet": "$ krama analyze --timetable schedule.jso"
+        }
+      ],
       "illegibleTextCount": 0,
       "illegibleTextSamples": [],
-      "totalTouchTargets": 53,
+      "totalTouchTargets": 47,
       "tinyTargetsCount": 0,
       "tinyTargets": []
     },
@@ -27,7 +73,7 @@
       "cursorAnim": "none",
       "cursorOpacity": "1",
       "hasCursor": true,
-      "revealsCount": 41,
+      "revealsCount": 36,
       "revealsStatic": true,
       "revealsFailing": []
     },
@@ -36,7 +82,7 @@
   "c3_noScript": {
     "passed": true,
     "domCheck": {
-      "bodyBackground": "rgb(16, 18, 22)",
+      "bodyBackground": "rgb(12, 12, 14)",
       "sectionStates": [
         {
           "selector": "#hero",
@@ -82,8 +128,8 @@
   "c4_slow3g": {
     "passed": true,
     "clsAndMetrics": {
-      "fcpMs": 4096,
-      "domContentLoadedMs": 17015,
+      "fcpMs": 3764,
+      "domContentLoadedMs": 16223,
       "clsScore": 0,
       "shiftCount": 0,
       "structuralIntegrity": true
