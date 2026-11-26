@@ -578,8 +578,8 @@
       "evidence_url": null
     },
     {
-      "id": "dcrust-turn-the-court",
-      "title": "Turn the Court (Impromptu Debate)",
+      "id": "dcrust-turn-the-coat",
+      "title": "Turn the Coat (Impromptu Debate)",
       "host": "DCRUST Murthal",
       "event": "E-Summit '26",
       "beacon": "DCRUST Murthal · E-Summit '26",
@@ -623,7 +623,7 @@
         "Team parliamentary coordination"
       ],
       "story": {
-        "setup": "Entered the Turn the Court impromptu debate at DCRUST E-Summit '26 with teammates Tripti Kaushik and Raj Khatri.",
+        "setup": "Entered the Turn the Coat impromptu debate at DCRUST E-Summit '26 with teammates Tripti Kaushik and Raj Khatri.",
         "key_decision": "Developed real-time adaptive framing to instantly pivot argumentative stance whenever the judges triggered side-swapping by clapping.",
         "result": "Competed through rapid rounds demonstrating cognitive flexibility and verbal agility under strict time pressure.",
         "takeaway": "Mastering conviction on either side of an issue is the fastest way to understand core trade-offs."
@@ -648,7 +648,7 @@
       "proof": {
         "status": "unlinked",
         "url": "assets/dcrust-stage-pitch.jpg",
-        "alt": "DCRUST E-Summit Turn the Court Debate",
+        "alt": "DCRUST E-Summit Turn the Coat Debate",
         "caption": "DCRUST E-Summit · Impromptu Debate Arena",
         "stamp": "Field Record // Sept 2026",
         "additional_assets": []

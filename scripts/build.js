@@ -647,7 +647,7 @@ function renderCompetitions(content) {
               <span class="telemetry-lbl fr-telemetry-lbl">Status</span>
               <span class="telemetry-val fr-telemetry-val ">Participation</span>
             </div>`;
-    } else if (comp.id === 'dcrust-turn-the-court') {
+    } else if (comp.id === 'dcrust-turn-the-coat') {
       telemetryChips = `
             <div class="telemetry-cell fr-telemetry-chip">
               <span class="telemetry-lbl fr-telemetry-lbl">Format</span>

@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-11-26T04:08:16.956Z",
-  "durationSeconds": 72.37,
+  "timestamp": "2026-11-26T04:13:16.445Z",
+  "durationSeconds": 72.82,
   "allPassed": true,
   "gates": [
     {
@@ -13,10 +13,10 @@
         "gate": "G-01",
         "name": "Static Build Engine",
         "passed": true,
-        "durationMs": 11244,
-        "htmlSize": 524004,
+        "durationMs": 11276,
+        "htmlSize": 523989,
         "assetsCount": 48,
-        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (521,586 bytes)\n  ✔ Synced:  index.html (521,586 bytes)\n  ✔ Synced:  index.v2.html (521,586 bytes)\n  ✔ Synced:  portfolio/index.html (521,586 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  assets/ -> dist/assets/ (48 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (656 bytes)\n  ✔ Generated: dist/llms.txt (4757 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
+        "stdout": "\n> rudra-sharma-portfolio@2.0.0 build\n> node scripts/build.js\n\n\u001b[36m============================================================\u001b[0m\n\u001b[36mPORTFOLIO BUILD & STATIC RECONCILIATION ENGINE\u001b[0m\n\u001b[36m============================================================\u001b[0m\nTarget: /Users/rudrasharma/Desktop/portfolio\\/portfolio\nMode:   Full Static Generation & Sync\n\nRendering components strictly from content/content.json:\n  ✔ Head metadata & canonical tags\n  ✔ Schema.org JSON-LD graph\n  ✔ Hero quick stats\n  ✔ Recruiter Mode executive drawer\n  ✔ About & trajectory sprint arc\n  ✔ Competitive field record (4-pillar proof layer)\n  ✔ Ventures & systems (expandable case studies)\n  ✔ Tathya LLM failure explorer (templates/demo/)\n  ✔ Direct contact transmission channels\n  ✔ Synchronous embedded JSON payload & global constant\n\n--- Running Strict Architecture Validation Gates ---\n\u001b[32m✔ [GATE 1 PASSED]\u001b[0m Zero literal \"TBD\" strings rendered to visible DOM.\n\u001b[32m✔ [GATE 2 PASSED]\u001b[0m All \"Verified\" badges strictly gated on existing evidence_urls.\n\u001b[32m✔ [GATE 3 PASSED]\u001b[0m Valid Schema.org JSON-LD graph embedded.\n\u001b[32m✔ [GATE 4 PASSED]\u001b[0m Recruiter Mode toggle and executive drawer verified.\n\n--- Synchronizing Distribution and Root Artifacts ---\n  ✔ Written: dist/index.html (521,571 bytes)\n  ✔ Synced:  index.html (521,571 bytes)\n  ✔ Synced:  index.v2.html (521,571 bytes)\n  ✔ Synced:  portfolio/index.html (521,571 bytes)\n  ✔ Synced:  content.json (root)\n  ✔ Synced:  404.html -> dist/404.html\n  ✔ Copied:  assets/ -> dist/assets/ (48 files)\n  ✔ Copied:  data/ -> dist/data/ (1 files)\n  ✔ Generated: dist/robots.txt (Sitemap -> https://rudras-portfolio.netlify.app/sitemap.xml)\n  ✔ Generated: dist/sitemap.xml (656 bytes)\n  ✔ Generated: dist/llms.txt (4756 bytes)\n  ✔ Generated: dist/assets/og/ (10 section OG cards SVG + PNG)\n\n\u001b[32m============================================================\u001b[0m\n\u001b[32mBUILD COMPLETE: 100% PRODUCTION READY\u001b[0m\n\u001b[32m============================================================\u001b[0m\n\n",
         "error": null
       }
     },
@@ -70,9 +70,9 @@
         },
         "perfMetrics": {
           "ttfb": 5,
-          "domContentLoaded": 323,
-          "loadEvent": 351,
-          "firstContentfulPaintMs": 356,
+          "domContentLoaded": 376,
+          "loadEvent": 419,
+          "firstContentfulPaintMs": 400,
           "domNodes": 1601,
           "totalTransferBytes": 131626,
           "largeResources": []
@@ -101,7 +101,7 @@
       "gate": "G-04",
       "name": "Link & Asset Integrity",
       "target": "100% local assets & external URLs valid (0 broken)",
-      "measured": "Local: 20/20 | Anchors: 9/9 | Ext: 9/9",
+      "measured": "Local: 20/20 | Anchors: 9/9 | Ext: 8/9",
       "passed": true,
       "data": {
         "gate": "G-04",
@@ -317,9 +317,9 @@
         },
         "externalUrls": {
           "total": 9,
-          "passed": 9,
+          "passed": 8,
           "failed": 0,
-          "blocked": 0,
+          "blocked": 1,
           "items": [
             {
               "url": "https://rudras-portfolio.netlify.app/",
@@ -362,9 +362,9 @@
             },
             {
               "url": "https://www.linkedin.com/in/rudra-sharma-7bb78b410/",
-              "statusCode": 301,
-              "statusMessage": "Moved Permanently",
-              "status": "PASS"
+              "statusCode": 999,
+              "statusMessage": "<none>",
+              "status": "BLOCKED/AUTH"
             },
             {
               "url": "https://github.com/rudras2048-arch",

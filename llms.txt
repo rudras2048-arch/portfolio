@@ -45,7 +45,7 @@ Thesis: Building practical software utilities, investigating LLM behavior on Ind
 - Placement: Participation
 - Role: Co-Presenter & Concept Strategist
 - Outcome: Delivered the collaborative product presentation to the judging panel in the competition rounds.
-### Turn the Court (Impromptu Debate) (DCRUST Murthal · E-Summit '26, September 2026)
+### Turn the Coat (Impromptu Debate) (DCRUST Murthal · E-Summit '26, September 2026)
 - Placement: Participation
 - Role: Team Debater
 - Outcome: Competed through rapid rounds demonstrating cognitive flexibility and verbal agility under strict time pressure.
