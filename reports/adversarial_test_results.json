@@ -128,8 +128,8 @@
   "c4_slow3g": {
     "passed": true,
     "clsAndMetrics": {
-      "fcpMs": 3720,
-      "domContentLoadedMs": 15951,
+      "fcpMs": 3724,
+      "domContentLoadedMs": 15968,
       "clsScore": 0,
       "shiftCount": 0,
       "structuralIntegrity": true

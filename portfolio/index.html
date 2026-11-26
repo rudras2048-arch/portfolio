@@ -875,6 +875,11 @@
       color: #A5BA28;
     }
 
+    .typed-wrap {
+      display: inline;
+      min-width: 0;
+    }
+
     .typed-output {
       font-size: 14px;
       color: var(--accent);
@@ -887,6 +892,7 @@
       display: inline-block;
       width: 8px;
       height: 15px;
+      margin-left: 6px;
       background: var(--accent);
       vertical-align: -2px;
       animation: blinkCursor 1.1s step-start infinite;
@@ -1543,7 +1549,7 @@
       padding: 22px 24px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: flex-start;
       gap: 16px;
       transition: all 0.25s ease;
       scroll-margin-top: 96px;
@@ -5546,10 +5552,11 @@ body.cs-modal-open {
       margin-top: 4px;
     }
     .fr-participation-grid .fr-telemetry-matrix {
-      grid-template-columns: repeat(auto-fit, minmax(92px, 1fr)) !important;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)) !important;
     }
     .fr-participation-grid .fr-telemetry-val {
-      font-size: 14px;
+      font-size: 13px;
+      overflow-wrap: anywhere;
     }
     .fr-compact-col {
       display: flex;
@@ -5602,6 +5609,7 @@ body.cs-modal-open {
       flex-wrap: wrap;
       align-items: center;
       gap: 8px;
+      margin-top: auto;
     }
     .venture-sub-btn,
     .venture-explorer-link,
@@ -7065,8 +7073,7 @@ body.cs-modal-open {
 
           <div class="hero-tagline-prompt reveal">
             <span class="prompt">~/whoami $</span>
-            <span class="typed-output" id="typedOutput">researching how llms fail on punjabi, haryanvi &amp; bhojpuri</span>
-            <span class="typed-cursor" aria-hidden="true"></span>
+            <span class="typed-wrap"><span class="typed-output" id="typedOutput">researching how llms fail on punjabi, haryanvi &amp; bhojpuri</span><span class="typed-cursor" aria-hidden="true"></span></span>
           </div>
 
           <p class="hero-statement reveal">
